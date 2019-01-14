@@ -1,4 +1,4 @@
-lodash.set
+lodash.get
 MIT
 Copyright jQuery Foundation and other contributors <https://jquery.org/>
 
@@ -392,7 +392,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-lodash.get
+lodash.set
 MIT
 Copyright jQuery Foundation and other contributors <https://jquery.org/>
 
@@ -500,10 +500,7 @@ MIT
 ng2-tooltip-directive
 MIT
 
-angular-6-datatable
-MIT
-
-lodash
+lodash-es
 MIT
 Copyright JS Foundation and other contributors <https://js.foundation/>
 
@@ -554,7 +551,10 @@ licenses; we recommend you read them, as their terms may differ from the
 terms above.
 
 
-lodash-es
+angular-6-datatable
+MIT
+
+lodash
 MIT
 Copyright JS Foundation and other contributors <https://js.foundation/>
 
