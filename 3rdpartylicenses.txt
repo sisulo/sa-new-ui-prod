@@ -266,6 +266,12 @@ Apache-2.0
 @angular/common
 MIT
 
+@angular/platform-browser
+MIT
+
+ng2-tooltip-directive
+MIT
+
 lodash.isequal
 MIT
 Copyright JS Foundation and other contributors <https://js.foundation/>
@@ -493,12 +499,6 @@ maintained libraries used by this software which have their own
 licenses; we recommend you read them, as their terms may differ from the
 terms above.
 
-
-@angular/platform-browser
-MIT
-
-ng2-tooltip-directive
-MIT
 
 lodash-es
 MIT
