@@ -242,7 +242,7 @@ module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"info-box\">\n  <span [ngClass]=\"isOverThreshold() ? 'info-box-icon bg-orange': 'info-box-icon bg-green'\" class=\"info-box-icon\"><i class=\"fa\" [ngClass]=\"isOverThreshold() ? 'fa-warning' : icon\"></i></span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 2\" ><a [routerLink]=\"'/global-statistics/' + occurence.datacenterId + '/' + context\">\n          {{occurence.name}}</a> |\n          </span>\n      </span>\n    </span>\n    <span *ngIf=\"data.length > 2\"> ... <a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\" (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n            <tr>\n              <th>System</th>\n              <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n              <th>Value</th>\n            </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType === null\">\n              {{occurence.name}}\n            </td>\n            <td *ngIf=\"occurence.entityType !== null\">\n              {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL\">\n              {{occurence.name}}\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurence.datacenterId + '/' + context\">-->\n          <!--{{occurence.name}}</a> - {{occurence.value}} {{occurence.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close</button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
+module.exports = "<div class=\"info-box\">\n  <span [ngClass]=\"isOverThreshold() ? 'info-box-icon bg-orange': 'info-box-icon bg-green'\" class=\"info-box-icon\"><i class=\"fa\" [ngClass]=\"isOverThreshold() ? 'fa-exclamation-triangle' : icon\"></i></span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 2\" ><a [routerLink]=\"'/global-statistics/' + occurence.datacenterId + '/' + context\">\n          {{occurence.name}}</a> |\n          </span>\n      </span>\n    </span>\n    <span *ngIf=\"data.length > 2\"> ... <a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\" (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n            <tr>\n              <th>System</th>\n              <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n              <th>Value</th>\n            </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType === null\">\n              {{occurence.name}}\n            </td>\n            <td *ngIf=\"occurence.entityType !== null\">\n              {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL\">\n              {{occurence.name}}\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurence.datacenterId + '/' + context\">-->\n          <!--{{occurence.name}}</a> - {{occurence.value}} {{occurence.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close</button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
 
 /***/ }),
 
@@ -1031,6 +1031,7 @@ var CellTableComponent = /** @class */ (function () {
         componentRef.instance.label = this.label;
         componentRef.instance.options = this.options;
         componentRef.instance.column = this.column;
+        componentRef.instance.rowData = this.rowData;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -1052,6 +1053,10 @@ var CellTableComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", _sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
     ], CellTableComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
+    ], CellTableComponent.prototype, "rowData", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_formatter_host_directive__WEBPACK_IMPORTED_MODULE_1__["FormatterHostDirective"]),
         __metadata("design:type", _formatter_host_directive__WEBPACK_IMPORTED_MODULE_1__["FormatterHostDirective"])
@@ -1253,7 +1258,7 @@ module.exports = ".col-control {\n  width: 3.5%;\n  display: inline-block;\n  ve
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n          SYSTEM PART\n        -->\n<div class=\"table-group-header\">\n  <!--\n    SYSTEM LABEL\n  -->\n  <div class=\"table-group-label\">\n    <div class=\"col-val col-control\">\n      <i class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapsed(data.groupRow.getCell('name').value)\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"addCollapsed(data.groupRow.getCell('name').value)\"\n         [tooltip]=\"isCollapsed(data.groupRow.getCell('name').value) ? 'Expand':'Collapse'\"></i>\n\n    </div>\n    <div class=\"col-val col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <span *ngFor=\"let alertSum of alertSummary\">\n        <span [ngClass]=\"alertSum.type\"><i tooltip=\"Warning for one or more metrics\" class=\"fas fa-warning\" [ngClass]=\"alertSum.type\" ></i></span>\n      </span>\n    </div>\n    <!--<div class=\"col-val col-control\">-->\n    <!--<i tooltip=\"Warning for one or more metrics\" *ngIf=\"isAlertingSystem(system.name)\" class=\"fas fa-exclamation text-orange\"></i>-->\n    <!--</div>-->\n    <!--<div class=\"col-val col-label\"><span class=\"system-name\"><a [routerLink]=\"data.id | iframeUrlCreator\"-->\n    <!--routerLinkActive=\"active\">{{ system.name }}</a></span>-->\n    <!--</div>-->\n    <div class=\"col-val col-label\" [style.width.%]=\"options.getColumnWidth(options.columns[0].index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(0)\"\n         [class.highlightColumn]=\"isColumnHighlighted(0)\">\n      <app-cell-table\n        [componentFormatter]=\"options.grIndexComponentFormatter\" [data]=\"data.groupRow.getCell('name').rawData\"\n        [label]=\"''\"\n        [options]=\"options\"\n\n      ></app-cell-table>\n    </div>\n    <div class=\"col-val col\" *ngFor=\"let column of options.getAggregatedColumns(); let colIndex=index\"\n         [style.width.%]=\"options.getColumnWidth(column.index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(colIndex+1)\"\n         [class.highlightColumn]=\"isColumnHighlighted(colIndex+1)\"\n\n    >\n      <app-cell-table *ngIf=\"aggregatedValues[column.index] !== undefined\" [componentFormatter]=\"column.component\"\n                      [data]=\"getAggregatedValue(column.index)\" [column]=\"column\"\n                      [label]=\"column.label\" [options]=\"options\"\n      ></app-cell-table>\n    </div>\n    <!--<div class=\"ignore\" *ngIf=\"this.getSystemStatistics(system.name) !== undefined\">-->\n    <!--<div class=\"ignore\">-->\n    <!--<div *ngFor=\"let type of types\"-->\n    <!--[tooltip]=\"getColumnLabel(type)\" hide-delay=\"0\" show-delay=\"300\"-->\n    <!--class=\"col-val col\">{{this.getSystemStatistics(system.name).getValue(type).toFixed(2)}}</div>-->\n    <!--</div>-->\n  </div>\n  <!---->\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"groupped-data\" [@slideInOut]=\"isCollapsed(data.groupRow.getCell('name').value)\">\n    <app-row-table *ngFor=\"let row of data.rows\"\n                   [class.striped-row]=\"options.isDataGrouped\" [data]=\"row\" [options]=\"options\"\n                   [groupName]=\"data.groupRow.getCell('name').value\"\n                   (selectEmit)=\"onSelectRow($event)\"\n                    ></app-row-table>\n  </div>\n  <!--<div class=\"row\" [@slideInOut]=\"isCollapsed(system.name)\">-->\n  <!--<div *ngFor=\"let pool of data[i].pools\" class=\"table-data striped-row row\"-->\n  <!--[@slideInOut]=\"isCollapsed(system.name)\">-->\n  <!--<div class=\"col-val col-control\">-->\n  <!--</div>-->\n  <!--<div class=\"col-val col-label\"><span class=\"pool-name\">{{pool.name}}</span></div>-->\n  <!--<div [ngClass]=\"'col-val col'\" *ngFor=\"let type of types; let column=index;\"-->\n  <!--(mouseout)=\"setHighlightedColumn(-1)\"-->\n  <!--(mouseover)=\"setHighlightedColumn(column)\"-->\n  <!--[class.highlightColumn]=\"isCurrentColumn(column)\" hide-delay=\"0\"-->\n\n  <!--show-delay=\"500\">-->\n  <!--<span>-->\n  <!--<span class=\"metric-value\">{{getFormattedMetric(pool.metrics, type)}}</span>-->\n  <!--<span class=\"metric-unit\">{{getMetric(pool.metrics, type).unit}}</span>-->\n  <!--</span>-->\n  <!--</div>-->\n  <!--</div>-->\n  <!--</div>-->\n</div>\n"
+module.exports = "<!--\n          SYSTEM PART\n        -->\n<div class=\"table-group-header\">\n  <!--\n    SYSTEM LABEL\n  -->\n  <div class=\"table-group-label\">\n    <div class=\"col-val col-control\">\n      <i class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapsed(data.groupRow.getCell('name').value)\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"addCollapsed(data.groupRow.getCell('name').value)\"\n         [tooltip]=\"isCollapsed(data.groupRow.getCell('name').value) ? 'Expand':'Collapse'\"></i>\n\n    </div>\n    <div class=\"col-val col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <span *ngFor=\"let alertSum of alertSummary\">\n        <span [ngClass]=\"alertSum.type\"><i tooltip=\"Warning for one or more metrics\" class=\"fa fa-exclamation-triangle\" [ngClass]=\"alertSum.type\" ></i></span>\n      </span>\n    </div>\n    <!--<div class=\"col-val col-control\">-->\n    <!--<i tooltip=\"Warning for one or more metrics\" *ngIf=\"isAlertingSystem(system.name)\" class=\"fas fa-exclamation text-orange\"></i>-->\n    <!--</div>-->\n    <!--<div class=\"col-val col-label\"><span class=\"system-name\"><a [routerLink]=\"data.id | iframeUrlCreator\"-->\n    <!--routerLinkActive=\"active\">{{ system.name }}</a></span>-->\n    <!--</div>-->\n    <div class=\"col-val col-label\" [style.width.%]=\"options.getColumnWidth(options.columns[0].index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(0)\"\n         [class.highlightColumn]=\"isColumnHighlighted(0)\">\n      <app-cell-table\n        [componentFormatter]=\"options.grIndexComponentFormatter\" [data]=\"data.groupRow.getCell('name').rawData\"\n        [label]=\"''\"\n        [options]=\"options\"\n\n      ></app-cell-table>\n    </div>\n    <div class=\"col-val col\" *ngFor=\"let column of options.getAggregatedColumns(); let colIndex=index\"\n         [style.width.%]=\"options.getColumnWidth(column.index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(colIndex+1)\"\n         [class.highlightColumn]=\"isColumnHighlighted(colIndex+1)\"\n\n    >\n      <app-cell-table *ngIf=\"aggregatedValues[column.index] !== undefined\" [componentFormatter]=\"column.component\"\n                      [data]=\"getAggregatedValue(column.index)\" [column]=\"column\"\n                      [label]=\"column.label\" [options]=\"options\"\n      ></app-cell-table>\n    </div>\n    <!--<div class=\"ignore\" *ngIf=\"this.getSystemStatistics(system.name) !== undefined\">-->\n    <!--<div class=\"ignore\">-->\n    <!--<div *ngFor=\"let type of types\"-->\n    <!--[tooltip]=\"getColumnLabel(type)\" hide-delay=\"0\" show-delay=\"300\"-->\n    <!--class=\"col-val col\">{{this.getSystemStatistics(system.name).getValue(type).toFixed(2)}}</div>-->\n    <!--</div>-->\n  </div>\n  <!---->\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"groupped-data\" [@slideInOut]=\"isCollapsed(data.groupRow.getCell('name').value)\">\n    <app-row-table *ngFor=\"let row of data.rows\"\n                   [class.striped-row]=\"options.isDataGrouped\" [data]=\"row\" [options]=\"options\"\n                   [groupName]=\"data.groupRow.getCell('name').value\"\n                   (selectEmit)=\"onSelectRow($event)\"\n                    ></app-row-table>\n  </div>\n  <!--<div class=\"row\" [@slideInOut]=\"isCollapsed(system.name)\">-->\n  <!--<div *ngFor=\"let pool of data[i].pools\" class=\"table-data striped-row row\"-->\n  <!--[@slideInOut]=\"isCollapsed(system.name)\">-->\n  <!--<div class=\"col-val col-control\">-->\n  <!--</div>-->\n  <!--<div class=\"col-val col-label\"><span class=\"pool-name\">{{pool.name}}</span></div>-->\n  <!--<div [ngClass]=\"'col-val col'\" *ngFor=\"let type of types; let column=index;\"-->\n  <!--(mouseout)=\"setHighlightedColumn(-1)\"-->\n  <!--(mouseover)=\"setHighlightedColumn(column)\"-->\n  <!--[class.highlightColumn]=\"isCurrentColumn(column)\" hide-delay=\"0\"-->\n\n  <!--show-delay=\"500\">-->\n  <!--<span>-->\n  <!--<span class=\"metric-value\">{{getFormattedMetric(pool.metrics, type)}}</span>-->\n  <!--<span class=\"metric-unit\">{{getMetric(pool.metrics, type).unit}}</span>-->\n  <!--</span>-->\n  <!--</div>-->\n  <!--</div>-->\n  <!--</div>-->\n</div>\n"
 
 /***/ }),
 
@@ -1466,7 +1471,7 @@ module.exports = "/*** Layout table ***/\n.col-control {\n  width: 3.5%;\n  disp
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"table-data \" [class.selectedRow]=\"isSelectedRow(data.getCell('name').value)\" [class.highlight-row]=\"options.highlightRow\">\n  <div class=\"col-val col-control\" *ngIf=\"options.selectableRows\">\n    <i\n      [ngClass]=\"isSelectedRow(data.getCell('name').value) ? 'fa-check-square-o' : 'fa-square-o'\" class=\"fa fa-fw\"\n      (click)=\"selectRow(data.getCell('name').value)\"></i>\n  </div>\n  <div class=\"col-val col-control\">\n    <app-cell-table [componentFormatter]=\"options.colControlFormatter\" [data]=\"data\" [label]=\"''\"\n                    [options]=\"options\"\n                    ></app-cell-table>\n  </div>\n  <div [ngClass]=\"'col-val col'\" [style.width.%]=\"options.getColumnWidth(column.index)\" *ngFor=\"let column of options.columns; let colIndex = index\"\n       (mouseout)=\"setHighlightedColumn(-1)\"\n       (mouseover)=\"setHighlightedColumn(colIndex)\"\n       [class.highlightColumn]=\"isColumnHighlighted(colIndex)\"\n  >\n   <app-cell-table [componentFormatter]=\"column.component\" [data]=\"data.getCellRawData(column)\" [label]=\"column.label\"\n                    [options]=\"options\" [column]=\"column\"></app-cell-table>\n    <!--<app-unit-formatter [metric]=\"getMetricObject(system.name, type)\" [metricLabel]=\"getColumnLabel(type)\" [alertMessage]=\"getAlertMessage(system.name, type)\"></app-unit-formatter>-->\n  </div>\n</div>\n"
+module.exports = "<div class=\"table-data \" [class.selectedRow]=\"isSelectedRow(data.getCell('name').value)\" [class.highlight-row]=\"options.highlightRow\">\n  <div class=\"col-val col-control\" *ngIf=\"options.selectableRows\">\n    <i\n      [ngClass]=\"isSelectedRow(data.getCell('name').value) ? 'fa-check-square' : 'fa-square'\" class=\"far fa-fw\"\n      (click)=\"selectRow(data.getCell('name').value)\"></i>\n  </div>\n  <div class=\"col-val col-control\">\n    <app-cell-table [componentFormatter]=\"options.colControlFormatter\" [data]=\"data\" [label]=\"''\"\n                    [options]=\"options\"\n                    ></app-cell-table>\n  </div>\n  <div [ngClass]=\"'col-val col'\" [style.width.%]=\"options.getColumnWidth(column.index)\" *ngFor=\"let column of options.columns; let colIndex = index\"\n       (mouseout)=\"setHighlightedColumn(-1)\"\n       (mouseover)=\"setHighlightedColumn(colIndex)\"\n       [class.highlightColumn]=\"isColumnHighlighted(colIndex)\"\n  >\n   <app-cell-table [componentFormatter]=\"column.component\" [data]=\"data.getCellRawData(column)\" [label]=\"column.label\" [rowData]=\"data\"\n                    [options]=\"options\" [column]=\"column\"></app-cell-table>\n    <!--<app-unit-formatter [metric]=\"getMetricObject(system.name, type)\" [metricLabel]=\"getColumnLabel(type)\" [alertMessage]=\"getAlertMessage(system.name, type)\"></app-unit-formatter>-->\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1626,7 +1631,7 @@ module.exports = "/****** Behavior *****/\ndiv.collapsed ~ div.collapsable {\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    TOP TABLE ROW\n  -->\n  <div class=\"row table-header sticky-top\">\n    <div class=\"col-control\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"fa fa-fw fa-check-square-o\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"fa fa-fw fa-minus-square-o\"\n      (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"fa fa-fw fa-square-o\"\n      (click)=\"selectAll()\"></i>\n    </div>\n    <div class=\"col-val col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <i tooltip=\"Alerts\" class=\"fas fa-warning text-orange\"></i>\n    </div>\n    <div class=\"col\" [style.width.%]=\"options.getColumnWidth(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\">\n      <span class=\"link\" (click)=\"setSort(columnOption, false)\">{{getColumnLabel(columnOption.index)}} <i\n        class=\"text-muted sorting sort-icon-right\"\n        [ngClass]=\"getSortIconClass(columnOption.index, false)\"></i>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <br/>\n      <span *ngIf=\"columnOption.altSortEnable === true\" (click)=\"setSort(columnOption, true)\" class=\"link\"><i\n      class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span> <i\n      class='sorting sort-icon-right' [ngClass]=\"getSortIconClass(columnOption.index, true)\"\n      ></i></span>\n    </div>\n  </div>\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"row\">\n    <!--<div  [class.highlight-row]=\"options.highlightRow\">-->\n    <app-row-dynamic-table *ngFor=\"let row of data\"\n                           [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                           [class.striped-row]=\"!options.isDataGrouped\"\n                           [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                           [options]=\"options\"></app-row-dynamic-table>\n    <!--</div>-->\n  </div>\n</div>\n"
+module.exports = "<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    TOP TABLE ROW\n  -->\n  <div class=\"row table-header sticky-top\">\n    <div class=\"col-control\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n      (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n      (click)=\"selectAll()\"></i>\n    </div>\n    <div class=\"col-val col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <div class=\"col\" [style.width.%]=\"options.getColumnWidth(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\">\n      <span class=\"link\" (click)=\"setSort(columnOption, false)\">{{getColumnLabel(columnOption.index)}} <i\n        class=\"text-muted sorting sort-icon-right\"\n        [ngClass]=\"getSortIconClass(columnOption.index, false)\"></i>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <br/>\n      <span *ngIf=\"columnOption.altSortEnable === true\" (click)=\"setSort(columnOption, true)\" class=\"link\"><i\n      class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span> <i\n      class='sorting sort-icon-right' [ngClass]=\"getSortIconClass(columnOption.index, true)\"\n      ></i></span>\n    </div>\n  </div>\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"row\">\n    <!--<div  [class.highlight-row]=\"options.highlightRow\">-->\n    <app-row-dynamic-table *ngFor=\"let row of data\"\n                           [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                           [class.striped-row]=\"!options.isDataGrouped\"\n                           [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                           [options]=\"options\"></app-row-dynamic-table>\n    <!--</div>-->\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2376,14 +2381,15 @@ var SystemMetricType;
     SystemMetricType["WRITE_PENDING"] = "WRITE_PENDING_PERC";
     SystemMetricType["SLA_EVENTS"] = "SLA_EVENTS";
     SystemMetricType["OUT_OF_SLA_TIME"] = "OUT_OF_SLA_TIME";
-    SystemMetricType["DISBALANCE_EVENTS"] = "DISBALANCE_EVENTS";
+    SystemMetricType["IMBALANCE_EVENTS"] = "DISBALANCE_EVENTS";
     SystemMetricType["PREDICTION_L1"] = "PREDICTION_L1";
     SystemMetricType["PREDICTION_L2"] = "PREDICTION_L2";
     SystemMetricType["PREDICTION_L3"] = "PREDICTION_L3";
     SystemMetricType["CAPACITY_CHANGE_1D"] = "CHANGE_DAY";
     SystemMetricType["CAPACITY_CHANGE_1W"] = "CHANGE_WEEK";
     SystemMetricType["CAPACITY_CHANGE_1M"] = "CHANGE_MONTH";
-    SystemMetricType["INFO"] = "INFO";
+    SystemMetricType["IMBALANCE_PERC"] = "DISBALANCE_PERC";
+    SystemMetricType["IMBALANCE_ABSOLUT"] = "DISBALANCE_ABSOLUT";
 })(SystemMetricType || (SystemMetricType = {}));
 
 
@@ -2425,12 +2431,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _global_statistics_text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../global-statistics/text-formatter/text-formatter.component */ "./src/app/global-statistics/text-formatter/text-formatter.component.ts");
 /* harmony import */ var _global_statistics_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../global-statistics/emph-formatter/emph-formatter.component */ "./src/app/global-statistics/emph-formatter/emph-formatter.component.ts");
 /* harmony import */ var _utils_safe_html_pipe__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./utils/safe-html.pipe */ "./src/app/common/utils/safe-html.pipe.ts");
+/* harmony import */ var _global_statistics_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../global-statistics/disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2504,7 +2512,8 @@ var SaCommonModule = /** @class */ (function () {
                 _components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_17__["RowGroupTableComponent"],
                 _global_statistics_time_formatter_time_formatter_component__WEBPACK_IMPORTED_MODULE_22__["TimeFormatterComponent"],
                 _global_statistics_text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_23__["TextFormatterComponent"],
-                _global_statistics_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_24__["EmphFormatterComponent"]
+                _global_statistics_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_24__["EmphFormatterComponent"],
+                _global_statistics_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_26__["DisbalanceFormatterComponent"]
             ]
         })
     ], SaCommonModule);
@@ -3310,9 +3319,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../alert-formatter/alert-formatter.component */ "./src/app/global-statistics/alert-formatter/alert-formatter.component.ts");
 /* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
 /* harmony import */ var _utils_SumValueServiceImpl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/SumValueServiceImpl */ "./src/app/global-statistics/utils/SumValueServiceImpl.ts");
-/* harmony import */ var _text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../text-formatter/text-formatter.component */ "./src/app/global-statistics/text-formatter/text-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
-/* harmony import */ var _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../emph-formatter/emph-formatter.component */ "./src/app/global-statistics/emph-formatter/emph-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
+/* harmony import */ var _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../emph-formatter/emph-formatter.component */ "./src/app/global-statistics/emph-formatter/emph-formatter.component.ts");
+/* harmony import */ var _disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3345,8 +3354,8 @@ var AdaptersComponent = /** @class */ (function () {
         this.metricService = metricService;
         this.bus = bus;
         this.types = [
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].DISBALANCE_EVENTS,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].INFO
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_EVENTS,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_PERC
         ];
         this.currentPeriod = _metric_service__WEBPACK_IMPORTED_MODULE_3__["PeriodType"].DAY;
         this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiTableOptions"]();
@@ -3354,21 +3363,21 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex('name')
             .withLabel('System')
-            .withComponent(_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_13__["EmphFormatterComponent"])
+            .withComponent(_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_12__["EmphFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].DISBALANCE_EVENTS)
-            .withLabel('Disbalance events')
-            .withComponent(_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_13__["EmphFormatterComponent"])
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_EVENTS)
+            .withLabel('Imbalance events')
+            .withComponent(_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_12__["EmphFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].INFO)
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_PERC)
             .withLabel('Info')
-            .withComponent(_text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_11__["TextFormatterComponent"])
+            .withComponent(_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_13__["DisbalanceFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
@@ -3381,7 +3390,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.labelColumnWidth = '25';
         this.options.valueColumnWidth = '35.75';
         this.options.aggregateValuesService = new _utils_SumValueServiceImpl__WEBPACK_IMPORTED_MODULE_10__["SumValueServiceImpl"]();
-        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_12__["GroupSortImpl"]();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__["GroupSortImpl"]();
     }
     AdaptersComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -3548,7 +3557,7 @@ module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<i *ngIf=\"isAlert()\" tooltip=\"Warning for one or more metrics\" class=\"fas fa-warning\" [ngClass]=\"getDecoratorClass()\"></i>\n"
+module.exports = "<i *ngIf=\"isAlert()\" tooltip=\"Warning for one or more metrics\" class=\"fa fa-exclamation-triangle\" [ngClass]=\"getDecoratorClass()\"></i>\n"
 
 /***/ }),
 
@@ -4022,6 +4031,99 @@ var CapacityStatisticsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.css":
+/*!*******************************************************************************************!*\
+  !*** ./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.css ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #ffd829;\n}\n\n.metric-value {\n  font-style: italic;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZGlzYmFsYW5jZS1mb3JtYXR0ZXIvZGlzYmFsYW5jZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLGVBQWU7Q0FDaEI7O0FBQ0Q7RUFDRSxtQkFBbUI7Q0FDcEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9kaXNiYWxhbmNlLWZvcm1hdHRlci9kaXNiYWxhbmNlLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaSB7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLnRleHQtYWxlcnQteWVsbG93IHtcbiAgY29sb3I6ICNmZmQ4Mjk7XG59XG4ubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.html":
+/*!********************************************************************************************!*\
+  !*** ./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.html ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"data != null && data.value > 0\" class=\"metric-value\">\n  <i class=\"fa fa-exclamation-triangle text-alert-yellow\"></i>&nbsp;<span class=\"text-red\">{{getInfoMessage()}}</span>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.ts":
+/*!******************************************************************************************!*\
+  !*** ./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.ts ***!
+  \******************************************************************************************/
+/*! exports provided: DisbalanceFormatterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DisbalanceFormatterComponent", function() { return DisbalanceFormatterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/metrics/SystemMetric */ "./src/app/common/models/metrics/SystemMetric.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var DisbalanceFormatterComponent = /** @class */ (function () {
+    function DisbalanceFormatterComponent() {
+    }
+    DisbalanceFormatterComponent.prototype.ngOnInit = function () {
+    };
+    DisbalanceFormatterComponent.prototype.getInfoMessage = function () {
+        return "Warning: Channel Adapter Pair Imbalance \"" + this.data.value + "\" (" + this.resolveAbsoluteDisbalance() + " [MB/s])";
+    };
+    DisbalanceFormatterComponent.prototype.resolveAbsoluteDisbalance = function () {
+        if (this.rowData !== undefined && this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT) != null) {
+            return this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT).value;
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], DisbalanceFormatterComponent.prototype, "label", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__["SystemMetric"])
+    ], DisbalanceFormatterComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
+    ], DisbalanceFormatterComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
+    ], DisbalanceFormatterComponent.prototype, "rowData", void 0);
+    DisbalanceFormatterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-disbalance-formatter',
+            template: __webpack_require__(/*! ./disbalance-formatter.component.html */ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.html"),
+            styles: [__webpack_require__(/*! ./disbalance-formatter.component.css */ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], DisbalanceFormatterComponent);
+    return DisbalanceFormatterComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/global-statistics/dp-sla/dp-sla-2.component.html":
 /*!******************************************************************!*\
   !*** ./src/app/global-statistics/dp-sla/dp-sla-2.component.html ***!
@@ -4446,12 +4548,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./text-formatter/text-formatter.component */ "./src/app/global-statistics/text-formatter/text-formatter.component.ts");
 /* harmony import */ var _aggragated_statistics_aggragated_statistics_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./aggragated-statistics/aggragated-statistics.component */ "./src/app/global-statistics/aggragated-statistics/aggragated-statistics.component.ts");
 /* harmony import */ var _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./emph-formatter/emph-formatter.component */ "./src/app/global-statistics/emph-formatter/emph-formatter.component.ts");
+/* harmony import */ var _disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -4490,7 +4594,8 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _utils_seconds_2_full_time_pipe__WEBPACK_IMPORTED_MODULE_15__["Seconds2FullTimePipe"],
                 _text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_16__["TextFormatterComponent"],
                 _aggragated_statistics_aggragated_statistics_component__WEBPACK_IMPORTED_MODULE_17__["AggragatedStatisticsComponent"],
-                _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_18__["EmphFormatterComponent"]
+                _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_18__["EmphFormatterComponent"],
+                _disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__["DisbalanceFormatterComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"],
@@ -4775,7 +4880,7 @@ module.exports = ".text-alert-yellow {\n  color: #ffd829;\n}\n\n/*# sourceMappin
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"data != null\" class=\"metric-value\">\n  <span *ngIf=\"isAlert()\" tooltip=\"{{getAlertMessage()}}\" hide-delay=\"0\" > <i class=\"fa fa-warning\" ngClass=\"{{getViolatedRuleClass()}}\"></i> {{data.value % 1 === 0 ? data.value : data.value.toFixed(1)}} </span>\n  <span *ngIf=\"!isAlert()\" tooltip=\"{{getTooltipMessage()}}\" hide-delay=\"0\" [innerHTML]=\"getValue() | safeHtml\"></span>\n  <span class=\"metric-unit\">{{data.unit}}</span>\n\n</div>\n"
+module.exports = "<div *ngIf=\"data != null\" class=\"metric-value\">\n  <span *ngIf=\"isAlert()\" tooltip=\"{{getAlertMessage()}}\" hide-delay=\"0\" > <i class=\"fa fa-exclamation-triangle\" ngClass=\"{{getViolatedRuleClass()}}\"></i> {{data.value % 1 === 0 ? data.value : data.value.toFixed(1)}} </span>\n  <span *ngIf=\"!isAlert()\" tooltip=\"{{getTooltipMessage()}}\" hide-delay=\"0\" [innerHTML]=\"getValue() | safeHtml\"></span>\n  <span class=\"metric-unit\">{{data.unit}}</span>\n\n</div>\n"
 
 /***/ }),
 
@@ -5614,7 +5719,7 @@ var MetricService = /** @class */ (function () {
         return this.http.get(url);
     };
     MetricService.prototype.getDpSlaStatistics = function (id, period) {
-        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/capacity');
+        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/sla');
         return this.http.get(url);
     };
     MetricService.prototype.getAdaptersStatistics = function (id, period) {
