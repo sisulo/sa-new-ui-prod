@@ -1258,7 +1258,7 @@ module.exports = ".col-control {\n  width: 3.5%;\n  display: inline-block;\n  ve
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n          SYSTEM PART\n        -->\n<div class=\"table-group-header\">\n  <!--\n    SYSTEM LABEL\n  -->\n  <div class=\"table-group-label\">\n    <div class=\"col-val col-control\">\n      <i class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapsed(data.groupRow.getCell('name').value)\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"addCollapsed(data.groupRow.getCell('name').value)\"\n         [tooltip]=\"isCollapsed(data.groupRow.getCell('name').value) ? 'Expand':'Collapse'\"></i>\n\n    </div>\n    <div class=\"col-val col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <span *ngFor=\"let alertSum of alertSummary\">\n        <span [ngClass]=\"alertSum.type\"><i tooltip=\"Warning for one or more metrics\" class=\"fa fa-exclamation-triangle\" [ngClass]=\"alertSum.type\" ></i></span>\n      </span>\n    </div>\n    <!--<div class=\"col-val col-control\">-->\n    <!--<i tooltip=\"Warning for one or more metrics\" *ngIf=\"isAlertingSystem(system.name)\" class=\"fas fa-exclamation text-orange\"></i>-->\n    <!--</div>-->\n    <!--<div class=\"col-val col-label\"><span class=\"system-name\"><a [routerLink]=\"data.id | iframeUrlCreator\"-->\n    <!--routerLinkActive=\"active\">{{ system.name }}</a></span>-->\n    <!--</div>-->\n    <div class=\"col-val col-label\" [style.width.%]=\"options.getColumnWidth(options.columns[0].index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(0)\"\n         [class.highlightColumn]=\"isColumnHighlighted(0)\">\n      <app-cell-table\n        [componentFormatter]=\"options.grIndexComponentFormatter\" [data]=\"data.groupRow.getCell('name').rawData\"\n        [label]=\"''\"\n        [options]=\"options\"\n\n      ></app-cell-table>\n    </div>\n    <div class=\"col-val col\" *ngFor=\"let column of options.getAggregatedColumns(); let colIndex=index\"\n         [style.width.%]=\"options.getColumnWidth(column.index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(colIndex+1)\"\n         [class.highlightColumn]=\"isColumnHighlighted(colIndex+1)\"\n\n    >\n      <app-cell-table *ngIf=\"aggregatedValues[column.index] !== undefined\" [componentFormatter]=\"column.component\"\n                      [data]=\"getAggregatedValue(column.index)\" [column]=\"column\"\n                      [label]=\"column.label\" [options]=\"options\"\n      ></app-cell-table>\n    </div>\n    <!--<div class=\"ignore\" *ngIf=\"this.getSystemStatistics(system.name) !== undefined\">-->\n    <!--<div class=\"ignore\">-->\n    <!--<div *ngFor=\"let type of types\"-->\n    <!--[tooltip]=\"getColumnLabel(type)\" hide-delay=\"0\" show-delay=\"300\"-->\n    <!--class=\"col-val col\">{{this.getSystemStatistics(system.name).getValue(type).toFixed(2)}}</div>-->\n    <!--</div>-->\n  </div>\n  <!---->\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"groupped-data\" [@slideInOut]=\"isCollapsed(data.groupRow.getCell('name').value)\">\n    <app-row-table *ngFor=\"let row of data.rows\"\n                   [class.striped-row]=\"options.isDataGrouped\" [data]=\"row\" [options]=\"options\"\n                   [groupName]=\"data.groupRow.getCell('name').value\"\n                   (selectEmit)=\"onSelectRow($event)\"\n                    ></app-row-table>\n  </div>\n  <!--<div class=\"row\" [@slideInOut]=\"isCollapsed(system.name)\">-->\n  <!--<div *ngFor=\"let pool of data[i].pools\" class=\"table-data striped-row row\"-->\n  <!--[@slideInOut]=\"isCollapsed(system.name)\">-->\n  <!--<div class=\"col-val col-control\">-->\n  <!--</div>-->\n  <!--<div class=\"col-val col-label\"><span class=\"pool-name\">{{pool.name}}</span></div>-->\n  <!--<div [ngClass]=\"'col-val col'\" *ngFor=\"let type of types; let column=index;\"-->\n  <!--(mouseout)=\"setHighlightedColumn(-1)\"-->\n  <!--(mouseover)=\"setHighlightedColumn(column)\"-->\n  <!--[class.highlightColumn]=\"isCurrentColumn(column)\" hide-delay=\"0\"-->\n\n  <!--show-delay=\"500\">-->\n  <!--<span>-->\n  <!--<span class=\"metric-value\">{{getFormattedMetric(pool.metrics, type)}}</span>-->\n  <!--<span class=\"metric-unit\">{{getMetric(pool.metrics, type).unit}}</span>-->\n  <!--</span>-->\n  <!--</div>-->\n  <!--</div>-->\n  <!--</div>-->\n</div>\n"
+module.exports = "<!--\n          SYSTEM PART\n        -->\n<div class=\"table-group-header\">\n  <!--\n    SYSTEM LABEL\n  -->\n  <div class=\"table-group-label\">\n    <div class=\"col-val col-control\">\n      <i class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapsed(data.groupRow.getCell('name').value)\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"addCollapsed(data.groupRow.getCell('name').value)\"\n         [tooltip]=\"isCollapsed(data.groupRow.getCell('name').value) ? 'Expand':'Collapse'\"></i>\n\n    </div>\n    <div class=\"col-val col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <span *ngFor=\"let alertSum of alertSummary\">\n        <span [ngClass]=\"alertSum.type\"><i tooltip=\"Warning for one or more metrics\" class=\"fa fa-exclamation-triangle\" [ngClass]=\"alertSum.type\" ></i></span>\n      </span>\n    </div>\n    <div class=\"col-val col-label\" [style.width.%]=\"options.getColumnWidth(options.columns[0].index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(0)\"\n         [class.highlightColumn]=\"isColumnHighlighted(0)\">\n      <app-cell-table\n        [componentFormatter]=\"options.grIndexComponentFormatter\" [data]=\"data.groupRow.getCell('name').rawData\"\n        [label]=\"''\"\n        [options]=\"options\"\n\n      ></app-cell-table>\n    </div>\n    <div class=\"col-val col\" *ngFor=\"let column of options.getAggregatedColumns(); let colIndex=index\"\n         [style.width.%]=\"options.getColumnWidth(column.index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(colIndex+1)\"\n         [class.highlightColumn]=\"isColumnHighlighted(colIndex+1)\"\n\n    >\n      <app-cell-table *ngIf=\"aggregatedValues[column.index] !== undefined\" [componentFormatter]=\"column.component\"\n                      [data]=\"getAggregatedValue(column.index)\" [column]=\"column\"\n                      [label]=\"column.label\" [options]=\"options\"\n      ></app-cell-table>\n    </div>\n  </div>\n  <!---->\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"groupped-data\" [@slideInOut]=\"isCollapsed(data.groupRow.getCell('name').value)\">\n    <app-row-table *ngFor=\"let row of data.rows\"\n                   [class.striped-row]=\"options.isDataGrouped\" [data]=\"row\" [options]=\"options\"\n                   [groupName]=\"data.groupRow.getCell('name').value\"\n                   (selectEmit)=\"onSelectRow($event)\"\n                    ></app-row-table>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1277,7 +1277,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 /* harmony import */ var d3_collection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! d3-collection */ "./node_modules/d3-collection/index.js");
 /* harmony import */ var _global_statistics_utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../global-statistics/utils/ConditionEvaluate */ "./src/app/global-statistics/utils/ConditionEvaluate.ts");
-/* harmony import */ var _global_statistics_AlertRule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../global-statistics/AlertRule */ "./src/app/global-statistics/AlertRule.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1287,7 +1286,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -1306,23 +1304,35 @@ var RowGroupTableComponent = /** @class */ (function () {
         this.columnHighlightEnable = false;
         this.highlightedColumn = -1;
         this.aggregatedValues = {};
+        this.collapsedRows = [];
         this.alertGroup = '';
         this.alertSummary = [];
         this.alertPriority = ['text-alert-yellow', 'text-orange', 'text-red'];
+    }
+    RowGroupTableComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // TODO refactor this to the service
+        this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) {
+            _this.selectedRows = data.newValue;
+            _this.initAggregatedValues();
+        });
+        this.localStorageService.observe(this.options.storageNamePrefix + '_collapsed').subscribe(function (data) {
+            _this.collapsedRows = data.newValue;
+        });
+        this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
+        this.collapsedRows = this.localStorageService.get(this.options.storageNamePrefix + '_collapsed');
+        if (this.selectedRows === null) {
+            this.selectedRows = [];
+        }
+        else {
+            this.selectedRows = this.selectedRows; // this must be reset because save on the collapsedRows doesn't work
+        }
         if (this.collapsedRows === null) {
             this.collapsedRows = [];
         }
         else {
             this.collapsedRows = this.collapsedRows; // this must be reset because save on the collapsedRows doesn't work
         }
-    }
-    RowGroupTableComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) {
-            _this.selectedRows = data.newValue;
-            _this.initAggregatedValues();
-        });
-        this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
         this.initAggregatedValues();
         this.summarizeAlerts();
     };
@@ -1343,20 +1353,10 @@ var RowGroupTableComponent = /** @class */ (function () {
         else {
             this.collapsedRows.push(systemName);
         }
-        // @ts-ignore
-        this.collapsedRows.save();
+        this.localStorageService.set(this.options.storageNamePrefix + '_collapsed', this.collapsedRows);
     };
     RowGroupTableComponent.prototype.isCollapsed = function (systemName) {
         return this.collapsedRows.findIndex(function (value) { return value === systemName; }) > -1;
-    };
-    RowGroupTableComponent.prototype.aggregateValues = function (selectedRows) {
-        var mean = this.options.aggregateValuesService;
-        var values = mean.computeSummaries([this.data], selectedRows, this.options);
-        var result = {};
-        if (values !== null) {
-            this.options.getAggregatedColumns().forEach(function (column) { return result[column.index] = { value: values.getValue(column.index) }; });
-        }
-        this.aggregatedValues = result;
     };
     RowGroupTableComponent.prototype.isColumnHighlighted = function (column) {
         if (!this.options.highlightColumn || this.isAggregatedValuesEmpty()) {
@@ -1376,24 +1376,17 @@ var RowGroupTableComponent = /** @class */ (function () {
             this.aggregateValues(selectedRows);
         }
     };
-    RowGroupTableComponent.prototype.getPriority = function (alertType) {
-        return this.alertPriority.findIndex(function (priority) { return priority === alertType; });
+    RowGroupTableComponent.prototype.getAggregatedValue = function (type) {
+        return this.aggregatedValues[type];
     };
-    RowGroupTableComponent.prototype.getAlertType = function () {
-        var _this = this;
-        var alertDef = this.options.cellDecoratorRules.filter(function (rule) {
-            return _this.data.rows.forEach(function (row) {
-                var cell = row.getCell(rule.type);
-                return _global_statistics_utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_4__["ConditionEvaluate"].eval(cell.value, rule);
-            }) !== undefined;
-        });
-        if (alertDef.length === 0) {
-            return '';
+    RowGroupTableComponent.prototype.aggregateValues = function (selectedRows) {
+        var mean = this.options.aggregateValuesService;
+        var values = mean.computeSummaries([this.data], selectedRows, this.options);
+        var result = {};
+        if (values !== null) {
+            this.options.getAggregatedColumns().forEach(function (column) { return result[column.index] = { value: values.getValue(column.index) }; });
         }
-        return alertDef.reduce(function (previousValue, currentValue) {
-            return _this.getPriority(previousValue.threshold.alertType) > _this.getPriority(currentValue.threshold.alertType)
-                ? previousValue : currentValue;
-        }, new _global_statistics_AlertRule__WEBPACK_IMPORTED_MODULE_5__["AlertRule"](null, new _global_statistics_AlertRule__WEBPACK_IMPORTED_MODULE_5__["Threshold"]('', 0, 0))).threshold.alertType;
+        this.aggregatedValues = result;
     };
     RowGroupTableComponent.prototype.summarizeAlerts = function () {
         var _this = this;
@@ -1414,9 +1407,6 @@ var RowGroupTableComponent = /** @class */ (function () {
             _this.alertSummary[rule.threshold.alertType] = 0;
         });
     };
-    RowGroupTableComponent.prototype.getAggregatedValue = function (type) {
-        return this.aggregatedValues[type];
-    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", _sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiGroupRow"])
@@ -1429,10 +1419,6 @@ var RowGroupTableComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", _sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiTableOptions"])
     ], RowGroupTableComponent.prototype, "options", void 0);
-    __decorate([
-        Object(ngx_store__WEBPACK_IMPORTED_MODULE_2__["LocalStorage"])({ key: 'sasi_collapsed' }),
-        __metadata("design:type", Array)
-    ], RowGroupTableComponent.prototype, "collapsedRows", void 0);
     __decorate([
         Object(ngx_store__WEBPACK_IMPORTED_MODULE_2__["LocalStorage"])(),
         __metadata("design:type", Object)
@@ -1471,7 +1457,7 @@ module.exports = "/*** Layout table ***/\n.col-control {\n  width: 3.5%;\n  disp
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"table-data \" [class.selectedRow]=\"isSelectedRow(data.getCell('name').value)\" [class.highlight-row]=\"options.highlightRow\">\n  <div class=\"col-val col-control\" *ngIf=\"options.selectableRows\">\n    <i\n      [ngClass]=\"isSelectedRow(data.getCell('name').value) ? 'fa-check-square' : 'fa-square'\" class=\"far fa-fw\"\n      (click)=\"selectRow(data.getCell('name').value)\"></i>\n  </div>\n  <div class=\"col-val col-control\">\n    <app-cell-table [componentFormatter]=\"options.colControlFormatter\" [data]=\"data\" [label]=\"''\"\n                    [options]=\"options\"\n                    ></app-cell-table>\n  </div>\n  <div [ngClass]=\"'col-val col'\" [style.width.%]=\"options.getColumnWidth(column.index)\" *ngFor=\"let column of options.columns; let colIndex = index\"\n       (mouseout)=\"setHighlightedColumn(-1)\"\n       (mouseover)=\"setHighlightedColumn(colIndex)\"\n       [class.highlightColumn]=\"isColumnHighlighted(colIndex)\"\n  >\n   <app-cell-table [componentFormatter]=\"column.component\" [data]=\"data.getCellRawData(column)\" [label]=\"column.label\" [rowData]=\"data\"\n                    [options]=\"options\" [column]=\"column\"></app-cell-table>\n    <!--<app-unit-formatter [metric]=\"getMetricObject(system.name, type)\" [metricLabel]=\"getColumnLabel(type)\" [alertMessage]=\"getAlertMessage(system.name, type)\"></app-unit-formatter>-->\n  </div>\n</div>\n"
+module.exports = "<div class=\"table-data \" [class.selectedRow]=\"isSelectedRow(data.getCell('name').value)\" [class.highlight-row]=\"options.highlightRow\">\n  <div class=\"col-val col-control\" *ngIf=\"options.selectableRows\">\n    <i\n      [ngClass]=\"isSelectedRow(data.getCell('name').value) ? 'fa-check-square' : 'fa-square'\" class=\"far fa-fw\"\n      (click)=\"selectRow(data.getCell('name').value)\"></i>\n  </div>\n  <div *ngIf=\"options.colControlFormatter != null\" class=\"col-val col-control\">\n    <app-cell-table [componentFormatter]=\"options.colControlFormatter\" [data]=\"data\" [label]=\"''\"\n                    [options]=\"options\"\n                    ></app-cell-table>\n  </div>\n  <div [ngClass]=\"'col-val col'\" [style.width.%]=\"options.getColumnWidth(column.index)\" *ngFor=\"let column of options.columns; let colIndex = index\"\n       (mouseout)=\"setHighlightedColumn(-1)\"\n       (mouseover)=\"setHighlightedColumn(colIndex)\"\n       [class.highlightColumn]=\"isColumnHighlighted(colIndex)\"\n  >\n   <app-cell-table [componentFormatter]=\"column.component\" [data]=\"data.getCellRawData(column)\" [label]=\"column.label\" [rowData]=\"data\"\n                    [options]=\"options\" [column]=\"column\"></app-cell-table>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1850,23 +1836,27 @@ var SasiTableComponent = /** @class */ (function () {
             }
         };
         this.altSort = false;
-        if (this.collapsedRows === null) {
-            this.collapsedRows = [];
-        }
-        else {
-            this.collapsedRows = this.collapsedRows; // this must be reset because save on the collapsedRows doesn't work
-        }
     }
     SasiTableComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.options = Object.assign(this.defaultOptions, this.tableOptions);
         this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) { return _this.selectedRows = data.newValue; });
+        this.localStorageService.observe(this.options.storageNamePrefix + '_collapsed').subscribe(function (data) {
+            _this.collapsedRows = data.newValue;
+        });
         this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
+        this.collapsedRows = this.localStorageService.get(this.options.storageNamePrefix + '_collapsed');
         if (this.selectedRows === null) {
             this.selectedRows = [];
         }
         else {
             this.selectedRows = this.selectedRows; // this must be reset because save on the collapsedRows doesn't work
+        }
+        if (this.collapsedRows === null) {
+            this.collapsedRows = [];
+        }
+        else {
+            this.collapsedRows = this.collapsedRows; // this must be reset because save on the collapsedRows doesn't work
         }
     };
     SasiTableComponent.prototype.getColumnLabel = function (type) {
@@ -1908,35 +1898,6 @@ var SasiTableComponent = /** @class */ (function () {
         this.altSort = isAltSort;
         this.data = this.options.sortService.sort(this.data, column, this.options.sortType, this.altSort ? this.options.altSortColumnName : null, (function (row, column1) { return row.getCellValue(column1); }));
     };
-    // sort(data, column: SasiColumn, sortType: SasiSortType, sortByRawValue: string) {
-    //   const dataReturned = data.sort(
-    //     (rowA, rowB) => {
-    //       if (sortType === SasiSortType.ASC) {
-    //         if (sortByRawValue !== null) {
-    //           return this.compare(rowA.getCellRawData(column)[sortByRawValue], rowB.getCellRawData(column)[sortByRawValue]);
-    //         } else {
-    //           return this.compare(rowA.getCellValue(column), rowB.getCellValue(column));
-    //         }
-    //       } else {
-    //         if (sortByRawValue !== null) {
-    //           return this.compare(rowB.getCellRawData(column)[sortByRawValue], rowA.getCellRawData(column)[sortByRawValue]);
-    //         } else {
-    //           return this.compare(rowB.getCellValue(column), rowA.getCellValue(column));
-    //         }
-    //       }
-    //     }
-    //   );
-    //   return dataReturned;
-    // }
-    //
-    // compare(valueA, valueB) {
-    //   if (valueA > valueB) {
-    //     return 1;
-    //   } else if (valueA < valueB) {
-    //     return -1;
-    //   }
-    //   return 0;
-    // }
     SasiTableComponent.prototype.collapseAll = function () {
         var _this = this;
         // @ts-ignore
@@ -1949,8 +1910,7 @@ var SasiTableComponent = /** @class */ (function () {
         else {
             d.forEach(function (value) { return _this.collapsedRows.push(value.groupRow.getCell('name').value); });
         }
-        // @ts-ignore
-        this.collapsedRows.save();
+        this.localStorageService.set(this.options.storageNamePrefix + '_collapsed', this.collapsedRows);
     };
     SasiTableComponent.prototype.isCollapseAll = function () {
         var _this = this;
@@ -2003,10 +1963,6 @@ var SasiTableComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", SasiTableOptions)
     ], SasiTableComponent.prototype, "tableOptions", void 0);
-    __decorate([
-        Object(ngx_store__WEBPACK_IMPORTED_MODULE_1__["LocalStorage"])({ key: 'sasi_collapsed' }),
-        __metadata("design:type", Array)
-    ], SasiTableComponent.prototype, "collapsedRows", void 0);
     SasiTableComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-sasi-table',
@@ -2368,17 +2324,28 @@ __webpack_require__.r(__webpack_exports__);
 var SystemMetricType;
 (function (SystemMetricType) {
     SystemMetricType["PHYSICAL_CAPACITY"] = "PHYSICAL_CAPACITY";
-    SystemMetricType["PHYSICAL_SUBS"] = "PHYSICAL_SUBS_PERC";
+    SystemMetricType["PHYSICAL_SUBS_PERC"] = "PHYSICAL_SUBS_PERC";
     SystemMetricType["AVAILABLE_CAPACITY"] = "AVAILABLE_CAPACITY";
-    SystemMetricType["LOGICAL_USAGE"] = "LOGICAL_USED_PERC";
-    SystemMetricType["PHYSICAL_USAGE"] = "PHYSICAL_USED_PERC";
+    SystemMetricType["LOGICAL_USED_PERC"] = "LOGICAL_USED_PERC";
+    SystemMetricType["PHYSICAL_USED_PERC"] = "PHYSICAL_USED_PERC";
+    SystemMetricType["PHYSICAL_USED"] = "PHYSICAL_USED";
+    SystemMetricType["PHYSICAL_FREE"] = "PHYSICAL_FREE";
+    SystemMetricType["LOGICAL_CAPACITY"] = "LOGICAL_CAPACITY";
+    SystemMetricType["LOGICAL_USED"] = "LOGICAL_USED";
+    SystemMetricType["LOGICAL_FREE"] = "LOGICAL_FREE";
+    SystemMetricType["NET_TOTAL"] = "NET_TOTAL";
+    SystemMetricType["NET_USED"] = "NET_USED";
+    SystemMetricType["NET_FREE"] = "NET_FREE";
+    SystemMetricType["NET_USED_PERC"] = "NET_USED_PERC";
     SystemMetricType["COMPRESS_RATIO"] = "COMPRESSION_RATIO";
+    SystemMetricType["DEDUP_RATIO"] = "DEDUP_RATIO";
+    SystemMetricType["TOTAL_SAVING_EFFECT"] = "TOTAL_SAVING_EFFECT";
     SystemMetricType["WORKLOAD"] = "WORKLOAD";
     SystemMetricType["RESPONSE"] = "RESPONSE";
     SystemMetricType["TRANSFER"] = "TRANSFER";
     SystemMetricType["HDD"] = "HDD_PERC";
     SystemMetricType["CPU"] = "CPU_PERC";
-    SystemMetricType["WRITE_PENDING"] = "WRITE_PENDING_PERC";
+    SystemMetricType["WRITE_PENDING_PERC"] = "WRITE_PENDING_PERC";
     SystemMetricType["SLA_EVENTS"] = "SLA_EVENTS";
     SystemMetricType["OUT_OF_SLA_TIME"] = "OUT_OF_SLA_TIME";
     SystemMetricType["IMBALANCE_EVENTS"] = "DISBALANCE_EVENTS";
@@ -2390,6 +2357,9 @@ var SystemMetricType;
     SystemMetricType["CAPACITY_CHANGE_1M"] = "CHANGE_MONTH";
     SystemMetricType["IMBALANCE_PERC"] = "DISBALANCE_PERC";
     SystemMetricType["IMBALANCE_ABSOLUT"] = "DISBALANCE_ABSOLUT";
+    SystemMetricType["NET_SUBS_PERC"] = "NET_SUBS_PERC";
+    SystemMetricType["LOGICAL_SUBS_PERC"] = "LOGICAL_SUBS_PERC";
+    SystemMetricType["SUBSCRIBED_CAPACITY"] = "SUBSCRIBED_CAPACITY";
 })(SystemMetricType || (SystemMetricType = {}));
 
 
@@ -3125,7 +3095,7 @@ module.exports = ".sidebar-menu .treeview-menu>li>a.active, .skin-blue .sidebar-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<script src=\"../../../../WEB/sub-content-loader.js\"></script>-->\n<aside class=\"main-sidebar\">\n\n  <!-- sidebar: style can be found in sidebar.less -->\n  <section class=\"sidebar\">\n    <div class=\"top-part-menu\">\n      <ul id=\"dash-link\" class=\"sidebar-menu\">\n        <li><a href=\"\"><i class=\"fa fa-home\"></i><span>Main dashboard</span></a></li>\n      </ul>\n      <!-- Sidebar Menu.ts -->\n      <ul id=\"dash-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n\n        <li class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-chart-area\"></i><span>Global Statistics</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let globalLink of globalStatisticsLinks\"\n            ><a [routerLink]=\"[globalLink.linkPart]\" routerLinkActive=\"active\">{{globalLink.name}}</a></li>\n          </ul>\n        </li>\n        <li class=\"header\">STORAGE ARRAYS</li>\n        <!-- search form (Optional) -->\n        <form action=\"#\" method=\"get\" class=\"sidebar-form\" autocomplete=\"off\">\n          <div class=\"input-group\">\n            <input [(ngModel)]=\"searchExpression\" (input)=\"search()\" type=\"text\" name=\"searchExp\" class=\"form-control\" placeholder=\"Search...\" id=\"menu-search-input\" />\n            <span class=\"input-group-btn\">\n              <button type=\"button\" name=\"search\" id=\"search-btn\" class=\"btn btn-flat\"><i class=\"fa fa-search\"></i>\n              </button>\n            </span>\n          </div>\n        </form>\n        <!-- /.search form -->\n      </ul>\n    </div>\n    <div class=\"central-part-menu\">\n      <ul id=\"main-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n        <li *ngFor=\"let menuItem of filteredItems\" class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{menuItem.label}}</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let link of menuItem.items\" class=\"treeview\">\n              <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{link.name}}</span>\n                <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n              </a>\n              <ul class=\"treeview-menu\">\n                <li *ngFor=\"let poolLink of poolMetricLinks\"><a [routerLink]=\"link.id | iframeUrlCreator:poolLink.linkPart\" routerLinkActive=\"active\">{{poolLink.name}}</a></li>\n              </ul>\n            </li>\n          </ul>\n        </li>\n      </ul>\n    </div>\n    <div class=\"bottom-part-menu\">\n\n    </div>\n    <!-- /.sidebar-menu -->\n  </section>\n  <!-- /.sidebar -->\n</aside>\n"
+module.exports = "<!--<script src=\"../../../../WEB/sub-content-loader.js\"></script>-->\n<aside class=\"main-sidebar\">\n\n  <!-- sidebar: style can be found in sidebar.less -->\n  <section class=\"sidebar\">\n    <div class=\"top-part-menu\">\n      <ul id=\"dash-link\" class=\"sidebar-menu\">\n        <li><a href=\"\"><i class=\"fa fa-home\"></i><span>Main dashboard</span></a></li>\n      </ul>\n      <!-- Sidebar Menu.ts -->\n      <ul id=\"dash-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n\n        <li class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-chart-area\"></i><span>Global Statistics</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let globalLink of globalStatisticsLinks\"\n            ><a [routerLink]=\"[globalLink.linkPart]\" routerLinkActive=\"active\">{{globalLink.name}}</a></li>\n          </ul>\n        </li>\n\n      </ul>\n    </div>\n    <div class=\"central-part-menu\">\n      <ul id=\"main-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n        <li class=\"header\">STORAGE ARRAYS</li>\n        <!-- search form (Optional) -->\n        <form action=\"#\" method=\"get\" class=\"sidebar-form\" autocomplete=\"off\">\n          <div class=\"input-group\">\n            <input [(ngModel)]=\"searchExpression\" (input)=\"search()\" type=\"text\" name=\"searchExp\" class=\"form-control\" placeholder=\"Search...\" id=\"menu-search-input\" />\n            <span class=\"input-group-btn\">\n              <button type=\"button\" name=\"search\" id=\"search-btn\" class=\"btn btn-flat\"><i class=\"fa fa-search\"></i>\n              </button>\n            </span>\n          </div>\n        </form>\n        <!-- /.search form -->\n        <li *ngFor=\"let menuItem of filteredItems\" class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{menuItem.label}}</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let link of menuItem.items\" class=\"treeview\">\n              <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{link.name}}</span>\n                <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n              </a>\n              <ul class=\"treeview-menu\">\n                <li *ngFor=\"let poolLink of poolMetricLinks\"><a [routerLink]=\"link.id | iframeUrlCreator:poolLink.linkPart\" routerLinkActive=\"active\">{{poolLink.name}}</a></li>\n              </ul>\n            </li>\n          </ul>\n        </li>\n      </ul>\n    </div>\n    <div class=\"bottom-part-menu\">\n\n    </div>\n    <!-- /.sidebar-menu -->\n  </section>\n  <!-- /.sidebar -->\n</aside>\n"
 
 /***/ }),
 
@@ -3187,9 +3157,10 @@ var SideMenuComponent = /** @class */ (function () {
     SideMenuComponent.prototype.setGlobalStatisticsLinks = function () {
         this.globalStatisticsLinks = [
             { id: 1, linkPart: "/global-statistics/performance", name: 'Performance Statistics' },
-            { id: 2, linkPart: "/global-statistics/capacity", name: 'Capacity Statistics' },
-            { id: 3, linkPart: "/global-statistics/dp-sla", name: 'DP SLA Statistics' },
-            { id: 3, linkPart: "/global-statistics/adapters", name: 'Adapters Statistics' }
+            { id: 2, linkPart: "/global-statistics/physical-capacity", name: 'Physical Capacity Statistics' },
+            { id: 3, linkPart: "/global-statistics/logical-capacity", name: 'Logical Capacity Statistics' },
+            { id: 4, linkPart: "/global-statistics/dp-sla", name: 'DP SLA Statistics' },
+            { id: 5, linkPart: "/global-statistics/adapters", name: 'Adapters Statistics' }
         ];
     };
     SideMenuComponent.prototype.search = function () {
@@ -3488,10 +3459,12 @@ var AggragatedStatisticsComponent = /** @class */ (function () {
         this.localStorageService = localStorageService;
     }
     AggragatedStatisticsComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.aggregate();
-    };
-    AggragatedStatisticsComponent.prototype.ngOnChanges = function (changes) {
-        this.aggregate();
+        this.localStorageService.observe(this.prefix + '_selected').subscribe(function (data) {
+            _this.selectedRows = data.newValue;
+            _this.aggregate();
+        });
     };
     AggragatedStatisticsComponent.prototype.aggregate = function () {
         this.selectedRows = this.localStorageService.get(this.prefix + '_selected');
@@ -3524,6 +3497,10 @@ var AggragatedStatisticsComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
     ], AggragatedStatisticsComponent.prototype, "prefix", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], AggragatedStatisticsComponent.prototype, "selectedRows", void 0);
     AggragatedStatisticsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-aggragated-statistics',
@@ -3684,353 +3661,6 @@ var BusService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/global-statistics/capacity-statistics/aggregated-statistics.service.ts":
-/*!****************************************************************************************!*\
-  !*** ./src/app/global-statistics/capacity-statistics/aggregated-statistics.service.ts ***!
-  \****************************************************************************************/
-/*! exports provided: AggregatedStatisticsService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AggregatedStatisticsService", function() { return AggregatedStatisticsService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _utils_WeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/WeightedArithmeticMean */ "./src/app/global-statistics/utils/WeightedArithmeticMean.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var AggregatedStatisticsService = /** @class */ (function () {
-    function AggregatedStatisticsService() {
-        // Observable string sources
-        this.filterAnnoucement = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.statsAnnoucement = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        // Observable string streams
-        this.filterAnnouncement$ = this.filterAnnoucement.asObservable();
-        this.aggregatedStatistics$ = this.statsAnnoucement.asObservable();
-    }
-    // Service message commands
-    AggregatedStatisticsService.prototype.aggregateStatsBySystems = function (pools, poolMetrics) {
-        this.filterAnnoucement.next(pools);
-        var mean = new _utils_WeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__["WeightedArithmeticMean"]();
-        this.announceStatistics(mean.computeSummaries(poolMetrics, pools));
-    };
-    AggregatedStatisticsService.prototype.announceStatistics = function (statistics) {
-        this.statsAnnoucement.next(statistics);
-    };
-    AggregatedStatisticsService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-            providedIn: 'root'
-        })
-    ], AggregatedStatisticsService);
-    return AggregatedStatisticsService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/capacity-statistics/capacity-statistics.component.css":
-/*!*****************************************************************************************!*\
-  !*** ./src/app/global-statistics/capacity-statistics/capacity-statistics.component.css ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ":host /deep/ .col-val {\n  padding-top: 5px;\n  padding-bottom: 5px;\n  padding-right: 2px;\n}\n.alert-red {\n  color:#900020;\n}\n.alert-amber {\n  color:#db8b0b;\n}\n.col {\n  width: 8.88%;\n}\n.pool-name {\n  font-size: 14px;\n  font-style: italic;\n}\n:host /deep/ .groupped-data .metric-value {\n  font-size: 14px;\n  font-weight: bold;\n}\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n.sorting {\n  font-size:13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY2FwYWNpdHktc3RhdGlzdGljcy9jYXBhY2l0eS1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7RUFDakIsb0JBQW9CO0VBQ3BCLG1CQUFtQjtDQUNwQjtBQUNEO0VBQ0UsY0FBYztDQUNmO0FBQ0Q7RUFDRSxjQUFjO0NBQ2Y7QUFDRDtFQUNFLGFBQWE7Q0FDZDtBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtDQUNwQjtBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtDQUNuQjtBQUVEO0VBQ0UsZUFBZTtFQUNmLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsZUFBZTtFQUNmLGlDQUF5QjtVQUF6Qix5QkFBeUI7Q0FDMUI7QUFDRDtFQUNFLHlCQUFpQjtFQUFqQixpQkFBaUI7RUFDakIsWUFBWTtFQUNaLFlBQVk7Q0FDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2NhcGFjaXR5LXN0YXRpc3RpY3MvY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5jb2wtdmFsIHtcbiAgcGFkZGluZy10b3A6IDVweDtcbiAgcGFkZGluZy1ib3R0b206IDVweDtcbiAgcGFkZGluZy1yaWdodDogMnB4O1xufVxuLmFsZXJ0LXJlZCB7XG4gIGNvbG9yOiM5MDAwMjA7XG59XG4uYWxlcnQtYW1iZXIge1xuICBjb2xvcjojZGI4YjBiO1xufVxuLmNvbCB7XG4gIHdpZHRoOiA4Ljg4JTtcbn1cblxuLnBvb2wtbmFtZSB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6MTNweDtcbiAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xufVxuLnN0aWNreS1ib3R0b20ge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDBweDtcbiAgei1pbmRleDogMTA7XG59XG5cbiJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/capacity-statistics/capacity-statistics.component.html":
-/*!******************************************************************************************!*\
-  !*** ./src/app/global-statistics/capacity-statistics/capacity-statistics.component.html ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable\" [tableOptions]=\"options\"></app-sasi-table>\n      <app-aggragated-statistics class='col-md-12 sticky-bottom' [aggregatedTypes]=\"options.getAggregatedColumns()\" [data]=\"data | systemPool2SasiGroupTable\" [prefix]=\"options.storageNamePrefix\"></app-aggragated-statistics>\n    </div>\n  </div>\n</div>\n\n\n<!--<div class=\"row\">-->\n  <!--<div class=\"capacity-table col-md-12\">-->\n    <!--&lt;!&ndash;-->\n      <!--TOP TABLE ROW-->\n    <!--&ndash;&gt;-->\n    <!--<div class=\"row table-header\">-->\n      <!--<div class=\"col-control\">-->\n        <!--<i class=\"fa\"-->\n           <!--[ngClass]=\"isCollapseAll() ? 'fa-plus':'fa-minus'\"-->\n           <!--(click)=\"collapseAll()\"-->\n           <!--[title]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>-->\n        <!--<i *ngIf=\"isSelectedAll()\" class=\"fa fa-fw fa-check-square-o\" (click)=\"selectAll()\"></i>-->\n        <!--<i *ngIf=\"isPartiallySelected() && !isSelectedAll()\" class=\"fa fa-fw fa-minus-square-o\"-->\n           <!--(click)=\"selectAll()\"></i>-->\n        <!--<i *ngIf=\"(!isPartiallySelected()) && (!isSelectedAll())\" class=\"fa fa-fw fa-square-o\"-->\n           <!--(click)=\"selectAll()\"></i>-->\n      <!--</div>-->\n      <!--<div class=\"col-control\">-->\n        <!--<i tooltip=\"Alerts\" class=\"fas fa-exclamation text-orange\"></i>-->\n      <!--</div>-->\n      <!--<div class=\"col-label\" >-->\n        <!--System <i class=\"text-muted fa \" [ngClass]=\"getSortIconClass(null)\" (click)=\"setSort(null)\"></i>-->\n      <!--</div>-->\n      <!--<div class=\"col\" *ngFor=\"let type of types;let column=index\"-->\n           <!--[class.highlightColumn]=\"isCurrentColumn(column)\">{{getColumnLabel(type)}}-->\n        <!--<i class=\"text-muted fa \" [ngClass]=\"getSortIconClass(type)\" (click)=\"setSort(type)\"></i></div>-->\n    <!--</div>-->\n    <!--&lt;!&ndash;-->\n      <!--SYSTEM PART-->\n    <!--&ndash;&gt;-->\n    <!--<div class=\"table-group-header\" *ngFor=\"let system of data;let i = index;\">-->\n      <!--&lt;!&ndash;-->\n        <!--SYSTEM LABEL-->\n      <!--&ndash;&gt;-->\n      <!--<div class=\"table-group-label row\">-->\n        <!--<div class=\"col-val col-control\"><i class=\"fa expand-collapse\"-->\n                                            <!--[@iconRotate] = 'isCollapsed(system.name)'-->\n                                            <!--[ngClass]=\"'fa-angle-down'\"-->\n                                            <!--(click)=\"addCollapsed(system.name)\"-->\n                                            <!--[tooltip]=\"isCollapsed(system.name) ? 'Expand':'Collapse'\"></i></div>-->\n        <!--<div class=\"col-val col-control\">-->\n          <!--<i tooltip=\"Warning for one or more metrics\" *ngIf=\"isAlertingSystem(system.name)\" class=\"fas fa-exclamation\" [ngClass]=\"getSystemAlertType(system.name)\"></i>-->\n        <!--</div>-->\n        <!--<div class=\"col-val col-label\"><span class=\"system-name\"><a [routerLink]=\"system.id | iframeUrlCreator\" routerLinkActive=\"active\">{{ system.name }}</a></span></div>-->\n        <!--<div class=\"ignore\" *ngIf=\"this.getSystemStatistics(system.name) !== undefined\">-->\n          <!--<div *ngFor=\"let type of types\"-->\n               <!--[tooltip]=\"getColumnLabel(type)\" hide-delay=\"0\" show-delay=\"300\"-->\n               <!--class=\"col-val col\"><span *ngIf=\"this.getSystemStatistics(system.name).getValue(type) !== undefined\">{{this.getSystemStatistics(system.name).getValue(type).toFixed(2)}}</span></div>-->\n        <!--</div>-->\n      <!--</div>-->\n      <!--&lt;!&ndash;&ndash;&gt;-->\n      <!--&lt;!&ndash;POOL ROWS&ndash;&gt;-->\n      <!--&lt;!&ndash;&ndash;&gt;-->\n      <!--<div class=\"row\" [@slideInOut]=\"isCollapsed(system.name)\">-->\n        <!--<div *ngFor=\"let pool of data[i].pools\" class=\"table-data striped-row row\"-->\n             <!--[class.selectedRow]=\"isSelectedPool(pool.name, system.name)\" >-->\n          <!--<div class=\"col-val col-control\"><i-->\n            <!--[ngClass]=\"isSelectedPool(pool.name, system.name) ? 'fa-check-square-o' : 'fa-square-o'\" class=\"fa fa-fw\"-->\n            <!--(click)=\"selectPool(pool.name, system.name)\"></i></div>-->\n          <!--<div class=\"col-val col-control\">-->\n            <!--<i tooltip=\"Warning for one or more metrics\" *ngIf=\"isAlertingPool(pool)\" class=\"fas fa-exclamation\" [ngClass]=\"getPoolAlertType(pool)\"></i>-->\n          <!--</div>-->\n          <!--<div class=\"col-val col-label\"><span class=\"pool-name\">{{pool.name}}</span></div>-->\n          <!--<div [ngClass]=\"'col-val col'\" *ngFor=\"let type of types; let column=index;\"-->\n               <!--(mouseout)=\"setHighlightedColumn(-1)\"-->\n               <!--(mouseover)=\"setHighlightedColumn(column)\"-->\n               <!--[class.highlightColumn]=\"isCurrentColumn(column)\" [tooltip]=\"getMetricTooltip(pool, type)\" hide-delay=\"0\"-->\n               <!--show-delay=\"500\">-->\n                <!--<span [className]=\"getAlertType(pool, type)\">-->\n                  <!--<span class=\"metric-value\">{{getMetric(pool.metrics, type).value}}</span>-->\n                  <!--<span class=\"metric-unit\">{{getMetric(pool.metrics, type).unit}}</span>-->\n                <!--</span>-->\n          <!--</div>-->\n        <!--</div>-->\n      <!--</div>-->\n    <!--</div>-->\n    <!--&lt;!&ndash;-->\n      <!--AGGREGATED VALUES-->\n    <!--&ndash;&gt;-->\n    <!--<div class=\"row sticky agg-vals\" *ngIf=\"this.getSystemStatistics('all') !== undefined\">-->\n      <!--<div class=\"col-val col-control\"></div>-->\n      <!--<div class=\"col-val col-control\"></div>-->\n      <!--<div class=\"col col-label\">-->\n        <!--<div class=\"agg-name\"># Selected</div>-->\n        <!--<div class=\"agg-value\">{{getSelectedCount()}}</div>-->\n      <!--</div>-->\n      <!--<div class=\"col\" *ngFor=\"let type of aggregatedTypes\">-->\n        <!--<div class=\"agg-name\">{{getColumnLabel(type)}}</div>-->\n        <!--<div class=\"agg-value\"><span *ngIf=\"this.getSystemStatistics('all').getValue(type) !== undefined\">{{this.getSystemStatistics('all').getValue(type).toFixed(2)}}</span></div>-->\n      <!--</div>-->\n    <!--</div>-->\n  <!--</div>-->\n"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/capacity-statistics/capacity-statistics.component.ts":
-/*!****************************************************************************************!*\
-  !*** ./src/app/global-statistics/capacity-statistics/capacity-statistics.component.ts ***!
-  \****************************************************************************************/
-/*! exports provided: ItemKey, CapacityStatisticsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ItemKey", function() { return ItemKey; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CapacityStatisticsComponent", function() { return CapacityStatisticsComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var _aggregated_statistics_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./aggregated-statistics.service */ "./src/app/global-statistics/capacity-statistics/aggregated-statistics.service.ts");
-/* harmony import */ var _period_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../period.service */ "./src/app/period.service.ts");
-/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
-/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
-/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../bus.service */ "./src/app/global-statistics/bus.service.ts");
-/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
-/* harmony import */ var _route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../route-link-formatter/route-link-formatter.component */ "./src/app/global-statistics/route-link-formatter/route-link-formatter.component.ts");
-/* harmony import */ var _simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../simple-formatter/simple-formatter.component */ "./src/app/global-statistics/simple-formatter/simple-formatter.component.ts");
-/* harmony import */ var _alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../alert-formatter/alert-formatter.component */ "./src/app/global-statistics/alert-formatter/alert-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
-/* harmony import */ var _AlertRule__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../AlertRule */ "./src/app/global-statistics/AlertRule.ts");
-/* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
-/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
-/* harmony import */ var _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../emph-formatter/emph-formatter.component */ "./src/app/global-statistics/emph-formatter/emph-formatter.component.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var ItemKey = /** @class */ (function () {
-    function ItemKey() {
-    }
-    return ItemKey;
-}());
-
-var MetricLabels = /** @class */ (function () {
-    function MetricLabels() {
-    }
-    return MetricLabels;
-}());
-var SelectedItem = /** @class */ (function () {
-    function SelectedItem() {
-    }
-    return SelectedItem;
-}());
-var CapacityStatisticsComponent = /** @class */ (function () {
-    function CapacityStatisticsComponent(route, router, periodService, metricService, aggregateService, bus) {
-        this.route = route;
-        this.router = router;
-        this.periodService = periodService;
-        this.metricService = metricService;
-        this.aggregateService = aggregateService;
-        this.bus = bus;
-        this.types = [
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_SUBS,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_CAPACITY,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].AVAILABLE_CAPACITY,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].LOGICAL_USAGE,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USAGE,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].COMPRESS_RATIO,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L1,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L2,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L3
-        ];
-        this.data = []; // Todo caching data by dataCenters
-        this.aggregatedStats = new Array();
-        this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiTableOptions"]();
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex('name')
-            .withLabel('System')
-            .withComponent(_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_16__["EmphFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(false)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_CAPACITY)
-            .withLabel('Physical Capacity')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_SUBS)
-            .withLabel('Physical Subscription')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].AVAILABLE_CAPACITY)
-            .withLabel('Available Capacity')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].LOGICAL_USAGE)
-            .withLabel('Logical Used')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USAGE)
-            .withLabel('Physical Used')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].COMPRESS_RATIO)
-            .withLabel('Compression Ratio')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].CAPACITY_CHANGE_1D)
-            .withLabel('Change 1D')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].CAPACITY_CHANGE_1W)
-            .withLabel('Change 1W')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].CAPACITY_CHANGE_1M)
-            .withLabel('Change 1M')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L1)
-            .withLabel('Reach 80%')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(false)
-            .withTooltipText('Days to reach 80% of "Physical Used"')
-            .withInfinity(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L2)
-            .withLabel('Reach 85%')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(false)
-            .withTooltipText('Days to reach 85% of "Physical Used"')
-            .withInfinity(true)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L3)
-            .withLabel('Reach 88%')
-            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(false)
-            .withTooltipText('Days to reach 88% of "Physical Used"')
-            .withInfinity(true)
-            .build());
-        this.options.colControlFormatter = _alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_11__["AlertFormatterComponent"];
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_12__["RowGroupTableComponent"];
-        this.options.grIndexComponentFormatter = _route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__["RouteLinkFormatterComponent"];
-        this.options.isDataGrouped = true;
-        this.options.highlightRow = true;
-        this.options.labelColumnWidth = '13';
-        this.options.valueColumnWidth = '6.65';
-        this.options.storageNamePrefix = 'capacity';
-        this.options.selectableRows = true;
-        this.options.aggregateValuesService = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_14__["SasiWeightedArithmeticMean"]();
-        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_15__["GroupSortImpl"]();
-        this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USAGE, new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["Threshold"]('text-green', 80, 84.9)));
-        this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USAGE, new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["Threshold"]('text-alert-yellow', 85, 88)));
-        this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USAGE, new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["Threshold"]('text-red', 88, 10000)));
-    }
-    CapacityStatisticsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.route.paramMap.subscribe(function (params) {
-            var id = +params.get('id');
-            _this.bus.announceDatacenter(id);
-            _this.bus.announceContext('capacity');
-            _this.getTableData(id);
-        });
-        this.aggregateService.aggregatedStatistics$.subscribe(function (stats) {
-            _this.aggregatedStats = stats;
-        });
-        this.periodService.announceEnablePeriod(false);
-    };
-    // getSystemStatistics(systemName: string): SystemAggregatedStatistics {
-    //   return this.aggregatedStats.find(stats => stats.system === systemName);
-    // }
-    CapacityStatisticsComponent.prototype.getTableData = function (id) {
-        var _this = this;
-        this.metricService.getCapacityStatistics(id).subscribe(function (data) {
-            // this.data = this.recalculateSorting(data.systems, SortType.ASC, null);
-            _this.data = data.systems;
-            // this.data.forEach(system => {
-            //   system.pools.forEach(pool => {
-            //     this.poolMetrics[pool.name] = pool.metrics;
-            //   });
-            // });
-            // this.aggregateService.aggregateStatsBySystems(this.selectedPools[this.currentDataCenterId], this.poolMetrics);
-        }, function (error) {
-            console.log(error);
-            _this.data = [];
-        });
-        return this.data;
-    };
-    CapacityStatisticsComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-capacity-statistics',
-            template: __webpack_require__(/*! ./capacity-statistics.component.html */ "./src/app/global-statistics/capacity-statistics/capacity-statistics.component.html"),
-            animations: [
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["trigger"])('slideInOut', [
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({ height: '0px', overflow: 'hidden', margin: '0' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({ 'height': '*', overflow: 'hidden', margin: '0' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('500ms ease-in')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('500ms ease-out'))
-                ]),
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["trigger"])('iconRotate', [
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({ transform: 'rotate(0deg)' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({ transform: 'rotate(90deg)' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('500ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])(':enter', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('0ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('0ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('500ms'))
-                ])
-            ],
-            styles: [__webpack_require__(/*! ./capacity-statistics.component.css */ "./src/app/global-statistics/capacity-statistics/capacity-statistics.component.css"), __webpack_require__(/*! ../global-statistics.component.css */ "./src/app/global-statistics/global-statistics.component.css")]
-        }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _period_service__WEBPACK_IMPORTED_MODULE_4__["PeriodService"],
-            _metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"],
-            _aggregated_statistics_service__WEBPACK_IMPORTED_MODULE_3__["AggregatedStatisticsService"],
-            _bus_service__WEBPACK_IMPORTED_MODULE_7__["BusService"]])
-    ], CapacityStatisticsComponent);
-    return CapacityStatisticsComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.css":
 /*!*******************************************************************************************!*\
   !*** ./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.css ***!
@@ -4049,7 +3679,7 @@ module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"data != null && data.value > 0\" class=\"metric-value\">\n  <i class=\"fa fa-exclamation-triangle text-alert-yellow\"></i>&nbsp;<span class=\"text-red\">{{getInfoMessage()}}</span>\n</div>\n"
+module.exports = "<div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"metric-value\">\n  <i class=\"fa fa-exclamation-triangle text-alert-yellow\"></i>&nbsp;<span class=\"text-red\">{{getInfoMessage()}}</span>\n</div>\n"
 
 /***/ }),
 
@@ -4086,12 +3716,18 @@ var DisbalanceFormatterComponent = /** @class */ (function () {
     DisbalanceFormatterComponent.prototype.ngOnInit = function () {
     };
     DisbalanceFormatterComponent.prototype.getInfoMessage = function () {
-        return "Warning: Channel Adapter Pair Imbalance \"" + this.data.value + "\" (" + this.resolveAbsoluteDisbalance() + " [MB/s])";
+        return "Warning: Channel Adapter Pair Imbalance \"" + this.data.value + "%\" (" + this.resolveAbsoluteDisbalance() + " [MB/s])";
     };
     DisbalanceFormatterComponent.prototype.resolveAbsoluteDisbalance = function () {
         if (this.rowData !== undefined && this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT) != null) {
             return this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT).value;
         }
+    };
+    DisbalanceFormatterComponent.prototype.isVisible = function () {
+        if (this.rowData !== undefined && parseInt(this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS).value, 10) > 0) {
+            return true;
+        }
+        return false;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -4374,15 +4010,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _global_statistics_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./global-statistics.component */ "./src/app/global-statistics/global-statistics.component.ts");
 /* harmony import */ var _performance_statistics_performance_statistics_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./performance-statistics/performance-statistics.component */ "./src/app/global-statistics/performance-statistics/performance-statistics.component.ts");
-/* harmony import */ var _capacity_statistics_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./capacity-statistics/capacity-statistics.component */ "./src/app/global-statistics/capacity-statistics/capacity-statistics.component.ts");
-/* harmony import */ var _dp_sla_dp_sla_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dp-sla/dp-sla.component */ "./src/app/global-statistics/dp-sla/dp-sla.component.ts");
-/* harmony import */ var _adapters_adapters_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./adapters/adapters.component */ "./src/app/global-statistics/adapters/adapters.component.ts");
+/* harmony import */ var _dp_sla_dp_sla_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dp-sla/dp-sla.component */ "./src/app/global-statistics/dp-sla/dp-sla.component.ts");
+/* harmony import */ var _adapters_adapters_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./adapters/adapters.component */ "./src/app/global-statistics/adapters/adapters.component.ts");
+/* harmony import */ var _logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./logical-capacity-statistics/logical-capacity-statistics.component */ "./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.ts");
+/* harmony import */ var _physical_capacity_statistics_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./physical-capacity-statistics/physical-capacity-statistics.component */ "./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -4397,11 +4035,13 @@ var routes = [
         children: [
             { path: 'performance/:id', component: _performance_statistics_performance_statistics_component__WEBPACK_IMPORTED_MODULE_3__["PerformanceStatisticsComponent"] },
             { path: 'performance', redirectTo: 'performance/1', pathMatch: 'full' },
-            { path: 'capacity/:id', component: _capacity_statistics_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_4__["CapacityStatisticsComponent"] },
-            { path: 'capacity', redirectTo: 'capacity/1', pathMatch: 'full' },
-            { path: 'dp-sla/:id', component: _dp_sla_dp_sla_component__WEBPACK_IMPORTED_MODULE_5__["DpSlaComponent"] },
+            { path: 'physical-capacity/:id', component: _physical_capacity_statistics_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_7__["PhysicalCapacityStatisticsComponent"] },
+            { path: 'physical-capacity', redirectTo: 'physical-capacity/1', pathMatch: 'full' },
+            { path: 'logical-capacity/:id', component: _logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_6__["LogicalCapacityStatisticsComponent"] },
+            { path: 'logical-capacity', redirectTo: 'logical-capacity/1', pathMatch: 'full' },
+            { path: 'dp-sla/:id', component: _dp_sla_dp_sla_component__WEBPACK_IMPORTED_MODULE_4__["DpSlaComponent"] },
             { path: 'dp-sla', redirectTo: 'dp-sla/1', pathMatch: 'full' },
-            { path: 'adapters/:id', component: _adapters_adapters_component__WEBPACK_IMPORTED_MODULE_6__["AdaptersComponent"] },
+            { path: 'adapters/:id', component: _adapters_adapters_component__WEBPACK_IMPORTED_MODULE_5__["AdaptersComponent"] },
             { path: 'adapters', redirectTo: 'adapters/1', pathMatch: 'full' }
         ]
     }
@@ -4456,8 +4096,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalStatisticsComponent", function() { return GlobalStatisticsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bus.service */ "./src/app/global-statistics/bus.service.ts");
+/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bus.service */ "./src/app/global-statistics/bus.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4470,13 +4109,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
 var GlobalStatisticsComponent = /** @class */ (function () {
-    function GlobalStatisticsComponent(metricService, bus, route, router) {
+    function GlobalStatisticsComponent(metricService, bus) {
         this.metricService = metricService;
         this.bus = bus;
-        this.route = route;
-        this.router = router;
     }
     GlobalStatisticsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -4489,7 +4125,6 @@ var GlobalStatisticsComponent = /** @class */ (function () {
     };
     GlobalStatisticsComponent.prototype.activeTab = function (id) {
         this.currentTab = id;
-        // this.router.navigate(['/global-statistics/', id, this.context]);
     };
     GlobalStatisticsComponent.prototype.isCurrentTab = function (id) {
         return id === this.currentTab;
@@ -4508,9 +4143,7 @@ var GlobalStatisticsComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./global-statistics.component.css */ "./src/app/global-statistics/global-statistics.component.css")]
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"],
-            _bus_service__WEBPACK_IMPORTED_MODULE_3__["BusService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+            _bus_service__WEBPACK_IMPORTED_MODULE_2__["BusService"]])
     ], GlobalStatisticsComponent);
     return GlobalStatisticsComponent;
 }());
@@ -4531,7 +4164,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalStatisticsModule", function() { return GlobalStatisticsModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _performance_statistics_performance_statistics_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./performance-statistics/performance-statistics.component */ "./src/app/global-statistics/performance-statistics/performance-statistics.component.ts");
-/* harmony import */ var _capacity_statistics_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./capacity-statistics/capacity-statistics.component */ "./src/app/global-statistics/capacity-statistics/capacity-statistics.component.ts");
+/* harmony import */ var _physical_capacity_statistics_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./physical-capacity-statistics/physical-capacity-statistics.component */ "./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.ts");
 /* harmony import */ var _global_statistics_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global-statistics.component */ "./src/app/global-statistics/global-statistics.component.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _global_statistics_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./global-statistics-routing.module */ "./src/app/global-statistics/global-statistics-routing.module.ts");
@@ -4549,12 +4182,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _aggragated_statistics_aggragated_statistics_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./aggragated-statistics/aggragated-statistics.component */ "./src/app/global-statistics/aggragated-statistics/aggragated-statistics.component.ts");
 /* harmony import */ var _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./emph-formatter/emph-formatter.component */ "./src/app/global-statistics/emph-formatter/emph-formatter.component.ts");
 /* harmony import */ var _disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/disbalance-formatter/disbalance-formatter.component.ts");
+/* harmony import */ var _logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./logical-capacity-statistics/logical-capacity-statistics.component */ "./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -4582,7 +4217,7 @@ var GlobalStatisticsModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             declarations: [
                 _global_statistics_component__WEBPACK_IMPORTED_MODULE_3__["GlobalStatisticsComponent"],
-                _capacity_statistics_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_2__["CapacityStatisticsComponent"],
+                _physical_capacity_statistics_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_2__["PhysicalCapacityStatisticsComponent"],
                 _performance_statistics_performance_statistics_component__WEBPACK_IMPORTED_MODULE_1__["PerformanceStatisticsComponent"],
                 _dp_sla_dp_sla_component__WEBPACK_IMPORTED_MODULE_8__["DpSlaComponent"],
                 _adapters_adapters_component__WEBPACK_IMPORTED_MODULE_9__["AdaptersComponent"],
@@ -4595,7 +4230,8 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_16__["TextFormatterComponent"],
                 _aggragated_statistics_aggragated_statistics_component__WEBPACK_IMPORTED_MODULE_17__["AggragatedStatisticsComponent"],
                 _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_18__["EmphFormatterComponent"],
-                _disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__["DisbalanceFormatterComponent"]
+                _disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__["DisbalanceFormatterComponent"],
+                _logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__["LogicalCapacityStatisticsComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"],
@@ -4606,6 +4242,315 @@ var GlobalStatisticsModule = /** @class */ (function () {
         })
     ], GlobalStatisticsModule);
     return GlobalStatisticsModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.css":
+/*!*********************************************************************************************************!*\
+  !*** ./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.css ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ":host /deep/ .col-val {\n  padding-top: 5px;\n  padding-bottom: 5px;\n  padding-right: 2px;\n}\n.alert-red {\n  color:#900020;\n}\n.alert-amber {\n  color:#db8b0b;\n}\n.col {\n  width: 8.88%;\n}\n.pool-name {\n  font-size: 14px;\n  font-style: italic;\n}\n:host /deep/ .groupped-data .metric-value {\n  font-size: 14px;\n  font-weight: bold;\n}\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n.sorting {\n  font-size:13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvbG9naWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0VBQ2pCLG9CQUFvQjtFQUNwQixtQkFBbUI7Q0FDcEI7QUFDRDtFQUNFLGNBQWM7Q0FDZjtBQUNEO0VBQ0UsY0FBYztDQUNmO0FBQ0Q7RUFDRSxhQUFhO0NBQ2Q7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixtQkFBbUI7Q0FDcEI7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixrQkFBa0I7Q0FDbkI7QUFFRDtFQUNFLGVBQWU7RUFDZixpQkFBaUI7Q0FDbEI7QUFFRDtFQUNFLGVBQWU7RUFDZixpQ0FBeUI7VUFBekIseUJBQXlCO0NBQzFCO0FBQ0Q7RUFDRSx5QkFBaUI7RUFBakIsaUJBQWlCO0VBQ2pCLFlBQVk7RUFDWixZQUFZO0NBQ2IiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9sb2dpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MvbG9naWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCAvZGVlcC8gLmNvbC12YWwge1xuICBwYWRkaW5nLXRvcDogNXB4O1xuICBwYWRkaW5nLWJvdHRvbTogNXB4O1xuICBwYWRkaW5nLXJpZ2h0OiAycHg7XG59XG4uYWxlcnQtcmVkIHtcbiAgY29sb3I6IzkwMDAyMDtcbn1cbi5hbGVydC1hbWJlciB7XG4gIGNvbG9yOiNkYjhiMGI7XG59XG4uY29sIHtcbiAgd2lkdGg6IDguODglO1xufVxuXG4ucG9vbC1uYW1lIHtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBmb250LXN0eWxlOiBpdGFsaWM7XG59XG5cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOHB4O1xuICBtYXJnaW4tbGVmdDogM3B4O1xufVxuXG4uc29ydGluZyB7XG4gIGZvbnQtc2l6ZToxM3B4O1xuICB0cmFuc2Zvcm06IHJvdGF0ZSg5MGRlZyk7XG59XG4uc3RpY2t5LWJvdHRvbSB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIGJvdHRvbTogMHB4O1xuICB6LWluZGV4OiAxMDtcbn1cblxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.html ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable\" [tableOptions]=\"options\"></app-sasi-table>\n      <app-aggragated-statistics class='col-md-12 sticky-bottom' [aggregatedTypes]=\"options.getAggregatedColumns()\" [data]=\"data | systemPool2SasiGroupTable\" [selectedRows]=\"selectedRows\" [prefix]=\"options.storageNamePrefix\"></app-aggragated-statistics>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.ts":
+/*!********************************************************************************************************!*\
+  !*** ./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.ts ***!
+  \********************************************************************************************************/
+/*! exports provided: LogicalCapacityStatisticsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LogicalCapacityStatisticsComponent", function() { return LogicalCapacityStatisticsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _period_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../period.service */ "./src/app/period.service.ts");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _physical_capacity_statistics_aggregated_statistics_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../physical-capacity-statistics/aggregated-statistics.service */ "./src/app/global-statistics/physical-capacity-statistics/aggregated-statistics.service.ts");
+/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../bus.service */ "./src/app/global-statistics/bus.service.ts");
+/* harmony import */ var _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../emph-formatter/emph-formatter.component */ "./src/app/global-statistics/emph-formatter/emph-formatter.component.ts");
+/* harmony import */ var _simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../simple-formatter/simple-formatter.component */ "./src/app/global-statistics/simple-formatter/simple-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
+/* harmony import */ var _route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../route-link-formatter/route-link-formatter.component */ "./src/app/global-statistics/route-link-formatter/route-link-formatter.component.ts");
+/* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
+/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
+/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var LogicalCapacityStatisticsComponent = /** @class */ (function () {
+    function LogicalCapacityStatisticsComponent(route, router, periodService, metricService, aggregateService, bus, localStorageService) {
+        this.route = route;
+        this.router = router;
+        this.periodService = periodService;
+        this.metricService = metricService;
+        this.aggregateService = aggregateService;
+        this.bus = bus;
+        this.localStorageService = localStorageService;
+        this.types = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT,
+        ];
+        this.data = [];
+        this.aggregatedStats = new Array();
+        this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiTableOptions"]();
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('name')
+            .withLabel('System')
+            .withComponent(_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_8__["EmphFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY)
+            .withLabel('Subs. Capacity')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC)
+            .withLabel('Physical Subs.')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC)
+            .withLabel('Logical Subs.')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
+            .withLabel('Logical Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC)
+            .withLabel('NET Subs.')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY)
+            .withLabel('Physical Capacity')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED)
+            .withLabel('Physical Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE)
+            .withLabel('Physical Free')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC)
+            .withLabel('Physical Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY)
+            .withLabel('Logical Capacity')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED)
+            .withLabel('Logical Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE)
+            .withLabel('Logical Free')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
+            .withLabel('Logical Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
+            .withLabel('Net Total')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
+            .withLabel('Net Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE)
+            .withLabel('Net Free')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
+            .withLabel('Net Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO)
+            .withLabel('Comp Ratio')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO)
+            .withLabel('Dedup Ratio')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT)
+            .withLabel('Total Saving Effect')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_10__["RowGroupTableComponent"];
+        this.options.grIndexComponentFormatter = _route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_11__["RouteLinkFormatterComponent"];
+        this.options.isDataGrouped = true;
+        this.options.highlightRow = true;
+        this.options.labelColumnWidth = '13';
+        this.options.valueColumnWidth = '4.17';
+        this.options.storageNamePrefix = 'logicalCap';
+        this.options.selectableRows = true;
+        this.options.aggregateValuesService = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_12__["SasiWeightedArithmeticMean"]();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortImpl"]();
+    }
+    LogicalCapacityStatisticsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.paramMap.subscribe(function (params) {
+            var id = +params.get('id');
+            _this.bus.announceDatacenter(id);
+            _this.bus.announceContext('logical-capacity');
+            _this.getTableData(id);
+        });
+        this.aggregateService.aggregatedStatistics$.subscribe(function (stats) {
+            _this.aggregatedStats = stats;
+        });
+        this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) {
+            _this.selectedRows = data.newValue;
+        });
+        this.periodService.announceEnablePeriod(false);
+    };
+    LogicalCapacityStatisticsComponent.prototype.getTableData = function (id) {
+        var _this = this;
+        this.metricService.getCapacityStatistics(id).subscribe(function (data) {
+            _this.data = data.systems;
+        }, function (error) {
+            console.log(error);
+            _this.data = [];
+        });
+        return this.data;
+    };
+    LogicalCapacityStatisticsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-physical-statistics',
+            template: __webpack_require__(/*! ./logical-capacity-statistics.component.html */ "./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.html"),
+            styles: [__webpack_require__(/*! ./logical-capacity-statistics.component.css */ "./src/app/global-statistics/logical-capacity-statistics/logical-capacity-statistics.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _period_service__WEBPACK_IMPORTED_MODULE_4__["PeriodService"],
+            _metric_service__WEBPACK_IMPORTED_MODULE_5__["MetricService"],
+            _physical_capacity_statistics_aggregated_statistics_service__WEBPACK_IMPORTED_MODULE_6__["AggregatedStatisticsService"],
+            _bus_service__WEBPACK_IMPORTED_MODULE_7__["BusService"],
+            ngx_store__WEBPACK_IMPORTED_MODULE_14__["LocalStorageService"]])
+    ], LogicalCapacityStatisticsComponent);
+    return LogicalCapacityStatisticsComponent;
 }());
 
 
@@ -4732,7 +4677,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
             .withIsAggregated(false)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING)
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC)
             .withLabel('Write Pending')
             .withComponent(_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
@@ -4759,7 +4704,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         });
         this.periodService.announceEnablePeriod(true);
         this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CPU, new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 80, 10000)));
-        this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING, new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 30, 10000)));
+        this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC, new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 30, 10000)));
     };
     PerformanceStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
@@ -4785,6 +4730,351 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
             _bus_service__WEBPACK_IMPORTED_MODULE_5__["BusService"]])
     ], PerformanceStatisticsComponent);
     return PerformanceStatisticsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/physical-capacity-statistics/aggregated-statistics.service.ts":
+/*!*************************************************************************************************!*\
+  !*** ./src/app/global-statistics/physical-capacity-statistics/aggregated-statistics.service.ts ***!
+  \*************************************************************************************************/
+/*! exports provided: AggregatedStatisticsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AggregatedStatisticsService", function() { return AggregatedStatisticsService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _utils_WeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/WeightedArithmeticMean */ "./src/app/global-statistics/utils/WeightedArithmeticMean.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var AggregatedStatisticsService = /** @class */ (function () {
+    function AggregatedStatisticsService() {
+        // Observable string sources
+        this.filterAnnoucement = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.statsAnnoucement = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        // Observable string streams
+        this.filterAnnouncement$ = this.filterAnnoucement.asObservable();
+        this.aggregatedStatistics$ = this.statsAnnoucement.asObservable();
+    }
+    // Service message commands
+    AggregatedStatisticsService.prototype.aggregateStatsBySystems = function (pools, poolMetrics) {
+        this.filterAnnoucement.next(pools);
+        var mean = new _utils_WeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__["WeightedArithmeticMean"]();
+        this.announceStatistics(mean.computeSummaries(poolMetrics, pools));
+    };
+    AggregatedStatisticsService.prototype.announceStatistics = function (statistics) {
+        this.statsAnnoucement.next(statistics);
+    };
+    AggregatedStatisticsService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], AggregatedStatisticsService);
+    return AggregatedStatisticsService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.css":
+/*!***********************************************************************************************************!*\
+  !*** ./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.css ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ":host /deep/ .col-val {\n  padding-top: 5px;\n  padding-bottom: 5px;\n  padding-right: 2px;\n}\n.alert-red {\n  color:#900020;\n}\n.alert-amber {\n  color:#db8b0b;\n}\n.col {\n  width: 8.88%;\n}\n.pool-name {\n  font-size: 14px;\n  font-style: italic;\n}\n:host /deep/ .groupped-data .metric-value {\n  font-size: 14px;\n  font-weight: bold;\n}\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n.sorting {\n  font-size:13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9waHlzaWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7RUFDakIsb0JBQW9CO0VBQ3BCLG1CQUFtQjtDQUNwQjtBQUNEO0VBQ0UsY0FBYztDQUNmO0FBQ0Q7RUFDRSxjQUFjO0NBQ2Y7QUFDRDtFQUNFLGFBQWE7Q0FDZDtBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtDQUNwQjtBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtDQUNuQjtBQUVEO0VBQ0UsZUFBZTtFQUNmLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsZUFBZTtFQUNmLGlDQUF5QjtVQUF6Qix5QkFBeUI7Q0FDMUI7QUFDRDtFQUNFLHlCQUFpQjtFQUFqQixpQkFBaUI7RUFDakIsWUFBWTtFQUNaLFlBQVk7Q0FDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3BoeXNpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MvcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5jb2wtdmFsIHtcbiAgcGFkZGluZy10b3A6IDVweDtcbiAgcGFkZGluZy1ib3R0b206IDVweDtcbiAgcGFkZGluZy1yaWdodDogMnB4O1xufVxuLmFsZXJ0LXJlZCB7XG4gIGNvbG9yOiM5MDAwMjA7XG59XG4uYWxlcnQtYW1iZXIge1xuICBjb2xvcjojZGI4YjBiO1xufVxuLmNvbCB7XG4gIHdpZHRoOiA4Ljg4JTtcbn1cblxuLnBvb2wtbmFtZSB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6MTNweDtcbiAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xufVxuLnN0aWNreS1ib3R0b20ge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDBweDtcbiAgei1pbmRleDogMTA7XG59XG5cbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.html":
+/*!************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.html ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable\" [tableOptions]=\"options\"></app-sasi-table>\n      <app-aggragated-statistics class='col-md-12 sticky-bottom' [aggregatedTypes]=\"options.getAggregatedColumns()\" [data]=\"data | systemPool2SasiGroupTable\" [selectedRows]=\"selectedRows\" [prefix]=\"options.storageNamePrefix\"></app-aggragated-statistics>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.ts":
+/*!**********************************************************************************************************!*\
+  !*** ./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.ts ***!
+  \**********************************************************************************************************/
+/*! exports provided: ItemKey, PhysicalCapacityStatisticsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ItemKey", function() { return ItemKey; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhysicalCapacityStatisticsComponent", function() { return PhysicalCapacityStatisticsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _aggregated_statistics_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./aggregated-statistics.service */ "./src/app/global-statistics/physical-capacity-statistics/aggregated-statistics.service.ts");
+/* harmony import */ var _period_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../period.service */ "./src/app/period.service.ts");
+/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../bus.service */ "./src/app/global-statistics/bus.service.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../route-link-formatter/route-link-formatter.component */ "./src/app/global-statistics/route-link-formatter/route-link-formatter.component.ts");
+/* harmony import */ var _simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../simple-formatter/simple-formatter.component */ "./src/app/global-statistics/simple-formatter/simple-formatter.component.ts");
+/* harmony import */ var _alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../alert-formatter/alert-formatter.component */ "./src/app/global-statistics/alert-formatter/alert-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
+/* harmony import */ var _AlertRule__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../AlertRule */ "./src/app/global-statistics/AlertRule.ts");
+/* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
+/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
+/* harmony import */ var _emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../emph-formatter/emph-formatter.component */ "./src/app/global-statistics/emph-formatter/emph-formatter.component.ts");
+/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ItemKey = /** @class */ (function () {
+    function ItemKey() {
+    }
+    return ItemKey;
+}());
+
+var MetricLabels = /** @class */ (function () {
+    function MetricLabels() {
+    }
+    return MetricLabels;
+}());
+var SelectedItem = /** @class */ (function () {
+    function SelectedItem() {
+    }
+    return SelectedItem;
+}());
+var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
+    function PhysicalCapacityStatisticsComponent(route, router, periodService, metricService, aggregateService, bus, localStorageService) {
+        this.route = route;
+        this.router = router;
+        this.periodService = periodService;
+        this.metricService = metricService;
+        this.aggregateService = aggregateService;
+        this.bus = bus;
+        this.localStorageService = localStorageService;
+        this.types = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_SUBS_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].AVAILABLE_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].LOGICAL_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].COMPRESS_RATIO,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L1,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L2,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L3
+        ];
+        this.data = []; // Todo caching data by dataCenters
+        this.aggregatedStats = new Array();
+        this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiTableOptions"]();
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex('name')
+            .withLabel('System')
+            .withComponent(_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_16__["EmphFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_CAPACITY)
+            .withLabel('Physical Capacity')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_SUBS_PERC)
+            .withLabel('Physical Subscription')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].AVAILABLE_CAPACITY)
+            .withLabel('Available Capacity')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].LOGICAL_USED_PERC)
+            .withLabel('Logical Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USED_PERC)
+            .withLabel('Physical Used')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].COMPRESS_RATIO)
+            .withLabel('Compression Ratio')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].CAPACITY_CHANGE_1D)
+            .withLabel('Change 1D')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].CAPACITY_CHANGE_1W)
+            .withLabel('Change 1W')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].CAPACITY_CHANGE_1M)
+            .withLabel('Change 1M')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L1)
+            .withLabel('Reach 80%')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .withTooltipText('Days to reach 80% of "Physical Used"')
+            .withInfinity(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L2)
+            .withLabel('Reach 85%')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .withTooltipText('Days to reach 85% of "Physical Used"')
+            .withInfinity(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_8__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PREDICTION_L3)
+            .withLabel('Reach 88%')
+            .withComponent(_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .withTooltipText('Days to reach 88% of "Physical Used"')
+            .withInfinity(true)
+            .build());
+        this.options.colControlFormatter = _alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_11__["AlertFormatterComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_12__["RowGroupTableComponent"];
+        this.options.grIndexComponentFormatter = _route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__["RouteLinkFormatterComponent"];
+        this.options.isDataGrouped = true;
+        this.options.highlightRow = true;
+        this.options.labelColumnWidth = '13';
+        this.options.valueColumnWidth = '6.65';
+        this.options.storageNamePrefix = 'physicalCap';
+        this.options.selectableRows = true;
+        this.options.aggregateValuesService = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_14__["SasiWeightedArithmeticMean"]();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_15__["GroupSortImpl"]();
+        this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USED_PERC, new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["Threshold"]('text-green', 80, 84.9)));
+        this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USED_PERC, new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["Threshold"]('text-alert-yellow', 85, 88)));
+        this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_5__["SystemMetricType"].PHYSICAL_USED_PERC, new _AlertRule__WEBPACK_IMPORTED_MODULE_13__["Threshold"]('text-red', 88, 10000)));
+    }
+    // Todo common with logical stats
+    PhysicalCapacityStatisticsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.paramMap.subscribe(function (params) {
+            var id = +params.get('id');
+            _this.bus.announceDatacenter(id);
+            _this.bus.announceContext('physical-capacity');
+            _this.getTableData(id);
+        });
+        this.aggregateService.aggregatedStatistics$.subscribe(function (stats) {
+            _this.aggregatedStats = stats;
+        });
+        this.periodService.announceEnablePeriod(false);
+        this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) {
+            _this.selectedRows = data.newValue;
+        });
+    };
+    PhysicalCapacityStatisticsComponent.prototype.getTableData = function (id) {
+        var _this = this;
+        this.metricService.getCapacityStatistics(id).subscribe(function (data) {
+            _this.data = data.systems;
+        }, function (error) {
+            console.log(error);
+            _this.data = [];
+        });
+        return this.data;
+    };
+    PhysicalCapacityStatisticsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-capacity-statistics',
+            template: __webpack_require__(/*! ./physical-capacity-statistics.component.html */ "./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.html"),
+            animations: [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["trigger"])('slideInOut', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({ height: '0px', overflow: 'hidden', margin: '0' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({ 'height': '*', overflow: 'hidden', margin: '0' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('500ms ease-in')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('500ms ease-out'))
+                ]),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["trigger"])('iconRotate', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({ transform: 'rotate(0deg)' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({ transform: 'rotate(90deg)' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('500ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])(':enter', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('0ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('0ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('500ms'))
+                ])
+            ],
+            styles: [__webpack_require__(/*! ./physical-capacity-statistics.component.css */ "./src/app/global-statistics/physical-capacity-statistics/physical-capacity-statistics.component.css"), __webpack_require__(/*! ../global-statistics.component.css */ "./src/app/global-statistics/global-statistics.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _period_service__WEBPACK_IMPORTED_MODULE_4__["PeriodService"],
+            _metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"],
+            _aggregated_statistics_service__WEBPACK_IMPORTED_MODULE_3__["AggregatedStatisticsService"],
+            _bus_service__WEBPACK_IMPORTED_MODULE_7__["BusService"],
+            ngx_store__WEBPACK_IMPORTED_MODULE_17__["LocalStorageService"]])
+    ], PhysicalCapacityStatisticsComponent);
+    return PhysicalCapacityStatisticsComponent;
 }());
 
 
@@ -4880,7 +5170,7 @@ module.exports = ".text-alert-yellow {\n  color: #ffd829;\n}\n\n/*# sourceMappin
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"data != null\" class=\"metric-value\">\n  <span *ngIf=\"isAlert()\" tooltip=\"{{getAlertMessage()}}\" hide-delay=\"0\" > <i class=\"fa fa-exclamation-triangle\" ngClass=\"{{getViolatedRuleClass()}}\"></i> {{data.value % 1 === 0 ? data.value : data.value.toFixed(1)}} </span>\n  <span *ngIf=\"!isAlert()\" tooltip=\"{{getTooltipMessage()}}\" hide-delay=\"0\" [innerHTML]=\"getValue() | safeHtml\"></span>\n  <span class=\"metric-unit\">{{data.unit}}</span>\n\n</div>\n"
+module.exports = "<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span *ngIf=\"isAlert()\" tooltip=\"{{getAlertMessage()}}\" hide-delay=\"0\" > <i class=\"fa fa-exclamation-triangle\" ngClass=\"{{getViolatedRuleClass()}}\"></i> {{data.value % 1 === 0 ? data.value : data.value.toFixed(1)}} </span>\n  <span *ngIf=\"!isAlert()\" tooltip=\"{{getTooltipMessage()}}\" hide-delay=\"0\" [innerHTML]=\"getValue() | safeHtml\"></span>\n  <span class=\"metric-unit\">{{data.unit}}</span>\n\n</div>\n"
 
 /***/ }),
 
@@ -5300,15 +5590,15 @@ var SystemAggregatedStatistics = /** @class */ (function () {
     }
     SystemAggregatedStatistics.prototype.getValue = function (name) {
         switch (name) {
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC:
                 return this.physicalSubstitution;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY:
                 return this.physicalCapacity;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY:
                 return this.availableCapacity;
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USAGE:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC:
                 return this.logicalUsed;
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USAGE:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC:
                 return this.physicalUsed;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO:
                 return this.compressionRatio;
@@ -5330,6 +5620,7 @@ var SasiWeightedArithmeticMean = /** @class */ (function () {
     }
     SasiWeightedArithmeticMean.prototype.computeSummaries = function (inputRowGroup, filter, options) {
         var _this = this;
+        console.log('compute');
         if (filter.length === 0) {
             return null;
         }
@@ -5363,10 +5654,10 @@ var SasiWeightedArithmeticMean = /** @class */ (function () {
             var systemStats = _this.partiallySummarizedValues;
             var physicalCapacity = _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY);
             systemStats.physicalCapacity += physicalCapacity;
-            systemStats.physicalSubstitution += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS) * physicalCapacity;
+            systemStats.physicalSubstitution += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC) * physicalCapacity;
             systemStats.availableCapacity += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY);
-            systemStats.logicalUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USAGE) * physicalCapacity;
-            systemStats.physicalUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USAGE) * physicalCapacity;
+            systemStats.logicalUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) * physicalCapacity;
+            systemStats.physicalUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) * physicalCapacity;
             systemStats.compressionRatio += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO) * physicalCapacity;
             systemStats.capacityChanged1D += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D) * physicalCapacity;
             systemStats.capacityChanged1W += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W) * physicalCapacity;
@@ -5377,10 +5668,10 @@ var SasiWeightedArithmeticMean = /** @class */ (function () {
     SasiWeightedArithmeticMean.prototype.summarizeStats = function (values, name) {
         var summarizedValues = new SystemAggregatedStatistics(name);
         summarizedValues.physicalCapacity = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY);
-        summarizedValues.physicalSubstitution = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS) / summarizedValues.physicalCapacity;
+        summarizedValues.physicalSubstitution = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC) / summarizedValues.physicalCapacity;
         summarizedValues.availableCapacity = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY);
-        summarizedValues.logicalUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USAGE) / summarizedValues.physicalCapacity;
-        summarizedValues.physicalUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USAGE) / summarizedValues.physicalCapacity;
+        summarizedValues.logicalUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) / summarizedValues.physicalCapacity;
+        summarizedValues.physicalUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) / summarizedValues.physicalCapacity;
         summarizedValues.compressionRatio = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO) / summarizedValues.physicalCapacity;
         summarizedValues.capacityChanged1D = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D) / summarizedValues.physicalCapacity;
         summarizedValues.capacityChanged1W = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W) / summarizedValues.physicalCapacity;
@@ -5389,7 +5680,7 @@ var SasiWeightedArithmeticMean = /** @class */ (function () {
     };
     SasiWeightedArithmeticMean.prototype.getMetricByName = function (metrics, type) {
         var metric = metrics.getCell(type);
-        if (metric === undefined) {
+        if (metric === null) {
             return null;
         }
         return Number(metric.value);
@@ -5502,15 +5793,15 @@ var SystemAggregatedStatistics = /** @class */ (function (_super) {
     }
     SystemAggregatedStatistics.prototype.getValue = function (name) {
         switch (name) {
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC:
                 return this.physicalSubstitution;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY:
                 return this.physicalCapacity;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY:
                 return this.availableCapacity;
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USAGE:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC:
                 return this.logicalUsed;
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USAGE:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC:
                 return this.physicalUsed;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO:
                 return this.compressionRatio;
@@ -5546,10 +5837,10 @@ var WeightedArithmeticMean = /** @class */ (function () {
             }
             var physicalCapacity = _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY);
             systemStats.physicalCapacity += physicalCapacity;
-            systemStats.physicalSubstitution += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS) * physicalCapacity;
+            systemStats.physicalSubstitution += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC) * physicalCapacity;
             systemStats.availableCapacity += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY);
-            systemStats.logicalUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USAGE) * physicalCapacity;
-            systemStats.physicalUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USAGE) * physicalCapacity;
+            systemStats.logicalUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) * physicalCapacity;
+            systemStats.physicalUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) * physicalCapacity;
             systemStats.compressionRatio += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO) * physicalCapacity;
             systemStats.capacityChanged1D += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D) * physicalCapacity;
             systemStats.capacityChanged1W += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W) * physicalCapacity;
