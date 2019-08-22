@@ -3733,6 +3733,191 @@ var GlobalPhysicalCapacityStatisticsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggragated-statistics.component.css":
+/*!************************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggragated-statistics.component.css ***!
+  \************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col, .agg-vals > .col-smaller {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 11px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 14.8%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  width: 13%;\n}\n.col-smaller{\n  width: 4.8%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9ncm91cGVkLWFnZ3JlZ2F0ZWQtc3RhdGlzdGljcy9ncm91cGVkLWFnZ3JhZ2F0ZWQtc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtDQUFrQztBQUNsQztFQUNFLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGtCQUFrQjtFQUNsQixtQkFBbUI7O0NBRXBCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixhQUFhO0NBQ2Q7QUFFRDtFQUNFLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLGlCQUFpQjtDQUNsQjtBQUNEO0VBQ0UsWUFBWTtFQUNaLHNCQUFzQjtFQUN0Qix1QkFBdUI7Q0FDeEI7QUFDRDtFQUNFLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsd0JBQXdCO0VBQ3hCLGtCQUFrQjtDQUNuQjtBQUNEO0VBQ0UsV0FBVztDQUNaO0FBRUQ7RUFDRSxZQUFZO0VBQ1oscUJBQXFCO0VBQ3JCLHdCQUF3QjtFQUN4QixrQkFBa0I7Q0FDbkIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9jb21wb25lbnRzL2dyb3VwZWQtYWdncmVnYXRlZC1zdGF0aXN0aWNzL2dyb3VwZWQtYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKioqIEFnZ3JlZ2F0ZWQgdmFsdWVzIHdpZGdldCAqKiovXG5kaXYuYWdnLXZhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG4uYWdnLXZhbHMgPiAuY29sLCAuYWdnLXZhbHMgPiAuY29sLXNtYWxsZXIge1xuICBib3JkZXI6IDFweCAjNUM5MUE4IHNvbGlkO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuXG59XG5cbi5hZ2ctbmFtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzYzhkYmM7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBwYWRkaW5nOiA1cHg7XG59XG5cbi5hZ2ctdmFscyAuYWdnLXZhbHVlIHtcbiAgcGFkZGluZzogNXB4O1xuICBmb250LXNpemU6IDEycHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAvKmNvbG9yOiB3aGl0ZTsqL1xufVxuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cbi5jb2wge1xuICB3aWR0aDogMTQuOCU7XG4gIGRpc3BsYXk6aW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG4uY29sLWxhYmVsIHtcbiAgd2lkdGg6IDEzJTtcbn1cblxuLmNvbC1zbWFsbGVye1xuICB3aWR0aDogNC44JTtcbiAgZGlzcGxheTppbmxpbmUtYmxvY2s7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICBtYXJnaW4tcmlnaHQ6IDJweDtcbn1cbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.html":
+/*!*************************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.html ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"agg-vals\" *ngIf=\"data.length > 0\">\n  <div class=\"col-smaller\">\n    <div class=\"agg-name\"># Selected</div>\n    <div class=\"agg-value \">{{getSelectedCount()}}</div>\n  </div>\n  <div class=\"col-smaller\">\n    <div class=\"agg-name\">Subs. capacity</div>\n    <div class=\"agg-value \">{{getMetricByType(subsCapacityType)}}</div>\n  </div>\n  <div class=\"col\" *ngFor=\"let group of groupTypes\">\n    <div class=\"agg-name\">{{getGroupLabelByType(group)}}</div>\n    <div class=\"agg-value\">\n      <div *ngFor=\"let type of types[group]\">\n        <div class=\"text-left col-md-5\">{{getLabelByType(type)}}: </div>\n        <div class=\"text-right col-md-push-6\">\n          <span *ngIf=\"getMetricByType(type) !== undefined && getMetricByType(type) != null\">{{toFixed(getMetricByType(type), 2) | formatThousands}}</span>\n          <span class='text-gray' *ngIf=\"getMetricByType(type) === undefined || getMetricByType(type) == null\">No value</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.ts":
+/*!***********************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.ts ***!
+  \***********************************************************************************************************************/
+/*! exports provided: GroupedAggregatedStatisticsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GroupedAggregatedStatisticsComponent", function() { return GroupedAggregatedStatisticsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
+/* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
+/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var GroupedAggregatedStatisticsComponent = /** @class */ (function () {
+    function GroupedAggregatedStatisticsComponent(localStorageService) {
+        this.localStorageService = localStorageService;
+        this.types = [];
+        this.groupTypes = [0, 1, 2, 3, 4, 5];
+        this.labels = [];
+        this.groupLabel = [];
+        this.subsCapacityType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY;
+        this.types[0] = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_SUBS_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_SUBS_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_SUBS_PERC
+        ];
+        this.types[1] = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED_PERC
+        ];
+        this.types[2] = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_FREE,
+        ];
+        this.types[3] = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_FREE
+        ];
+        this.types[4] = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_TOTAL,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_FREE
+        ];
+        this.types[5] = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].COMPRESS_RATIO,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].DEDUP_RATIO,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TOTAL_SAVING_EFFECT
+        ];
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_SUBS_PERC] = 'Physical';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_SUBS_PERC] = 'Logical';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_SUBS_PERC] = 'Net';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC] = 'Physical';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED_PERC] = 'Logical';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED_PERC] = 'Net';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY] = 'Capacity';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED] = 'Used';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_FREE] = 'Free';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY] = 'Capacity';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED] = 'Used';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_FREE] = 'Free';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_TOTAL] = 'Capacity';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED] = 'Used';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_FREE] = 'Free';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].COMPRESS_RATIO] = 'Comp';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].DEDUP_RATIO] = 'Dedup';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TOTAL_SAVING_EFFECT] = 'Savings';
+        this.groupLabel[0] = 'Subscription';
+        this.groupLabel[1] = 'Utilization';
+        this.groupLabel[2] = 'Physical Capacity';
+        this.groupLabel[3] = 'Logical Capacity';
+        this.groupLabel[4] = 'Net Capacity';
+        this.groupLabel[5] = 'Savings';
+    }
+    GroupedAggregatedStatisticsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.aggregate();
+        this.localStorageService.observe(this.prefix + '_selected').subscribe(function (data) {
+            _this.selectedRows = data.newValue;
+            _this.aggregate();
+        });
+    };
+    GroupedAggregatedStatisticsComponent.prototype.aggregate = function () {
+        this.selectedRows = this.localStorageService.get(this.prefix + '_selected');
+        if (this.selectedRows === null) {
+            this.selectedRows = [];
+        }
+        var mean = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__["SasiWeightedArithmeticMean"]();
+        this.result = mean.computeSummaries(this.data, this.selectedRows, null);
+    };
+    GroupedAggregatedStatisticsComponent.prototype.getSelectedCount = function () {
+        var _this = this;
+        var filteredByData = this.selectedRows.filter(function (key) {
+            var row = _this.data.find(function (groupRow) { return groupRow.groupRow.getCell('name').value === key.groupName; });
+            if (row === undefined) {
+                return false;
+            }
+            return row.rows.find(function (dataRow) { return dataRow.getCell('name').value === key.rowName; });
+        });
+        return filteredByData.length;
+    };
+    GroupedAggregatedStatisticsComponent.prototype.getMetricByType = function (type) {
+        return this.result.getValue(type);
+    };
+    GroupedAggregatedStatisticsComponent.prototype.getLabelByType = function (type) {
+        return this.labels[type] != null ? this.labels[type] : null;
+    };
+    GroupedAggregatedStatisticsComponent.prototype.toFixed = function (value, position) {
+        if (value == null) {
+            return 'No value';
+        }
+        return parseFloat(value).toFixed(position);
+    };
+    GroupedAggregatedStatisticsComponent.prototype.getGroupLabelByType = function (type) {
+        return this.groupLabel[type] != null ? this.groupLabel[type] : null;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], GroupedAggregatedStatisticsComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], GroupedAggregatedStatisticsComponent.prototype, "aggregatedTypes", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], GroupedAggregatedStatisticsComponent.prototype, "prefix", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], GroupedAggregatedStatisticsComponent.prototype, "selectedRows", void 0);
+    GroupedAggregatedStatisticsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-grouped-aggregated-statistics',
+            template: __webpack_require__(/*! ./grouped-aggregated-statistics.component.html */ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.html"),
+            styles: [__webpack_require__(/*! ./grouped-aggragated-statistics.component.css */ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggragated-statistics.component.css")]
+        }),
+        __metadata("design:paramtypes", [ngx_store__WEBPACK_IMPORTED_MODULE_1__["LocalStorageService"]])
+    ], GroupedAggregatedStatisticsComponent);
+    return GroupedAggregatedStatisticsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.css":
 /*!********************************************************************************************!*\
   !*** ./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.css ***!
@@ -4642,12 +4827,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./views/logical-capacity-statistics/logical-capacity-statistics.component */ "./src/app/global-statistics/views/logical-capacity-statistics/logical-capacity-statistics.component.ts");
 /* harmony import */ var _components_global_physical_capacity_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/global-physical-capacity-statistics/global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.ts");
 /* harmony import */ var _components_global_logical_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/global-logical-statistics/global-logical-statistics.component */ "./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.ts");
+/* harmony import */ var _components_grouped_aggregated_statistics_grouped_aggregated_statistics_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/grouped-aggregated-statistics/grouped-aggregated-statistics.component */ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -4690,6 +4877,7 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _utils_seconds_2_full_time_pipe__WEBPACK_IMPORTED_MODULE_15__["Seconds2FullTimePipe"],
                 _formatters_text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_16__["TextFormatterComponent"],
                 _components_aggragated_statistics_aggragated_statistics_component__WEBPACK_IMPORTED_MODULE_17__["AggragatedStatisticsComponent"],
+                _components_grouped_aggregated_statistics_grouped_aggregated_statistics_component__WEBPACK_IMPORTED_MODULE_23__["GroupedAggregatedStatisticsComponent"],
                 _formatters_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_18__["EmphFormatterComponent"],
                 _formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__["DisbalanceFormatterComponent"],
                 _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__["LogicalCapacityStatisticsComponent"],
@@ -4755,35 +4943,61 @@ __webpack_require__.r(__webpack_exports__);
 //   physicalCapacity = 0;
 //   availableCapacity = 0;
 //   logicalUsed = 0;
-//   physicalUsed = 0;
+//   physicalUsedPerc = 0;
 //   compressionRatio = 0;
 // }
 var SystemAggregatedStatistics = /** @class */ (function () {
     function SystemAggregatedStatistics(systemName) {
         this.system = null;
+        this.subscriptionCapacity = 0;
         this.physicalSubstitution = 0;
         this.physicalCapacity = 0;
         this.availableCapacity = 0;
+        this.logicalCapacity = 0;
         this.logicalUsed = 0;
+        this.logicalFree = 0;
+        this.physicalUsedPerc = 0;
         this.physicalUsed = 0;
+        this.physicalFree = 0;
         this.compressionRatio = 0;
         this.capacityChanged1D = 0;
         this.capacityChanged1W = 0;
         this.capacityChanged1M = 0;
+        this.logicalSubstitution = 0;
+        this.logicalUsedPerc = 0;
+        this.netSubstitution = 0;
+        this.netTotal = 0;
+        this.netUsed = 0;
+        this.netFree = 0;
+        this.netUsedPerc = 0;
+        this.dedupRatio = 0;
+        this.totalSaving = 0;
         this.system = systemName;
     }
     SystemAggregatedStatistics.prototype.getValue = function (name) {
         switch (name) {
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY:
+                return this.subscriptionCapacity;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC:
                 return this.physicalSubstitution;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC:
+                return this.logicalSubstitution;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY:
+                return this.physicalCapacity;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY:
                 return this.physicalCapacity;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY:
                 return this.availableCapacity;
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED:
                 return this.logicalUsed;
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE:
+                return this.logicalFree;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED:
                 return this.physicalUsed;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE:
+                return this.physicalFree;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC:
+                return this.physicalUsedPerc;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO:
                 return this.compressionRatio;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D:
@@ -4792,6 +5006,22 @@ var SystemAggregatedStatistics = /** @class */ (function () {
                 return this.capacityChanged1W;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M:
                 return this.capacityChanged1M;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC:
+                return this.logicalUsedPerc;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC:
+                return this.netSubstitution;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL:
+                return this.netTotal;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED:
+                return this.netUsed;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE:
+                return this.netFree;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC:
+                return this.netUsedPerc;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO:
+                return this.dedupRatio;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT:
+                return this.totalSaving;
         }
     };
     return SystemAggregatedStatistics;
@@ -4838,28 +5068,56 @@ var SasiWeightedArithmeticMean = /** @class */ (function () {
             var systemStats = _this.partiallySummarizedValues;
             var physicalCapacity = _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY);
             systemStats.physicalCapacity += physicalCapacity;
+            systemStats.subscriptionCapacity += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY);
+            systemStats.logicalCapacity += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY);
             systemStats.physicalSubstitution += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC) * physicalCapacity;
+            systemStats.logicalSubstitution += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC) * physicalCapacity;
+            systemStats.netSubstitution += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC) * physicalCapacity;
+            systemStats.logicalUsedPerc += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) * physicalCapacity;
             systemStats.availableCapacity += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY);
-            systemStats.logicalUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) * physicalCapacity;
-            systemStats.physicalUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) * physicalCapacity;
+            systemStats.logicalUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED);
+            systemStats.logicalFree += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE);
+            systemStats.physicalUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED);
+            systemStats.physicalFree += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE);
+            systemStats.physicalUsedPerc += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) * physicalCapacity;
             systemStats.compressionRatio += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO) * physicalCapacity;
             systemStats.capacityChanged1D += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D) * physicalCapacity;
             systemStats.capacityChanged1W += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W) * physicalCapacity;
             systemStats.capacityChanged1M += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M) * physicalCapacity;
+            systemStats.netTotal += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL);
+            systemStats.netUsed += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED);
+            systemStats.netFree += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE);
+            systemStats.netUsedPerc += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC) * physicalCapacity;
+            systemStats.dedupRatio += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO) * physicalCapacity;
+            systemStats.totalSaving += _this.getMetricByName(sasiRow, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT) * physicalCapacity;
         });
         return this.summarizeStats(this.partiallySummarizedValues, 'all');
     };
     SasiWeightedArithmeticMean.prototype.summarizeStats = function (values, name) {
         var summarizedValues = new SystemAggregatedStatistics(name);
+        summarizedValues.subscriptionCapacity = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY);
         summarizedValues.physicalCapacity = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY);
+        summarizedValues.logicalCapacity = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY);
         summarizedValues.physicalSubstitution = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC) / summarizedValues.physicalCapacity;
+        summarizedValues.logicalSubstitution = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC) / summarizedValues.physicalCapacity;
+        summarizedValues.netSubstitution = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC) / summarizedValues.physicalCapacity;
+        summarizedValues.logicalUsedPerc = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) / summarizedValues.physicalCapacity;
         summarizedValues.availableCapacity = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY);
-        summarizedValues.logicalUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) / summarizedValues.physicalCapacity;
-        summarizedValues.physicalUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) / summarizedValues.physicalCapacity;
+        summarizedValues.logicalUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED);
+        summarizedValues.logicalFree = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE);
+        summarizedValues.physicalUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED);
+        summarizedValues.physicalFree = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE);
+        summarizedValues.physicalUsedPerc = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) / summarizedValues.physicalCapacity;
         summarizedValues.compressionRatio = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO) / summarizedValues.physicalCapacity;
         summarizedValues.capacityChanged1D = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D) / summarizedValues.physicalCapacity;
         summarizedValues.capacityChanged1W = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W) / summarizedValues.physicalCapacity;
         summarizedValues.capacityChanged1M = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M) / summarizedValues.physicalCapacity;
+        summarizedValues.netTotal = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL);
+        summarizedValues.netUsed = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED);
+        summarizedValues.netFree = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE);
+        summarizedValues.netUsedPerc = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC) / summarizedValues.physicalCapacity;
+        summarizedValues.dedupRatio = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO) / summarizedValues.physicalCapacity;
+        summarizedValues.totalSaving = values.getValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT) / summarizedValues.physicalCapacity;
         return summarizedValues;
     };
     SasiWeightedArithmeticMean.prototype.getMetricByName = function (metrics, type) {
@@ -4963,30 +5221,56 @@ var SystemAggregatedStatistics = /** @class */ (function (_super) {
     function SystemAggregatedStatistics(systemName) {
         var _this = _super.call(this) || this;
         _this.system = null;
+        _this.subscriptionCapacity = 0;
         _this.physicalSubstitution = 0;
         _this.physicalCapacity = 0;
         _this.availableCapacity = 0;
+        _this.logicalCapacity = 0;
         _this.logicalUsed = 0;
+        _this.logicalFree = 0;
+        _this.physicalUsedPerc = 0;
         _this.physicalUsed = 0;
+        _this.physicalFree = 0;
         _this.compressionRatio = 0;
         _this.capacityChanged1D = 0;
         _this.capacityChanged1W = 0;
         _this.capacityChanged1M = 0;
+        _this.logicalSubstitution = 0;
+        _this.logicalUsedPerc = 0;
+        _this.netSubstitution = 0;
+        _this.netTotal = 0;
+        _this.netUsed = 0;
+        _this.netFree = 0;
+        _this.netUsedPerc = 0;
+        _this.dedupRatio = 0;
+        _this.totalSaving = 0;
         _this.system = systemName;
         return _this;
     }
     SystemAggregatedStatistics.prototype.getValue = function (name) {
         switch (name) {
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY:
+                return this.subscriptionCapacity;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC:
                 return this.physicalSubstitution;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC:
+                return this.logicalSubstitution;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY:
+                return this.physicalCapacity;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY:
                 return this.physicalCapacity;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY:
                 return this.availableCapacity;
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED:
                 return this.logicalUsed;
-            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC:
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE:
+                return this.logicalFree;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED:
                 return this.physicalUsed;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE:
+                return this.physicalFree;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC:
+                return this.physicalUsedPerc;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO:
                 return this.compressionRatio;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D:
@@ -4995,6 +5279,22 @@ var SystemAggregatedStatistics = /** @class */ (function (_super) {
                 return this.capacityChanged1W;
             case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M:
                 return this.capacityChanged1M;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC:
+                return this.logicalUsedPerc;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC:
+                return this.netSubstitution;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL:
+                return this.netTotal;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED:
+                return this.netUsed;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE:
+                return this.netFree;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC:
+                return this.netUsedPerc;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO:
+                return this.dedupRatio;
+            case _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT:
+                return this.totalSaving;
         }
     };
     return SystemAggregatedStatistics;
@@ -5021,14 +5321,28 @@ var WeightedArithmeticMean = /** @class */ (function () {
             }
             var physicalCapacity = _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY);
             systemStats.physicalCapacity += physicalCapacity;
+            systemStats.subscriptionCapacity += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY);
+            systemStats.logicalCapacity += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY);
             systemStats.physicalSubstitution += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC) * physicalCapacity;
+            systemStats.logicalSubstitution += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC) * physicalCapacity;
+            systemStats.netSubstitution += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC) * physicalCapacity;
+            systemStats.logicalUsedPerc += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) * physicalCapacity;
             systemStats.availableCapacity += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY);
-            systemStats.logicalUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) * physicalCapacity;
-            systemStats.physicalUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) * physicalCapacity;
+            systemStats.logicalUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED);
+            systemStats.logicalFree += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE);
+            systemStats.physicalUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED);
+            systemStats.physicalFree += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE);
+            systemStats.physicalUsedPerc += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) * physicalCapacity;
             systemStats.compressionRatio += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO) * physicalCapacity;
             systemStats.capacityChanged1D += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D) * physicalCapacity;
             systemStats.capacityChanged1W += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W) * physicalCapacity;
             systemStats.capacityChanged1M += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M) * physicalCapacity;
+            systemStats.netTotal += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL);
+            systemStats.netUsed += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED);
+            systemStats.netFree += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE);
+            systemStats.netUsedPerc += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC) * physicalCapacity;
+            systemStats.dedupRatio += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO) * physicalCapacity;
+            systemStats.totalSaving += _this.getMetricByName(metrics, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT) * physicalCapacity;
         });
         filter.forEach(function (key) {
             var systemStats = _this.getSystemStatistics(key.systemName);
@@ -5043,14 +5357,28 @@ var WeightedArithmeticMean = /** @class */ (function () {
     WeightedArithmeticMean.prototype.summarizeStats = function (values, name) {
         var summarizedValues = new SystemAggregatedStatistics(name);
         summarizedValues.physicalCapacity = this.sum(values, 'physicalCapacity');
+        summarizedValues.subscriptionCapacity = this.sum(values, 'subscriptionCapacity');
+        summarizedValues.logicalCapacity = this.sum(values, 'logicalCapacity');
         summarizedValues.physicalSubstitution = this.sum(values, 'physicalSubstitution') / summarizedValues.physicalCapacity;
+        summarizedValues.logicalSubstitution = this.sum(values, 'logicalSubstitution') / summarizedValues.physicalCapacity;
+        summarizedValues.netSubstitution = this.sum(values, 'netSubstitution') / summarizedValues.physicalCapacity;
+        summarizedValues.logicalUsedPerc = this.sum(values, 'logicalUsedPerc') / summarizedValues.physicalCapacity;
         summarizedValues.availableCapacity = this.sum(values, 'availableCapacity');
-        summarizedValues.logicalUsed = this.sum(values, 'logicalUsed') / summarizedValues.physicalCapacity;
-        summarizedValues.physicalUsed = this.sum(values, 'physicalUsed') / summarizedValues.physicalCapacity;
+        summarizedValues.logicalUsed = this.sum(values, 'logicalUsed');
+        summarizedValues.logicalFree = this.sum(values, 'logicalFree');
+        summarizedValues.physicalUsed = this.sum(values, 'physicalUsed');
+        summarizedValues.physicalFree = this.sum(values, 'physicalFree');
+        summarizedValues.physicalUsedPerc = this.sum(values, 'physicalUsedPerc') / summarizedValues.physicalCapacity;
         summarizedValues.compressionRatio = this.sum(values, 'compressionRatio') / summarizedValues.physicalCapacity;
         summarizedValues.capacityChanged1D = this.sum(values, 'capacityChanged1D') / summarizedValues.physicalCapacity;
         summarizedValues.capacityChanged1W = this.sum(values, 'capacityChanged1W') / summarizedValues.physicalCapacity;
         summarizedValues.capacityChanged1M = this.sum(values, 'capacityChanged1M') / summarizedValues.physicalCapacity;
+        summarizedValues.netTotal = this.sum(values, 'netTotal');
+        summarizedValues.netUsed = this.sum(values, 'netUsed');
+        summarizedValues.netFree = this.sum(values, 'netFree');
+        summarizedValues.netUsedPerc = this.sum(values, 'netUsedPerc') / summarizedValues.physicalCapacity;
+        summarizedValues.dedupRatio = this.sum(values, 'dedupRatio') / summarizedValues.physicalCapacity;
+        summarizedValues.totalSaving = this.sum(values, 'totalSaving') / summarizedValues.physicalCapacity;
         return summarizedValues;
     };
     WeightedArithmeticMean.prototype.sum = function (values, statisticsName) {
@@ -5462,7 +5790,7 @@ module.exports = ":host /deep/ .col-val {\n  padding-top: 5px;\n  padding-bottom
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable\" [tableOptions]=\"options\"></app-sasi-table>\n<!--      <app-aggragated-statistics class='col-md-12 sticky-bottom' [aggregatedTypes]=\"options.getAggregatedColumns()\" [data]=\"data | systemPool2SasiGroupTable\" [selectedRows]=\"selectedRows\" [prefix]=\"options.storageNamePrefix\"></app-aggragated-statistics>-->\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable\" [tableOptions]=\"options\"></app-sasi-table>\n      <app-grouped-aggregated-statistics class='col-md-12 sticky-bottom' [aggregatedTypes]=\"options.getAggregatedColumns()\" [data]=\"data | systemPool2SasiGroupTable\" [selectedRows]=\"selectedRows\" [prefix]=\"options.storageNamePrefix\"></app-grouped-aggregated-statistics>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -5560,140 +5888,140 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withLabel('Subs. Capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC)
             .withLabel('Physical Subs.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC)
             .withLabel('Logical Subs.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
             .withLabel('Logical Used')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC)
             .withLabel('NET Subs.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY)
             .withLabel('Physical Capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED)
             .withLabel('Physical Used')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE)
             .withLabel('Physical Free')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC)
             .withLabel('Physical Used')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY)
             .withLabel('Logical Capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED)
             .withLabel('Logical Used')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE)
             .withLabel('Logical Free')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
             .withLabel('Logical Used')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
             .withLabel('Net Total')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
             .withLabel('Net Used')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE)
             .withLabel('Net Free')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
             .withLabel('Net Used')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO)
             .withLabel('Comp Ratio')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO)
             .withLabel('Dedup Ratio')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT)
             .withLabel('Total Saving Effect')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
+            .withIsAggregated(true)
             .build());
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_10__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _formatters_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_11__["RouteLinkFormatterComponent"];
