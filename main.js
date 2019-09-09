@@ -3970,7 +3970,7 @@ module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"agg-vals\" *ngIf=\"result != null\">\n  <div class=\"col-smaller\">\n    <div class=\"agg-name\"># Selected</div>\n    <div class=\"agg-value \">{{getSelectedCount()}}</div>\n  </div>\n  <div class=\"col-smaller\">\n    <div class=\"agg-name\">Subs. capacity</div>\n    <div class=\"agg-value \">{{getMetricByType(subsCapacityType).value}}</div>\n  </div>\n  <div class=\"col\" *ngFor=\"let group of groupTypes\">\n    <div class=\"agg-name\">{{getGroupLabelByType(group)}}</div>\n    <div class=\"agg-value\">\n      <div *ngFor=\"let type of types[group]\">\n        <div class=\"text-left col-md-5\">{{getLabelByType(type)}}: </div>\n        <div class=\"text-right col-md-push-6\">\n          <span *ngIf=\"getMetricByType(type) !== undefined && getMetricByType(type) != null\">{{toFixed(getMetricByType(type).value, 2) | formatThousands}} <span class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n          <span class='text-gray' *ngIf=\"getMetricByType(type).value === undefined || getMetricByType(type).value == null\">No value</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"agg-vals\" *ngIf=\"result != null\">\n  <div class=\"col-smaller\">\n    <div class=\"agg-name\"># Selected</div>\n    <div class=\"agg-value \">{{getSelectedCount()}}</div>\n  </div>\n  <div class=\"col-smaller\">\n    <div class=\"agg-name\">Subs. capacity</div>\n    <div class=\"agg-value \">{{getMetricByType(subsCapacityType).value}} <span class=\"agg-unit\">{{getMetricByType(subsCapacityType).unit}}</span></div>\n  </div>\n  <div class=\"col\" *ngFor=\"let group of groupTypes\">\n    <div class=\"agg-name\">{{getGroupLabelByType(group)}}</div>\n    <div class=\"agg-value\">\n      <div *ngFor=\"let type of types[group]\">\n        <div class=\"text-left col-md-5\">{{getLabelByType(type)}}: </div>\n        <div class=\"text-right col-md-push-6\">\n          <span *ngIf=\"getMetricByType(type) !== undefined && getMetricByType(type) != null\">{{toFixed(getMetricByType(type).value, 2) | formatThousands}} <span class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n          <span class='text-gray' *ngIf=\"getMetricByType(type).value === undefined || getMetricByType(type).value == null\">No value</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -6159,7 +6159,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC)
-            .withLabel('NET Subs.')
+            .withLabel('Net Subs.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -6231,7 +6231,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
-            .withLabel('Net Total')
+            .withLabel('Net Capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
