@@ -6139,7 +6139,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
-            .withTooltipText('Physical subscription')
+            .withTooltipText('Physical Subscription')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC)
@@ -6147,7 +6147,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
-            .withTooltipText('Logical subscription')
+            .withTooltipText('Logical Subscription')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
@@ -6163,7 +6163,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
-            .withTooltipText('Net subscription')
+            .withTooltipText('Net Subscription')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY)
@@ -6171,7 +6171,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
-            .withTooltipText('Physical capacity (Physical data occupation on HDD/FMD/SSD)')
+            .withTooltipText('Physical Capacity (Physical data occupation on HDD/FMD/SSD)')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED)
@@ -6235,7 +6235,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
-            .withTooltipText('Net capacity (Virtual capacity without any saving mechanism)')
+            .withTooltipText('Net Capacity (Virtual capacity without any saving mechanism)')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
@@ -6267,7 +6267,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
-            .withTooltipText('Compensation Ratio')
+            .withTooltipText('Compression Ratio')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO)
