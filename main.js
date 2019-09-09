@@ -3705,7 +3705,8 @@ var GlobalLogicalStatisticsComponent = /** @class */ (function () {
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY
         ];
         // this.types[0] = [SystemMetricType.SUBSCRIBED_CAPACITY];
         this.types[0] = [
@@ -3738,7 +3739,7 @@ var GlobalLogicalStatisticsComponent = /** @class */ (function () {
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT
         ];
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'Subscribed capacity';
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'Subscribed Capacity';
         this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC] = 'Physical';
         this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC] = 'Logical';
         this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC] = 'Net';
