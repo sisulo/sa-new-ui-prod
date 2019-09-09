@@ -2622,14 +2622,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var IframeUrlCreatorPipe = /** @class */ (function () {
     function IframeUrlCreatorPipe() {
         this.iFrameLinks = {
-            dashboard: '1%20Dash%20Board/Dash%20Board.html',
+            dashboard: '1%20Dash%20Board/index.html',
             serverBoard: '2%20Server%20Board/index.html',
             dpSla: '4%20DP%20Pool%20Board%20and%20SLA/index.html',
             deepAnalysis: '7%20Deep%20Analysis/index.html',
             cache: '8%20Cache%20Board/index.html',
             adapters: '8%20CHA%20Adapters%20Board/index.html',
-            trends: '8%20Trends/Trends.html',
-            capacityAnalysis: '9%20Capacity%20Analysis/Capacity%20Analysis.html'
+            trends: '8%20Trends/index.html',
+            capacityAnalysis: '9%20Capacity%20Analysis/index.html'
         };
         this.mapSystemToDirectory = [];
         this.mapSystemToDirectory[1] = '01';
