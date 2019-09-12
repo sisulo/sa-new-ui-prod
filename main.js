@@ -1668,32 +1668,20 @@ var RowTableComponent = /** @class */ (function () {
         return this.findIndex(name) > -1;
     };
     RowTableComponent.prototype.selectRow = function (name, ignore) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a, index;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.localStorageService.get(this.options.storageNamePrefix + '_selected')];
-                    case 1:
-                        _a.selectedRows = _b.sent();
-                        if (this.selectedRows === null) {
-                            this.selectedRows = [];
-                        }
-                        index = this.findIndex(name);
-                        if (index > -1 && !ignore) {
-                            this.selectedRows.splice(index, 1);
-                        }
-                        if (index < 0) {
-                            this.selectedRows.push(new _selected_row__WEBPACK_IMPORTED_MODULE_3__["SelectedRow"](this.groupName, name));
-                        }
-                        // @ts-ignore
-                        this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
-                        this.selectEmit.emit(this.selectedRows);
-                        return [2 /*return*/];
-                }
-            });
-        });
+        this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
+        if (this.selectedRows === null) {
+            this.selectedRows = [];
+        }
+        var index = this.findIndex(name);
+        if (index > -1 && !ignore) {
+            this.selectedRows.splice(index, 1);
+        }
+        if (index < 0) {
+            this.selectedRows.push(new _selected_row__WEBPACK_IMPORTED_MODULE_3__["SelectedRow"](this.groupName, name));
+        }
+        // @ts-ignore
+        this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
+        this.selectEmit.emit(this.selectedRows);
     };
     RowTableComponent.prototype.findIndex = function (name) {
         var _this = this;
