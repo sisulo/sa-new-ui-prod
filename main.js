@@ -1162,6 +1162,49 @@ var GroupSortImpl = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/common/components/sasi-table/on-select.service.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/common/components/sasi-table/on-select.service.ts ***!
+  \*******************************************************************/
+/*! exports provided: OnSelectService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OnSelectService", function() { return OnSelectService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var OnSelectService = /** @class */ (function () {
+    function OnSelectService() {
+        // Observable string sources
+        this.selectAll = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        // Observable string streams
+        this.selectAll$ = this.selectAll.asObservable();
+    }
+    // Service message commands
+    OnSelectService.prototype.announceSelectAll = function (value) {
+        this.selectAll.next(value);
+    };
+    OnSelectService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], OnSelectService);
+    return OnSelectService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/components/sasi-table/row-dynamic.component.ts":
 /*!***********************************************************************!*\
   !*** ./src/app/common/components/sasi-table/row-dynamic.component.ts ***!
@@ -1293,6 +1336,41 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
 
@@ -1317,33 +1395,38 @@ var RowGroupTableComponent = /** @class */ (function () {
         this.alertPriority = ['text-alert-yellow', 'text-orange', 'text-red'];
     }
     RowGroupTableComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        // TODO refactor this to the service
-        // this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(
-        //   data => {
-        //     this.selectedRows = data.newValue;
-        //     this.initAggregatedValues();
-        //   }
-        // );
-        this.localStorageService.observe(this.options.storageNamePrefix + '_collapsed').subscribe(function (data) {
-            _this.collapsedRows = data.newValue;
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            var _this = this;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        // TODO refactor this to the service
+                        this.localStorageService.observe(this.options.storageNamePrefix + '_collapsed').subscribe(function (data) {
+                            _this.collapsedRows = data.newValue;
+                        });
+                        _a = this;
+                        return [4 /*yield*/, this.localStorageService.get(this.options.storageNamePrefix + '_collapsed')];
+                    case 1:
+                        _a.collapsedRows = _b.sent();
+                        if (this.selectedRows == null) {
+                            this.selectedRows = [];
+                        }
+                        else {
+                            this.selectedRows = this.selectedRows; // this must be reset because save on the collapsedRows doesn't work
+                        }
+                        if (this.collapsedRows === null) {
+                            this.collapsedRows = [];
+                        }
+                        else {
+                            this.collapsedRows = this.collapsedRows; // this must be reset because save on the collapsedRows doesn't work
+                        }
+                        this.initAggregatedValues();
+                        this.summarizeAlerts();
+                        return [2 /*return*/];
+                }
+            });
         });
-        // this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
-        this.collapsedRows = this.localStorageService.get(this.options.storageNamePrefix + '_collapsed');
-        if (this.selectedRows == null) {
-            this.selectedRows = [];
-        }
-        else {
-            this.selectedRows = this.selectedRows; // this must be reset because save on the collapsedRows doesn't work
-        }
-        if (this.collapsedRows === null) {
-            this.collapsedRows = [];
-        }
-        else {
-            this.collapsedRows = this.collapsedRows; // this must be reset because save on the collapsedRows doesn't work
-        }
-        this.initAggregatedValues();
-        this.summarizeAlerts();
     };
     RowGroupTableComponent.prototype.initAggregatedValues = function () {
         if (this.selectedRows === null) {
@@ -1488,6 +1571,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sasi_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 /* harmony import */ var _selected_row__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./selected-row */ "./src/app/common/components/sasi-table/row-table/selected-row.ts");
+/* harmony import */ var _on_select_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../on-select.service */ "./src/app/common/components/sasi-table/on-select.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1536,32 +1620,31 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var RowTableComponent = /** @class */ (function () {
-    function RowTableComponent(localStorageService) {
+    function RowTableComponent(localStorageService, onSelectService) {
         this.localStorageService = localStorageService;
+        this.onSelectService = onSelectService;
         this.columnHighlightEnable = false;
         this.selectEmit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.highlightedColumn = -1;
     }
+    RowTableComponent.prototype.ngOnDestroy = function () {
+        if (this.subscription !== undefined) {
+            this.subscription.unsubscribe();
+        }
+    };
     RowTableComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _a;
+            var _this = this;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        // this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(
-                        //   data => {
-                        //     this.selectedRows = data.newValue;
-                        //   }
-                        // );
+                        this.subscription = this.onSelectService.selectAll$.subscribe(function (value) { return _this.selectRow(_this.data.getCell('name').value, value); });
                         _a = this;
                         return [4 /*yield*/, this.localStorageService.get(this.options.storageNamePrefix + '_selected')];
                     case 1:
-                        // this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(
-                        //   data => {
-                        //     this.selectedRows = data.newValue;
-                        //   }
-                        // );
                         _a.selectedRows = _b.sent();
                         if (this.selectedRows === null) {
                             this.selectedRows = [];
@@ -1584,21 +1667,33 @@ var RowTableComponent = /** @class */ (function () {
     RowTableComponent.prototype.isSelectedRow = function (name) {
         return this.findIndex(name) > -1;
     };
-    RowTableComponent.prototype.selectRow = function (name) {
-        this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
-        if (this.selectedRows === null) {
-            this.selectedRows = [];
-        }
-        var index = this.findIndex(name);
-        if (index > -1) {
-            this.selectedRows.splice(index, 1);
-        }
-        else {
-            this.selectedRows.push(new _selected_row__WEBPACK_IMPORTED_MODULE_3__["SelectedRow"](this.groupName, name));
-        }
-        // @ts-ignore
-        this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
-        this.selectEmit.emit(this.selectedRows);
+    RowTableComponent.prototype.selectRow = function (name, ignore) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, index;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.localStorageService.get(this.options.storageNamePrefix + '_selected')];
+                    case 1:
+                        _a.selectedRows = _b.sent();
+                        if (this.selectedRows === null) {
+                            this.selectedRows = [];
+                        }
+                        index = this.findIndex(name);
+                        if (index > -1 && !ignore) {
+                            this.selectedRows.splice(index, 1);
+                        }
+                        if (index < 0) {
+                            this.selectedRows.push(new _selected_row__WEBPACK_IMPORTED_MODULE_3__["SelectedRow"](this.groupName, name));
+                        }
+                        // @ts-ignore
+                        this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
+                        this.selectEmit.emit(this.selectedRows);
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     RowTableComponent.prototype.findIndex = function (name) {
         var _this = this;
@@ -1637,7 +1732,8 @@ var RowTableComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./row-table.component.html */ "./src/app/common/components/sasi-table/row-table/row-table.component.html"),
             styles: [__webpack_require__(/*! ./row-table.component.css */ "./src/app/common/components/sasi-table/row-table/row-table.component.css")]
         }),
-        __metadata("design:paramtypes", [ngx_store__WEBPACK_IMPORTED_MODULE_2__["LocalStorageService"]])
+        __metadata("design:paramtypes", [ngx_store__WEBPACK_IMPORTED_MODULE_2__["LocalStorageService"],
+            _on_select_service__WEBPACK_IMPORTED_MODULE_4__["OnSelectService"]])
     ], RowTableComponent);
     return RowTableComponent;
 }());
@@ -1686,7 +1782,7 @@ module.exports = "/****** Behavior *****/\ndiv.collapsed ~ div.collapsable {\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    TOP TABLE ROW\n  -->\n  <div class=\"row table-header sticky-top\">\n    <div class=\"col-control\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n      (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n      (click)=\"selectAll()\"></i>\n    </div>\n    <div class=\"col-val col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <div class=\"col\" [style.width.%]=\"options.getColumnWidth(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\">\n      <span class=\"link\" (click)=\"setSort(columnOption, false)\">{{getColumnLabel(columnOption.index)}} <i\n        class=\"text-muted sorting sort-icon-right\"\n        [ngClass]=\"getSortIconClass(columnOption.index, false)\"></i>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <br/>\n      <span *ngIf=\"columnOption.altSortEnable === true\" (click)=\"setSort(columnOption, true)\" class=\"link\"><i\n      class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span> <i\n      class='sorting sort-icon-right' [ngClass]=\"getSortIconClass(columnOption.index, true)\"\n      ></i></span>\n    </div>\n  </div>\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"row\">\n    <!--<div  [class.highlight-row]=\"options.highlightRow\">-->\n    <app-row-dynamic-table *ngFor=\"let row of data\"\n                           [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                           [class.striped-row]=\"!options.isDataGrouped\"\n                           [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\" [selectedRows]=\"selectedRows\"\n                           [options]=\"options\"></app-row-dynamic-table>\n    <!--</div>-->\n  </div>\n</div>\n"
+module.exports = "<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    TOP TABLE ROW\n  -->\n  <div class=\"row table-header sticky-top\">\n    <div class=\"col-control\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div class=\"col-val col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <div class=\"col\" [style.width.%]=\"options.getColumnWidth(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\">\n      <span class=\"link\" (click)=\"setSort(columnOption, false)\">{{getColumnLabel(columnOption.index)}} <i\n        class=\"text-muted sorting sort-icon-right\"\n        [ngClass]=\"getSortIconClass(columnOption.index, false)\"></i>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <br/>\n      <span *ngIf=\"columnOption.altSortEnable === true\" (click)=\"setSort(columnOption, true)\" class=\"link\"><i\n        class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span> <i\n          class='sorting sort-icon-right' [ngClass]=\"getSortIconClass(columnOption.index, true)\"\n        ></i></span>\n    </div>\n  </div>\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"row\" *ngIf=\"selectedRows !== undefined\">\n    <!--<div  [class.highlight-row]=\"options.highlightRow\">-->\n    <app-row-dynamic-table *ngFor=\"let row of data\"\n                           [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                           [class.striped-row]=\"!options.isDataGrouped\"\n                           [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                           [options]=\"options\"></app-row-dynamic-table>\n    <!--</div>-->\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1711,7 +1807,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
-/* harmony import */ var _row_table_selected_row__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./row-table/selected-row */ "./src/app/common/components/sasi-table/row-table/selected-row.ts");
+/* harmony import */ var _on_select_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./on-select.service */ "./src/app/common/components/sasi-table/on-select.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1911,8 +2007,9 @@ var slideInOutAnimation = [
     ])
 ];
 var SasiTableComponent = /** @class */ (function () {
-    function SasiTableComponent(localStorageService) {
+    function SasiTableComponent(localStorageService, onSelectService) {
         this.localStorageService = localStorageService;
+        this.onSelectService = onSelectService;
         this.data = [];
         this.tableOptions = new SasiTableOptions();
         this.defaultOptions = {
@@ -1955,9 +2052,7 @@ var SasiTableComponent = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         this.options = Object.assign(this.defaultOptions, this.tableOptions);
-                        // this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(
-                        //   data => this.selectedRows = data.newValue
-                        // );
+                        this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) { return _this.selectedRows = data.newValue; });
                         this.localStorageService.observe(this.options.storageNamePrefix + '_collapsed').subscribe(function (data) {
                             _this.collapsedRows = data.newValue;
                         });
@@ -2074,26 +2169,50 @@ var SasiTableComponent = /** @class */ (function () {
         function (rowGroup) { return rowGroup.rows.find(function (row) { return _this.selectedRows.find(function (selectedRow) { return selectedRow.rowName === row.getCell('name').value && selectedRow.groupName === rowGroup.groupRow.getCell('name').value; }) !== undefined; }); }) !== undefined;
     };
     SasiTableComponent.prototype.selectAll = function () {
-        var _this = this;
-        // @ts-ignore
-        var d = this.data;
+        // // @ts-ignore
+        // const d = <SasiGroupRow[]>this.data;
         if (!this.isSelectedAll()) {
-            // this.selectedRows = [];
-            d.forEach(function (rowGroup) { return rowGroup.rows.forEach(function (row) {
-                if (_this.selectedRows.findIndex(function (filterItem) { return filterItem.groupName === rowGroup.groupRow.getCell('name').value && row.getCell('name').value === filterItem.rowName; }) === -1) {
-                    _this.selectedRows.push(new _row_table_selected_row__WEBPACK_IMPORTED_MODULE_3__["SelectedRow"](rowGroup.groupRow.getCell('name').value, row.getCell('name').value));
-                }
-            }); });
-            this.selectedRows = this.selectedRows.slice();
+            this.onSelectService.announceSelectAll(true);
         }
         else {
-            // this.selectedRows = [];
-            d.forEach(function (groupRow) {
-                return groupRow.rows.forEach(function (row) { return _this.selectedRows.splice(_this.selectedRows.findIndex(function (selectedRow) { return selectedRow.groupName === groupRow.groupRow.getCell('name').value && selectedRow.rowName === row.getCell('name').value; }), 1); });
-            });
-            this.selectedRows = this.selectedRows.slice();
+            this.onSelectService.announceSelectAll(false);
         }
-        this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
+        //   // this.selectedRows = [];
+        //   d.forEach(
+        //     rowGroup => rowGroup.rows.forEach(
+        //
+        //       row => {
+        //         if (this.selectedRows.findIndex(filterItem => filterItem.groupName === rowGroup.groupRow.getCell('name').value && row.getCell('name').value === filterItem.rowName) === -1) {
+        //           this.selectedRows.push(new SelectedRow(rowGroup.groupRow.getCell('name').value, row.getCell('name').value));
+        //         }
+        //
+        //       }
+        //     )
+        //   );
+        //   this.selectedRows = [...this.selectedRows];
+        // } else {
+        //   // this.selectedRows = [];
+        //   d.forEach(
+        //     groupRow =>
+        //       groupRow.rows.forEach(
+        //         row => this.selectedRows.splice(
+        //           this.selectedRows.findIndex(
+        //             selectedRow => selectedRow.groupName === groupRow.groupRow.getCell('name').value && selectedRow.rowName === row.getCell('name').value
+        //           ), 1
+        //         )
+        //       )
+        //   );
+        //   this.selectedRows = [...this.selectedRows];
+        // }
+        // this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
+        // console.log(this.selectedRows);
+    };
+    SasiTableComponent.prototype.onSelect = function (rows) {
+        console.log('Sasi');
+        console.log(rows);
+        // this.selectedRows = [...rows];
+        console.log(this.selectedRows);
+        // this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -2114,7 +2233,8 @@ var SasiTableComponent = /** @class */ (function () {
          * Storage analytics simple interactive table
          */
         ,
-        __metadata("design:paramtypes", [ngx_store__WEBPACK_IMPORTED_MODULE_1__["LocalStorageService"]])
+        __metadata("design:paramtypes", [ngx_store__WEBPACK_IMPORTED_MODULE_1__["LocalStorageService"],
+            _on_select_service__WEBPACK_IMPORTED_MODULE_3__["OnSelectService"]])
     ], SasiTableComponent);
     return SasiTableComponent;
 }());
