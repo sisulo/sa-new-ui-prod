@@ -1147,12 +1147,27 @@ var GroupSortImpl = /** @class */ (function (_super) {
     }
     GroupSortImpl.prototype.sort = function (data, column, sortType, sortByRawValue) {
         var _this = this;
-        data.forEach(function (groupRow) { return groupRow.rows = _super.prototype.sort.call(_this, groupRow.rows, column, sortType, sortByRawValue, function (row, columnIndex) { return row.getCellValue(columnIndex); }); });
+        data.forEach(function (groupRow) { return groupRow.rows = _super.prototype.sort.call(_this, groupRow.rows, column, sortType, sortByRawValue, function (row, columnIndex) {
+            if (row !== undefined) {
+                return row.getCellValue(columnIndex);
+            }
+            return null;
+        }); });
         if (column.index === 'name') {
-            return _super.prototype.sort.call(this, data, column, sortType, sortByRawValue, function (row, columnIndex) { return row.groupRow.getCellValue(columnIndex); });
+            return _super.prototype.sort.call(this, data, column, sortType, sortByRawValue, function (row, columnIndex) {
+                if (row !== undefined) {
+                    return row.groupRow.getCellValue(columnIndex);
+                }
+                return null;
+            });
         }
         else {
-            return _super.prototype.sort.call(this, data, column, sortType, sortByRawValue, function (row, columnIndex) { return row.rows[0].getCellValue(columnIndex); });
+            return _super.prototype.sort.call(this, data, column, sortType, sortByRawValue, function (row, columnIndex) {
+                if (row !== undefined && row.rows[0] !== undefined) {
+                    return row.rows[0].getCellValue(columnIndex);
+                }
+                return null;
+            });
         }
     };
     return GroupSortImpl;
@@ -1503,7 +1518,7 @@ var RowGroupTableComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/*** Layout table ***/\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n}\n.col {\n  /*width: 13.33%;*/\n  display: inline-block;\n  vertical-align: middle;\n}\n.col-control i {\n  font-size: 11px;\n  padding: 3px;\n}\n.col-control:after {\n  content: \"\";\n  font-size: 11px;\n  padding: 3px;\n}\n/**** Table data ****/\n.table-data {\n  width: 100%;\n}\n.table-data > div {\n  /*text-align: center;*/\n  border-right: 1px #EAEAEA solid;\n  display: inline-block;\n  vertical-align: middle;\n  margin: auto;\n}\n.selectedRow {\n  background-color: #BEECD1;\n  color: #3A738C;\n}\n.table-data .highlightColumn {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n.highlight-row:hover {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9yb3ctdGFibGUvcm93LXRhYmxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsc0JBQXNCO0FBQ3RCO0VBQ0UsWUFBWTtFQUNaLHNCQUFzQjtFQUN0Qix1QkFBdUI7RUFDdkIsbUJBQW1CO0NBQ3BCO0FBRUQ7RUFDRSxrQkFBa0I7RUFDbEIsc0JBQXNCO0VBQ3RCLHVCQUF1QjtDQUN4QjtBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLGFBQWE7Q0FDZDtBQUVEO0VBQ0UsWUFBWTtFQUNaLGdCQUFnQjtFQUNoQixhQUFhO0NBQ2Q7QUFFRCxzQkFBc0I7QUFDdEI7RUFDRSxZQUFZO0NBQ2I7QUFFRDtFQUNFLHVCQUF1QjtFQUN2QixnQ0FBZ0M7RUFDaEMsc0JBQXNCO0VBQ3RCLHVCQUF1QjtFQUN2QixhQUFhO0NBQ2Q7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixlQUFlO0NBQ2hCO0FBQ0Q7RUFDRSxxQ0FBcUM7RUFDckMsZUFBZTtDQUNoQjtBQUNEO0VBQ0UscUNBQXFDO0VBQ3JDLGVBQWU7Q0FDaEIiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vY29tcG9uZW50cy9zYXNpLXRhYmxlL3Jvdy10YWJsZS9yb3ctdGFibGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogTGF5b3V0IHRhYmxlICoqKi9cbi5jb2wtY29udHJvbCB7XG4gIHdpZHRoOiAzLjUlO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmNvbCB7XG4gIC8qd2lkdGg6IDEzLjMzJTsqL1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG59XG5cbi5jb2wtY29udHJvbCBpIHtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBwYWRkaW5nOiAzcHg7XG59XG5cbi5jb2wtY29udHJvbDphZnRlciB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgcGFkZGluZzogM3B4O1xufVxuXG4vKioqKiBUYWJsZSBkYXRhICoqKiovXG4udGFibGUtZGF0YSB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4udGFibGUtZGF0YSA+IGRpdiB7XG4gIC8qdGV4dC1hbGlnbjogY2VudGVyOyovXG4gIGJvcmRlci1yaWdodDogMXB4ICNFQUVBRUEgc29saWQ7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgbWFyZ2luOiBhdXRvO1xufVxuXG4uc2VsZWN0ZWRSb3cge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjQkVFQ0QxO1xuICBjb2xvcjogIzNBNzM4Qztcbn1cbi50YWJsZS1kYXRhIC5oaWdobGlnaHRDb2x1bW4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjRkMWVlICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjM0E3MzhDO1xufVxuLmhpZ2hsaWdodC1yb3c6aG92ZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjRkMWVlICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjM0E3MzhDO1xufVxuIl19 */"
+module.exports = "/*** Layout table ***/\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n}\n.col {\n  /*width: 13.33%;*/\n  display: inline-block;\n  vertical-align: middle;\n}\n.col-control i {\n  font-size: 11px;\n  padding: 3px;\n  cursor: pointer;\n}\n.col-control:after {\n  content: \"\";\n  font-size: 11px;\n  padding: 3px;\n}\n/**** Table data ****/\n.table-data {\n  width: 100%;\n}\n.table-data > div {\n  /*text-align: center;*/\n  border-right: 1px #EAEAEA solid;\n  display: inline-block;\n  vertical-align: middle;\n  margin: auto;\n}\n.selectedRow {\n  background-color: #BEECD1;\n  color: #3A738C;\n}\n.table-data .highlightColumn {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n.highlight-row:hover {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9yb3ctdGFibGUvcm93LXRhYmxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsc0JBQXNCO0FBQ3RCO0VBQ0UsWUFBWTtFQUNaLHNCQUFzQjtFQUN0Qix1QkFBdUI7RUFDdkIsbUJBQW1CO0NBQ3BCO0FBRUQ7RUFDRSxrQkFBa0I7RUFDbEIsc0JBQXNCO0VBQ3RCLHVCQUF1QjtDQUN4QjtBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLGFBQWE7RUFDYixnQkFBZ0I7Q0FDakI7QUFFRDtFQUNFLFlBQVk7RUFDWixnQkFBZ0I7RUFDaEIsYUFBYTtDQUNkO0FBRUQsc0JBQXNCO0FBQ3RCO0VBQ0UsWUFBWTtDQUNiO0FBRUQ7RUFDRSx1QkFBdUI7RUFDdkIsZ0NBQWdDO0VBQ2hDLHNCQUFzQjtFQUN0Qix1QkFBdUI7RUFDdkIsYUFBYTtDQUNkO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsZUFBZTtDQUNoQjtBQUNEO0VBQ0UscUNBQXFDO0VBQ3JDLGVBQWU7Q0FDaEI7QUFDRDtFQUNFLHFDQUFxQztFQUNyQyxlQUFlO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9yb3ctdGFibGUvcm93LXRhYmxlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKioqIExheW91dCB0YWJsZSAqKiovXG4uY29sLWNvbnRyb2wge1xuICB3aWR0aDogMy41JTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5jb2wge1xuICAvKndpZHRoOiAxMy4zMyU7Ki9cbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xufVxuXG4uY29sLWNvbnRyb2wgaSB7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgcGFkZGluZzogM3B4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi5jb2wtY29udHJvbDphZnRlciB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgcGFkZGluZzogM3B4O1xufVxuXG4vKioqKiBUYWJsZSBkYXRhICoqKiovXG4udGFibGUtZGF0YSB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4udGFibGUtZGF0YSA+IGRpdiB7XG4gIC8qdGV4dC1hbGlnbjogY2VudGVyOyovXG4gIGJvcmRlci1yaWdodDogMXB4ICNFQUVBRUEgc29saWQ7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgbWFyZ2luOiBhdXRvO1xufVxuXG4uc2VsZWN0ZWRSb3cge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjQkVFQ0QxO1xuICBjb2xvcjogIzNBNzM4Qztcbn1cbi50YWJsZS1kYXRhIC5oaWdobGlnaHRDb2x1bW4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjRkMWVlICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjM0E3MzhDO1xufVxuLmhpZ2hsaWdodC1yb3c6aG92ZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjRkMWVlICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjM0E3MzhDO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -2485,6 +2500,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SystemMetricType", function() { return SystemMetricType; });
 var SystemMetricType;
 (function (SystemMetricType) {
+    SystemMetricType["SELECTED_COUNT"] = "SELECTED_COUNT";
     SystemMetricType["PHYSICAL_CAPACITY"] = "PHYSICAL_CAPACITY";
     SystemMetricType["PHYSICAL_SUBS_PERC"] = "PHYSICAL_SUBS_PERC";
     SystemMetricType["AVAILABLE_CAPACITY"] = "AVAILABLE_CAPACITY";
@@ -3568,7 +3584,7 @@ var BusService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 11px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 6.66%;\n  display:inline-block;\n}\n.col-label {\n  width: 13%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9hZ2dyYWdhdGVkLXN0YXRpc3RpY3MvYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0NBQWtDO0FBQ2xDO0VBQ0UsaUJBQWlCO0NBQ2xCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsa0JBQWtCO0VBQ2xCLG1CQUFtQjs7Q0FFcEI7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLGFBQWE7Q0FDZDtBQUVEO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQix3QkFBd0I7RUFDeEIsaUJBQWlCO0NBQ2xCO0FBQ0Q7RUFDRSxZQUFZO0VBQ1osc0JBQXNCO0VBQ3RCLHVCQUF1QjtDQUN4QjtBQUNEO0VBQ0UsYUFBYTtFQUNiLHFCQUFxQjtDQUN0QjtBQUNEO0VBQ0UsV0FBVztDQUNaIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9hZ2dyYWdhdGVkLXN0YXRpc3RpY3MvYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKioqIEFnZ3JlZ2F0ZWQgdmFsdWVzIHdpZGdldCAqKiovXG5kaXYuYWdnLXZhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG4uYWdnLXZhbHMgPiAuY29sIHtcbiAgYm9yZGVyOiAxcHggIzVDOTFBOCBzb2xpZDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcblxufVxuXG4uYWdnLW5hbWUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjM2M4ZGJjO1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgcGFkZGluZzogNXB4O1xufVxuXG4uYWdnLXZhbHMgLmFnZy12YWx1ZSB7XG4gIHBhZGRpbmc6IDVweDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgLypjb2xvcjogd2hpdGU7Ki9cbn1cbi5jb2wtY29udHJvbCB7XG4gIHdpZHRoOiAzLjUlO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG59XG4uY29sIHtcbiAgd2lkdGg6IDYuNjYlO1xuICBkaXNwbGF5OmlubGluZS1ibG9jaztcbn1cbi5jb2wtbGFiZWwge1xuICB3aWR0aDogMTMlO1xufVxuIl19 */"
+module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\ntable {\n  border-collapse: separate;\n  border-spacing: 2px 0px;\n}\n.agg-value, .agg-name {\n  margin-right: 5px;\n}\n.agg-vals > .agg-value, .agg-names > .agg-name {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  vertical-align: middle;\n}\n.col {\n  width: 6.66%;\n}\n.col-label {\n  width: 8%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9hZ2dyYWdhdGVkLXN0YXRpc3RpY3MvYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0NBQWtDO0FBQ2xDO0VBQ0UsaUJBQWlCO0NBQ2xCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsd0JBQXdCO0NBQ3pCO0FBRUQ7RUFDRSxrQkFBa0I7Q0FDbkI7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIsbUJBQW1COztDQUVwQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsYUFBYTtDQUNkO0FBRUQ7RUFDRSxhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLHdCQUF3QjtFQUN4QixpQkFBaUI7Q0FDbEI7QUFFRDtFQUNFLGdCQUFnQjtDQUNqQjtBQUVEO0VBQ0UsWUFBWTtFQUNaLHVCQUF1QjtDQUN4QjtBQUVEO0VBQ0UsYUFBYTtDQUNkO0FBRUQ7RUFDRSxVQUFVO0NBQ1giLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9jb21wb25lbnRzL2FnZ3JhZ2F0ZWQtc3RhdGlzdGljcy9hZ2dyYWdhdGVkLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogQWdncmVnYXRlZCB2YWx1ZXMgd2lkZ2V0ICoqKi9cbmRpdi5hZ2ctdmFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbnRhYmxlIHtcbiAgYm9yZGVyLWNvbGxhcHNlOiBzZXBhcmF0ZTtcbiAgYm9yZGVyLXNwYWNpbmc6IDJweCAwcHg7XG59XG5cbi5hZ2ctdmFsdWUsIC5hZ2ctbmFtZSB7XG4gIG1hcmdpbi1yaWdodDogNXB4O1xufVxuXG4uYWdnLXZhbHMgPiAuYWdnLXZhbHVlLCAuYWdnLW5hbWVzID4gLmFnZy1uYW1lIHtcbiAgYm9yZGVyOiAxcHggIzVDOTFBOCBzb2xpZDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcblxufVxuXG4uYWdnLW5hbWUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjM2M4ZGJjO1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtc2l6ZTogMTBweDtcbiAgcGFkZGluZzogNXB4O1xufVxuXG4uYWdnLXZhbHMgLmFnZy12YWx1ZSB7XG4gIHBhZGRpbmc6IDVweDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgLypjb2xvcjogd2hpdGU7Ki9cbn1cblxuLmFnZy11bml0IHtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuXG4uY29sLWNvbnRyb2wge1xuICB3aWR0aDogMy41JTtcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cblxuLmNvbCB7XG4gIHdpZHRoOiA2LjY2JTtcbn1cblxuLmNvbC1sYWJlbCB7XG4gIHdpZHRoOiA4JTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -3579,7 +3595,7 @@ module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--AGGREGATED VALUES-->\n<div class=\"agg-vals\" *ngIf=\"result !== null\">\n  <div class=\"col-val col-control\"></div>\n  <div class=\"col-val col-control\"></div>\n  <div class=\"col col-label\">\n    <div class=\"agg-name\"># Selected</div>\n    <div class=\"agg-value\">{{getSelectedCount()}}</div>\n  </div>\n  <div class=\"col\" *ngFor=\"let type of aggregatedTypes\">\n    <div class=\"agg-name\">{{type.label}}</div>\n    <div class=\"agg-value\"><span\n      *ngIf=\"result.getValue(type.index).value !== undefined\">{{result.getValue(type.index).value.toFixed(2)}} <span class=\"agg-unit\">{{result.getValue(type.index).unit}}</span></span>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<!--AGGREGATED VALUES-->\n<table>\n  <thead>\n  <tr class=\"agg-names\">\n    <td *ngFor=\"let type of aggregatedTypes\" class=\"col agg-name\">{{getLabelByType(type)}}</td>\n  </tr>\n  </thead>\n  <tbody>\n  <tr class=\"agg-vals\">\n    <td *ngFor=\"let type of aggregatedTypes\" class=\"col agg-value\">\n        <span\n          *ngIf=\"getMetricByType(type) != undefined\">{{toFixed(type, getMetricByType(type).value, 2)}} <span\n          class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n    </td>\n  </tr>\n  </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -3596,6 +3612,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 /* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
+/* harmony import */ var _global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts");
+/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3608,12 +3639,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var AggragatedStatisticsComponent = /** @class */ (function () {
+
+
+var AggragatedStatisticsComponent = /** @class */ (function (_super) {
+    __extends(AggragatedStatisticsComponent, _super);
     function AggragatedStatisticsComponent(localStorageService) {
-        this.localStorageService = localStorageService;
+        var _this = _super.call(this) || this;
+        _this.localStorageService = localStorageService;
+        return _this;
     }
     AggragatedStatisticsComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.aggregatedTypes = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].SELECTED_COUNT
+        ].concat(this.types.map(function (type) { return type.index; }));
+        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].SELECTED_COUNT] = '# Selected';
+        this.types.forEach(function (type) { return _this.labels[type.index] = type.label; });
+        this.typesIntValue = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].SELECTED_COUNT];
         this.aggregate();
         this.localStorageService.observe(this.prefix + '_selected').subscribe(function (data) {
             _this.selectedRows = data.newValue;
@@ -3628,25 +3670,14 @@ var AggragatedStatisticsComponent = /** @class */ (function () {
         var mean = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__["SasiWeightedArithmeticMean"]();
         this.result = mean.computeSummaries(this.data, this.selectedRows);
     };
-    AggragatedStatisticsComponent.prototype.getSelectedCount = function () {
-        var _this = this;
-        var filteredByData = this.selectedRows.filter(function (key) {
-            var row = _this.data.find(function (groupRow) { return groupRow.groupRow.getCell('name').value === key.groupName; });
-            if (row === undefined) {
-                return false;
-            }
-            return row.rows.find(function (dataRow) { return dataRow.getCell('name').value === key.rowName; });
-        });
-        return filteredByData.length;
-    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
     ], AggragatedStatisticsComponent.prototype, "data", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('aggregatedTypes'),
         __metadata("design:type", Array)
-    ], AggragatedStatisticsComponent.prototype, "aggregatedTypes", void 0);
+    ], AggragatedStatisticsComponent.prototype, "types", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
@@ -3664,38 +3695,16 @@ var AggragatedStatisticsComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [ngx_store__WEBPACK_IMPORTED_MODULE_1__["LocalStorageService"]])
     ], AggragatedStatisticsComponent);
     return AggragatedStatisticsComponent;
-}());
+}(_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_3__["CommonAggregatedStats"]));
 
 
 
 /***/ }),
 
-/***/ "./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.css":
-/*!******************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.css ***!
-  \******************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 10.9%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  /*width: 13%;*/\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtaG9zdC1ncm91cC1jYXBhY2l0eS9nbG9iYWwtaG9zdC1ncm91cC1jYXBhY2l0eS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtDQUFrQztBQUNsQztFQUNFLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGtCQUFrQjtFQUNsQixtQkFBbUI7O0NBRXBCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixhQUFhO0NBQ2Q7QUFFRDtFQUNFLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLGlCQUFpQjtDQUNsQjtBQUNEO0VBQ0UsZ0JBQWdCO0NBQ2pCO0FBQ0Q7RUFDRSxZQUFZO0VBQ1osc0JBQXNCO0VBQ3RCLHVCQUF1QjtDQUN4QjtBQUNEO0VBQ0UsYUFBYTtFQUNiLHFCQUFxQjtFQUNyQix3QkFBd0I7RUFDeEIsa0JBQWtCO0NBQ25CO0FBQ0Q7RUFDRSxlQUFlO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtaG9zdC1ncm91cC1jYXBhY2l0eS9nbG9iYWwtaG9zdC1ncm91cC1jYXBhY2l0eS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqKiBBZ2dyZWdhdGVkIHZhbHVlcyB3aWRnZXQgKioqL1xuZGl2LmFnZy12YWxzIHtcbiAgbWFyZ2luLXRvcDogMjVweDtcbn1cblxuLmFnZy12YWxzID4gLmNvbCB7XG4gIGJvcmRlcjogMXB4ICM1QzkxQTggc29saWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG5cbn1cblxuLmFnZy1uYW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNjOGRiYztcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IDEwcHg7XG4gIHBhZGRpbmc6IDVweDtcbn1cblxuLmFnZy12YWxzIC5hZ2ctdmFsdWUge1xuICBwYWRkaW5nOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIC8qY29sb3I6IHdoaXRlOyovXG59XG4uYWdnLXVuaXQge1xuICBmb250LXNpemU6IDEwcHg7XG59XG4uY29sLWNvbnRyb2wge1xuICB3aWR0aDogMy41JTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xufVxuLmNvbCB7XG4gIHdpZHRoOiAxMC45JTtcbiAgZGlzcGxheTppbmxpbmUtYmxvY2s7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICBtYXJnaW4tcmlnaHQ6IDJweDtcbn1cbi5jb2wtbGFiZWwge1xuICAvKndpZHRoOiAxMyU7Ki9cbn1cbiJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.html":
-/*!*******************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.html ***!
-  \*******************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<!--AGGREGATED VALUES-->\n<div class=\"agg-vals\" *ngIf=\"data != null\">\n  <div class=\"col\" *ngFor=\"let type of types\">\n    <div class=\"agg-name\">{{getLabelByType(type)}}</div>\n    <div class=\"agg-value\"><span\n      *ngIf=\"getMetricByType(type) !== undefined\">{{toFixed(getMetricByType(type).value, 2) | formatThousands}} <span class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n    </div>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.ts":
-/*!*****************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.ts ***!
-  \*****************************************************************************************************************/
+/***/ "./src/app/global-statistics/components/aggragated-statistics/global-host-group-capacity.component.ts":
+/*!************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/components/aggragated-statistics/global-host-group-capacity.component.ts ***!
+  \************************************************************************************************************/
 /*! exports provided: GlobalHostGroupCapacityComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3708,6 +3717,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/utils/system-pool-2-sasi-group-table.pipe */ "./src/app/common/utils/system-pool-2-sasi-group-table.pipe.ts");
 /* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
 /* harmony import */ var _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-table/selected-row */ "./src/app/common/components/sasi-table/row-table/selected-row.ts");
+/* harmony import */ var _global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3723,12 +3746,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var GlobalHostGroupCapacityComponent = /** @class */ (function () {
+
+var GlobalHostGroupCapacityComponent = /** @class */ (function (_super) {
+    __extends(GlobalHostGroupCapacityComponent, _super);
     function GlobalHostGroupCapacityComponent(metricService, transformer) {
-        this.metricService = metricService;
-        this.transformer = transformer;
-        this.labels = [];
-        this.types = [
+        var _this = _super.call(this) || this;
+        _this.metricService = metricService;
+        _this.transformer = transformer;
+        _this.aggregatedTypes = [
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC,
@@ -3736,12 +3761,13 @@ var GlobalHostGroupCapacityComponent = /** @class */ (function () {
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1W,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1M
         ];
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL] = 'Provisioned Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED] = 'Used Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC] = 'Used Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1D] = 'Last Day Change';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1W] = 'Last Week Change';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1M] = 'Last Month Change';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL] = 'Provisioned Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED] = 'Used Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC] = 'Used Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1D] = 'Last Day Change';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1W] = 'Last Week Change';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1M] = 'Last Month Change';
+        return _this;
     }
     GlobalHostGroupCapacityComponent.prototype.ngOnInit = function () {
         this.getTableData();
@@ -3755,33 +3781,164 @@ var GlobalHostGroupCapacityComponent = /** @class */ (function () {
                 var row = new _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_5__["SelectedRow"](system.name, pool.name);
                 filter.push(row);
             }); });
-            _this.data = average.computeSummaries(_this.transformer.transform(data.systems), filter);
+            _this.result = average.computeSummaries(_this.transformer.transform(data.systems), filter);
         }, function (error) {
             console.log(error);
-            _this.data = null;
+            _this.result = null;
         });
-        return this.data;
-    };
-    GlobalHostGroupCapacityComponent.prototype.getMetricByType = function (type) {
-        return this.data.getValue(type);
-    };
-    GlobalHostGroupCapacityComponent.prototype.getLabelByType = function (type) {
-        return this.labels[type] != null ? this.labels[type] : null;
-    };
-    GlobalHostGroupCapacityComponent.prototype.toFixed = function (value, position) {
-        return parseFloat(value).toFixed(position);
+        return this.result;
     };
     GlobalHostGroupCapacityComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-global-host-group-capacity',
-            template: __webpack_require__(/*! ./global-host-group-capacity.component.html */ "./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.html"),
-            styles: [__webpack_require__(/*! ./global-host-group-capacity.component.css */ "./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.css")]
+            template: __webpack_require__(/*! ./aggragated-statistics.component.html */ "./src/app/global-statistics/components/aggragated-statistics/aggragated-statistics.component.html"),
+            styles: [__webpack_require__(/*! ./aggragated-statistics.component.css */ "./src/app/global-statistics/components/aggragated-statistics/aggragated-statistics.component.css")]
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"],
             _common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_3__["SystemPool2SasiGroupTablePipe"]])
     ], GlobalHostGroupCapacityComponent);
     return GlobalHostGroupCapacityComponent;
+}(_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_6__["CommonAggregatedStats"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts":
+/*!*********************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts ***!
+  \*********************************************************************************************************************/
+/*! exports provided: CommonAggregatedStats, GlobalPhysicalCapacityStatisticsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommonAggregatedStats", function() { return CommonAggregatedStats; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalPhysicalCapacityStatisticsComponent", function() { return GlobalPhysicalCapacityStatisticsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+/* harmony import */ var _common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/utils/system-pool-2-sasi-group-table.pipe */ "./src/app/common/utils/system-pool-2-sasi-group-table.pipe.ts");
+/* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
+/* harmony import */ var _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-table/selected-row */ "./src/app/common/components/sasi-table/row-table/selected-row.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var CommonAggregatedStats = /** @class */ (function () {
+    function CommonAggregatedStats() {
+        this.result = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_4__["SystemAggregatedStatistics"]('');
+        this.aggregatedTypes = [];
+        this.labels = [];
+        this.typesIntValue = [];
+    }
+    CommonAggregatedStats.prototype.getMetricByType = function (type) {
+        if (this.result.getValue(type) !== undefined) {
+            return this.result.getValue(type);
+        }
+        return null;
+    };
+    CommonAggregatedStats.prototype.getLabelByType = function (type) {
+        return this.labels[type] != null ? this.labels[type] : null;
+    };
+    CommonAggregatedStats.prototype.toFixed = function (type, value, position) {
+        if (value == null) {
+            return 'No value';
+        }
+        if (this.typesIntValue.some(function (item) { return item === type; })) {
+            return parseFloat(value).toFixed(0);
+        }
+        return parseFloat(value).toFixed(position);
+    };
+    return CommonAggregatedStats;
 }());
+
+var GlobalPhysicalCapacityStatisticsComponent = /** @class */ (function (_super) {
+    __extends(GlobalPhysicalCapacityStatisticsComponent, _super);
+    function GlobalPhysicalCapacityStatisticsComponent(metricService, transformer) {
+        var _this = _super.call(this) || this;
+        _this.metricService = metricService;
+        _this.transformer = transformer;
+        _this.aggregatedTypes = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_SUBS_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].AVAILABLE_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].LOGICAL_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_USED_PERC,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].COMPRESS_RATIO,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1D,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1W,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1M,
+        ];
+        _this.typesIntValue = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].AVAILABLE_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_CAPACITY
+        ];
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_CAPACITY] = 'Physical Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_SUBS_PERC] = 'Physical Subs';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].AVAILABLE_CAPACITY] = 'Available Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].LOGICAL_USED_PERC] = 'Logical Used';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_USED_PERC] = 'Physical Used';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].COMPRESS_RATIO] = 'Comp. Ratio';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1D] = 'Daily Change';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1W] = 'Weekly Change';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1M] = 'Monthly Change';
+        return _this;
+    }
+    GlobalPhysicalCapacityStatisticsComponent.prototype.ngOnInit = function () {
+        this.getTableData();
+    };
+    GlobalPhysicalCapacityStatisticsComponent.prototype.getTableData = function () {
+        var _this = this;
+        this.metricService.getGlobalCapacityStatistics().subscribe(function (data) {
+            var average = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_4__["SasiWeightedArithmeticMean"]();
+            var filter = [];
+            data.systems.forEach(function (system) { return system.pools.forEach(function (pool) {
+                var row = new _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_5__["SelectedRow"](system.name, pool.name);
+                filter.push(row);
+            }); });
+            _this.result = average.computeSummaries(_this.transformer.transform(data.systems), filter);
+        }, function (error) {
+            console.log(error);
+            _this.result = null;
+        });
+        return this.result;
+    };
+    GlobalPhysicalCapacityStatisticsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-infrastructure-statistics',
+            template: __webpack_require__(/*! ./aggragated-statistics.component.html */ "./src/app/global-statistics/components/aggragated-statistics/aggragated-statistics.component.html"),
+            styles: [__webpack_require__(/*! ./aggragated-statistics.component.css */ "./src/app/global-statistics/components/aggragated-statistics/aggragated-statistics.component.css")]
+        }),
+        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"],
+            _common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_3__["SystemPool2SasiGroupTablePipe"]])
+    ], GlobalPhysicalCapacityStatisticsComponent);
+    return GlobalPhysicalCapacityStatisticsComponent;
+}(CommonAggregatedStats));
 
 
 
@@ -3794,7 +3951,7 @@ var GlobalHostGroupCapacityComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col, .agg-vals > .col-smaller {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  /*text-align: center;*/\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 12px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 15.1%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  /*width: 13%;*/\n}\n.col-smaller{\n  width: 6%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtbG9naWNhbC1zdGF0aXN0aWNzL2dsb2JhbC1sb2dpY2FsLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxrQ0FBa0M7QUFDbEM7RUFDRSxpQkFBaUI7Q0FDbEI7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIsdUJBQXVCOztDQUV4QjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsYUFBYTtDQUNkO0FBRUQ7RUFDRSxhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLHdCQUF3QjtFQUN4QixpQkFBaUI7Q0FDbEI7QUFDRDtFQUNFLGdCQUFnQjtDQUNqQjtBQUNEO0VBQ0UsWUFBWTtFQUNaLHNCQUFzQjtFQUN0Qix1QkFBdUI7Q0FDeEI7QUFDRDtFQUNFLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsd0JBQXdCO0VBQ3hCLGtCQUFrQjtDQUNuQjtBQUNEO0VBQ0UsZUFBZTtDQUNoQjtBQUVEO0VBQ0UsVUFBVTtFQUNWLHFCQUFxQjtFQUNyQix3QkFBd0I7RUFDeEIsa0JBQWtCO0NBQ25CIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtbG9naWNhbC1zdGF0aXN0aWNzL2dsb2JhbC1sb2dpY2FsLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogQWdncmVnYXRlZCB2YWx1ZXMgd2lkZ2V0ICoqKi9cbmRpdi5hZ2ctdmFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbi5hZ2ctdmFscyA+IC5jb2wsIC5hZ2ctdmFscyA+IC5jb2wtc21hbGxlciB7XG4gIGJvcmRlcjogMXB4ICM1QzkxQTggc29saWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAvKnRleHQtYWxpZ246IGNlbnRlcjsqL1xuXG59XG5cbi5hZ2ctbmFtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzYzhkYmM7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBwYWRkaW5nOiA1cHg7XG59XG5cbi5hZ2ctdmFscyAuYWdnLXZhbHVlIHtcbiAgcGFkZGluZzogNXB4O1xuICBmb250LXNpemU6IDEycHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAvKmNvbG9yOiB3aGl0ZTsqL1xufVxuLmFnZy11bml0IHtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cbi5jb2wge1xuICB3aWR0aDogMTUuMSU7XG4gIGRpc3BsYXk6aW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG4uY29sLWxhYmVsIHtcbiAgLyp3aWR0aDogMTMlOyovXG59XG5cbi5jb2wtc21hbGxlcntcbiAgd2lkdGg6IDYlO1xuICBkaXNwbGF5OmlubGluZS1ibG9jaztcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIG1hcmdpbi1yaWdodDogMnB4O1xufVxuIl19 */"
+module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col, .agg-vals > .col-smaller {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  /*text-align: center;*/\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 15.1%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  /*width: 13%;*/\n}\n.col-smaller{\n  width: 6%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtbG9naWNhbC1zdGF0aXN0aWNzL2dsb2JhbC1sb2dpY2FsLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxrQ0FBa0M7QUFDbEM7RUFDRSxpQkFBaUI7Q0FDbEI7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIsdUJBQXVCOztDQUV4QjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsYUFBYTtDQUNkO0FBRUQ7RUFDRSxhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLHdCQUF3QjtFQUN4QixpQkFBaUI7Q0FDbEI7QUFDRDtFQUNFLGdCQUFnQjtDQUNqQjtBQUNEO0VBQ0UsWUFBWTtFQUNaLHNCQUFzQjtFQUN0Qix1QkFBdUI7Q0FDeEI7QUFDRDtFQUNFLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsd0JBQXdCO0VBQ3hCLGtCQUFrQjtDQUNuQjtBQUNEO0VBQ0UsZUFBZTtDQUNoQjtBQUVEO0VBQ0UsVUFBVTtFQUNWLHFCQUFxQjtFQUNyQix3QkFBd0I7RUFDeEIsa0JBQWtCO0NBQ25CIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtbG9naWNhbC1zdGF0aXN0aWNzL2dsb2JhbC1sb2dpY2FsLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogQWdncmVnYXRlZCB2YWx1ZXMgd2lkZ2V0ICoqKi9cbmRpdi5hZ2ctdmFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbi5hZ2ctdmFscyA+IC5jb2wsIC5hZ2ctdmFscyA+IC5jb2wtc21hbGxlciB7XG4gIGJvcmRlcjogMXB4ICM1QzkxQTggc29saWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAvKnRleHQtYWxpZ246IGNlbnRlcjsqL1xuXG59XG5cbi5hZ2ctbmFtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzYzhkYmM7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxMHB4O1xuICBwYWRkaW5nOiA1cHg7XG59XG5cbi5hZ2ctdmFscyAuYWdnLXZhbHVlIHtcbiAgcGFkZGluZzogNXB4O1xuICBmb250LXNpemU6IDEycHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAvKmNvbG9yOiB3aGl0ZTsqL1xufVxuLmFnZy11bml0IHtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cbi5jb2wge1xuICB3aWR0aDogMTUuMSU7XG4gIGRpc3BsYXk6aW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG4uY29sLWxhYmVsIHtcbiAgLyp3aWR0aDogMTMlOyovXG59XG5cbi5jb2wtc21hbGxlcntcbiAgd2lkdGg6IDYlO1xuICBkaXNwbGF5OmlubGluZS1ibG9jaztcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIG1hcmdpbi1yaWdodDogMnB4O1xufVxuIl19 */"
 
 /***/ }),
 
@@ -3974,139 +4131,6 @@ var GlobalLogicalStatisticsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.css":
-/*!************************************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.css ***!
-  \************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 10.9%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  /*width: 13%;*/\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9nbG9iYWwtcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtDQUFrQztBQUNsQztFQUNFLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGtCQUFrQjtFQUNsQixtQkFBbUI7O0NBRXBCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixhQUFhO0NBQ2Q7QUFFRDtFQUNFLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLGlCQUFpQjtDQUNsQjtBQUNEO0VBQ0UsZ0JBQWdCO0NBQ2pCO0FBQ0Q7RUFDRSxZQUFZO0VBQ1osc0JBQXNCO0VBQ3RCLHVCQUF1QjtDQUN4QjtBQUNEO0VBQ0UsYUFBYTtFQUNiLHFCQUFxQjtFQUNyQix3QkFBd0I7RUFDeEIsa0JBQWtCO0NBQ25CO0FBQ0Q7RUFDRSxlQUFlO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9nbG9iYWwtcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqKiBBZ2dyZWdhdGVkIHZhbHVlcyB3aWRnZXQgKioqL1xuZGl2LmFnZy12YWxzIHtcbiAgbWFyZ2luLXRvcDogMjVweDtcbn1cblxuLmFnZy12YWxzID4gLmNvbCB7XG4gIGJvcmRlcjogMXB4ICM1QzkxQTggc29saWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG5cbn1cblxuLmFnZy1uYW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNjOGRiYztcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IDEwcHg7XG4gIHBhZGRpbmc6IDVweDtcbn1cblxuLmFnZy12YWxzIC5hZ2ctdmFsdWUge1xuICBwYWRkaW5nOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIC8qY29sb3I6IHdoaXRlOyovXG59XG4uYWdnLXVuaXQge1xuICBmb250LXNpemU6IDEwcHg7XG59XG4uY29sLWNvbnRyb2wge1xuICB3aWR0aDogMy41JTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xufVxuLmNvbCB7XG4gIHdpZHRoOiAxMC45JTtcbiAgZGlzcGxheTppbmxpbmUtYmxvY2s7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICBtYXJnaW4tcmlnaHQ6IDJweDtcbn1cbi5jb2wtbGFiZWwge1xuICAvKndpZHRoOiAxMyU7Ki9cbn1cbiJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.html":
-/*!*************************************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.html ***!
-  \*************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<!--AGGREGATED VALUES-->\n<div class=\"agg-vals\" *ngIf=\"data != null\">\n  <div class=\"col\" *ngFor=\"let type of types\">\n    <div class=\"agg-name\">{{getLabelByType(type)}}</div>\n    <div class=\"agg-value\"><span\n      *ngIf=\"getMetricByType(type) !== undefined\">{{toFixed(type, getMetricByType(type).value, 2) | formatThousands}} <span class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n    </div>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.ts":
-/*!***********************************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.ts ***!
-  \***********************************************************************************************************************************/
-/*! exports provided: GlobalPhysicalCapacityStatisticsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalPhysicalCapacityStatisticsComponent", function() { return GlobalPhysicalCapacityStatisticsComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
-/* harmony import */ var _common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/utils/system-pool-2-sasi-group-table.pipe */ "./src/app/common/utils/system-pool-2-sasi-group-table.pipe.ts");
-/* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
-/* harmony import */ var _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-table/selected-row */ "./src/app/common/components/sasi-table/row-table/selected-row.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var GlobalPhysicalCapacityStatisticsComponent = /** @class */ (function () {
-    function GlobalPhysicalCapacityStatisticsComponent(metricService, transformer) {
-        this.metricService = metricService;
-        this.transformer = transformer;
-        this.labels = [];
-        this.typesIntValue = [
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].AVAILABLE_CAPACITY,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_CAPACITY
-        ];
-        this.types = [
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_CAPACITY,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_SUBS_PERC,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].AVAILABLE_CAPACITY,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].LOGICAL_USED_PERC,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_USED_PERC,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].COMPRESS_RATIO,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1D,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1W,
-            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1M,
-        ];
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_CAPACITY] = 'Physical Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_SUBS_PERC] = 'Physical Subs';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].AVAILABLE_CAPACITY] = 'Available Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].LOGICAL_USED_PERC] = 'Logical Used';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_USED_PERC] = 'Physical Used';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].COMPRESS_RATIO] = 'Comp. Ratio';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1D] = 'Daily Change';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1W] = 'Weekly Change';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1M] = 'Monthly Change';
-    }
-    GlobalPhysicalCapacityStatisticsComponent.prototype.ngOnInit = function () {
-        this.getTableData();
-    };
-    GlobalPhysicalCapacityStatisticsComponent.prototype.getTableData = function () {
-        var _this = this;
-        this.metricService.getGlobalCapacityStatistics().subscribe(function (data) {
-            var average = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_4__["SasiWeightedArithmeticMean"]();
-            var filter = [];
-            data.systems.forEach(function (system) { return system.pools.forEach(function (pool) {
-                var row = new _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_5__["SelectedRow"](system.name, pool.name);
-                filter.push(row);
-            }); });
-            _this.data = average.computeSummaries(_this.transformer.transform(data.systems), filter);
-        }, function (error) {
-            console.log(error);
-            _this.data = null;
-        });
-        return this.data;
-    };
-    GlobalPhysicalCapacityStatisticsComponent.prototype.getMetricByType = function (type) {
-        return this.data.getValue(type);
-    };
-    GlobalPhysicalCapacityStatisticsComponent.prototype.getLabelByType = function (type) {
-        return this.labels[type] != null ? this.labels[type] : null;
-    };
-    GlobalPhysicalCapacityStatisticsComponent.prototype.toFixed = function (type, value, position) {
-        if (value == null) {
-            return 'No value';
-        }
-        if (this.typesIntValue.some(function (item) { return item === type; })) {
-            return parseFloat(value).toFixed(0);
-        }
-        return parseFloat(value).toFixed(position);
-    };
-    GlobalPhysicalCapacityStatisticsComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-infrastructure-statistics',
-            template: __webpack_require__(/*! ./global-physical-capacity-statistics.component.html */ "./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.html"),
-            styles: [__webpack_require__(/*! ./global-physical-capacity-statistics.component.css */ "./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.css")]
-        }),
-        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"],
-            _common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_3__["SystemPool2SasiGroupTablePipe"]])
-    ], GlobalPhysicalCapacityStatisticsComponent);
-    return GlobalPhysicalCapacityStatisticsComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggragated-statistics.component.css":
 /*!************************************************************************************************************************!*\
   !*** ./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggragated-statistics.component.css ***!
@@ -4114,7 +4138,7 @@ var GlobalPhysicalCapacityStatisticsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col, .agg-vals > .col-smaller {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 11px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 14.8%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  width: 13%;\n}\n.col-smaller{\n  width: 4.8%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9ncm91cGVkLWFnZ3JlZ2F0ZWQtc3RhdGlzdGljcy9ncm91cGVkLWFnZ3JhZ2F0ZWQtc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtDQUFrQztBQUNsQztFQUNFLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGtCQUFrQjtFQUNsQixtQkFBbUI7O0NBRXBCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixhQUFhO0NBQ2Q7QUFFRDtFQUNFLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLGlCQUFpQjtDQUNsQjtBQUNEO0VBQ0UsWUFBWTtFQUNaLHNCQUFzQjtFQUN0Qix1QkFBdUI7Q0FDeEI7QUFDRDtFQUNFLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsd0JBQXdCO0VBQ3hCLGtCQUFrQjtDQUNuQjtBQUNEO0VBQ0UsV0FBVztDQUNaO0FBRUQ7RUFDRSxZQUFZO0VBQ1oscUJBQXFCO0VBQ3JCLHdCQUF3QjtFQUN4QixrQkFBa0I7Q0FDbkIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9jb21wb25lbnRzL2dyb3VwZWQtYWdncmVnYXRlZC1zdGF0aXN0aWNzL2dyb3VwZWQtYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKioqIEFnZ3JlZ2F0ZWQgdmFsdWVzIHdpZGdldCAqKiovXG5kaXYuYWdnLXZhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG4uYWdnLXZhbHMgPiAuY29sLCAuYWdnLXZhbHMgPiAuY29sLXNtYWxsZXIge1xuICBib3JkZXI6IDFweCAjNUM5MUE4IHNvbGlkO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuXG59XG5cbi5hZ2ctbmFtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzYzhkYmM7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBwYWRkaW5nOiA1cHg7XG59XG5cbi5hZ2ctdmFscyAuYWdnLXZhbHVlIHtcbiAgcGFkZGluZzogNXB4O1xuICBmb250LXNpemU6IDEycHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAvKmNvbG9yOiB3aGl0ZTsqL1xufVxuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cbi5jb2wge1xuICB3aWR0aDogMTQuOCU7XG4gIGRpc3BsYXk6aW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG4uY29sLWxhYmVsIHtcbiAgd2lkdGg6IDEzJTtcbn1cblxuLmNvbC1zbWFsbGVye1xuICB3aWR0aDogNC44JTtcbiAgZGlzcGxheTppbmxpbmUtYmxvY2s7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICBtYXJnaW4tcmlnaHQ6IDJweDtcbn1cbiJdfQ== */"
+module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col, .agg-vals > .col-smaller {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 14.8%;\n  display: inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  width: 13%;\n}\n.col-smaller {\n  width: 4.8%;\n  display: inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9ncm91cGVkLWFnZ3JlZ2F0ZWQtc3RhdGlzdGljcy9ncm91cGVkLWFnZ3JhZ2F0ZWQtc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtDQUFrQztBQUNsQztFQUNFLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGtCQUFrQjtFQUNsQixtQkFBbUI7O0NBRXBCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixhQUFhO0NBQ2Q7QUFFRDtFQUNFLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCO0FBRUQ7RUFDRSxZQUFZO0VBQ1osc0JBQXNCO0VBQ3RCLHVCQUF1QjtDQUN4QjtBQUVEO0VBQ0UsYUFBYTtFQUNiLHNCQUFzQjtFQUN0Qix3QkFBd0I7RUFDeEIsa0JBQWtCO0NBQ25CO0FBRUQ7RUFDRSxXQUFXO0NBQ1o7QUFFRDtFQUNFLFlBQVk7RUFDWixzQkFBc0I7RUFDdEIsd0JBQXdCO0VBQ3hCLGtCQUFrQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2NvbXBvbmVudHMvZ3JvdXBlZC1hZ2dyZWdhdGVkLXN0YXRpc3RpY3MvZ3JvdXBlZC1hZ2dyYWdhdGVkLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogQWdncmVnYXRlZCB2YWx1ZXMgd2lkZ2V0ICoqKi9cbmRpdi5hZ2ctdmFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbi5hZ2ctdmFscyA+IC5jb2wsIC5hZ2ctdmFscyA+IC5jb2wtc21hbGxlciB7XG4gIGJvcmRlcjogMXB4ICM1QzkxQTggc29saWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG5cbn1cblxuLmFnZy1uYW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNjOGRiYztcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IDEwcHg7XG4gIHBhZGRpbmc6IDVweDtcbn1cblxuLmFnZy12YWxzIC5hZ2ctdmFsdWUge1xuICBwYWRkaW5nOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIC8qY29sb3I6IHdoaXRlOyovXG59XG5cbi5hZ2ctdW5pdCB7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cblxuLmNvbCB7XG4gIHdpZHRoOiAxNC44JTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG5cbi5jb2wtbGFiZWwge1xuICB3aWR0aDogMTMlO1xufVxuXG4uY29sLXNtYWxsZXIge1xuICB3aWR0aDogNC44JTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -5231,11 +5255,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _formatters_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./formatters/emph-formatter/emph-formatter.component */ "./src/app/global-statistics/formatters/emph-formatter/emph-formatter.component.ts");
 /* harmony import */ var _formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./formatters/disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.ts");
 /* harmony import */ var _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./views/logical-capacity-statistics/logical-capacity-statistics.component */ "./src/app/global-statistics/views/logical-capacity-statistics/logical-capacity-statistics.component.ts");
-/* harmony import */ var _components_global_physical_capacity_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/global-physical-capacity-statistics/global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/global-physical-capacity-statistics/global-physical-capacity-statistics.component.ts");
+/* harmony import */ var _components_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/aggragated-statistics/global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts");
 /* harmony import */ var _components_global_logical_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/global-logical-statistics/global-logical-statistics.component */ "./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.ts");
 /* harmony import */ var _components_grouped_aggregated_statistics_grouped_aggregated_statistics_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/grouped-aggregated-statistics/grouped-aggregated-statistics.component */ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.ts");
 /* harmony import */ var _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./views/host-groups-capacity/host-groups-capacity.component */ "./src/app/global-statistics/views/host-groups-capacity/host-groups-capacity.component.ts");
-/* harmony import */ var _components_global_host_group_capacity_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/global-host-group-capacity/global-host-group-capacity.component */ "./src/app/global-statistics/components/global-host-group-capacity/global-host-group-capacity.component.ts");
+/* harmony import */ var _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/aggragated-statistics/global-host-group-capacity.component */ "./src/app/global-statistics/components/aggragated-statistics/global-host-group-capacity.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5291,10 +5315,10 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _formatters_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_18__["EmphFormatterComponent"],
                 _formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__["DisbalanceFormatterComponent"],
                 _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__["LogicalCapacityStatisticsComponent"],
-                _components_global_physical_capacity_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_21__["GlobalPhysicalCapacityStatisticsComponent"],
+                _components_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_21__["GlobalPhysicalCapacityStatisticsComponent"],
                 _components_global_logical_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_22__["GlobalLogicalStatisticsComponent"],
                 _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_24__["HostGroupsCapacityComponent"],
-                _components_global_host_group_capacity_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_25__["GlobalHostGroupCapacityComponent"]
+                _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_25__["GlobalHostGroupCapacityComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"],
@@ -5392,7 +5416,6 @@ var SasiWeightedArithmeticMean = /** @class */ (function () {
         this.physicalCapacityDedupRatio = 0;
         this.physicalCapacityCompRatio = 0;
         var startTime = new Date();
-        console.log(startTime);
         if (filter.length === 0) {
             return null;
         }
@@ -5472,6 +5495,7 @@ var SasiWeightedArithmeticMean = /** @class */ (function () {
             }
         });
         var result = this.summarizeStats(this.partiallySummarizedValues, 'all');
+        result.setValue(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SELECTED_COUNT, amendFilter.length, '');
         return result;
     };
     SasiWeightedArithmeticMean.prototype.summarizeStats = function (values, name) {
