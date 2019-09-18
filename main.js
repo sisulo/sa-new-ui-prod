@@ -7185,7 +7185,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    iframeBaseUrl: 'http://static-web.local/',
+    iframeBaseUrl: 'http://static-web1.local/',
     metricsBaseUrl: 'http://localhost:3000/api',
     logoUrl: '/assets/logo.png'
 };
