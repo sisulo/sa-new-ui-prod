@@ -3584,7 +3584,7 @@ var BusService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\ntable {\n  border-collapse: separate;\n  border-spacing: 2px 0px;\n}\n.agg-value, .agg-name {\n  margin-right: 5px;\n}\n.agg-vals > .agg-value, .agg-names > .agg-name {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  vertical-align: middle;\n}\n.col {\n  width: 6.66%;\n}\n.col-label {\n  width: 8%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9hZ2dyYWdhdGVkLXN0YXRpc3RpY3MvYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0NBQWtDO0FBQ2xDO0VBQ0UsaUJBQWlCO0NBQ2xCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsd0JBQXdCO0NBQ3pCO0FBRUQ7RUFDRSxrQkFBa0I7Q0FDbkI7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIsbUJBQW1COztDQUVwQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsYUFBYTtDQUNkO0FBRUQ7RUFDRSxhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLHdCQUF3QjtFQUN4QixpQkFBaUI7Q0FDbEI7QUFFRDtFQUNFLGdCQUFnQjtDQUNqQjtBQUVEO0VBQ0UsWUFBWTtFQUNaLHVCQUF1QjtDQUN4QjtBQUVEO0VBQ0UsYUFBYTtDQUNkO0FBRUQ7RUFDRSxVQUFVO0NBQ1giLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9jb21wb25lbnRzL2FnZ3JhZ2F0ZWQtc3RhdGlzdGljcy9hZ2dyYWdhdGVkLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogQWdncmVnYXRlZCB2YWx1ZXMgd2lkZ2V0ICoqKi9cbmRpdi5hZ2ctdmFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbnRhYmxlIHtcbiAgYm9yZGVyLWNvbGxhcHNlOiBzZXBhcmF0ZTtcbiAgYm9yZGVyLXNwYWNpbmc6IDJweCAwcHg7XG59XG5cbi5hZ2ctdmFsdWUsIC5hZ2ctbmFtZSB7XG4gIG1hcmdpbi1yaWdodDogNXB4O1xufVxuXG4uYWdnLXZhbHMgPiAuYWdnLXZhbHVlLCAuYWdnLW5hbWVzID4gLmFnZy1uYW1lIHtcbiAgYm9yZGVyOiAxcHggIzVDOTFBOCBzb2xpZDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcblxufVxuXG4uYWdnLW5hbWUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjM2M4ZGJjO1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtc2l6ZTogMTBweDtcbiAgcGFkZGluZzogNXB4O1xufVxuXG4uYWdnLXZhbHMgLmFnZy12YWx1ZSB7XG4gIHBhZGRpbmc6IDVweDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgLypjb2xvcjogd2hpdGU7Ki9cbn1cblxuLmFnZy11bml0IHtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuXG4uY29sLWNvbnRyb2wge1xuICB3aWR0aDogMy41JTtcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cblxuLmNvbCB7XG4gIHdpZHRoOiA2LjY2JTtcbn1cblxuLmNvbC1sYWJlbCB7XG4gIHdpZHRoOiA4JTtcbn1cbiJdfQ== */"
+module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\ntable {\n  border-collapse: separate;\n  border-spacing: 2px 0px;\n  width: 100%;\n}\n.agg-value, .agg-name {\n  margin-right: 5px;\n}\n.agg-vals > .agg-value, .agg-names > .agg-name {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  vertical-align: middle;\n}\n.col {\n  width: 6.66%;\n}\n.col-label {\n  width: 8%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9hZ2dyYWdhdGVkLXN0YXRpc3RpY3MvYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0NBQWtDO0FBQ2xDO0VBQ0UsaUJBQWlCO0NBQ2xCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsd0JBQXdCO0VBQ3hCLFlBQVk7Q0FDYjtBQUVEO0VBQ0Usa0JBQWtCO0NBQ25CO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsa0JBQWtCO0VBQ2xCLG1CQUFtQjs7Q0FFcEI7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLGFBQWE7Q0FDZDtBQUVEO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQix3QkFBd0I7RUFDeEIsaUJBQWlCO0NBQ2xCO0FBRUQ7RUFDRSxnQkFBZ0I7Q0FDakI7QUFFRDtFQUNFLFlBQVk7RUFDWix1QkFBdUI7Q0FDeEI7QUFFRDtFQUNFLGFBQWE7Q0FDZDtBQUVEO0VBQ0UsVUFBVTtDQUNYIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9hZ2dyYWdhdGVkLXN0YXRpc3RpY3MvYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKioqIEFnZ3JlZ2F0ZWQgdmFsdWVzIHdpZGdldCAqKiovXG5kaXYuYWdnLXZhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG50YWJsZSB7XG4gIGJvcmRlci1jb2xsYXBzZTogc2VwYXJhdGU7XG4gIGJvcmRlci1zcGFjaW5nOiAycHggMHB4O1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmFnZy12YWx1ZSwgLmFnZy1uYW1lIHtcbiAgbWFyZ2luLXJpZ2h0OiA1cHg7XG59XG5cbi5hZ2ctdmFscyA+IC5hZ2ctdmFsdWUsIC5hZ2ctbmFtZXMgPiAuYWdnLW5hbWUge1xuICBib3JkZXI6IDFweCAjNUM5MUE4IHNvbGlkO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuXG59XG5cbi5hZ2ctbmFtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzYzhkYmM7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxMHB4O1xuICBwYWRkaW5nOiA1cHg7XG59XG5cbi5hZ2ctdmFscyAuYWdnLXZhbHVlIHtcbiAgcGFkZGluZzogNXB4O1xuICBmb250LXNpemU6IDEycHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAvKmNvbG9yOiB3aGl0ZTsqL1xufVxuXG4uYWdnLXVuaXQge1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi5jb2wtY29udHJvbCB7XG4gIHdpZHRoOiAzLjUlO1xuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xufVxuXG4uY29sIHtcbiAgd2lkdGg6IDYuNjYlO1xufVxuXG4uY29sLWxhYmVsIHtcbiAgd2lkdGg6IDglO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -3595,7 +3595,7 @@ module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--AGGREGATED VALUES-->\n<table>\n  <thead>\n  <tr class=\"agg-names\">\n    <td *ngFor=\"let type of aggregatedTypes\" class=\"col agg-name\">{{getLabelByType(type)}}</td>\n  </tr>\n  </thead>\n  <tbody>\n  <tr class=\"agg-vals\">\n    <td *ngFor=\"let type of aggregatedTypes\" class=\"col agg-value\">\n        <span\n          *ngIf=\"getMetricByType(type) != undefined\">{{toFixed(type, getMetricByType(type).value, 2)}} <span\n          class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n    </td>\n  </tr>\n  </tbody>\n</table>\n"
+module.exports = "<!--AGGREGATED VALUES-->\n<table *ngIf=\"result != null\">\n  <thead>\n  <tr class=\"agg-names\">\n    <td *ngFor=\"let type of aggregatedTypes\" class=\"col agg-name\">{{getLabelByType(type)}}</td>\n  </tr>\n  </thead>\n  <tbody>\n  <tr class=\"agg-vals\">\n    <td *ngFor=\"let type of aggregatedTypes\" class=\"col agg-value\">\n        <span\n          *ngIf=\"getMetricByType(type) != undefined\">{{toFixed(type, getMetricByType(type).value, 2)}} <span\n          class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n    </td>\n  </tr>\n  </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -3851,7 +3851,6 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var CommonAggregatedStats = /** @class */ (function () {
     function CommonAggregatedStats() {
-        this.result = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_4__["SystemAggregatedStatistics"]('');
         this.aggregatedTypes = [];
         this.labels = [];
         this.typesIntValue = [];
@@ -3944,32 +3943,10 @@ var GlobalPhysicalCapacityStatisticsComponent = /** @class */ (function (_super)
 
 /***/ }),
 
-/***/ "./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.css":
-/*!****************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.css ***!
-  \****************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col, .agg-vals > .col-smaller {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  /*text-align: center;*/\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 15.1%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  /*width: 13%;*/\n}\n.col-smaller{\n  width: 6%;\n  display:inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtbG9naWNhbC1zdGF0aXN0aWNzL2dsb2JhbC1sb2dpY2FsLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxrQ0FBa0M7QUFDbEM7RUFDRSxpQkFBaUI7Q0FDbEI7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIsdUJBQXVCOztDQUV4QjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsYUFBYTtDQUNkO0FBRUQ7RUFDRSxhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLHdCQUF3QjtFQUN4QixpQkFBaUI7Q0FDbEI7QUFDRDtFQUNFLGdCQUFnQjtDQUNqQjtBQUNEO0VBQ0UsWUFBWTtFQUNaLHNCQUFzQjtFQUN0Qix1QkFBdUI7Q0FDeEI7QUFDRDtFQUNFLGFBQWE7RUFDYixxQkFBcUI7RUFDckIsd0JBQXdCO0VBQ3hCLGtCQUFrQjtDQUNuQjtBQUNEO0VBQ0UsZUFBZTtDQUNoQjtBQUVEO0VBQ0UsVUFBVTtFQUNWLHFCQUFxQjtFQUNyQix3QkFBd0I7RUFDeEIsa0JBQWtCO0NBQ25CIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9nbG9iYWwtbG9naWNhbC1zdGF0aXN0aWNzL2dsb2JhbC1sb2dpY2FsLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogQWdncmVnYXRlZCB2YWx1ZXMgd2lkZ2V0ICoqKi9cbmRpdi5hZ2ctdmFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbi5hZ2ctdmFscyA+IC5jb2wsIC5hZ2ctdmFscyA+IC5jb2wtc21hbGxlciB7XG4gIGJvcmRlcjogMXB4ICM1QzkxQTggc29saWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAvKnRleHQtYWxpZ246IGNlbnRlcjsqL1xuXG59XG5cbi5hZ2ctbmFtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzYzhkYmM7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxMHB4O1xuICBwYWRkaW5nOiA1cHg7XG59XG5cbi5hZ2ctdmFscyAuYWdnLXZhbHVlIHtcbiAgcGFkZGluZzogNXB4O1xuICBmb250LXNpemU6IDEycHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAvKmNvbG9yOiB3aGl0ZTsqL1xufVxuLmFnZy11bml0IHtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cbi5jb2wge1xuICB3aWR0aDogMTUuMSU7XG4gIGRpc3BsYXk6aW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG4uY29sLWxhYmVsIHtcbiAgLyp3aWR0aDogMTMlOyovXG59XG5cbi5jb2wtc21hbGxlcntcbiAgd2lkdGg6IDYlO1xuICBkaXNwbGF5OmlubGluZS1ibG9jaztcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIG1hcmdpbi1yaWdodDogMnB4O1xufVxuIl19 */"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.html":
-/*!*****************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.html ***!
-  \*****************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<!--AGGREGATED VALUES-->\n<div class=\"agg-vals\" *ngIf=\"data != null\">\n  <div class=\"col col-smaller\">\n    <div class=\"agg-name\">Subscribed capacity</div>\n    <div class=\"agg-value \">{{toFixed(subsCapacityType, getMetricByType(subsCapacityType).value, 2)}} <span class=\"agg-unit\">{{getMetricByType(subsCapacityType).unit}}</span></div>\n  </div>\n  <div class=\"col\" *ngFor=\"let group of groupTypes\">\n    <div class=\"agg-name\">{{getGroupLabelByType(group)}}</div>\n    <div class=\"agg-value\">\n      <div *ngFor=\"let type of types[group]\">\n        <div class=\"text-left col-md-5\">{{getLabelByType(type)}}: </div>\n        <div class=\"text-right col-md-push-6\">\n          <span *ngIf=\"getMetricByType(type) !== undefined && getMetricByType(type).value != null\">{{toFixed(type, getMetricByType(type).value, 2) | formatThousands}} <span class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n          <span class='text-gray' *ngIf=\"getMetricByType(type) === undefined || getMetricByType(type).value == null\">No value</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.ts":
-/*!***************************************************************************************************************!*\
-  !*** ./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.ts ***!
-  \***************************************************************************************************************/
+/***/ "./src/app/global-statistics/components/grouped-aggregated-statistics/global-logical-statistics.component.ts":
+/*!*******************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/components/grouped-aggregated-statistics/global-logical-statistics.component.ts ***!
+  \*******************************************************************************************************************/
 /*! exports provided: GlobalLogicalStatisticsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3982,6 +3959,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
 /* harmony import */ var _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-table/selected-row */ "./src/app/common/components/sasi-table/row-table/selected-row.ts");
 /* harmony import */ var _common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/utils/system-pool-2-sasi-group-table.pipe */ "./src/app/common/utils/system-pool-2-sasi-group-table.pipe.ts");
+/* harmony import */ var _aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../aggragated-statistics/global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3997,17 +3988,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var GlobalLogicalStatisticsComponent = /** @class */ (function () {
+
+var GlobalLogicalStatisticsComponent = /** @class */ (function (_super) {
+    __extends(GlobalLogicalStatisticsComponent, _super);
     function GlobalLogicalStatisticsComponent(metricService, transformer) {
-        this.metricService = metricService;
-        this.transformer = transformer;
-        this.data = null;
-        this.types = [];
-        this.groupTypes = [0, 1, 2, 3, 4, 5];
-        this.labels = [];
-        this.groupLabel = [];
-        this.subsCapacityType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY;
-        this.typesIntValue = [
+        var _this = _super.call(this) || this;
+        _this.metricService = metricService;
+        _this.transformer = transformer;
+        _this.data = null;
+        _this.types = [];
+        _this.groupTypes = [0, 1, 2, 3, 4, 5, 6];
+        _this.groupLabel = [];
+        _this.typesIntValue = [
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE,
@@ -4019,63 +4011,65 @@ var GlobalLogicalStatisticsComponent = /** @class */ (function () {
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY
         ];
-        // this.types[0] = [SystemMetricType.SUBSCRIBED_CAPACITY];
-        this.types[0] = [
+        _this.types.push([
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC
-        ];
-        this.types[1] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC
-        ];
-        this.types[2] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE,
-        ];
-        this.types[3] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE
-        ];
-        this.types[4] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE
-        ];
-        this.types[5] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT
-        ];
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'Subscribed Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC] = 'Physical';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC] = 'Logical';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC] = 'Net';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC] = 'Physical';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC] = 'Logical';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC] = 'Net';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY] = 'Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED] = 'Used';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE] = 'Free';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY] = 'Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED] = 'Used';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE] = 'Free';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL] = 'Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED] = 'Used';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE] = 'Free';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO] = 'Comp';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO] = 'Dedup';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT] = 'Savings';
-        // this.groupLabel[0] = 'Subscribed capacity'
-        this.groupLabel[0] = 'Subscription';
-        this.groupLabel[1] = 'Utilization';
-        this.groupLabel[2] = 'Physical Capacity';
-        this.groupLabel[3] = 'Logical Capacity';
-        this.groupLabel[4] = 'Net Capacity';
-        this.groupLabel[5] = 'Savings';
+        ]);
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC] = 'Physical';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC] = 'Logical';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC] = 'Net';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC] = 'Physical';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC] = 'Logical';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC] = 'Net';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY] = 'Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED] = 'Used';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE] = 'Free';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY] = 'Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED] = 'Used';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE] = 'Free';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL] = 'Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED] = 'Used';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE] = 'Free';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO] = 'Comp';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO] = 'Dedup';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT] = 'Savings';
+        _this.groupLabel.push('Subscribed capacity');
+        _this.groupLabel.push('Subscription');
+        _this.groupLabel.push('Utilization');
+        _this.groupLabel.push('Physical Capacity');
+        _this.groupLabel.push('Logical Capacity');
+        _this.groupLabel.push('Net Capacity');
+        _this.groupLabel.push('Savings');
+        return _this;
     }
     GlobalLogicalStatisticsComponent.prototype.ngOnInit = function () {
         this.getTableData();
@@ -4089,28 +4083,12 @@ var GlobalLogicalStatisticsComponent = /** @class */ (function () {
                 var row = new _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_4__["SelectedRow"](system.name, pool.name);
                 filter.push(row);
             }); });
-            _this.data = average.computeSummaries(_this.transformer.transform(data.systems), filter);
-            console.log(_this.data);
+            _this.result = average.computeSummaries(_this.transformer.transform(data.systems), filter);
         }, function (error) {
             console.log(error);
             _this.data = null;
         });
         return this.data;
-    };
-    GlobalLogicalStatisticsComponent.prototype.getMetricByType = function (type) {
-        return this.data.getValue(type);
-    };
-    GlobalLogicalStatisticsComponent.prototype.getLabelByType = function (type) {
-        return this.labels[type] != null ? this.labels[type] : null;
-    };
-    GlobalLogicalStatisticsComponent.prototype.toFixed = function (type, value, position) {
-        if (value == null) {
-            return 'No value';
-        }
-        if (this.typesIntValue.some(function (item) { return item === type; })) {
-            return parseFloat(value).toFixed(0);
-        }
-        return parseFloat(value).toFixed(position);
     };
     GlobalLogicalStatisticsComponent.prototype.getGroupLabelByType = function (type) {
         return this.groupLabel[type] != null ? this.groupLabel[type] : null;
@@ -4118,14 +4096,14 @@ var GlobalLogicalStatisticsComponent = /** @class */ (function () {
     GlobalLogicalStatisticsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-global-logical-statistics',
-            template: __webpack_require__(/*! ./global-logical-statistics.component.html */ "./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.html"),
-            styles: [__webpack_require__(/*! ./global-logical-statistics.component.css */ "./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.css")]
+            template: __webpack_require__(/*! ./grouped-aggregated-statistics.component.html */ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.html"),
+            styles: [__webpack_require__(/*! ./grouped-aggragated-statistics.component.css */ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggragated-statistics.component.css")]
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"],
             _common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_5__["SystemPool2SasiGroupTablePipe"]])
     ], GlobalLogicalStatisticsComponent);
     return GlobalLogicalStatisticsComponent;
-}());
+}(_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_6__["CommonAggregatedStats"]));
 
 
 
@@ -4138,7 +4116,7 @@ var GlobalLogicalStatisticsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\n.agg-vals > .col, .agg-vals > .col-smaller {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n}\n.col {\n  width: 14.8%;\n  display: inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n.col-label {\n  width: 13%;\n}\n.col-smaller {\n  width: 4.8%;\n  display: inline-block;\n  background-color: white;\n  margin-right: 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9ncm91cGVkLWFnZ3JlZ2F0ZWQtc3RhdGlzdGljcy9ncm91cGVkLWFnZ3JhZ2F0ZWQtc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtDQUFrQztBQUNsQztFQUNFLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLGtCQUFrQjtFQUNsQixtQkFBbUI7O0NBRXBCO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixhQUFhO0NBQ2Q7QUFFRDtFQUNFLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCO0FBRUQ7RUFDRSxZQUFZO0VBQ1osc0JBQXNCO0VBQ3RCLHVCQUF1QjtDQUN4QjtBQUVEO0VBQ0UsYUFBYTtFQUNiLHNCQUFzQjtFQUN0Qix3QkFBd0I7RUFDeEIsa0JBQWtCO0NBQ25CO0FBRUQ7RUFDRSxXQUFXO0NBQ1o7QUFFRDtFQUNFLFlBQVk7RUFDWixzQkFBc0I7RUFDdEIsd0JBQXdCO0VBQ3hCLGtCQUFrQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2NvbXBvbmVudHMvZ3JvdXBlZC1hZ2dyZWdhdGVkLXN0YXRpc3RpY3MvZ3JvdXBlZC1hZ2dyYWdhdGVkLXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogQWdncmVnYXRlZCB2YWx1ZXMgd2lkZ2V0ICoqKi9cbmRpdi5hZ2ctdmFscyB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbi5hZ2ctdmFscyA+IC5jb2wsIC5hZ2ctdmFscyA+IC5jb2wtc21hbGxlciB7XG4gIGJvcmRlcjogMXB4ICM1QzkxQTggc29saWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG5cbn1cblxuLmFnZy1uYW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNjOGRiYztcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IDEwcHg7XG4gIHBhZGRpbmc6IDVweDtcbn1cblxuLmFnZy12YWxzIC5hZ2ctdmFsdWUge1xuICBwYWRkaW5nOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIC8qY29sb3I6IHdoaXRlOyovXG59XG5cbi5hZ2ctdW5pdCB7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbn1cblxuLmNvbCB7XG4gIHdpZHRoOiAxNC44JTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG5cbi5jb2wtbGFiZWwge1xuICB3aWR0aDogMTMlO1xufVxuXG4uY29sLXNtYWxsZXIge1xuICB3aWR0aDogNC44JTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgbWFyZ2luLXJpZ2h0OiAycHg7XG59XG4iXX0= */"
+module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-top: 25px;\n}\ntable {\n  border-collapse: separate;\n  border-spacing: 2px 0px;\n}\n.agg-value, .agg-name {\n  margin-right: 5px;\n}\n.agg-vals > .agg-value, .agg-names > .agg-name {\n  border: 1px #5C91A8 solid;\n  font-weight: bold;\n  text-align: center;\n\n}\n.agg-name {\n  background-color: #3c8dbc;\n  color: white;\n  font-size: 10px;\n  padding: 5px;\n}\n.agg-vals .agg-value {\n  padding: 5px;\n  font-size: 12px;\n  background-color: white;\n  /*color: white;*/\n}\n.agg-unit {\n  font-size: 10px;\n}\n.col-control {\n  width: 3.5%;\n  vertical-align: middle;\n}\n.col {\n  width: 6.66%;\n}\n.col-label {\n  width: 8%;\n}\n.col-smaller {\n  width: 2%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvY29tcG9uZW50cy9ncm91cGVkLWFnZ3JlZ2F0ZWQtc3RhdGlzdGljcy9ncm91cGVkLWFnZ3JhZ2F0ZWQtc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGtDQUFrQztBQUNsQztFQUNFLGlCQUFpQjtDQUNsQjtBQUVEO0VBQ0UsMEJBQTBCO0VBQzFCLHdCQUF3QjtDQUN6QjtBQUVEO0VBQ0Usa0JBQWtCO0NBQ25CO0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsa0JBQWtCO0VBQ2xCLG1CQUFtQjs7Q0FFcEI7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLGFBQWE7Q0FDZDtBQUVEO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQix3QkFBd0I7RUFDeEIsaUJBQWlCO0NBQ2xCO0FBRUQ7RUFDRSxnQkFBZ0I7Q0FDakI7QUFFRDtFQUNFLFlBQVk7RUFDWix1QkFBdUI7Q0FDeEI7QUFFRDtFQUNFLGFBQWE7Q0FDZDtBQUVEO0VBQ0UsVUFBVTtDQUNYO0FBRUQ7RUFDRSxVQUFVO0NBQ1giLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9jb21wb25lbnRzL2dyb3VwZWQtYWdncmVnYXRlZC1zdGF0aXN0aWNzL2dyb3VwZWQtYWdncmFnYXRlZC1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKioqIEFnZ3JlZ2F0ZWQgdmFsdWVzIHdpZGdldCAqKiovXG5kaXYuYWdnLXZhbHMge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG50YWJsZSB7XG4gIGJvcmRlci1jb2xsYXBzZTogc2VwYXJhdGU7XG4gIGJvcmRlci1zcGFjaW5nOiAycHggMHB4O1xufVxuXG4uYWdnLXZhbHVlLCAuYWdnLW5hbWUge1xuICBtYXJnaW4tcmlnaHQ6IDVweDtcbn1cblxuLmFnZy12YWxzID4gLmFnZy12YWx1ZSwgLmFnZy1uYW1lcyA+IC5hZ2ctbmFtZSB7XG4gIGJvcmRlcjogMXB4ICM1QzkxQTggc29saWQ7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG5cbn1cblxuLmFnZy1uYW1lIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNjOGRiYztcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IDEwcHg7XG4gIHBhZGRpbmc6IDVweDtcbn1cblxuLmFnZy12YWxzIC5hZ2ctdmFsdWUge1xuICBwYWRkaW5nOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIC8qY29sb3I6IHdoaXRlOyovXG59XG5cbi5hZ2ctdW5pdCB7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG59XG5cbi5jb2wge1xuICB3aWR0aDogNi42NiU7XG59XG5cbi5jb2wtbGFiZWwge1xuICB3aWR0aDogOCU7XG59XG5cbi5jb2wtc21hbGxlciB7XG4gIHdpZHRoOiAyJTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -4149,7 +4127,7 @@ module.exports = "/*** Aggregated values widget ***/\ndiv.agg-vals {\n  margin-t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"agg-vals\" *ngIf=\"result != null\">\n  <div class=\"col-smaller\">\n    <div class=\"agg-name\"># Selected</div>\n    <div class=\"agg-value \">{{getSelectedCount()}}</div>\n  </div>\n  <div class=\"col-smaller\">\n    <div class=\"agg-name\">Subs. capacity</div>\n    <div class=\"agg-value \">{{getMetricByType(subsCapacityType).value}} <span class=\"agg-unit\">{{getMetricByType(subsCapacityType).unit}}</span></div>\n  </div>\n  <div class=\"col\" *ngFor=\"let group of groupTypes\">\n    <div class=\"agg-name\">{{getGroupLabelByType(group)}}</div>\n    <div class=\"agg-value\">\n      <div *ngFor=\"let type of types[group]\">\n        <div class=\"text-left col-md-5\">{{getLabelByType(type)}}: </div>\n        <div class=\"text-right col-md-push-6\">\n          <span *ngIf=\"getMetricByType(type) !== undefined && getMetricByType(type) != null\">{{toFixed(getMetricByType(type).value, 2) | formatThousands}} <span class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n          <span class='text-gray' *ngIf=\"getMetricByType(type).value === undefined || getMetricByType(type).value == null\">No value</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<!--AGGREGATED VALUES-->\n<table *ngIf=\"result != null\">\n  <thead>\n  <tr class=\"agg-names\">\n    <td *ngFor=\"let group of groupTypes\" class=\"agg-name\">{{getGroupLabelByType(group)}}</td>\n  </tr>\n  </thead>\n  <tbody>\n  <tr class=\"agg-vals\">\n    <td *ngFor=\"let group of groupTypes\" class=\"agg-value\"\n        [class.col]=\"types[group].length > 1\"\n        [class.col-smaller]=\"types[group].length === 1\"\n    >\n      <div *ngFor=\"let type of types[group]\">\n        <div *ngIf=\"types[group].length > 1\">\n          <div class=\"text-left col-md-5\">{{getLabelByType(type)}}:</div>\n          <div class=\"text-right col-md-push-6\">\n            <span\n              *ngIf=\"getMetricByType(type) !== undefined && getMetricByType(type) != null\">{{toFixed(type, getMetricByType(type).value, 2) | formatThousands}}\n              <span class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n            <span class='text-gray'\n                  *ngIf=\"getMetricByType(type) === undefined || getMetricByType(type) == null\">No value</span>\n          </div>\n        </div>\n        <div *ngIf=\"types[group].length === 1\">\n        <span\n          *ngIf=\"getMetricByType(type) !== undefined && getMetricByType(type) != null\">{{toFixed(type, getMetricByType(type).value, 2) | formatThousands}}\n          <span class=\"agg-unit\">{{getMetricByType(type).unit}}</span></span>\n          <span class='text-gray'\n                *ngIf=\"getMetricByType(type) === undefined || getMetricByType(type) == null\">No value</span>\n        </div>\n      </div>\n\n    </td>\n  </tr>\n  </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -4167,6 +4145,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 /* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
 /* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+/* harmony import */ var _aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../aggragated-statistics/global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4180,68 +4172,81 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var GroupedAggregatedStatisticsComponent = /** @class */ (function () {
+
+var GroupedAggregatedStatisticsComponent = /** @class */ (function (_super) {
+    __extends(GroupedAggregatedStatisticsComponent, _super);
     function GroupedAggregatedStatisticsComponent(localStorageService) {
-        this.localStorageService = localStorageService;
-        this.types = [];
-        this.groupTypes = [0, 1, 2, 3, 4, 5];
-        this.labels = [];
-        this.groupLabel = [];
-        this.subsCapacityType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY;
-        this.types[0] = [
+        var _this = _super.call(this) || this;
+        _this.localStorageService = localStorageService;
+        _this.types = [];
+        _this.groupTypes = [0, 1, 2, 3, 4, 5, 6, 7];
+        _this.groupLabel = [];
+        _this.typesIntValue = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SELECTED_COUNT
+        ];
+        _this.types.push([
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SELECTED_COUNT
+        ]);
+        _this.types.push([
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_SUBS_PERC,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_SUBS_PERC,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_SUBS_PERC
-        ];
-        this.types[1] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED_PERC,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED_PERC
-        ];
-        this.types[2] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_FREE,
-        ];
-        this.types[3] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_FREE
-        ];
-        this.types[4] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_TOTAL,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_FREE
-        ];
-        this.types[5] = [
+        ]);
+        _this.types.push([
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].COMPRESS_RATIO,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].DEDUP_RATIO,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TOTAL_SAVING_EFFECT
-        ];
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_SUBS_PERC] = 'Physical';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_SUBS_PERC] = 'Logical';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_SUBS_PERC] = 'Net';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC] = 'Physical';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED_PERC] = 'Logical';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED_PERC] = 'Net';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY] = 'Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED] = 'Used';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_FREE] = 'Free';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY] = 'Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED] = 'Used';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_FREE] = 'Free';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_TOTAL] = 'Capacity';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED] = 'Used';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_FREE] = 'Free';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].COMPRESS_RATIO] = 'Comp';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].DEDUP_RATIO] = 'Dedup';
-        this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TOTAL_SAVING_EFFECT] = 'Savings';
-        this.groupLabel[0] = 'Subscription';
-        this.groupLabel[1] = 'Utilization';
-        this.groupLabel[2] = 'Physical Capacity';
-        this.groupLabel[3] = 'Logical Capacity';
-        this.groupLabel[4] = 'Net Capacity';
-        this.groupLabel[5] = 'Savings';
+        ]);
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_SUBS_PERC] = 'Physical';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_SUBS_PERC] = 'Logical';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_SUBS_PERC] = 'Net';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC] = 'Physical';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED_PERC] = 'Logical';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED_PERC] = 'Net';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY] = 'Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED] = 'Used';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_FREE] = 'Free';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY] = 'Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED] = 'Used';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_FREE] = 'Free';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_TOTAL] = 'Capacity';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_USED] = 'Used';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].NET_FREE] = 'Free';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].COMPRESS_RATIO] = 'Comp';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].DEDUP_RATIO] = 'Dedup';
+        _this.labels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TOTAL_SAVING_EFFECT] = 'Savings';
+        _this.groupLabel.push('# Selected');
+        _this.groupLabel.push('Subscribed capacity');
+        _this.groupLabel.push('Subscription');
+        _this.groupLabel.push('Utilization');
+        _this.groupLabel.push('Physical Capacity');
+        _this.groupLabel.push('Logical Capacity');
+        _this.groupLabel.push('Net Capacity');
+        _this.groupLabel.push('Savings');
+        return _this;
     }
     GroupedAggregatedStatisticsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -4259,29 +4264,6 @@ var GroupedAggregatedStatisticsComponent = /** @class */ (function () {
         var mean = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_2__["SasiWeightedArithmeticMean"]();
         this.result = mean.computeSummaries(this.data, this.selectedRows);
     };
-    GroupedAggregatedStatisticsComponent.prototype.getSelectedCount = function () {
-        var _this = this;
-        var filteredByData = this.selectedRows.filter(function (key) {
-            var row = _this.data.find(function (groupRow) { return groupRow.groupRow.getCell('name').value === key.groupName; });
-            if (row === undefined) {
-                return false;
-            }
-            return row.rows.find(function (dataRow) { return dataRow.getCell('name').value === key.rowName; });
-        });
-        return filteredByData.length;
-    };
-    GroupedAggregatedStatisticsComponent.prototype.getMetricByType = function (type) {
-        return this.result.getValue(type);
-    };
-    GroupedAggregatedStatisticsComponent.prototype.getLabelByType = function (type) {
-        return this.labels[type] != null ? this.labels[type] : null;
-    };
-    GroupedAggregatedStatisticsComponent.prototype.toFixed = function (value, position) {
-        if (value == null) {
-            return 'No value';
-        }
-        return parseFloat(value).toFixed(position);
-    };
     GroupedAggregatedStatisticsComponent.prototype.getGroupLabelByType = function (type) {
         return this.groupLabel[type] != null ? this.groupLabel[type] : null;
     };
@@ -4289,10 +4271,6 @@ var GroupedAggregatedStatisticsComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
     ], GroupedAggregatedStatisticsComponent.prototype, "data", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Array)
-    ], GroupedAggregatedStatisticsComponent.prototype, "aggregatedTypes", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
@@ -4310,7 +4288,7 @@ var GroupedAggregatedStatisticsComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [ngx_store__WEBPACK_IMPORTED_MODULE_1__["LocalStorageService"]])
     ], GroupedAggregatedStatisticsComponent);
     return GroupedAggregatedStatisticsComponent;
-}());
+}(_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_4__["CommonAggregatedStats"]));
 
 
 
@@ -5256,7 +5234,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./formatters/disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.ts");
 /* harmony import */ var _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./views/logical-capacity-statistics/logical-capacity-statistics.component */ "./src/app/global-statistics/views/logical-capacity-statistics/logical-capacity-statistics.component.ts");
 /* harmony import */ var _components_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/aggragated-statistics/global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts");
-/* harmony import */ var _components_global_logical_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/global-logical-statistics/global-logical-statistics.component */ "./src/app/global-statistics/components/global-logical-statistics/global-logical-statistics.component.ts");
+/* harmony import */ var _components_grouped_aggregated_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/grouped-aggregated-statistics/global-logical-statistics.component */ "./src/app/global-statistics/components/grouped-aggregated-statistics/global-logical-statistics.component.ts");
 /* harmony import */ var _components_grouped_aggregated_statistics_grouped_aggregated_statistics_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/grouped-aggregated-statistics/grouped-aggregated-statistics.component */ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.ts");
 /* harmony import */ var _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./views/host-groups-capacity/host-groups-capacity.component */ "./src/app/global-statistics/views/host-groups-capacity/host-groups-capacity.component.ts");
 /* harmony import */ var _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/aggragated-statistics/global-host-group-capacity.component */ "./src/app/global-statistics/components/aggragated-statistics/global-host-group-capacity.component.ts");
@@ -5316,7 +5294,7 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_19__["DisbalanceFormatterComponent"],
                 _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__["LogicalCapacityStatisticsComponent"],
                 _components_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_21__["GlobalPhysicalCapacityStatisticsComponent"],
-                _components_global_logical_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_22__["GlobalLogicalStatisticsComponent"],
+                _components_grouped_aggregated_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_22__["GlobalLogicalStatisticsComponent"],
                 _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_24__["HostGroupsCapacityComponent"],
                 _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_25__["GlobalHostGroupCapacityComponent"]
             ],
@@ -6216,7 +6194,7 @@ module.exports = ":host /deep/ .col-val {\n  padding-top: 5px;\n  padding-bottom
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable\" [tableOptions]=\"options\"></app-sasi-table>\n      <app-grouped-aggregated-statistics class='col-md-12 sticky-bottom' [aggregatedTypes]=\"options.getAggregatedColumns()\" [data]=\"data | systemPool2SasiGroupTable\" [selectedRows]=\"selectedRows\" [prefix]=\"options.storageNamePrefix\"></app-grouped-aggregated-statistics>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable\" [tableOptions]=\"options\"></app-sasi-table>\n      <app-grouped-aggregated-statistics class='col-md-12 sticky-bottom' [data]=\"data | systemPool2SasiGroupTable\" [selectedRows]=\"selectedRows\" [prefix]=\"options.storageNamePrefix\"></app-grouped-aggregated-statistics>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
