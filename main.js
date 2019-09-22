@@ -2343,6 +2343,26 @@ var SmallBoxComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/common/models/Datacenter.ts":
+/*!*********************************************!*\
+  !*** ./src/app/common/models/Datacenter.ts ***!
+  \*********************************************/
+/*! exports provided: Datacenter */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Datacenter", function() { return Datacenter; });
+var Datacenter = /** @class */ (function () {
+    function Datacenter() {
+    }
+    return Datacenter;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/models/MenuItem.ts":
 /*!*******************************************!*\
   !*** ./src/app/common/models/MenuItem.ts ***!
@@ -5117,8 +5137,9 @@ module.exports = "<h2>{{getTitle()}}</h2>\n<div *ngIf=\"context === 'physical-ca
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalStatisticsComponent", function() { return GlobalStatisticsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bus.service */ "./src/app/global-statistics/bus.service.ts");
+/* harmony import */ var _common_models_Datacenter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/models/Datacenter */ "./src/app/common/models/Datacenter.ts");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bus.service */ "./src/app/global-statistics/bus.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5131,10 +5152,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var GlobalStatisticsComponent = /** @class */ (function () {
     function GlobalStatisticsComponent(metricService, bus) {
         this.metricService = metricService;
         this.bus = bus;
+        this.dataCenters = [];
     }
     GlobalStatisticsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -5154,7 +5177,12 @@ var GlobalStatisticsComponent = /** @class */ (function () {
     GlobalStatisticsComponent.prototype.getDatacenters = function (currentTab) {
         var _this = this;
         this.metricService.getDatacenters().subscribe(function (data) {
-            _this.dataCenters = data.datacenters;
+            _this.dataCenters = [];
+            var defaultDatacenter = new _common_models_Datacenter__WEBPACK_IMPORTED_MODULE_1__["Datacenter"]();
+            defaultDatacenter.label = 'All';
+            defaultDatacenter.id = -1;
+            _this.dataCenters.push(defaultDatacenter);
+            _this.dataCenters = _this.dataCenters.concat(data.datacenters);
             _this.currentTab = currentTab;
         });
     };
@@ -5192,8 +5220,8 @@ var GlobalStatisticsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./global-statistics.component.html */ "./src/app/global-statistics/global-statistics.component.html"),
             styles: [__webpack_require__(/*! ./global-statistics.component.css */ "./src/app/global-statistics/global-statistics.component.css")]
         }),
-        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"],
-            _bus_service__WEBPACK_IMPORTED_MODULE_2__["BusService"]])
+        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"],
+            _bus_service__WEBPACK_IMPORTED_MODULE_3__["BusService"]])
     ], GlobalStatisticsComponent);
     return GlobalStatisticsComponent;
 }());
@@ -5767,7 +5795,8 @@ var AdaptersComponent = /** @class */ (function () {
         var _this = this;
         this.currentDataCenterId = id;
         this.metricService.getAdaptersStatistics(id, this.currentPeriod).subscribe(function (data) {
-            _this.data = data.systems;
+            _this.data = [];
+            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
         }, function (error) {
             console.log(error);
             _this.data = [];
@@ -5928,7 +5957,8 @@ var DpSlaComponent = /** @class */ (function () {
         var _this = this;
         this.currentDataCenterId = id;
         this.metricService.getDpSlaStatistics(id, this.currentPeriod).subscribe(function (data) {
-            _this.data = data.systems;
+            _this.data = [];
+            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
         }, function (error) {
             console.log(error);
             _this.data = [];
@@ -6133,7 +6163,8 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
     HostGroupsCapacityComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.metricService.getHostGroupCapacityStatistics(id).subscribe(function (data) {
-            _this.data = data.systems;
+            _this.data = [];
+            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
         }, function (error) {
             console.log(error);
             _this.data = [];
@@ -6473,7 +6504,8 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
     LogicalCapacityStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.metricService.getCapacityStatistics(id).subscribe(function (data) {
-            _this.data = data.systems;
+            _this.data = [];
+            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
         }, function (error) {
             console.log(error);
             _this.data = [];
@@ -6653,7 +6685,8 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         var _this = this;
         this.currentDataCenterId = id;
         this.metricService.getPerformanceStatistics(id, this.currentPeriod).subscribe(function (data) {
-            _this.data = data.systems;
+            _this.data = [];
+            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
         }, function (error) {
             console.log(error);
             _this.data = [];
@@ -6927,7 +6960,8 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
     PhysicalCapacityStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.metricService.getCapacityStatistics(id).subscribe(function (data) {
-            _this.data = data.systems;
+            _this.data = [];
+            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
         }, function (error) {
             console.log(error);
             _this.data = [];
@@ -7033,21 +7067,43 @@ var MetricService = /** @class */ (function () {
         return datacenterObj.systems.find(function (system) { return system.id.toString() === systemId; }).name;
     };
     MetricService.prototype.getPerformanceStatistics = function (id, period) {
-        if (id !== undefined) {
-            var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/performance');
-            return this.http.get(url);
+        var url;
+        if (id !== undefined && id !== -1) {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/performance');
         }
+        else {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/performance');
+        }
+        return this.http.get(url);
     };
     MetricService.prototype.getCapacityStatistics = function (id) {
-        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/capacity');
+        var url;
+        if (id !== undefined && id !== -1) {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/capacity');
+        }
+        else {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/capacity');
+        }
         return this.http.get(url);
     };
     MetricService.prototype.getDpSlaStatistics = function (id, period) {
-        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/sla');
+        var url;
+        if (id !== undefined && id !== -1) {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/sla');
+        }
+        else {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/sla');
+        }
         return this.http.get(url);
     };
     MetricService.prototype.getAdaptersStatistics = function (id, period) {
-        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/adapters');
+        var url;
+        if (id !== undefined && id !== -1) {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/adapters');
+        }
+        else {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/adapters');
+        }
         return this.http.get(url);
     };
     MetricService.prototype.getGlobalCapacityStatistics = function () {
@@ -7059,7 +7115,13 @@ var MetricService = /** @class */ (function () {
         return this.http.get(url);
     };
     MetricService.prototype.getHostGroupCapacityStatistics = function (id) {
-        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/host-groups');
+        var url;
+        if (id !== undefined && id !== -1) {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/host-groups');
+        }
+        else {
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/host-groups');
+        }
         return this.http.get(url);
     };
     MetricService.prototype.getSuffix = function (period) {
