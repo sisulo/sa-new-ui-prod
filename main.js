@@ -244,7 +244,7 @@ module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"info-box\">\n  <span [ngClass]=\"isOverThreshold() ? 'info-box-icon bg-orange': 'info-box-icon bg-green'\" class=\"info-box-icon\"><i class=\"fa\" [ngClass]=\"isOverThreshold() ? 'fa-exclamation-triangle' : icon\"></i></span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 2\" ><a [routerLink]=\"'/global-statistics/' + occurence.datacenterId + '/' + context\">\n          {{occurence.name}}</a> |\n          </span>\n      </span>\n    </span>\n    <span *ngIf=\"data.length > 2\"> ... <a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\" (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n            <tr>\n              <th>System</th>\n              <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n              <th>Value</th>\n            </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType === null\">\n              {{occurence.name}}\n            </td>\n            <td *ngIf=\"occurence.entityType !== null\">\n              {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL\">\n              {{occurence.name}}\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurence.datacenterId + '/' + context\">-->\n          <!--{{occurence.name}}</a> - {{occurence.value}} {{occurence.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close</button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
+module.exports = "<div class=\"info-box\">\n  <span [ngClass]=\"isOverThreshold() ? 'info-box-icon bg-orange': 'info-box-icon bg-green'\" class=\"info-box-icon\"><i class=\"fa\" [ngClass]=\"isOverThreshold() ? 'fa-exclamation-triangle' : icon\"></i></span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 2\" ><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{occurence.name}}</a> |\n          </span>\n      </span>\n    </span>\n    <span *ngIf=\"data.length > 2\"> ... <a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\" (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n            <tr>\n              <th>System</th>\n              <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n              <th>Value</th>\n            </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType === null\">\n              {{occurence.name}}\n            </td>\n            <td *ngIf=\"occurence.entityType !== null\">\n              {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL\">\n              {{occurence.name}}\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurrences.datacenterId + '/' + context\">-->\n          <!--{{occurrences.name}}</a> - {{occurrences.value}} {{occurrences.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close</button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
 
 /***/ }),
 
@@ -3029,7 +3029,7 @@ module.exports = ".content {\n  min-height: 60px !important;\n}\n\n/*# sourceMap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell-o\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurence.length\" [data]=\"alert.occurence\" [context]=\"getLinkContext(alert.type)\"\n                      [label]=\"getAlertLabel(alert.type)\" [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\" [value]=\"alert.occurence.length\"\n                    [data]=\"alert.occurence\" [context]=\"getLinkContext(alert.type)\"\n                    [label]=\"getAlertLabel(alert.type)\" [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats (Last 24 hours)</h1>\n  </section>\n</div>\n<div class=\"row\">\n  <div class=\"col-md-9 col-sm-6\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n\n            <div class=\"col-md-8\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-4\">\n              <h4>Overload stats</h4>\n              <div class=\"row\">\n                <section class=\"content\" *ngIf=\"metrics.length > 0\">\n                  <div *ngFor=\"let metric of metrics\" class=\"col-md-12 col-xs-6\">\n                    <!-- small box -->\n                    <app-small-box [data]=\"metric\" [label]=\"getMetricLabel(metric.type)\" [icon]=\"getMetricIcon(metric.type)\"\n                                   [color]=\"getMetricColor(metric.type)\"></app-small-box>\n                  </div>\n                </section>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                            [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                            [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n                </div>\n              </div>\n            </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell-o\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurrences.length\" [data]=\"alert.occurrences\" [context]=\"getLinkContext(alert.type)\"\n                      [label]=\"getAlertLabel(alert.type)\" [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\" [value]=\"alert.occurrences.length\"\n                    [data]=\"alert.occurrences\" [context]=\"getLinkContext(alert.type)\"\n                    [label]=\"getAlertLabel(alert.type)\" [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats (Last 24 hours)</h1>\n  </section>\n</div>\n<div class=\"row\">\n  <div class=\"col-md-9 col-sm-6\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n\n            <div class=\"col-md-8\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-4\">\n              <h4>Overload stats</h4>\n              <div class=\"row\">\n                <section class=\"content\" *ngIf=\"metrics.length > 0\">\n                  <div *ngFor=\"let metric of metrics\" class=\"col-md-12 col-xs-6\">\n                    <!-- small box -->\n                    <app-small-box [data]=\"metric\" [label]=\"getMetricLabel(metric.type)\" [icon]=\"getMetricIcon(metric.type)\"\n                                   [color]=\"getMetricColor(metric.type)\"></app-small-box>\n                  </div>\n                </section>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                            [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                            [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n                </div>\n              </div>\n            </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -3089,15 +3089,15 @@ var DashboardComponent = /** @class */ (function () {
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE] = 'Latency Events';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS] = 'Out of SLA Events';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING] = 'Cache Write Pending Events';
-        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'fa-pie-chart';
-        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'fa-dashboard';
+        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'fa-chart-pie';
+        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'fa-tachometer-alt';
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'fa-random';
-        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD] = 'fa-hdd-o';
-        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE] = 'fa-line-chart';
-        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS] = 'fa-bell-o';
-        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING] = 'fa-bar-chart';
+        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD] = 'fa-hdd';
+        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE] = 'fa-chart-line';
+        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS] = 'fa-bell';
+        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING] = 'fa-chart-bar';
         this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD] = 'fa fa-chart-bar';
-        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER] = 'fa fa-exchange';
+        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER] = 'fa fa-exchange-alt';
         this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD] = 'bg-maroon';
         this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER] = 'bg-primary';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'capacity';
@@ -3110,6 +3110,7 @@ var DashboardComponent = /** @class */ (function () {
         this.alertsPerformance.push(_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE);
         this.alertsOperations.push(_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS);
         this.metricService.getInfrastructureStats().subscribe(function (stats) {
+            console.log(stats);
             _this.metrics = stats.metrics;
             _this.alerts = stats.alerts;
         });
@@ -3132,6 +3133,8 @@ var DashboardComponent = /** @class */ (function () {
         return this.alertIcons[type];
     };
     DashboardComponent.prototype.getMetricIcon = function (type) {
+        console.log(type);
+        console.log(this.metricIcons[type]);
         return this.metricIcons[type];
     };
     DashboardComponent.prototype.getMetricLabel = function (type) {
@@ -4729,7 +4732,7 @@ var SimpleFormatterComponent = /** @class */ (function (_super) {
         }
     };
     SimpleFormatterComponent.prototype.getValue = function () {
-        if (this.column.isInfinity && this.data.value === -1) {
+        if (this.column.isInfinity === true && this.data.value === -1) {
             return '<i class="fas fa-infinity" style="font-size: 12px"></i> ';
         }
         return this.data.value % 1 === 0 ? this.data.value : this.data.value.toFixed(1);
@@ -6880,6 +6883,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1D)
             .withLabel('Change 1D')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withInfinity(false)
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('One Day Change')
@@ -6890,6 +6894,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
+            .withInfinity(false)
             .withTooltipText('One Week Change')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
@@ -6898,6 +6903,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
+            .withInfinity(false)
             .withTooltipText('One Month Change')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
@@ -7045,7 +7051,7 @@ var MetricService = /** @class */ (function () {
         this.getDatacenters();
     }
     MetricService.prototype.getInfrastructureStats = function () {
-        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/infrastructureMetric.json');
+        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/infrastructure/alerts');
         return this.http.get(url);
     };
     MetricService.prototype.getDatacenters = function () {
@@ -7056,15 +7062,15 @@ var MetricService = /** @class */ (function () {
         return dtoObservable;
     };
     MetricService.prototype.getSystemName = function (datacenterId, systemId) {
-        var datacenterObj = this.infrastructure.find(function (datacenter) { return datacenter.id.toString() === datacenterId; });
+        var datacenterObj = this.infrastructure.find(function (datacenter) { return datacenter.id === datacenterId; });
         if (datacenterObj === undefined) {
             return '';
         }
-        var systemObj = datacenterObj.systems.find(function (system) { return system.id.toString() === systemId; });
+        var systemObj = datacenterObj.systems.find(function (system) { return system.id === systemId; });
         if (systemObj === undefined) {
             return '';
         }
-        return datacenterObj.systems.find(function (system) { return system.id.toString() === systemId; }).name;
+        return datacenterObj.systems.find(function (system) { return system.id === systemId; }).name;
     };
     MetricService.prototype.getPerformanceStatistics = function (id, period) {
         var url;
@@ -7147,7 +7153,6 @@ var MetricService = /** @class */ (function () {
     MetricService.prototype.generateDate = function () {
         var pipe = new _angular_common__WEBPACK_IMPORTED_MODULE_3__["DatePipe"]('en-US');
         return pipe.transform(this.currentDate, 'yyyy-MM-dd');
-        // return '2019-06-18';
     };
     MetricService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
