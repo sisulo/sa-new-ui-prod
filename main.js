@@ -233,7 +233,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}\n.info-box-number {\n  font-size: 25px;\n}\n.info-box-text {\n  font-size: 17px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvaW5mby1ib3gvaW5mby1ib3guY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7RUFDZixvQkFBb0I7Q0FDckI7QUFDRDtFQUNFLGdCQUFnQjtDQUNqQjtBQUNEO0VBQ0UsZ0JBQWdCO0NBQ2pCIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvaW5mby1ib3gvaW5mby1ib3guY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImRpdi5tb2RhbC5vcGVuIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHBhZGRpbmctcmlnaHQ6IDE1cHg7XG59XG4uaW5mby1ib3gtbnVtYmVyIHtcbiAgZm9udC1zaXplOiAyNXB4O1xufVxuLmluZm8tYm94LXRleHQge1xuICBmb250LXNpemU6IDE3cHg7XG59XG4iXX0= */"
+module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}\n\n.info-box-number {\n  font-size: 25px;\n}\n\n.info-box-text {\n  font-size: 17px;\n}\n\n.cut-text {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  max-width: 80%;\n  height: 1.2em;\n  white-space: nowrap;\n}\n\n.modal-content {\n  overflow: scroll;\n  height: 700px;\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvaW5mby1ib3gvaW5mby1ib3guY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7RUFDZixvQkFBb0I7Q0FDckI7O0FBRUQ7RUFDRSxnQkFBZ0I7Q0FDakI7O0FBRUQ7RUFDRSxnQkFBZ0I7Q0FDakI7O0FBRUQ7RUFDRSxzQkFBc0I7RUFDdEIsd0JBQXdCO0VBQ3hCLGlCQUFpQjtFQUNqQixlQUFlO0VBQ2YsY0FBYztFQUNkLG9CQUFvQjtDQUNyQjs7QUFDRDtFQUNFLGlCQUFpQjtFQUNqQixjQUFjO0VBQ2QsbUJBQW1CO0VBQ25CLGlCQUFpQjtDQUNsQiIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi9jb21wb25lbnRzL2luZm8tYm94L2luZm8tYm94LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJkaXYubW9kYWwub3BlbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBwYWRkaW5nLXJpZ2h0OiAxNXB4O1xufVxuXG4uaW5mby1ib3gtbnVtYmVyIHtcbiAgZm9udC1zaXplOiAyNXB4O1xufVxuXG4uaW5mby1ib3gtdGV4dCB7XG4gIGZvbnQtc2l6ZTogMTdweDtcbn1cblxuLmN1dC10ZXh0IHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgbWF4LXdpZHRoOiA4MCU7XG4gIGhlaWdodDogMS4yZW07XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59XG4ubW9kYWwtY29udGVudCB7XG4gIG92ZXJmbG93OiBzY3JvbGw7XG4gIGhlaWdodDogNzAwcHg7XG4gIG92ZXJmbG93LXg6IGhpZGRlbjtcbiAgb3ZlcmZsb3cteTogYXV0bztcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -244,7 +244,7 @@ module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"info-box\">\n  <span [ngClass]=\"isOverThreshold() ? 'info-box-icon bg-orange': 'info-box-icon bg-green'\" class=\"info-box-icon\"><i class=\"fa\" [ngClass]=\"isOverThreshold() ? 'fa-exclamation-triangle' : icon\"></i></span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 2\" ><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{occurence.name}}</a> |\n          </span>\n      </span>\n    </span>\n    <span *ngIf=\"data.length > 2\"> ... <a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\" (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n            <tr>\n              <th>System</th>\n              <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n              <th>Value</th>\n            </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType === null\">\n              {{occurence.name}}\n            </td>\n            <td *ngIf=\"occurence.entityType !== null\">\n              {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL\">\n              {{occurence.name}}\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurrences.datacenterId + '/' + context\">-->\n          <!--{{occurrences.name}}</a> - {{occurrences.value}} {{occurrences.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close</button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
+module.exports = "<div class=\"info-box\">\n  <span [tooltip]=\"infoBoxTooltip\" [ngClass]=\"isOverThreshold() ? 'info-box-icon bg-orange': 'info-box-icon bg-green'\" class=\"info-box-icon\"><i\n    class=\"fa\" [ngClass]=\"isOverThreshold() ? 'fa-exclamation-triangle' : icon\"></i></span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <div class=\"cut-text\">\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 10\"><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{occurence.name}}</a> |\n          </span>\n      </span>\n    </span>\n    </div>\n    <span *ngIf=\"data.length > 2\"><a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\"\n                                          (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n          <tr>\n            <th>System</th>\n            <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n            <th *ngIf=\"data[0].entityType === entityType.ADAPTER\">Adapter</th>\n            <th>Value</th>\n          </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType === null\">\n              {{occurence.name}}\n            </td>\n            <td *ngIf=\"occurence.entityType !== null\">\n              {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL || occurence.entityType === entityType.ADAPTER \">\n              {{occurence.name}}\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurrences.datacenterId + '/' + context\">-->\n            <!--{{occurrences.name}}</a> - {{occurrences.value}} {{occurrences.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close\n        </button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
 
 /***/ }),
 
@@ -280,6 +280,8 @@ var InfoBoxComponent = /** @class */ (function () {
         this.route = route;
         this.router = router;
         this.metric = metric;
+        this.minValue = 0;
+        this.maxValue = 0;
         this.threshold = 0;
         this.icon = '';
         this.data = [];
@@ -320,6 +322,14 @@ var InfoBoxComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
+    ], InfoBoxComponent.prototype, "minValue", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], InfoBoxComponent.prototype, "maxValue", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
     ], InfoBoxComponent.prototype, "threshold", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -329,6 +339,10 @@ var InfoBoxComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
     ], InfoBoxComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], InfoBoxComponent.prototype, "infoBoxTooltip", void 0);
     InfoBoxComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-info-box',
@@ -2446,6 +2460,7 @@ var EntityType;
 (function (EntityType) {
     EntityType["POOL"] = "pool";
     EntityType["SYSTEM"] = "system";
+    EntityType["ADAPTER"] = "adapter";
 })(EntityType || (EntityType = {}));
 
 
@@ -3029,7 +3044,7 @@ module.exports = ".content {\n  min-height: 60px !important;\n}\n\n/*# sourceMap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell-o\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurrences.length\" [data]=\"alert.occurrences\" [context]=\"getLinkContext(alert.type)\"\n                      [label]=\"getAlertLabel(alert.type)\" [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\" [value]=\"alert.occurrences.length\"\n                    [data]=\"alert.occurrences\" [context]=\"getLinkContext(alert.type)\"\n                    [label]=\"getAlertLabel(alert.type)\" [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats (Last 24 hours)</h1>\n  </section>\n</div>\n<div class=\"row\">\n  <div class=\"col-md-9 col-sm-6\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n\n            <div class=\"col-md-8\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-4\">\n              <h4>Overload stats</h4>\n              <div class=\"row\">\n                <section class=\"content\" *ngIf=\"metrics.length > 0\">\n                  <div *ngFor=\"let metric of metrics\" class=\"col-md-12 col-xs-6\">\n                    <!-- small box -->\n                    <app-small-box [data]=\"metric\" [label]=\"getMetricLabel(metric.type)\" [icon]=\"getMetricIcon(metric.type)\"\n                                   [color]=\"getMetricColor(metric.type)\"></app-small-box>\n                  </div>\n                </section>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                            [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                            [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n                </div>\n              </div>\n            </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell-o\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurrences.length\"\n                      [data]=\"alert.occurrences\"\n                      [context]=\"getLinkContext(alert.type)\"\n                      [minValue]=\"alert.minValue\"\n                      [maxValue]=\"alert.maxValue\"\n                      [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                      [label]=\"getAlertLabel(alert.type)\"\n                      [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\"\n                    [value]=\"alert.occurrences.length\"\n                    [data]=\"alert.occurrences\"\n                    [context]=\"getLinkContext(alert.type)\"\n                    [minValue]=\"alert.minValue\"\n                    [maxValue]=\"alert.maxValue\"\n                    [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                    [label]=\"getAlertLabel(alert.type)\"\n                    [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats (Last 24 hours)</h1>\n  </section>\n</div>\n<div class=\"row\">\n  <div class=\"col-md-9 col-sm-6\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n\n            <div class=\"col-md-8\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-4\">\n              <h4>Total load</h4>\n              <div class=\"row\">\n                <section class=\"content\" *ngIf=\"metrics.length > 0\">\n                  <div *ngFor=\"let metric of metrics\" class=\"col-md-12 col-xs-6\">\n                    <!-- small box -->\n                    <app-small-box [data]=\"metric\" [label]=\"getMetricLabel(metric.type)\" [icon]=\"getMetricIcon(metric.type)\"\n                                   [color]=\"getMetricColor(metric.type)\"></app-small-box>\n                  </div>\n                </section>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                            [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                            [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n                </div>\n              </div>\n            </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -3133,8 +3148,6 @@ var DashboardComponent = /** @class */ (function () {
         return this.alertIcons[type];
     };
     DashboardComponent.prototype.getMetricIcon = function (type) {
-        console.log(type);
-        console.log(this.metricIcons[type]);
         return this.metricIcons[type];
     };
     DashboardComponent.prototype.getMetricLabel = function (type) {
@@ -3145,6 +3158,22 @@ var DashboardComponent = /** @class */ (function () {
     };
     DashboardComponent.prototype.getLinkContext = function (type) {
         return this.linkContext[type];
+    };
+    DashboardComponent.prototype.getThresholdMessage = function (type, minValue, maxValue, unit) {
+        if (maxValue == null && minValue == null) {
+            return null;
+        }
+        var sanitizeUnit = unit;
+        if (sanitizeUnit == null) {
+            sanitizeUnit = '';
+        }
+        if (maxValue == null) {
+            return this.getAlertLabel(type) + " over " + minValue + sanitizeUnit;
+        }
+        if (minValue == null) {
+            return this.getAlertLabel(type) + " under " + maxValue + sanitizeUnit;
+        }
+        return this.getAlertLabel(type) + " between " + minValue + sanitizeUnit + " and " + maxValue + sanitizeUnit;
     };
     DashboardComponent.prototype.getAlertLabel = function (type) {
         return this.alertLabels[type];
@@ -3217,7 +3246,7 @@ module.exports = ".active {\n  /*background-color: #1ABB9C;*/\n\n  border-bottom
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"main-header\">\n\n  <!-- Logo -->\n  <a href=\"\" class=\"logo\">\n    <!-- mini logo for sidebar mini 50x50 pixels -->\n    <span class=\"logo-mini\"><b>S</b>an</span>\n    <!-- logo for regular state and mobile devices -->\n    <span class=\"logo-lg\"><b>Storage Analytics</b></span>\n  </a>\n\n\n  <!-- Header Navbar -->\n  <nav class=\"navbar navbar-static-top\" role=\"navigation\">\n    <!-- Sidebar toggle button-->\n    <a href=\"#\" class=\"sidebar-toggle\" data-toggle=\"push-menu\" role=\"button\">\n      <i class=\"fa fa-bars\"></i>\n      <span class=\"sr-only\">Toggle navigation</span>\n    </a>\n\n    <ul [@openClose]=\"enable ? 'true' : 'false'\"\n        (@openClose.start)=\"onAnimationEvent($event)\"\n        class=\"nav navbar-nav navbar-left\">\n      <li [class.active]=\"isCurrentPeriod(0)\"><a class=\"btn\" (click)=\"setCurrentPeriod(0)\">Last Day</a></li>\n      <li [class.active]=\"isCurrentPeriod(1)\"><a class=\"btn\" (click)=\"setCurrentPeriod(1)\">Last Week</a></li>\n      <li [class.active]=\"isCurrentPeriod(2)\"><a class=\"btn\" (click)=\"setCurrentPeriod(2)\">Last Month</a></li>\n    </ul>\n    <div class=\"logo-title\">\n      <img [src]=\"logoUrl\" class=\"sa-logo pull-left\"/>\n    </div>\n  </nav>\n\n\n</header>\n"
+module.exports = "<header class=\"main-header\">\n\n  <!-- Logo -->\n  <a href=\"\" class=\"logo\">\n    <!-- mini logo for sidebar mini 50x50 pixels -->\n    <span class=\"logo-mini\"><b>S</b>an</span>\n    <!-- logo for regular state and mobile devices -->\n    <span class=\"logo-lg\"><b>Storage Analytics</b></span>\n  </a>\n\n\n  <!-- Header Navbar -->\n  <nav class=\"navbar navbar-static-top\" role=\"navigation\">\n    <!-- Sidebar toggle button-->\n    <a href=\"#\" class=\"sidebar-toggle\" data-toggle=\"push-menu\" role=\"button\">\n      <i class=\"fa fa-bars\"></i>\n      <span class=\"sr-only\">Toggle navigation</span>\n    </a>\n\n    <ul [@openClose]=\"enable ? 'true' : 'false'\"\n        (@openClose.start)=\"onAnimationEvent($event)\"\n        class=\"nav navbar-nav navbar-left\">\n      <li [class.active]=\"isCurrentPeriod(periodType.DAY)\"><a class=\"btn\" (click)=\"setCurrentPeriod(periodType.DAY)\">Last Day</a></li>\n      <li [class.active]=\"isCurrentPeriod(periodType.WEEK)\"><a class=\"btn\" (click)=\"setCurrentPeriod(periodType.WEEK)\">Last Week</a></li>\n      <li [class.active]=\"isCurrentPeriod(periodType.MONTH)\"><a class=\"btn\" (click)=\"setCurrentPeriod(periodType.MONTH)\">Last Month</a></li>\n    </ul>\n    <div class=\"logo-title\">\n      <img [src]=\"logoUrl\" class=\"sa-logo pull-left\"/>\n    </div>\n  </nav>\n\n\n</header>\n"
 
 /***/ }),
 
@@ -3255,6 +3284,7 @@ var HeaderComponent = /** @class */ (function () {
         this.periodService = periodService;
         this.enable = false;
         this.logoUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].logoUrl;
+        this.periodType = _metric_service__WEBPACK_IMPORTED_MODULE_1__["PeriodType"];
         this.currentPeriod = _metric_service__WEBPACK_IMPORTED_MODULE_1__["PeriodType"].DAY;
     }
     HeaderComponent.prototype.ngOnInit = function () {
@@ -6880,33 +6910,6 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1D)
-            .withLabel('Change 1D')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
-            .withInfinity(false)
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .withTooltipText('One Day Change')
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1W)
-            .withLabel('Change 1W')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .withInfinity(false)
-            .withTooltipText('One Week Change')
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1M)
-            .withLabel('Change 1M')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(true)
-            .withInfinity(false)
-            .withTooltipText('One Month Change')
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L1)
             .withLabel('Reach 80%')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
@@ -6932,6 +6935,33 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIsAggregated(false)
             .withTooltipText('Days to reach 88% of "Physical Used"')
             .withInfinity(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1D)
+            .withLabel('Change 1D')
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withInfinity(false)
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .withTooltipText('One Day Change')
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1W)
+            .withLabel('Change 1W')
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .withInfinity(false)
+            .withTooltipText('One Week Change')
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1M)
+            .withLabel('Change 1M')
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .withInfinity(false)
+            .withTooltipText('One Month Change')
             .build());
         this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_10__["AlertFormatterComponent"];
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_11__["RowGroupTableComponent"];
@@ -7040,9 +7070,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var PeriodType;
 (function (PeriodType) {
-    PeriodType[PeriodType["DAY"] = 0] = "DAY";
-    PeriodType[PeriodType["WEEK"] = 1] = "WEEK";
-    PeriodType[PeriodType["MONTH"] = 2] = "MONTH";
+    PeriodType["DAY"] = "DAY";
+    PeriodType["WEEK"] = "WEEK";
+    PeriodType["MONTH"] = "MONTH";
 })(PeriodType || (PeriodType = {}));
 var MetricService = /** @class */ (function () {
     function MetricService(http) {
@@ -7075,10 +7105,10 @@ var MetricService = /** @class */ (function () {
     MetricService.prototype.getPerformanceStatistics = function (id, period) {
         var url;
         if (id !== undefined && id !== -1) {
-            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/performance');
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/performance', period);
         }
         else {
-            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/performance');
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/performance', period);
         }
         return this.http.get(url);
     };
@@ -7095,20 +7125,20 @@ var MetricService = /** @class */ (function () {
     MetricService.prototype.getDpSlaStatistics = function (id, period) {
         var url;
         if (id !== undefined && id !== -1) {
-            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/sla');
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/sla', period);
         }
         else {
-            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/sla');
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/sla', period);
         }
         return this.http.get(url);
     };
     MetricService.prototype.getAdaptersStatistics = function (id, period) {
         var url;
         if (id !== undefined && id !== -1) {
-            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/adapters');
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/' + id + '/adapters', period);
         }
         else {
-            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/adapters');
+            url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters/adapters', period);
         }
         return this.http.get(url);
     };
@@ -7130,22 +7160,12 @@ var MetricService = /** @class */ (function () {
         }
         return this.http.get(url);
     };
-    MetricService.prototype.getSuffix = function (period) {
-        var suffix = '';
-        switch (period) {
-            case PeriodType.WEEK:
-                suffix = '_week';
-                break;
-            case PeriodType.MONTH:
-                suffix = '_month';
-                break;
-            default:
-                suffix = '_day';
+    MetricService.prototype.buildUrl = function (baseUrl, basePath, period) {
+        var periodParam = '';
+        if (period != null) {
+            periodParam = 'period=' + period + '&';
         }
-        return suffix;
-    };
-    MetricService.prototype.buildUrl = function (baseUrl, basePath) {
-        return baseUrl + basePath + '?t=' + this.generateSaltValue() + '&date=' + this.generateDate();
+        return baseUrl + basePath + '?' + periodParam + 't=' + this.generateSaltValue() + '&date=' + this.generateDate();
     };
     MetricService.prototype.generateSaltValue = function () {
         return Math.random().toString(36).substring(2, 15);
