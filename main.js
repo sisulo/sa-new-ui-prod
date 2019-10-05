@@ -2869,7 +2869,7 @@ var IframeUrlCreatorPipe = /** @class */ (function () {
         if (args.anchor != null) {
             anchorParam = "#" + args.anchor;
         }
-        return _UrlCreator__WEBPACK_IMPORTED_MODULE_1__["UrlCreator"].url(this.mapToDirectory(value), this.iFrameLinks[args.iframeLink]);
+        return _UrlCreator__WEBPACK_IMPORTED_MODULE_1__["UrlCreator"].url(this.mapToDirectory(value), this.iFrameLinks[args.iframeLink] + anchorParam);
     };
     IframeUrlCreatorPipe.prototype.mapToDirectory = function (id) {
         if (this.mapSystemToDirectory[id] !== undefined) {
