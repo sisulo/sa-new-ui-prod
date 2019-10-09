@@ -3031,7 +3031,7 @@ var IframeUrlCreatorPipe = /** @class */ (function () {
     };
     IframeUrlCreatorPipe.prototype.normalizeAnchor = function (value) {
         if (value != null) {
-            return value.replace(/[#\-\s]+/g, '_');
+            return value.replace(/[#\-\s\,]+/g, '_');
         }
         return '';
     };
