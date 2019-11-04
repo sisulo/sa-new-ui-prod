@@ -2726,6 +2726,7 @@ var SystemMetricType;
     SystemMetricType["NET_SUBS_PERC"] = "NET_SUBS_PERC";
     SystemMetricType["LOGICAL_SUBS_PERC"] = "LOGICAL_SUBS_PERC";
     SystemMetricType["SUBSCRIBED_CAPACITY"] = "SUBSCRIBED_CAPACITY";
+    SystemMetricType["LOGICAL_CHANGE_1M"] = "LOGICAL_CHANGE_MONTH";
 })(SystemMetricType || (SystemMetricType = {}));
 
 
@@ -2895,8 +2896,9 @@ var StorageConvertPipe = /** @class */ (function () {
         this.unitOrder = {
             'CAPACITY': ['MB', 'GB', 'TB', 'PB'],
             'TRANSFER': ['MBps', 'GBps', 'TBps'],
-            'PHYSICAL_CAPACITY': ['MB', 'GB', 'TB', 'PB'],
-            'SUBSCRIBED_CAPACITY': ['MB', 'GB', 'TB', 'PB'],
+            'LOGICAL_CAPACITY': ['MB', 'GB', 'TB'],
+            'LOGICAL_CHANGE_MONTH': ['MB', 'GB', 'TB', 'PB'],
+            'SUBSCRIBED_CAPACITY': ['MB', 'GB', 'TB'],
             'CHANGE_MONTH': ['MB', 'GB', 'TB', 'PB'],
         };
     }
@@ -2905,17 +2907,17 @@ var StorageConvertPipe = /** @class */ (function () {
             return metric;
         }
         var startingValue = this.unitOrder[metric.type].findIndex(function (unit) { return unit === metric.unit; });
-        var convertedValue = this.convertValue(metric.value.toFixed(0), startingValue);
+        var convertedValue = this.convertValue(metric.value.toFixed(0), startingValue, this.unitOrder[metric.type].length - 1);
         var result = new _models_metrics_Metric__WEBPACK_IMPORTED_MODULE_1__["Metric"]();
         result.value = convertedValue.value;
         result.type = metric.type;
         result.unit = this.unitOrder[metric.type][convertedValue.countedOrder];
         return result;
     };
-    StorageConvertPipe.prototype.convertValue = function (value, startingOrder) {
+    StorageConvertPipe.prototype.convertValue = function (value, startingOrder, maximumOrder) {
         var countedOrder = startingOrder;
         var countedValue = value;
-        while ((Number.parseInt(countedValue, 10) / 1024) > 1) {
+        while ((Number.parseInt(countedValue, 10) / 1024) > 1 && countedOrder < maximumOrder) {
             countedValue = (Number.parseInt(countedValue, 10) / 1024).toFixed(0);
             countedOrder++;
         }
@@ -3281,7 +3283,7 @@ module.exports = ".content {\n  min-height: 60px !important;\n}\n\n/*# sourceMap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurrences.length\"\n                      [data]=\"alert.occurrences\"\n                      [context]=\"getLinkContext(alert.type)\"\n                      [minValue]=\"alert.minValue\"\n                      [maxValue]=\"alert.maxValue\"\n                      [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                      [label]=\"getAlertLabel(alert.type)\"\n                      [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\"\n                    [value]=\"alert.occurrences.length\"\n                    [data]=\"alert.occurrences\"\n                    [context]=\"getLinkContext(alert.type)\"\n                    [minValue]=\"alert.minValue\"\n                    [maxValue]=\"alert.maxValue\"\n                    [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                    [label]=\"getAlertLabel(alert.type)\"\n                    [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats (Last 24 hours)</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total load</h3>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <apx-chart [series]=\"series\" [chart]=\"chart\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n        </div>\n      </div>\n    </div>\n    <div *ngFor=\"let metric of metrics\" class=\"col-md-3 col-xs-6\">\n      <!-- small box -->\n      <app-small-box [data]=\"metric | storageConvert\" [label]=\"getMetricLabel(metric.type)\"\n                     [icon]=\"getMetricIcon(metric.type)\"\n                     [color]=\"getMetricColor(metric.type)\"></app-small-box>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let metric of capacityMetrics\" class=\"col-md-3 col-xs-6\">\n      <!-- small box -->\n      <app-small-box [data]=\"metric | storageConvert\" [label]=\"getMetricLabel(metric.type)\"\n                     [icon]=\"getMetricIcon(metric.type)\"\n                     [color]=\"getMetricColor(metric.type)\"></app-small-box>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <div class=\"col-md-9 col-sm-12\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n\n          <div class=\"col-md-8\">\n            <h4>Geo-location of datacenters</h4>\n            <div id=\"world-map-markers\"></div>\n          </div>\n          <div class=\"col-md-4\">\n\n            <div class=\"row\">\n\n              <div class=\"col-md-6\">\n                <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                          [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n              </div>\n              <div class=\"col-md-6\">\n                <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                          [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurrences.length\"\n                      [data]=\"alert.occurrences\"\n                      [context]=\"getLinkContext(alert.type)\"\n                      [minValue]=\"alert.minValue\"\n                      [maxValue]=\"alert.maxValue\"\n                      [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                      [label]=\"getAlertLabel(alert.type)\"\n                      [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\"\n                    [value]=\"alert.occurrences.length\"\n                    [data]=\"alert.occurrences\"\n                    [context]=\"getLinkContext(alert.type)\"\n                    [minValue]=\"alert.minValue\"\n                    [maxValue]=\"alert.maxValue\"\n                    [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                    [label]=\"getAlertLabel(alert.type)\"\n                    [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total load (Last 24 hours)</h3>\n    <div *ngFor=\"let metric of metrics\" class=\"col-md-3 col-xs-6\">\n      <!-- small box -->\n      <app-small-box [data]=\"metric | storageConvert\" [label]=\"getMetricLabel(metric.type)\"\n                     [icon]=\"getMetricIcon(metric.type)\"\n                     [color]=\"getMetricColor(metric.type)\"></app-small-box>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <apx-chart [series]=\"series\" [chart]=\"chart\" [colors]=\"fill\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let metric of capacityMetrics\" class=\"col-md-3 col-xs-6\">\n      <!-- small box -->\n      <app-small-box [data]=\"metric | storageConvert\" [label]=\"getMetricLabel(metric.type)\"\n                     [icon]=\"getMetricIcon(metric.type)\"\n                     [color]=\"getMetricColor(metric.type)\"></app-small-box>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <div class=\"col-md-9 col-sm-12\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n\n          <div class=\"col-md-8\">\n            <h4>Geo-location of datacenters</h4>\n            <div id=\"world-map-markers\"></div>\n          </div>\n          <div class=\"col-md-4\">\n\n            <div class=\"row\">\n\n              <div class=\"col-md-6\">\n                <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                          [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n              </div>\n              <div class=\"col-md-6\">\n                <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                          [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -3300,6 +3302,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_metrics_Metric__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/models/metrics/Metric */ "./src/app/common/models/metrics/Metric.ts");
 /* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
 /* harmony import */ var _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/models/metrics/AlertType */ "./src/app/common/models/metrics/AlertType.ts");
+/* harmony import */ var _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3309,6 +3312,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -3332,28 +3336,41 @@ var DashboardComponent = /** @class */ (function () {
         this.currentColor = 0;
         this.chart = { type: 'area', height: '300' };
         this.xaxis = { type: 'datetime', labels: { format: 'yyyy-MM-dd' } };
+        this.fill = ['#337ab7', '#d81b60'];
         this.yaxis = [
             {
-                seriesName: 'Linear',
+                seriesName: 'Transfer',
+                labels: {
+                    formatter: function (value) {
+                        var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_5__["FormatThousandsPipe"]();
+                        return pipe.transform(value) + ' MBps';
+                    }
+                }
             },
             {
-                seriesName: 'Logarithmic',
-                logarithmic: true,
+                seriesName: 'Linear',
+                logarithmic: false,
                 opposite: true,
+                labels: {
+                    formatter: function (value) {
+                        var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_5__["FormatThousandsPipe"]();
+                        return pipe.transform(value) + ' IOPS';
+                    }
+                }
             }
         ];
         this.dataLabels = { enabled: false };
-        // series = [{name: 'test', data: [1, 2, 2, 10]}];
         this.series = [];
         this.title = {};
+        this.capacityMetricSimple = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY];
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD] = 'Total Workload';
         this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER] = 'Total Transfer';
-        this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY] = 'Physical capacity';
-        this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'Subscribed capacity';
-        this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CAPACITY_CHANGE_1M] = 'Monthly changed';
+        this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY] = 'Logical Capacity';
+        this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'Subscribed Capacity';
+        this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M] = 'Monthly Changed (logical)';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'Capacity Usage Events';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'CPU Utilization Events';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'CHA Pair Disbalance Events';
@@ -3370,11 +3387,14 @@ var DashboardComponent = /** @class */ (function () {
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING] = 'fa-chart-bar';
         this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD] = 'fa fa-chart-bar';
         this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER] = 'fa fa-exchange-alt';
+        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY] = 'fa fa-hdd';
+        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'fa fa-retweet';
+        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M] = 'fa fa-poll';
         this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD] = 'bg-maroon';
         this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER] = 'bg-primary';
-        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY] = 'bg-teal';
+        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY] = 'bg-teal';
         this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'bg-aqua';
-        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CAPACITY_CHANGE_1M] = 'bg-red';
+        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M] = 'bg-red';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'physical-capacity';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'performance';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'adapters';
@@ -3388,7 +3408,14 @@ var DashboardComponent = /** @class */ (function () {
             console.log(stats);
             _this.metrics = stats.metrics;
             _this.alerts = stats.alerts;
-            _this.capacityMetrics = stats.capacityMetrics;
+            _this.capacityMetrics = stats.capacityMetrics.filter(function (metric) {
+                return _this.capacityMetricSimple.some(function (simpleMetric) { return simpleMetric === metric.type; });
+            });
+            var countedMetric = new _common_models_metrics_Metric__WEBPACK_IMPORTED_MODULE_2__["Metric"]();
+            countedMetric.value = stats.capacityMetrics.find(function (metric) { return metric.type === _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TOTAL_SAVING_EFFECT; }).value * stats.capacityMetrics.find(function (metric) { return metric.type === _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CAPACITY_CHANGE_1M; }).value;
+            countedMetric.unit = 'TB';
+            countedMetric.type = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M;
+            _this.capacityMetrics.push(countedMetric);
         });
         this.metricService.getDatacenters().subscribe(function (data) {
             _this.datacenters = new _common_models_metrics_Metric__WEBPACK_IMPORTED_MODULE_2__["Metric"]();
@@ -3405,12 +3432,7 @@ var DashboardComponent = /** @class */ (function () {
                 _this.series.push({ name: serie.type, data: serie.data });
             });
         });
-        console.log(this.series);
         this.getMap();
-        // let i = 0;
-        // for (i = 0; i < 50; i++) {
-        //   this.series[0].data.push(parseInt((Math.random() * 100).toFixed(0), 10));
-        // }
     };
     DashboardComponent.prototype.containsType = function (alertType, types) {
         return types.find(function (type) { return type === alertType; }) !== undefined;
