@@ -3339,6 +3339,7 @@ module.exports = "<apx-chart [chart]=\"chart\" [series]=\"series\" [title]=\"tit
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegionDonutComponent", function() { return RegionDonutComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../global-statistics/utils/number.formatter */ "./src/app/global-statistics/utils/number.formatter.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3349,6 +3350,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var RegionDonutComponent = /** @class */ (function () {
     function RegionDonutComponent() {
         this.chart = {
@@ -3357,14 +3359,15 @@ var RegionDonutComponent = /** @class */ (function () {
             height: '220px'
         };
         this.regionLabels = [];
-        this.title = { text: 'Region', unit: '' }; // small hack for exposing unit attribute in formatters
+        this.title = { text: 'Region', unit: '', useKFormatter: false }; // small hack for exposing unit attribute in formatters
         this.unit = '';
+        this.useKFormatter = false;
         this.dataLabels = {
             enabled: true,
             formatter: function (value, _a) {
                 var seriesIndex = _a.seriesIndex, dataPointIndex = _a.dataPointIndex, w = _a.w;
                 var serieValue = w.config.series[seriesIndex];
-                return parseFloat(serieValue).toFixed(0);
+                return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(serieValue).toFixed(0), w.config.labels.useKFormatter);
             }
         };
         this.plotOptions = {
@@ -3380,7 +3383,13 @@ var RegionDonutComponent = /** @class */ (function () {
                             offsetY: -10,
                             formatter: function (val, _a) {
                                 var series = _a.series, seriesIndex = _a.seriesIndex, dataPointIndex = _a.dataPointIndex, w = _a.w;
-                                return parseFloat(val).toFixed(0) + ' ' + w.config.labels.unit;
+                                var unit = '';
+                                var useKformatter = false;
+                                if (w !== undefined && w.config !== undefined) {
+                                    unit = w.config.labels.unit;
+                                    useKformatter = w.config.labels.useKFormatter;
+                                }
+                                return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(val).toFixed(0), useKformatter) + ' ' + unit;
                             }
                         },
                         total: {
@@ -3391,7 +3400,7 @@ var RegionDonutComponent = /** @class */ (function () {
                                 var aggValue = w.globals.seriesTotals.reduce(function (a, b) {
                                     return a + b;
                                 }, 0);
-                                return parseFloat(aggValue).toFixed(0) + ' ' + w.config.labels.unit;
+                                return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(aggValue).toFixed(0), w.config.labels.useKFormatter) + ' ' + w.config.labels.unit;
                             }
                         }
                     }
@@ -3403,15 +3412,18 @@ var RegionDonutComponent = /** @class */ (function () {
         this.series = this.data;
         this.labels = this.regionLabels;
         this.labels.unit = this.unit;
+        this.labels.useKFormatter = this.useKFormatter;
         this.title.text = this.title.text + (" (" + this.labels.unit + ")");
         this.tooltip = {
             y: {
                 formatter: function (value, w) {
                     var unit = '';
+                    var useKformatter = false;
                     if (w !== undefined && w.config !== undefined) {
                         unit = w.config.labels.unit;
+                        useKformatter = w.config.labels.useKFormatter;
                     }
-                    return parseFloat(value).toFixed(0) + ' ' + unit;
+                    return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(value).toFixed(0), useKformatter) + ' ' + unit;
                 }
             }
         };
@@ -3432,6 +3444,10 @@ var RegionDonutComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], RegionDonutComponent.prototype, "unit", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], RegionDonutComponent.prototype, "useKFormatter", void 0);
     RegionDonutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-region-donut',
@@ -3465,7 +3481,7 @@ module.exports = ".content {\n  min-height: 60px !important;\n}\n\n/*# sourceMap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurrences.length\"\n                      [data]=\"alert.occurrences\"\n                      [context]=\"getLinkContext(alert.type)\"\n                      [minValue]=\"alert.minValue\"\n                      [maxValue]=\"alert.maxValue\"\n                      [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                      [label]=\"getAlertLabel(alert.type)\"\n                      [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\"\n                    [value]=\"alert.occurrences.length\"\n                    [data]=\"alert.occurrences\"\n                    [context]=\"getLinkContext(alert.type)\"\n                    [minValue]=\"alert.minValue\"\n                    [maxValue]=\"alert.maxValue\"\n                    [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                    [label]=\"getAlertLabel(alert.type)\"\n                    [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total load (Last 24 hours)</h3>\n    <div *ngFor=\"let metric of metrics\" class=\"col-md-3 col-xs-6\">\n      <!-- small box -->\n      <app-small-box [data]=\"metric | storageConvert\" [label]=\"getMetricLabel(metric.type)\"\n                     [icon]=\"getMetricIcon(metric.type)\"\n                     [color]=\"getMetricColor(metric.type)\"></app-small-box>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <apx-chart [series]=\"series\" [chart]=\"chart\" [colors]=\"fill\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [legend]=\"legend\"\n                     [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let type of capacityMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"></app-region-donut>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <div class=\"col-md-9 col-sm-12\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n\n          <div class=\"col-md-8\">\n            <h4>Geo-location of datacenters</h4>\n            <div id=\"world-map-markers\"></div>\n          </div>\n          <div class=\"col-md-4\">\n\n            <div class=\"row\">\n\n              <div class=\"col-md-6\">\n                <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                          [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n              </div>\n              <div class=\"col-md-6\">\n                <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                          [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurrences.length\"\n                      [data]=\"alert.occurrences\"\n                      [context]=\"getLinkContext(alert.type)\"\n                      [minValue]=\"alert.minValue\"\n                      [maxValue]=\"alert.maxValue\"\n                      [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                      [label]=\"getAlertLabel(alert.type)\"\n                      [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\"\n                    [value]=\"alert.occurrences.length\"\n                    [data]=\"alert.occurrences\"\n                    [context]=\"getLinkContext(alert.type)\"\n                    [minValue]=\"alert.minValue\"\n                    [maxValue]=\"alert.maxValue\"\n                    [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                    [label]=\"getAlertLabel(alert.type)\"\n                    [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total load (Last 24 hours)</h3>\n    <div *ngFor=\"let type of perfMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <apx-chart [series]=\"series\" [chart]=\"chart\" [colors]=\"fill\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [legend]=\"legend\"\n                     [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let type of capacityMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <div class=\"col-md-9 col-sm-12\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n\n          <div class=\"col-md-8\">\n            <h4>Geo-location of datacenters</h4>\n            <div id=\"world-map-markers\"></div>\n          </div>\n          <div class=\"col-md-4\">\n\n            <div class=\"row\">\n\n              <div class=\"col-md-6\">\n                <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                          [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n              </div>\n              <div class=\"col-md-6\">\n                <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                          [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -3512,7 +3528,6 @@ var DashboardComponent = /** @class */ (function () {
         this.metricLabels = {};
         this.alertLabels = {};
         this.metrics = [];
-        this.capacityMetrics = [];
         this.alerts = [];
         this.alertsPerformance = [];
         this.alertsOperations = [];
@@ -3556,9 +3571,12 @@ var DashboardComponent = /** @class */ (function () {
         this.dataLabels = { enabled: false };
         this.series = [];
         this.title = {};
+        this.perfMetricsType = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER];
         this.capacityMetricsType = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M];
-        this.capacityMetricSimple = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY];
+        this.capacityMetricSimple = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER];
         this.regionOrder = [_common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].EUROPE, _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].AMERICA, _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].ASIA];
+        this.allMetricType = this.perfMetricsType.concat(this.capacityMetricsType);
+        this.useKFormatter = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD];
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -3582,16 +3600,6 @@ var DashboardComponent = /** @class */ (function () {
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE] = 'fa-chart-line';
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS] = 'fa-bell';
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING] = 'fa-chart-bar';
-        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD] = 'fa fa-chart-bar';
-        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER] = 'fa fa-exchange-alt';
-        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY] = 'fa fa-hdd';
-        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'fa fa-retweet';
-        this.metricIcons[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M] = 'fa fa-poll';
-        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD] = 'bg-maroon';
-        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER] = 'bg-primary';
-        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY] = 'bg-teal';
-        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY] = 'bg-aqua';
-        this.metricColor[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M] = 'bg-red';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'physical-capacity';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'performance';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'adapters';
@@ -3603,9 +3611,8 @@ var DashboardComponent = /** @class */ (function () {
         this.alertsOperations.push(_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS);
         this.metricService.getInfrastructureStats().subscribe(function (stats) {
             console.log(stats);
-            _this.metrics = stats.metrics;
             _this.alerts = stats.alerts;
-            _this.capacityMetrics = _this.transformCapacityMetrics(stats.capacityMetrics);
+            _this.metrics = _this.transformCapacityMetrics(stats.metrics);
         });
         this.metricService.getDatacenters().subscribe(function (data) {
             _this.datacenters = new _common_models_metrics_Metric__WEBPACK_IMPORTED_MODULE_2__["Metric"]();
@@ -3630,7 +3637,7 @@ var DashboardComponent = /** @class */ (function () {
         return regionData.map(function (region) {
             var mappedRegion = new _common_models_dtos_region_metric_dto__WEBPACK_IMPORTED_MODULE_6__["RegionMetricDto"]();
             mappedRegion.region = region.region;
-            _this.capacityMetricsType.forEach(function (type) {
+            _this.allMetricType.forEach(function (type) {
                 var metric;
                 if (_this.isSimpleChartMetric(type)) {
                     metric = _this.findMetricInRegion(region, type);
@@ -3649,7 +3656,6 @@ var DashboardComponent = /** @class */ (function () {
                 var translatedMetric = transformer.transform(metric);
                 mappedRegion.metrics.push(translatedMetric);
             });
-            console.log(mappedRegion);
             return mappedRegion;
         });
     };
@@ -3657,7 +3663,7 @@ var DashboardComponent = /** @class */ (function () {
         var _this = this;
         var mappedValues = [];
         regionOrder.forEach(function (region) {
-            var regionData = _this.capacityMetrics.find(function (metrics) { return metrics.region === region; });
+            var regionData = _this.metrics.find(function (metrics) { return metrics.region === region; });
             if (regionData === undefined) {
                 console.error('Cannot find ' + region + ' in capacity statistics');
                 return;
@@ -3681,7 +3687,7 @@ var DashboardComponent = /** @class */ (function () {
     };
     DashboardComponent.prototype.findUnitInMetric = function (type) {
         var foundUnit = '';
-        this.capacityMetrics.forEach(function (region) {
+        this.metrics.forEach(function (region) {
             var foundMetric = region.metrics.find(function (metric) { return metric.type === type; });
             if (foundMetric !== undefined) {
                 foundUnit = foundMetric.unit;
@@ -3695,14 +3701,8 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.getAlertIcon = function (type) {
         return this.alertIcons[type];
     };
-    DashboardComponent.prototype.getMetricIcon = function (type) {
-        return this.metricIcons[type];
-    };
     DashboardComponent.prototype.getMetricLabel = function (type) {
         return this.metricLabels[type];
-    };
-    DashboardComponent.prototype.getMetricColor = function (type) {
-        return this.metricColor[type];
     };
     DashboardComponent.prototype.getLinkContext = function (type) {
         return this.linkContext[type];
@@ -3732,6 +3732,9 @@ var DashboardComponent = /** @class */ (function () {
     };
     DashboardComponent.prototype.getRegionLabels = function () {
         return ['Europe', 'America', 'Asia'];
+    };
+    DashboardComponent.prototype.isKFormatterUsed = function (type) {
+        return this.useKFormatter.some(function (kType) { return kType === type; });
     };
     DashboardComponent.prototype.getMap = function () {
         $(function () {
@@ -6152,6 +6155,39 @@ var SumValueServiceImpl = /** @class */ (function () {
         return aggregatedValues;
     };
     return SumValueServiceImpl;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/utils/number.formatter.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/global-statistics/utils/number.formatter.ts ***!
+  \*************************************************************/
+/*! exports provided: NumberFormatter */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NumberFormatter", function() { return NumberFormatter; });
+var NumberFormatter = /** @class */ (function () {
+    function NumberFormatter() {
+    }
+    NumberFormatter.kFormat = function (value, useKFormatter) {
+        if (!useKFormatter) {
+            return value;
+        }
+        var num = parseFloat(value);
+        var i = -1;
+        while (Math.abs(num) > 999 && i < 1) {
+            num = Math.sign(num) * (Math.abs(num) / 1000);
+            i++;
+        }
+        return i > -1 ? num.toFixed(1) + NumberFormatter.suffixes[i] : Math.sign(num) * Math.abs(num);
+    };
+    NumberFormatter.suffixes = ['K', 'M'];
+    return NumberFormatter;
 }());
 
 
