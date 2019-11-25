@@ -2195,7 +2195,7 @@ var SasiTableComponent = /** @class */ (function () {
             }
         }
         else {
-            this.options.sortType = SasiSortType.ASC;
+            this.options.sortType = SasiSortType.DESC;
             this.options.sortColumnName = column.index;
         }
         this.altSort = isAltSort;
@@ -2261,35 +2261,6 @@ var SasiTableComponent = /** @class */ (function () {
         else {
             this.onSelectService.announceSelectAll(false);
         }
-        //   // this.selectedRows = [];
-        //   d.forEach(
-        //     rowGroup => rowGroup.rows.forEach(
-        //
-        //       row => {
-        //         if (this.selectedRows.findIndex(filterItem => filterItem.groupName === rowGroup.groupRow.getCell('name').value && row.getCell('name').value === filterItem.rowName) === -1) {
-        //           this.selectedRows.push(new SelectedRow(rowGroup.groupRow.getCell('name').value, row.getCell('name').value));
-        //         }
-        //
-        //       }
-        //     )
-        //   );
-        //   this.selectedRows = [...this.selectedRows];
-        // } else {
-        //   // this.selectedRows = [];
-        //   d.forEach(
-        //     groupRow =>
-        //       groupRow.rows.forEach(
-        //         row => this.selectedRows.splice(
-        //           this.selectedRows.findIndex(
-        //             selectedRow => selectedRow.groupName === groupRow.groupRow.getCell('name').value && selectedRow.rowName === row.getCell('name').value
-        //           ), 1
-        //         )
-        //       )
-        //   );
-        //   this.selectedRows = [...this.selectedRows];
-        // }
-        // this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
-        // console.log(this.selectedRows);
     };
     SasiTableComponent.prototype.onSelect = function (rows) {
         console.log('Sasi');
@@ -3394,6 +3365,8 @@ var RegionDonutComponent = /** @class */ (function () {
                                 var aggValue = w.globals.seriesTotals.reduce(function (a, b) {
                                     return a + b;
                                 }, 0);
+                                console.log("aggValue:" + aggValue);
+                                console.log(w);
                                 return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(aggValue).toFixed(0), w.config.labels.useKFormatter) + ' ' + w.config.labels.unit;
                             }
                         }
@@ -3566,8 +3539,19 @@ var DashboardComponent = /** @class */ (function () {
         this.series = [];
         this.title = {};
         this.perfMetricsType = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER];
-        this.capacityMetricsType = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M];
-        this.capacityMetricSimple = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER];
+        this.capacityMetricsType = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M
+        ];
+        this.capacityMetricSimple = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER
+        ];
         this.regionOrder = [_common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].EUROPE, _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].AMERICA, _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].ASIA];
         this.allMetricType = this.perfMetricsType.concat(this.capacityMetricsType);
         this.useKFormatter = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD];
@@ -3607,6 +3591,7 @@ var DashboardComponent = /** @class */ (function () {
             console.log(stats);
             _this.alerts = stats.alerts;
             _this.metrics = _this.transformCapacityMetrics(stats.metrics);
+            console.log(_this.metrics);
         });
         this.metricService.getDatacenters().subscribe(function (data) {
             _this.datacenters = new _common_models_metrics_Metric__WEBPACK_IMPORTED_MODULE_2__["Metric"]();
@@ -3640,9 +3625,10 @@ var DashboardComponent = /** @class */ (function () {
                     var changeMetric = _this.findMetricInRegion(region, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CAPACITY_CHANGE_1M);
                     var totalSaving = _this.findMetricInRegion(region, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TOTAL_SAVING_EFFECT);
                     metric = new _common_models_metrics_Metric__WEBPACK_IMPORTED_MODULE_2__["Metric"]();
-                    metric.unit = 'TB';
+                    metric.unit = 'GB';
                     metric.type = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M;
                     metric.value = changeMetric.value * totalSaving.value;
+                    console.log(changeMetric.value + '*' + totalSaving.value + '=' + metric.value);
                 }
                 if (metric === undefined) {
                     console.error('Cannot find ' + type + ' in ' + region);
@@ -3677,7 +3663,7 @@ var DashboardComponent = /** @class */ (function () {
         if (value === undefined) {
             return 0;
         }
-        return parseInt(value.toFixed(0), 10);
+        return parseInt(value.toFixed(2), 10);
     };
     DashboardComponent.prototype.findUnitInMetric = function (type) {
         var foundUnit = '';
@@ -6694,6 +6680,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('One Day Change')
+            .withInfinity(false)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1W)
@@ -6702,6 +6689,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('One Week Change')
+            .withInfinity(false)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1M)
@@ -6710,6 +6698,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('One Month Change')
+            .withInfinity(false)
             .build());
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_9__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_10__["RouteLinkFormatterComponent"];
