@@ -1483,7 +1483,7 @@ module.exports = ".col-control {\n  width: 3.5%;\n  display: inline-block;\n  ve
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n          SYSTEM PART\n        -->\n<div class=\"table-group-header\">\n  <!--\n    SYSTEM LABEL\n  -->\n  <div class=\"table-group-label\">\n    <div class=\"col-val col-control text-center\">\n      <i class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapsed(data.groupRow.getCell('name').value)\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"addCollapsed(data.groupRow.getCell('name').value)\"\n         [tooltip]=\"isCollapsed(data.groupRow.getCell('name').value) ? 'Expand':'Collapse'\"></i>\n\n    </div>\n    <div class=\"col-val col-control text-center\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <span *ngFor=\"let alertSum of alertSummary\">\n        <span [ngClass]=\"alertSum.type\"><i tooltip=\"Warning for one or more metrics\" class=\"fa fa-exclamation-triangle\"\n                                           [ngClass]=\"alertSum.type\"></i></span>\n      </span>\n    </div>\n    <div class=\"col-val col-label\" [style.width.%]=\"options.getColumnWidth(options.columns[0].index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(0)\"\n         [class.highlightColumn]=\"isColumnHighlighted(0)\">\n      <app-cell-table\n        [componentFormatter]=\"options.grIndexComponentFormatter\" [data]=\"data.groupRow.getCell('name').rawData\"\n        [label]=\"''\"\n        [options]=\"options\"\n\n      ></app-cell-table>\n    </div>\n    <div class=\"col-val col aggregated-data\" *ngFor=\"let column of options.getAggregatedColumns(); let colIndex=index\"\n         [style.width.%]=\"options.getColumnWidth(column.index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(colIndex+1)\"\n         [class.highlightColumn]=\"isColumnHighlighted(colIndex+1)\"\n         [class.text-right]=\"options.columnAlign === 'right'\"\n         [class.text-center]=\"options.columnAlign !== 'right'\"\n         [class.alt-border]=\"column.altBorder\"\n\n    >\n      <app-cell-table *ngIf=\"aggregatedValues[column.index] !== undefined\" [componentFormatter]=\"column.component\"\n                      [data]=\"getAggregatedValue(column.index)\" [column]=\"column\"\n                      [label]=\"column.label\" [options]=\"options\"\n      ></app-cell-table>\n    </div>\n  </div>\n  <!---->\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"groupped-data\" [@slideInOut]=\"isCollapsed(data.groupRow.getCell('name').value)\">\n    <app-row-table *ngFor=\"let row of data.rows\"\n                   [class.striped-row]=\"options.isDataGrouped\" [data]=\"row\" [options]=\"options\"\n                   [groupName]=\"data.groupRow.getCell('name').value\"\n                   (selectEmit)=\"onSelectRow($event)\"\n    ></app-row-table>\n  </div>\n</div>\n"
+module.exports = "<!--\n          SYSTEM PART\n        -->\n<div class=\"table-group-header\">\n  <!--\n    SYSTEM LABEL\n  -->\n  <div class=\"table-group-label\">\n    <div class=\"col-val col-control text-center\">\n      <i class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapsed(data.groupRow.getCell('name').value)\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"addCollapsed(data.groupRow.getCell('name').value)\"\n         [tooltip]=\"isCollapsed(data.groupRow.getCell('name').value) ? 'Expand':'Collapse'\"></i>\n\n    </div>\n    <div class=\"col-val col-control text-center\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <span *ngFor=\"let alertSum of alertSummary\">\n        <span [ngClass]=\"alertSum.type\"><i tooltip=\"Warning for one or more metrics\" class=\"fa fa-exclamation-triangle\"\n                                           [ngClass]=\"alertSum.type\"></i></span>\n      </span>\n    </div>\n    <div class=\"col-val col-label\" [style.width.%]=\"options.getColumnWidth(options.columns[0].index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(0)\"\n         [class.highlightColumn]=\"isColumnHighlighted(0)\">\n      <app-cell-table\n        [componentFormatter]=\"options.grIndexComponentFormatter\" [data]=\"data.groupRow.getCell('name').rawData\"\n        [label]=\"''\"\n        [options]=\"options\"\n\n      ></app-cell-table>\n    </div>\n    <div class=\"col-val col aggregated-data\" *ngFor=\"let column of options.getAggregatedColumns(); let colIndex=index\"\n         [style.width.%]=\"options.getColumnWidth(column.index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(colIndex+1)\"\n         [class.highlightColumn]=\"isColumnHighlighted(colIndex+1)\"\n         [class.text-right]=\"options.columnAlign === 'right'\"\n         [class.text-center]=\"options.columnAlign !== 'right'\"\n         [class.alt-border]=\"column.altBorder\"\n\n    >\n      <app-cell-table *ngIf=\"aggregatedValues[column.index] !== undefined\" [componentFormatter]=\"column.aggComponent\"\n                      [data]=\"getAggregatedValue(column.index)\" [column]=\"column\"\n                      [label]=\"column.label\" [options]=\"options\"\n      ></app-cell-table>\n    </div>\n  </div>\n  <!---->\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"groupped-data\" [@slideInOut]=\"isCollapsed(data.groupRow.getCell('name').value)\">\n    <app-row-table *ngFor=\"let row of data.rows\"\n                   [class.striped-row]=\"options.isDataGrouped\" [data]=\"row\" [options]=\"options\"\n                   [groupName]=\"data.groupRow.getCell('name').value\"\n                   (selectEmit)=\"onSelectRow($event)\"\n    ></app-row-table>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1964,6 +1964,10 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.component = component;
         return this;
     };
+    SasiColumnBuilder.prototype.withAggComponent = function (component) {
+        this.aggComponent = component;
+        return this;
+    };
     SasiColumnBuilder.prototype.withAltSortEnable = function (altSortEnable) {
         this.altSortEnable = altSortEnable;
         return this;
@@ -1981,7 +1985,7 @@ var SasiColumnBuilder = /** @class */ (function () {
         return this;
     };
     SasiColumnBuilder.prototype.build = function () {
-        return new SasiColumn(this.index, this.label, this.component, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder);
+        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder);
     };
     SasiColumnBuilder.prototype.withInfinity = function (isInfinity) {
         this.infinity = isInfinity;
@@ -1991,10 +1995,11 @@ var SasiColumnBuilder = /** @class */ (function () {
 }());
 
 var SasiColumn = /** @class */ (function () {
-    function SasiColumn(index, label, component, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder) {
+    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder) {
         this.index = index;
         this.label = label;
         this.component = component;
+        this.aggComponent = aggComponent;
         this.altSortEnable = altSortEnable;
         this.isAggregated = isAggragated;
         this.tooltipText = tooltipText;
@@ -2021,6 +2026,7 @@ var SasiCell = /** @class */ (function () {
  */
 var SasiRow = /** @class */ (function () {
     function SasiRow() {
+        this.subRows = [];
         this.cells = [];
     }
     SasiRow.prototype.getCellValue = function (columnIndex) {
@@ -2739,6 +2745,7 @@ var SystemMetricType;
     SystemMetricType["LOGICAL_SUBS_PERC"] = "LOGICAL_SUBS_PERC";
     SystemMetricType["SUBSCRIBED_CAPACITY"] = "SUBSCRIBED_CAPACITY";
     SystemMetricType["LOGICAL_CHANGE_1M"] = "LOGICAL_CHANGE_MONTH";
+    SystemMetricType["PORT_IMBALANCE_EVENTS"] = "PORT_IMBALANCE_EVENTS";
 })(SystemMetricType || (SystemMetricType = {}));
 
 
@@ -2919,7 +2926,7 @@ var StorageConvertPipe = /** @class */ (function () {
             return metric;
         }
         var startingValue = this.unitOrder[metric.type].findIndex(function (unit) { return unit === metric.unit; });
-        var convertedValue = this.convertValue(metric.value.toFixed(0), startingValue, this.unitOrder[metric.type].length - 1);
+        var convertedValue = this.convertValue(metric.value, startingValue, this.unitOrder[metric.type].length - 1);
         var result = new _models_metrics_Metric__WEBPACK_IMPORTED_MODULE_1__["Metric"]();
         result.value = convertedValue.value;
         result.type = metric.type;
@@ -2929,11 +2936,11 @@ var StorageConvertPipe = /** @class */ (function () {
     StorageConvertPipe.prototype.convertValue = function (value, startingOrder, maximumOrder) {
         var countedOrder = startingOrder;
         var countedValue = value;
-        while ((Number.parseInt(countedValue, 10) / 1024) > 1 && countedOrder < maximumOrder) {
-            countedValue = (Number.parseInt(countedValue, 10) / 1024).toFixed(0);
+        while ((countedValue / 1024) > 1 && countedOrder < maximumOrder) {
+            countedValue = (countedValue / 1024);
             countedOrder++;
         }
-        return { value: Number.parseInt(countedValue, 10), countedOrder: countedOrder };
+        return { value: countedValue, countedOrder: countedOrder };
     };
     StorageConvertPipe = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
@@ -3238,6 +3245,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SystemPool2SasiTablePipe", function() { return SystemPool2SasiTablePipe; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+/* harmony import */ var _models_metrics_Metric__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/metrics/Metric */ "./src/app/common/models/metrics/Metric.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3246,11 +3255,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 
+
+
 // TODO move to the global statistics module
 var SystemPool2SasiTablePipe = /** @class */ (function () {
     function SystemPool2SasiTablePipe() {
     }
     SystemPool2SasiTablePipe.prototype.transform = function (systems, context, linkId) {
+        var _this = this;
         return systems.map(function (system) {
             var row = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"]();
             var linkIdInput = system.id;
@@ -3259,6 +3271,13 @@ var SystemPool2SasiTablePipe = /** @class */ (function () {
             }
             row.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](system.name, { id: linkIdInput, iFrameLink: context, value: system.name });
             system.metrics.forEach(function (metric) { return row.cells[metric.type] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.value, metric); });
+            if (system.ports !== undefined) {
+                row.subRows = _this.transform(system.ports, null, null);
+                var metric = new _models_metrics_Metric__WEBPACK_IMPORTED_MODULE_3__["Metric"]();
+                metric.value = row.subRows.length > 0 ? 1 : 0;
+                metric.type = _models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PORT_IMBALANCE_EVENTS;
+                row.cells[_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PORT_IMBALANCE_EVENTS] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.value, metric);
+            }
             return row;
         });
     };
@@ -3311,7 +3330,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegionDonutComponent", function() { return RegionDonutComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../global-statistics/utils/number.formatter */ "./src/app/global-statistics/utils/number.formatter.ts");
-/* harmony import */ var _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../common/utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3321,7 +3339,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 var RegionDonutComponent = /** @class */ (function () {
@@ -3339,7 +3356,6 @@ var RegionDonutComponent = /** @class */ (function () {
             enabled: true,
             formatter: function (value, _a) {
                 var seriesIndex = _a.seriesIndex, dataPointIndex = _a.dataPointIndex, w = _a.w;
-                var transform = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_2__["FormatThousandsPipe"]();
                 var serieValue = w.config.series[seriesIndex];
                 return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(serieValue).toFixed(0), w.config.labels.useKFormatter);
             }
@@ -3365,8 +3381,6 @@ var RegionDonutComponent = /** @class */ (function () {
                                 var aggValue = w.globals.seriesTotals.reduce(function (a, b) {
                                     return a + b;
                                 }, 0);
-                                console.log("aggValue:" + aggValue);
-                                console.log(w);
                                 return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(aggValue).toFixed(0), w.config.labels.useKFormatter) + ' ' + w.config.labels.unit;
                             }
                         }
@@ -3663,7 +3677,7 @@ var DashboardComponent = /** @class */ (function () {
         if (value === undefined) {
             return 0;
         }
-        return parseInt(value.toFixed(2), 10);
+        return parseFloat(value.toFixed(2));
     };
     DashboardComponent.prototype.findUnitInMetric = function (type) {
         var foundUnit = '';
@@ -4029,7 +4043,7 @@ var SideMenuComponent = /** @class */ (function () {
             { id: 2, linkPart: "/global-statistics/physical-capacity", name: 'Physical Capacity' },
             { id: 3, linkPart: "/global-statistics/logical-capacity", name: 'Logical Capacity' },
             { id: 4, linkPart: "/global-statistics/dp-sla", name: 'SLA Events' },
-            { id: 5, linkPart: "/global-statistics/adapters", name: 'CHA Imbalances' },
+            { id: 5, linkPart: "/global-statistics/adapters", name: 'CHA&Port Imbalances' },
             { id: 6, linkPart: "/global-statistics/host-group-capacity", name: 'VMware Capacity' },
         ];
     };
@@ -5018,7 +5032,7 @@ var AlertFormatterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #ffd829;\n}\n\n.metric-value {\n  font-style: italic;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9kaXNiYWxhbmNlLWZvcm1hdHRlci9kaXNiYWxhbmNlLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9mb3JtYXR0ZXJzL2Rpc2JhbGFuY2UtZm9ybWF0dGVyL2Rpc2JhbGFuY2UtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpIHtcbiAgZm9udC1zaXplOiAxMXB4O1xufVxuXG4udGV4dC1hbGVydC15ZWxsb3cge1xuICBjb2xvcjogI2ZmZDgyOTtcbn1cblxuLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cbiJdfQ== */"
+module.exports = "table {\n  margin: 2px;\n  border: 2px solid #EAEAEA;\n}\n\ntable thead {\n  background-color: #3C8CBC;\n  color: white;\n}\n\ntable td {\n  font-size: 11px;\n  padding: 2px;\n  border: 2px solid #EAEAEA;\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9kaXNiYWxhbmNlLWZvcm1hdHRlci9kaXNiYWxhbmNlLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVztFQUNYLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsWUFBWTtFQUNaLHlCQUF5Qjs7QUFFM0IiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9mb3JtYXR0ZXJzL2Rpc2JhbGFuY2UtZm9ybWF0dGVyL2Rpc2JhbGFuY2UtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XG4gIG1hcmdpbjogMnB4O1xuICBib3JkZXI6IDJweCBzb2xpZCAjRUFFQUVBO1xufVxuXG50YWJsZSB0aGVhZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzQzhDQkM7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxudGFibGUgdGQge1xuICBmb250LXNpemU6IDExcHg7XG4gIHBhZGRpbmc6IDJweDtcbiAgYm9yZGVyOiAycHggc29saWQgI0VBRUFFQTtcblxufVxuIl19 */"
 
 /***/ }),
 
@@ -5029,7 +5043,7 @@ module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"metric-value\">\n  <i class=\"fa fa-exclamation-triangle text-alert-yellow\"></i>&nbsp;<span class=\"text-red\">{{getInfoMessage()}}</span>\n</div>\n"
+module.exports = "<!--<div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"metric-value\">-->\n<!--  <i class=\"fa fa-exclamation-triangle text-alert-yellow\"></i>&nbsp;<span class=\"text-red\">{{getInfoMessage()}}</span>-->\n<!--</div>-->\n<table class=\"table table-bordered\" *ngIf=\"subData.length > 0\">\n  <thead>\n  <tr>\n    <td>Name</td>\n    <td>Type</td>\n    <td>Relative</td>\n    <td>Absolute</td>\n  </tr>\n  </thead>\n  <tbody>\n  <tr *ngFor=\"let row of subData\">\n    <td>{{row.cells['name'].value}}</td>\n    <td><i tooltip=\"{{getTooltip(row)}}\" [className]=\"getIcon(row)\"></i></td>\n    <td>{{getCellValue(row, imbalancePerc)}} [{{getUnit(row, imbalancePerc)}}]</td>\n    <td>{{getCellValue(row, imbalanceAbs)}} [{{getUnit(row, imbalanceAbs)}}]</td>\n  </tr>\n  </tbody>\n</table>\n"
 
 /***/ }),
 
@@ -5062,8 +5076,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var DisbalanceFormatterComponent = /** @class */ (function () {
     function DisbalanceFormatterComponent() {
+        this.subData = [];
+        this.imbalancePerc = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_PERC;
+        this.imbalanceAbs = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT;
     }
+    DisbalanceFormatterComponent_1 = DisbalanceFormatterComponent;
+    DisbalanceFormatterComponent.isVisible = function (row) {
+        if (row !== undefined && row.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS) !== null && parseInt(row.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS).value, 10) > 0) {
+            return true;
+        }
+        return false;
+    };
     DisbalanceFormatterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (DisbalanceFormatterComponent_1.isVisible(this.rowData)) {
+            this.subData = [this.rowData];
+        }
+        if (this.rowData !== undefined) {
+            this.rowData.subRows.filter(function (subRow) { return DisbalanceFormatterComponent_1.isVisible(subRow); }).forEach(function (subRow) { return _this.subData.push(subRow); });
+        }
     };
     DisbalanceFormatterComponent.prototype.getInfoMessage = function () {
         return "Detected imbalance \"" + this.data.value + "%\" (" + this.resolveAbsoluteDisbalance() + " [MB/s])";
@@ -5073,12 +5104,37 @@ var DisbalanceFormatterComponent = /** @class */ (function () {
             return this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT).value;
         }
     };
-    DisbalanceFormatterComponent.prototype.isVisible = function () {
-        if (this.rowData !== undefined && parseInt(this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS).value, 10) > 0) {
-            return true;
+    DisbalanceFormatterComponent.prototype.getCellValue = function (row, type) {
+        var metric = row.getCell(type);
+        if (metric === null) {
+            return '';
         }
-        return false;
+        return metric.value;
     };
+    DisbalanceFormatterComponent.prototype.getUnit = function (row, type) {
+        var metric = row.getCell(type);
+        // console.log(metric);
+        if (metric === null) {
+            return '';
+        }
+        return metric.rawData.unit;
+    };
+    DisbalanceFormatterComponent.prototype.isAdapter = function (row) {
+        return this.rowData.getCell('name').value === row.getCell('name').value;
+    };
+    DisbalanceFormatterComponent.prototype.getIcon = function (row) {
+        if (this.isAdapter(row)) {
+            return 'fas fa-server';
+        }
+        return 'fas fa-ethernet';
+    };
+    DisbalanceFormatterComponent.prototype.getTooltip = function (row) {
+        if (this.isAdapter(row)) {
+            return 'Adapter';
+        }
+        return 'Port';
+    };
+    var DisbalanceFormatterComponent_1;
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -5095,7 +5151,7 @@ var DisbalanceFormatterComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
     ], DisbalanceFormatterComponent.prototype, "rowData", void 0);
-    DisbalanceFormatterComponent = __decorate([
+    DisbalanceFormatterComponent = DisbalanceFormatterComponent_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-disbalance-formatter',
             template: __webpack_require__(/*! ./disbalance-formatter.component.html */ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.html"),
@@ -5728,7 +5784,7 @@ var GlobalStatisticsComponent = /** @class */ (function () {
             case 'dp-sla':
                 return 'SLA Events';
             case 'adapters':
-                return 'CHA Imbalances';
+                return 'CHA&Port Imbalances';
             default:
                 return 'Statistics';
         }
@@ -6132,6 +6188,7 @@ var SumValueServiceImpl = /** @class */ (function () {
             }).reduce(function (valueA, valueB) { return valueA + valueB; });
             aggregatedValues.setValue(column.index, value, null);
         });
+        console.log(aggregatedValues);
         return aggregatedValues;
     };
     return SumValueServiceImpl;
@@ -6247,7 +6304,7 @@ module.exports = ".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-8\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable: 'adapters'\" [tableOptions]=\"options\"></app-sasi-table>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-10\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable: 'adapters'\" [tableOptions]=\"options\"></app-sasi-table>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -6323,14 +6380,23 @@ var AdaptersComponent = /** @class */ (function () {
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_EVENTS)
-            .withLabel('Imbalance events')
+            .withLabel('Cha Imbalance events')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
+            // .withAggComponent(SimpleFormatterComponent)
+            .withAltSortEnable(false)
+            .withIsAggregated(true)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PORT_IMBALANCE_EVENTS)
+            .withLabel('Port Imbalance events')
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
+            // .withAggComponent(SimpleFormatterComponent)
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_PERC)
-            .withLabel('Imbalance Value')
+            .withLabel('Details')
             .withComponent(_formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_11__["DisbalanceFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
@@ -6341,8 +6407,8 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.isDataGrouped = true;
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
-        this.options.labelColumnWidth = '25';
-        this.options.valueColumnWidth = '35.75';
+        this.options.labelColumnWidth = '23';
+        this.options.valueColumnWidth = '24.49';
         this.options.aggregateValuesService = new _utils_SumValueServiceImpl__WEBPACK_IMPORTED_MODULE_10__["SumValueServiceImpl"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortAggregateValueImpl"]();
     }
