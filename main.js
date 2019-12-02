@@ -1483,7 +1483,7 @@ module.exports = ".col-control {\n  width: 3.5%;\n  display: inline-block;\n  ve
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n          SYSTEM PART\n        -->\n<div class=\"table-group-header\">\n  <!--\n    SYSTEM LABEL\n  -->\n  <div class=\"table-group-label\">\n    <div class=\"col-val col-control text-center\">\n      <i class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapsed(data.groupRow.getCell('name').value)\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"addCollapsed(data.groupRow.getCell('name').value)\"\n         [tooltip]=\"isCollapsed(data.groupRow.getCell('name').value) ? 'Expand':'Collapse'\"></i>\n\n    </div>\n    <div class=\"col-val col-control text-center\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <span *ngFor=\"let alertSum of alertSummary\">\n        <span [ngClass]=\"alertSum.type\"><i tooltip=\"Warning for one or more metrics\" class=\"fa fa-exclamation-triangle\"\n                                           [ngClass]=\"alertSum.type\"></i></span>\n      </span>\n    </div>\n    <div class=\"col-val col-label\" [style.width.%]=\"options.getColumnWidth(options.columns[0].index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(0)\"\n         [class.highlightColumn]=\"isColumnHighlighted(0)\">\n      <app-cell-table\n        [componentFormatter]=\"options.grIndexComponentFormatter\" [data]=\"data.groupRow.getCell('name').rawData\"\n        [label]=\"''\"\n        [options]=\"options\"\n\n      ></app-cell-table>\n    </div>\n    <div class=\"col-val col aggregated-data\" *ngFor=\"let column of options.getAggregatedColumns(); let colIndex=index\"\n         [style.width.%]=\"options.getColumnWidth(column.index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(colIndex+1)\"\n         [class.highlightColumn]=\"isColumnHighlighted(colIndex+1)\"\n         [class.text-right]=\"options.columnAlign === 'right'\"\n         [class.text-center]=\"options.columnAlign !== 'right'\"\n         [class.alt-border]=\"column.altBorder\"\n\n    >\n      <app-cell-table *ngIf=\"aggregatedValues[column.index] !== undefined\" [componentFormatter]=\"column.aggComponent\"\n                      [data]=\"getAggregatedValue(column.index)\" [column]=\"column\"\n                      [label]=\"column.label\" [options]=\"options\"\n      ></app-cell-table>\n    </div>\n  </div>\n  <!---->\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"groupped-data\" [@slideInOut]=\"isCollapsed(data.groupRow.getCell('name').value)\">\n    <app-row-table *ngFor=\"let row of data.rows\"\n                   [class.striped-row]=\"options.isDataGrouped\" [data]=\"row\" [options]=\"options\"\n                   [groupName]=\"data.groupRow.getCell('name').value\"\n                   (selectEmit)=\"onSelectRow($event)\"\n    ></app-row-table>\n  </div>\n</div>\n"
+module.exports = "<!--\n          SYSTEM PART\n        -->\n<div class=\"table-group-header\">\n  <!--\n    SYSTEM LABEL\n  -->\n  <div class=\"table-group-label\">\n    <div class=\"col-val col-control text-center\">\n      <i class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapsed(data.groupRow.getCell('name').value)\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"addCollapsed(data.groupRow.getCell('name').value)\"\n         [tooltip]=\"isCollapsed(data.groupRow.getCell('name').value) ? 'Expand':'Collapse'\"></i>\n\n    </div>\n    <div class=\"col-val col-control text-center\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <span *ngFor=\"let alertSum of alertSummary\">\n        <span [ngClass]=\"alertSum.type\"><i tooltip=\"Warning for one or more metrics\" class=\"fa fa-exclamation-triangle\"\n                                           [ngClass]=\"alertSum.type\"></i></span>\n      </span>\n    </div>\n    <div class=\"col-val col-label\" [style.width.%]=\"options.getColumnWidth(options.columns[0].index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(0)\"\n         [class.highlightColumn]=\"isColumnHighlighted(0)\">\n      <app-cell-table\n        [componentFormatter]=\"options.grIndexComponentFormatter\" [data]=\"data.groupRow.getCell('name').rawData\"\n        [label]=\"''\"\n        [options]=\"options\"\n\n      ></app-cell-table>\n    </div>\n    <div class=\"col-val col aggregated-data\" *ngFor=\"let column of options.getDataColumns(); let colIndex=index\"\n         [style.width.%]=\"options.getColumnWidth(column.index)\"\n         (mouseout)=\"setHighlightedColumn(-1)\"\n         (mouseover)=\"setHighlightedColumn(colIndex+1)\"\n         [class.highlightColumn]=\"isColumnHighlighted(colIndex+1)\"\n         [class.text-right]=\"options.columnAlign === 'right'\"\n         [class.text-center]=\"options.columnAlign !== 'right'\"\n         [class.alt-border]=\"column.altBorder\"\n\n    >\n      <app-cell-table *ngIf=\"aggregatedValues[column.index] !== undefined\" [componentFormatter]=\"column.aggComponent\"\n                      [data]=\"getAggregatedValue(column.index)\" [column]=\"column\"\n                      [label]=\"column.label\" [options]=\"options\"\n      ></app-cell-table>\n    </div>\n  </div>\n  <!---->\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"groupped-data\" [@slideInOut]=\"isCollapsed(data.groupRow.getCell('name').value)\">\n    <app-row-table *ngFor=\"let row of data.rows\"\n                   [class.striped-row]=\"options.isDataGrouped\" [data]=\"row\" [options]=\"options\"\n                   [groupName]=\"data.groupRow.getCell('name').value\"\n                   (selectEmit)=\"onSelectRow($event)\"\n    ></app-row-table>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1868,7 +1868,7 @@ module.exports = "<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    T
 /*!**********************************************************************!*\
   !*** ./src/app/common/components/sasi-table/sasi-table.component.ts ***!
   \**********************************************************************/
-/*! exports provided: SasiColumnBuilder, SasiColumn, SasiCell, SasiRow, SasiGroupRow, SasiTableOptions, SasiSortType, slideInOutAnimation, SasiTableComponent */
+/*! exports provided: SasiColumnBuilder, SasiColumn, SasiCell, SasiExternal, SasiRow, SasiGroupRow, SasiTableOptions, SasiSortType, slideInOutAnimation, SasiTableComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1876,6 +1876,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SasiColumnBuilder", function() { return SasiColumnBuilder; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SasiColumn", function() { return SasiColumn; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SasiCell", function() { return SasiCell; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SasiExternal", function() { return SasiExternal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SasiRow", function() { return SasiRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SasiGroupRow", function() { return SasiGroupRow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SasiTableOptions", function() { return SasiTableOptions; });
@@ -1944,6 +1945,7 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.tooltipText = null;
         this.infinity = true;
         this.altBorder = false;
+        this.columnWidth = null;
     }
     SasiColumnBuilder.getInstance = function () {
         return new SasiColumnBuilder();
@@ -1984,8 +1986,12 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.altBorder = altBorder;
         return this;
     };
+    SasiColumnBuilder.prototype.withColumnWidth = function (width) {
+        this.columnWidth = width;
+        return this;
+    };
     SasiColumnBuilder.prototype.build = function () {
-        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder);
+        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.columnWidth);
     };
     SasiColumnBuilder.prototype.withInfinity = function (isInfinity) {
         this.infinity = isInfinity;
@@ -1995,7 +2001,7 @@ var SasiColumnBuilder = /** @class */ (function () {
 }());
 
 var SasiColumn = /** @class */ (function () {
-    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder) {
+    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, columnWidth) {
         this.index = index;
         this.label = label;
         this.component = component;
@@ -2006,6 +2012,7 @@ var SasiColumn = /** @class */ (function () {
         this.isInfinity = isInfinity;
         this.altLabel = altLabel;
         this.altBorder = altBorder;
+        this.columnWidth = columnWidth;
     }
     return SasiColumn;
 }());
@@ -2021,6 +2028,14 @@ var SasiCell = /** @class */ (function () {
     return SasiCell;
 }());
 
+var SasiExternal = /** @class */ (function () {
+    function SasiExternal(type, value) {
+        this.type = type;
+        this.value = value;
+    }
+    return SasiExternal;
+}());
+
 /**
  * SasiRow is data model for row in the table
  */
@@ -2028,6 +2043,7 @@ var SasiRow = /** @class */ (function () {
     function SasiRow() {
         this.subRows = [];
         this.cells = [];
+        this.externals = [];
     }
     SasiRow.prototype.getCellValue = function (columnIndex) {
         var cellData = this.getCell(columnIndex.index);
@@ -2064,6 +2080,10 @@ var SasiTableOptions = /** @class */ (function () {
         this.cellDecoratorRules = [];
     }
     SasiTableOptions.prototype.getColumnWidth = function (name) {
+        var columnOption = this.columns.find(function (column) { return column.index === name; });
+        if (columnOption !== undefined && columnOption.columnWidth !== null) {
+            return columnOption.columnWidth;
+        }
         if (name === 'name') {
             return this.labelColumnWidth;
         }
@@ -2071,6 +2091,9 @@ var SasiTableOptions = /** @class */ (function () {
     };
     SasiTableOptions.prototype.getAggregatedColumns = function () {
         return this.columns.filter(function (column) { return column.isAggregated; });
+    };
+    SasiTableOptions.prototype.getDataColumns = function () {
+        return this.columns.filter(function (column) { return column.index !== 'name'; });
     };
     return SasiTableOptions;
 }());
@@ -2123,6 +2146,10 @@ var SasiTableComponent = /** @class */ (function () {
             storageNamePrefix: 'sasi_default',
             columnAlign: 'center',
             getColumnWidth: function (name) {
+                var columnOption = this.columns.find(function (column) { return column.index === name; });
+                if (columnOption !== undefined && columnOption.columnWidth !== null) {
+                    return columnOption.columnWidth;
+                }
                 if (name === 'name') {
                     return this.labelColumnWidth;
                 }
@@ -2130,6 +2157,9 @@ var SasiTableComponent = /** @class */ (function () {
             },
             getAggregatedColumns: function () {
                 return this.columns.filter(function (column) { return column.isAggregated; });
+            },
+            getDataColumns: function () {
+                return this.columns.filter(function (column) { return column.index !== 'name'; });
             }
         };
         this.altSort = false;
@@ -2242,7 +2272,10 @@ var SasiTableComponent = /** @class */ (function () {
         }
         return d.every(
         // @ts-ignore
-        function (rowGroup) { return rowGroup.rows.every(function (row) { return _this.selectedRows.find(function (selectedRow) { return selectedRow.rowName === row.getCell('name').value && selectedRow.groupName === rowGroup.groupRow.getCell('name').value; }) !== undefined; }); });
+        function (rowGroup) { return rowGroup.rows.every(function (row) { return _this.selectedRows.find(function (selectedRow) { return _this.isSelected(row, selectedRow, rowGroup); }) !== undefined; }); });
+    };
+    SasiTableComponent.prototype.isSelected = function (row, selectedRow, rowGroup) {
+        return selectedRow.rowName === row.getCell('name').value && selectedRow.groupName === rowGroup.groupRow.getCell('name').value;
     };
     SasiTableComponent.prototype.isPartiallySelected = function () {
         var _this = this;
@@ -2256,7 +2289,7 @@ var SasiTableComponent = /** @class */ (function () {
         }
         return d.find(
         // @ts-ignore
-        function (rowGroup) { return rowGroup.rows.find(function (row) { return _this.selectedRows.find(function (selectedRow) { return selectedRow.rowName === row.getCell('name').value && selectedRow.groupName === rowGroup.groupRow.getCell('name').value; }) !== undefined; }); }) !== undefined;
+        function (rowGroup) { return rowGroup.rows.find(function (row) { return _this.selectedRows.find(function (selectedRow) { return _this.isSelected(row, selectedRow, rowGroup); }) !== undefined; }); }) !== undefined;
     };
     SasiTableComponent.prototype.selectAll = function () {
         // // @ts-ignore
@@ -2744,8 +2777,11 @@ var SystemMetricType;
     SystemMetricType["NET_SUBS_PERC"] = "NET_SUBS_PERC";
     SystemMetricType["LOGICAL_SUBS_PERC"] = "LOGICAL_SUBS_PERC";
     SystemMetricType["SUBSCRIBED_CAPACITY"] = "SUBSCRIBED_CAPACITY";
-    SystemMetricType["LOGICAL_CHANGE_1M"] = "LOGICAL_CHANGE_MONTH";
     SystemMetricType["PORT_IMBALANCE_EVENTS"] = "PORT_IMBALANCE_EVENTS";
+    // Counted in SA UI
+    SystemMetricType["LOGICAL_CHANGE_1M"] = "LOGICAL_CHANGE_MONTH";
+    // Mocked extarnal type for metric type,
+    SystemMetricType["TIER"] = "TIER";
 })(SystemMetricType || (SystemMetricType = {}));
 
 
@@ -2790,12 +2826,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
 /* harmony import */ var _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
 /* harmony import */ var _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./storage-convert.pipe */ "./src/app/common/storage-convert.pipe.ts");
+/* harmony import */ var _global_statistics_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../global-statistics/formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2879,7 +2917,8 @@ var SaCommonModule = /** @class */ (function () {
                 _global_statistics_formatters_text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_22__["TextFormatterComponent"],
                 _global_statistics_formatters_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_23__["EmphFormatterComponent"],
                 _global_statistics_formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_25__["DisbalanceFormatterComponent"],
-                _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__["RouteLinkFormatterComponent"]
+                _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__["RouteLinkFormatterComponent"],
+                _global_statistics_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_29__["TierFormatterComponent"]
             ]
         })
     ], SaCommonModule);
@@ -2936,7 +2975,7 @@ var StorageConvertPipe = /** @class */ (function () {
     StorageConvertPipe.prototype.convertValue = function (value, startingOrder, maximumOrder) {
         var countedOrder = startingOrder;
         var countedValue = value;
-        while ((countedValue / 1024) > 1 && countedOrder < maximumOrder) {
+        while ((Math.abs(countedValue) / 1024) > 1 && countedOrder < maximumOrder) {
             countedValue = (countedValue / 1024);
             countedOrder++;
         }
@@ -3274,12 +3313,18 @@ var SystemPool2SasiTablePipe = /** @class */ (function () {
             if (system.ports !== undefined) {
                 row.subRows = _this.transform(system.ports, null, null);
                 var metric = new _models_metrics_Metric__WEBPACK_IMPORTED_MODULE_3__["Metric"]();
-                metric.value = row.subRows.length > 0 ? 1 : 0;
+                metric.value = _this.countPortImbalances(row.subRows);
                 metric.type = _models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PORT_IMBALANCE_EVENTS;
                 row.cells[_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PORT_IMBALANCE_EVENTS] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.value, metric);
             }
+            if (system.externals !== undefined) {
+                row.externals = system.externals;
+            }
             return row;
         });
+    };
+    SystemPool2SasiTablePipe.prototype.countPortImbalances = function (rows) {
+        return rows.filter(function (row) { return parseInt(row.getCell(_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].IMBALANCE_EVENTS).value, 10) > 0; }).length;
     };
     SystemPool2SasiTablePipe = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -5425,6 +5470,100 @@ var TextFormatterComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.css":
+/*!******************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.css ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2Zvcm1hdHRlcnMvdGllci1mb3JtYXR0ZXIvdGllci1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.html":
+/*!*******************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.html ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"isHidden()\" class=\"col-val col\">\n  <span *ngFor=\"let tier of getTierNameString(); index as i\" class=\"badge\" [class.bg-red]=\"isExceptionTier(i)\"\n        [class.bg-aqua]=\"!isExceptionTier(i)\" tooltip=\"{{label}}\">{{tier}}</span>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: TierFormatterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TierFormatterComponent", function() { return TierFormatterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetric */ "./src/app/common/models/metrics/SystemMetric.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TierFormatterComponent = /** @class */ (function () {
+    function TierFormatterComponent() {
+    }
+    TierFormatterComponent.prototype.ngOnInit = function () {
+        console.log(this.rowData.externals);
+    };
+    TierFormatterComponent.prototype.isHidden = function () {
+        return this.rowData.externals.length > 0;
+    };
+    TierFormatterComponent.prototype.getTierNameString = function () {
+        return this.rowData.externals.map(function (external) { return external.value; })
+            .sort();
+    };
+    TierFormatterComponent.prototype.isExceptionTier = function (i) {
+        return i > 0;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], TierFormatterComponent.prototype, "label", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__["SystemMetric"])
+    ], TierFormatterComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
+    ], TierFormatterComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
+    ], TierFormatterComponent.prototype, "rowData", void 0);
+    TierFormatterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-tier-formatter',
+            template: __webpack_require__(/*! ./tier-formatter.component.html */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.html"),
+            styles: [__webpack_require__(/*! ./tier-formatter.component.css */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], TierFormatterComponent);
+    return TierFormatterComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/global-statistics/formatters/time-formatter/time-formatter.component.css":
 /*!******************************************************************************************!*\
   !*** ./src/app/global-statistics/formatters/time-formatter/time-formatter.component.css ***!
@@ -5850,12 +5989,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_grouped_aggregated_statistics_grouped_aggregated_statistics_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/grouped-aggregated-statistics/grouped-aggregated-statistics.component */ "./src/app/global-statistics/components/grouped-aggregated-statistics/grouped-aggregated-statistics.component.ts");
 /* harmony import */ var _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./views/host-groups-capacity/host-groups-capacity.component */ "./src/app/global-statistics/views/host-groups-capacity/host-groups-capacity.component.ts");
 /* harmony import */ var _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/aggragated-statistics/global-host-group-capacity.component */ "./src/app/global-statistics/components/aggragated-statistics/global-host-group-capacity.component.ts");
+/* harmony import */ var _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -5906,7 +6047,8 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _components_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__["GlobalPhysicalCapacityStatisticsComponent"],
                 _components_grouped_aggregated_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_21__["GlobalLogicalStatisticsComponent"],
                 _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_23__["HostGroupsCapacityComponent"],
-                _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_24__["GlobalHostGroupCapacityComponent"]
+                _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_24__["GlobalHostGroupCapacityComponent"],
+                _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_25__["TierFormatterComponent"]
             ],
             exports: [],
             imports: [
@@ -6188,7 +6330,7 @@ var SumValueServiceImpl = /** @class */ (function () {
             }).reduce(function (valueA, valueB) { return valueA + valueB; });
             aggregatedValues.setValue(column.index, value, null);
         });
-        console.log(aggregatedValues);
+        // console.log(aggregatedValues);
         return aggregatedValues;
     };
     return SumValueServiceImpl;
@@ -6380,19 +6522,21 @@ var AdaptersComponent = /** @class */ (function () {
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_EVENTS)
-            .withLabel('Cha Imbalance events')
+            .withLabel('Cha Imbalances')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
             // .withAggComponent(SimpleFormatterComponent)
             .withAltSortEnable(false)
             .withIsAggregated(true)
+            .withColumnWidth('12')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PORT_IMBALANCE_EVENTS)
-            .withLabel('Port Imbalance events')
+            .withLabel('Port Imbalances')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
             // .withAggComponent(SimpleFormatterComponent)
             .withAltSortEnable(false)
             .withIsAggregated(true)
+            .withColumnWidth('12')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_PERC)
@@ -6408,7 +6552,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
         this.options.labelColumnWidth = '23';
-        this.options.valueColumnWidth = '24.49';
+        this.options.valueColumnWidth = '49.5';
         this.options.aggregateValuesService = new _utils_SumValueServiceImpl__WEBPACK_IMPORTED_MODULE_10__["SumValueServiceImpl"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortAggregateValueImpl"]();
     }
@@ -6665,6 +6809,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/SasiWeightedArithmeticMean */ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+/* harmony import */ var _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6674,6 +6819,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -6714,6 +6860,13 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_10__["RouteLinkFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TIER)
+            .withLabel('Tier')
+            .withComponent(_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_14__["TierFormatterComponent"])
+            .withTooltipText('Tier')
+            .withColumnWidth('6')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
@@ -6771,7 +6924,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.isDataGrouped = true;
         this.options.highlightRow = true;
         this.options.labelColumnWidth = '13';
-        this.options.valueColumnWidth = '13.9';
+        this.options.valueColumnWidth = '12.9';
         this.options.storageNamePrefix = 'hostGroupCap';
         this.options.selectableRows = true;
         this.options.aggregateValuesService = new _utils_SasiWeightedArithmeticMean__WEBPACK_IMPORTED_MODULE_11__["SasiWeightedArithmeticMean"]();
