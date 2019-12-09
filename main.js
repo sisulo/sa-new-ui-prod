@@ -229,6 +229,139 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/common/components/info-box/alert-info-box.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/common/components/info-box/alert-info-box.component.ts ***!
+  \************************************************************************/
+/*! exports provided: AlertInfoBoxComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertInfoBoxComponent", function() { return AlertInfoBoxComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../models/metrics/EntityType */ "./src/app/common/models/metrics/EntityType.ts");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _models_metrics_Alert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../models/metrics/Alert */ "./src/app/common/models/metrics/Alert.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var AlertInfoBoxComponent = /** @class */ (function () {
+    function AlertInfoBoxComponent(route, router, metric) {
+        this.route = route;
+        this.router = router;
+        this.metric = metric;
+        this.minValue = 0;
+        this.maxValue = 0;
+        this.threshold = 0;
+        this.icon = '';
+        this.data = [];
+        this.entityType = _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"];
+        this.modalState = 'close';
+    }
+    AlertInfoBoxComponent.prototype.ngOnInit = function () {
+        if (this.data.length > 0) {
+            var result = this.data.sort(function (occurence1, occurrence2) {
+                return occurrence2.value - occurence1.value;
+            });
+        }
+        this.value = this.alert.occurrences.length;
+        this.data = this.alert.occurrences;
+        this.minValue = this.alert.minValue;
+        this.maxValue = this.alert.maxValue;
+        this.infoBoxTooltip = this.getThresholdMessage(this.alert.type, this.alert.minValue, this.alert.maxValue, this.alert.unit);
+    };
+    AlertInfoBoxComponent.prototype.isOverThreshold = function () {
+        return this.value > this.threshold;
+    };
+    AlertInfoBoxComponent.prototype.openModal = function () {
+        this.modalState = 'open';
+    };
+    AlertInfoBoxComponent.prototype.closeModal = function () {
+        this.modalState = 'close';
+    };
+    AlertInfoBoxComponent.prototype.isModalOpened = function () {
+        return this.modalState === 'open';
+    };
+    AlertInfoBoxComponent.prototype.getIframeLink = function (entityType) {
+        switch (entityType) {
+            case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].ADAPTER:
+                return 'adapters';
+            case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].POOL:
+                return 'capacityAnalysis';
+            case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].SYSTEM:
+                return 'dashboard';
+        }
+    };
+    AlertInfoBoxComponent.prototype.getThresholdMessage = function (type, minValue, maxValue, unit) {
+        if (maxValue == null && minValue == null) {
+            return 'Everything works right!';
+        }
+        var sanitizeUnit = unit;
+        if (sanitizeUnit == null) {
+            sanitizeUnit = '';
+        }
+        if (maxValue == null) {
+            return this.label + " over " + minValue + sanitizeUnit;
+        }
+        if (minValue == null) {
+            return this.label + " under " + maxValue + sanitizeUnit;
+        }
+        return this.label + " between " + minValue + sanitizeUnit + " and " + maxValue + sanitizeUnit;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], AlertInfoBoxComponent.prototype, "label", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], AlertInfoBoxComponent.prototype, "context", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], AlertInfoBoxComponent.prototype, "threshold", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], AlertInfoBoxComponent.prototype, "icon", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_metrics_Alert__WEBPACK_IMPORTED_MODULE_4__["Alert"])
+    ], AlertInfoBoxComponent.prototype, "alert", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], AlertInfoBoxComponent.prototype, "infoBoxTooltip", void 0);
+    AlertInfoBoxComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-alert-info-box',
+            template: __webpack_require__(/*! ./info-box.component.html */ "./src/app/common/components/info-box/info-box.component.html"),
+            styles: [__webpack_require__(/*! ./info-box.component.css */ "./src/app/common/components/info-box/info-box.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"]])
+    ], AlertInfoBoxComponent);
+    return AlertInfoBoxComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/components/info-box/info-box.component.css":
 /*!*******************************************************************!*\
   !*** ./src/app/common/components/info-box/info-box.component.css ***!
@@ -236,7 +369,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}\n\n.info-box-number {\n  font-size: 25px;\n}\n\n.info-box-text {\n  font-size: 17px;\n}\n\n.cut-text {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  max-width: 80%;\n  height: 1.2em;\n  white-space: nowrap;\n}\n\n.modal-content {\n  overflow: scroll;\n  height: 700px;\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvaW5mby1ib3gvaW5mby1ib3guY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQWM7RUFDZCxtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQix1QkFBdUI7RUFDdkIsZ0JBQWdCO0VBQ2hCLGNBQWM7RUFDZCxhQUFhO0VBQ2IsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGFBQWE7RUFDYixrQkFBa0I7RUFDbEIsZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvaW5mby1ib3gvaW5mby1ib3guY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImRpdi5tb2RhbC5vcGVuIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHBhZGRpbmctcmlnaHQ6IDE1cHg7XG59XG5cbi5pbmZvLWJveC1udW1iZXIge1xuICBmb250LXNpemU6IDI1cHg7XG59XG5cbi5pbmZvLWJveC10ZXh0IHtcbiAgZm9udC1zaXplOiAxN3B4O1xufVxuXG4uY3V0LXRleHQge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBtYXgtd2lkdGg6IDgwJTtcbiAgaGVpZ2h0OiAxLjJlbTtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbn1cblxuLm1vZGFsLWNvbnRlbnQge1xuICBvdmVyZmxvdzogc2Nyb2xsO1xuICBoZWlnaHQ6IDcwMHB4O1xuICBvdmVyZmxvdy14OiBoaWRkZW47XG4gIG92ZXJmbG93LXk6IGF1dG87XG59XG4iXX0= */"
+module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}\n\n.info-box-number {\n  font-size: 25px;\n}\n\n.info-box-text {\n  font-size: 17px;\n}\n\n.cut-text {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  max-width: 80%;\n  height: 1.2em;\n  white-space: nowrap;\n}\n\n.modal-content {\n  overflow: scroll;\n  height: 700px;\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.cursor {\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvaW5mby1ib3gvaW5mby1ib3guY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQWM7RUFDZCxtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQix1QkFBdUI7RUFDdkIsZ0JBQWdCO0VBQ2hCLGNBQWM7RUFDZCxhQUFhO0VBQ2IsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGFBQWE7RUFDYixrQkFBa0I7RUFDbEIsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsZUFBZTtBQUNqQiIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi9jb21wb25lbnRzL2luZm8tYm94L2luZm8tYm94LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJkaXYubW9kYWwub3BlbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBwYWRkaW5nLXJpZ2h0OiAxNXB4O1xufVxuXG4uaW5mby1ib3gtbnVtYmVyIHtcbiAgZm9udC1zaXplOiAyNXB4O1xufVxuXG4uaW5mby1ib3gtdGV4dCB7XG4gIGZvbnQtc2l6ZTogMTdweDtcbn1cblxuLmN1dC10ZXh0IHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgbWF4LXdpZHRoOiA4MCU7XG4gIGhlaWdodDogMS4yZW07XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59XG5cbi5tb2RhbC1jb250ZW50IHtcbiAgb3ZlcmZsb3c6IHNjcm9sbDtcbiAgaGVpZ2h0OiA3MDBweDtcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xuICBvdmVyZmxvdy15OiBhdXRvO1xufVxuXG4uY3Vyc29yIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -247,7 +380,7 @@ module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"info-box\">\n  <span [tooltip]=\"infoBoxTooltip\" [ngClass]=\"isOverThreshold() ? 'info-box-icon bg-orange': 'info-box-icon bg-green'\"\n        class=\"info-box-icon\"><i\n    class=\"fa\" [ngClass]=\"isOverThreshold() ? 'fa-exclamation-triangle' : icon\"></i></span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <div class=\"cut-text\">\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 10\"><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}</a> |\n          </span>\n      </span>\n    </span>\n    </div>\n    <span *ngIf=\"data.length > 2\"><a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\"\n                                     (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n          <tr>\n            <th>System</th>\n            <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n            <th *ngIf=\"data[0].entityType === entityType.ADAPTER\">Adapter</th>\n            <th>Value</th>\n          </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType !== null\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: metric.getSystemName(occurence.datacenterId, occurence.systemId)}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL || occurence.entityType === entityType.ADAPTER \">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: occurence.name}\"></app-route-link-formatter>\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurrences.datacenterId + '/' + context\">-->\n            <!--{{occurrences.name}}</a> - {{occurrences.value}} {{occurrences.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close\n        </button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
+module.exports = "<div class=\"info-box\">\n\n  <span *ngIf=\"isOverThreshold()\" [tooltip]=\"infoBoxTooltip\" class=\"info-box-icon bg-orange info-box-icon cursor\"\n        (click)=\"openModal()\">\n    <i class=\"fa fa-exclamation-triangle\"></i>\n  </span>\n  <span *ngIf=\"!isOverThreshold()\" class=\"info-box-icon bg-green\">\n    <i class=\"fa {{icon}}\"></i>\n  </span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <div class=\"cut-text\">\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 10\"><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}</a> |\n          </span>\n      </span>\n    </span>\n    </div>\n    <span *ngIf=\"data.length > 2\"><a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\"\n                                     (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n          <tr>\n            <th>System</th>\n            <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n            <th *ngIf=\"data[0].entityType === entityType.ADAPTER\">Adapter</th>\n            <th>Value</th>\n          </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType !== null\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: metric.getSystemName(occurence.datacenterId, occurence.systemId)}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL || occurence.entityType === entityType.ADAPTER \">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: occurence.name}\"></app-route-link-formatter>\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurrences.datacenterId + '/' + context\">-->\n            <!--{{occurrences.name}}</a> - {{occurrences.value}} {{occurrences.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close\n        </button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
 
 /***/ }),
 
@@ -2626,6 +2759,26 @@ var Region;
 
 /***/ }),
 
+/***/ "./src/app/common/models/metrics/Alert.ts":
+/*!************************************************!*\
+  !*** ./src/app/common/models/metrics/Alert.ts ***!
+  \************************************************/
+/*! exports provided: Alert */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Alert", function() { return Alert; });
+var Alert = /** @class */ (function () {
+    function Alert() {
+    }
+    return Alert;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/models/metrics/AlertType.ts":
 /*!****************************************************!*\
   !*** ./src/app/common/models/metrics/AlertType.ts ***!
@@ -2645,6 +2798,7 @@ var AlertType;
     AlertType["HDD"] = "hdd";
     AlertType["WRITE_PENDING"] = "write_pending";
     AlertType["RESPONSE"] = "response";
+    AlertType["PORT_DISBALANCE_EVENTS"] = "port_disbalance_events";
 })(AlertType || (AlertType = {}));
 
 
@@ -2777,7 +2931,9 @@ var SystemMetricType;
     SystemMetricType["NET_SUBS_PERC"] = "NET_SUBS_PERC";
     SystemMetricType["LOGICAL_SUBS_PERC"] = "LOGICAL_SUBS_PERC";
     SystemMetricType["SUBSCRIBED_CAPACITY"] = "SUBSCRIBED_CAPACITY";
-    SystemMetricType["PORT_IMBALANCE_EVENTS"] = "PORT_IMBALANCE_EVENTS";
+    SystemMetricType["PORT_IMBALANCE_EVENTS"] = "PORT_DISBALANCE_EVENTS";
+    SystemMetricType["PORT_IMBALANCE_PERC"] = "PORT_DISBALANCE_PERC";
+    SystemMetricType["PORT_IMBALANCE_ABSOLUT"] = "PORT_DISBALANCE_ABSOLUT";
     // Counted in SA UI
     SystemMetricType["LOGICAL_CHANGE_1M"] = "LOGICAL_CHANGE_MONTH";
     // Mocked extarnal type for metric type,
@@ -2822,17 +2978,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _global_statistics_formatters_text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../global-statistics/formatters/text-formatter/text-formatter.component */ "./src/app/global-statistics/formatters/text-formatter/text-formatter.component.ts");
 /* harmony import */ var _global_statistics_formatters_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../global-statistics/formatters/emph-formatter/emph-formatter.component */ "./src/app/global-statistics/formatters/emph-formatter/emph-formatter.component.ts");
 /* harmony import */ var _utils_safe_html_pipe__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./utils/safe-html.pipe */ "./src/app/common/utils/safe-html.pipe.ts");
-/* harmony import */ var _global_statistics_formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../global-statistics/formatters/disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.ts");
+/* harmony import */ var _global_statistics_formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component */ "./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.ts");
 /* harmony import */ var _utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
 /* harmony import */ var _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
 /* harmony import */ var _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./storage-convert.pipe */ "./src/app/common/storage-convert.pipe.ts");
 /* harmony import */ var _global_statistics_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../global-statistics/formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
+/* harmony import */ var _global_statistics_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
+/* harmony import */ var _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/info-box/alert-info-box.component */ "./src/app/common/components/info-box/alert-info-box.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -2886,7 +3046,8 @@ var SaCommonModule = /** @class */ (function () {
                 _utils_safe_html_pipe__WEBPACK_IMPORTED_MODULE_24__["SafeHtmlPipe"],
                 _utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_26__["FormatThousandsPipe"],
                 _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__["RouteLinkFormatterComponent"],
-                _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_28__["StorageConvertPipe"]
+                _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_28__["StorageConvertPipe"],
+                _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_31__["AlertInfoBoxComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
@@ -2906,6 +3067,7 @@ var SaCommonModule = /** @class */ (function () {
                 _utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_26__["FormatThousandsPipe"],
                 _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__["RouteLinkFormatterComponent"],
                 _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_28__["StorageConvertPipe"],
+                _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_31__["AlertInfoBoxComponent"],
             ],
             entryComponents: [
                 _global_statistics_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_9__["UnitFormatterComponent"],
@@ -2916,9 +3078,10 @@ var SaCommonModule = /** @class */ (function () {
                 _global_statistics_formatters_time_formatter_time_formatter_component__WEBPACK_IMPORTED_MODULE_21__["TimeFormatterComponent"],
                 _global_statistics_formatters_text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_22__["TextFormatterComponent"],
                 _global_statistics_formatters_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_23__["EmphFormatterComponent"],
-                _global_statistics_formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_25__["DisbalanceFormatterComponent"],
+                _global_statistics_formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_25__["PortDisbalanceFormatterComponent"],
                 _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__["RouteLinkFormatterComponent"],
-                _global_statistics_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_29__["TierFormatterComponent"]
+                _global_statistics_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_29__["TierFormatterComponent"],
+                _global_statistics_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_30__["AdapterDisbalanceFormatterComponent"]
             ]
         })
     ], SaCommonModule);
@@ -3324,7 +3487,7 @@ var SystemPool2SasiTablePipe = /** @class */ (function () {
         });
     };
     SystemPool2SasiTablePipe.prototype.countPortImbalances = function (rows) {
-        return rows.filter(function (row) { return parseInt(row.getCell(_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].IMBALANCE_EVENTS).value, 10) > 0; }).length;
+        return rows.filter(function (row) { return parseInt(row.getCell(_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PORT_IMBALANCE_EVENTS).value, 10) > 0; }).length;
     };
     SystemPool2SasiTablePipe = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -3507,7 +3670,7 @@ module.exports = ".content {\n  min-height: 60px !important;\n}\n\n/*# sourceMap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\">\n      <div *ngIf=\"containsType(alert.type, alertsPerformance)\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-info-box [value]=\"alert.occurrences.length\"\n                      [data]=\"alert.occurrences\"\n                      [context]=\"getLinkContext(alert.type)\"\n                      [minValue]=\"alert.minValue\"\n                      [maxValue]=\"alert.maxValue\"\n                      [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                      [label]=\"getAlertLabel(alert.type)\"\n                      [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alert of alerts;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-info-box *ngIf=\"containsType(alert.type, alertsOperations)\"\n                    [value]=\"alert.occurrences.length\"\n                    [data]=\"alert.occurrences\"\n                    [context]=\"getLinkContext(alert.type)\"\n                    [minValue]=\"alert.minValue\"\n                    [maxValue]=\"alert.maxValue\"\n                    [infoBoxTooltip]=\"getThresholdMessage(alert.type, alert.minValue, alert.maxValue, alert.unit)\"\n                    [label]=\"getAlertLabel(alert.type)\"\n                    [icon]=\"getAlertIcon(alert.type)\"></app-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h4>Total load (Last 24 hours)</h4>\n    <div *ngFor=\"let type of perfMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Workload and Transfer History</h3>\n        </div>\n        <div class=\"box-body\">\n          <apx-chart [series]=\"series\" [chart]=\"chart\" [colors]=\"fill\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [legend]=\"legend\"\n                     [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let type of capacityMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <div class=\"row\">\n\n            <div class=\"col-md-6 col-lg-8\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-6 col-lg-4\">\n\n              <div class=\"row\">\n\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                            [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                            [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n\n"
+module.exports = "<div class=\"row\" *ngIf=\"alerts.length > 0\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alertType of alertsPerformance;let i = index\">\n      <div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                            [context]=\"getLinkContext(alertType)\"\n                            [label]=\"getAlertLabel(alertType)\"\n                            [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alertType of alertsOperations;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                          [context]=\"getLinkContext(alertType)\"\n                          [label]=\"getAlertLabel(alertType)\"\n                          [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\" *ngIf=\"metrics.length > 0\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h4>Total load (Last 24 hours)</h4>\n    <div *ngFor=\"let type of perfMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Workload and Transfer History</h3>\n        </div>\n        <div class=\"box-body\">\n          <apx-chart [series]=\"series\" [chart]=\"chart\" [colors]=\"fill\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [legend]=\"legend\"\n                     [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let type of capacityMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <div class=\"row\">\n\n            <div class=\"col-md-6 col-lg-8\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-6 col-lg-4\">\n\n              <div class=\"row\">\n\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                            [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                            [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n\n"
 
 /***/ }),
 
@@ -3558,8 +3721,6 @@ var DashboardComponent = /** @class */ (function () {
         this.alertsPerformance = [];
         this.alertsOperations = [];
         this.alertIcons = {};
-        this.metricIcons = {};
-        this.metricColor = {};
         this.linkContext = {};
         this.colors = ['#a09608', '#38a008', '#08a09d', '#421570', '#f56954'];
         this.currentColor = 0;
@@ -3625,7 +3786,8 @@ var DashboardComponent = /** @class */ (function () {
         this.metricLabels[_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M] = 'Monthly Changed (logical)';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'Capacity Usage Events';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'CPU Utilization Events';
-        this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'CHA Pair Disbalance Events';
+        this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'CHA Pair Imbalances';
+        this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].PORT_DISBALANCE_EVENTS] = 'FE Port Imbalances';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD] = 'HDD Utilization Events';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE] = 'Latency Events';
         this.alertLabels[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS] = 'Out of SLA Events';
@@ -3633,6 +3795,7 @@ var DashboardComponent = /** @class */ (function () {
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'fa-chart-pie';
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'fa-tachometer-alt';
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'fa-random';
+        this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].PORT_DISBALANCE_EVENTS] = 'fa-random';
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD] = 'fa-hdd';
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE] = 'fa-chart-line';
         this.alertIcons[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS] = 'fa-bell';
@@ -3640,12 +3803,13 @@ var DashboardComponent = /** @class */ (function () {
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'physical-capacity';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'performance';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'adapters';
+        this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].PORT_DISBALANCE_EVENTS] = 'port';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD] = 'performance';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE] = 'performance';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS] = 'dp-sla';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING] = 'physical-capacity';
         this.alertsPerformance.push(_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE);
-        this.alertsOperations.push(_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS);
+        this.alertsOperations.push(_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].PORT_DISBALANCE_EVENTS, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS);
         this.metricService.getInfrastructureStats().subscribe(function (stats) {
             console.log(stats);
             _this.alerts = stats.alerts;
@@ -3746,24 +3910,12 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.getLinkContext = function (type) {
         return this.linkContext[type];
     };
-    DashboardComponent.prototype.getThresholdMessage = function (type, minValue, maxValue, unit) {
-        if (maxValue == null && minValue == null) {
-            return null;
-        }
-        var sanitizeUnit = unit;
-        if (sanitizeUnit == null) {
-            sanitizeUnit = '';
-        }
-        if (maxValue == null) {
-            return this.getAlertLabel(type) + " over " + minValue + sanitizeUnit;
-        }
-        if (minValue == null) {
-            return this.getAlertLabel(type) + " under " + maxValue + sanitizeUnit;
-        }
-        return this.getAlertLabel(type) + " between " + minValue + sanitizeUnit + " and " + maxValue + sanitizeUnit;
-    };
     DashboardComponent.prototype.getAlertLabel = function (type) {
         return this.alertLabels[type];
+    };
+    DashboardComponent.prototype.getAlert = function (type) {
+        var alert = this.alerts.find(function (searchAlert) { return searchAlert.type === type; });
+        return alert;
     };
     DashboardComponent.prototype.getColor = function (colorIndex) {
         this.currentColor += 1;
@@ -4973,6 +5125,127 @@ var GroupedAggregatedStatisticsComponent = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.css":
+/*!**********************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.css ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #ffd829;\n}\n\n.metric-value {\n  font-style: italic;\n}\n\ntable {\n  width: 100%;\n}\n\ndiv.progress {\n  /*width: 90%;*/\n  /*float:left;*/\n  padding: 0px;\n  border: 1px solid darkgrey;\n  margin: 5px auto auto auto;\n}\n\ndiv.progress-bar {\n  text-align: center;\n}\n\n.row {\n  margin: 0px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyL2FkYXB0ZXItZGlzYmFsYW5jZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsV0FBVztBQUNiOztBQUVBO0VBQ0UsY0FBYztFQUNkLGNBQWM7RUFDZCxZQUFZO0VBQ1osMEJBQTBCO0VBQzFCLDBCQUEwQjtBQUM1Qjs7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2Zvcm1hdHRlcnMvYWRhcHRlci1kaXNiYWxhbmNlLWZvcm1hdHRlci9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpIHtcbiAgZm9udC1zaXplOiAxMXB4O1xufVxuXG4udGV4dC1hbGVydC15ZWxsb3cge1xuICBjb2xvcjogI2ZmZDgyOTtcbn1cblxuLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cblxudGFibGUge1xuICB3aWR0aDogMTAwJTtcbn1cblxuZGl2LnByb2dyZXNzIHtcbiAgLyp3aWR0aDogOTAlOyovXG4gIC8qZmxvYXQ6bGVmdDsqL1xuICBwYWRkaW5nOiAwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGRhcmtncmV5O1xuICBtYXJnaW46IDVweCBhdXRvIGF1dG8gYXV0bztcbn1cblxuZGl2LnByb2dyZXNzLWJhciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLnJvdyB7XG4gIG1hcmdpbjogMHB4O1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.html":
+/*!***********************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.html ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"data != null && data.value > 0 && isVisible()\">\n  <div class=\"col-md-2\" *ngIf=\"isPortMetric\" tooltip=\"Port pair\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div class=\"progress progress-sm col-md-8\" [tooltip]=\"resolveRelativeDisbalance() + '%'\">\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div class=\"col-md-2\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts":
+/*!*********************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts ***!
+  \*********************************************************************************************************************/
+/*! exports provided: AdapterDisbalanceFormatterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdapterDisbalanceFormatterComponent", function() { return AdapterDisbalanceFormatterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetric */ "./src/app/common/models/metrics/SystemMetric.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AdapterDisbalanceFormatterComponent = /** @class */ (function () {
+    function AdapterDisbalanceFormatterComponent() {
+        this.isPortMetric = false;
+        this.absolutType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT;
+        this.percType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_PERC;
+        this.eventsType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS;
+    }
+    AdapterDisbalanceFormatterComponent.prototype.ngOnInit = function () {
+        if (this.isPortMetric) {
+            this.absolutType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_ABSOLUT;
+            this.percType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_PERC;
+            this.eventsType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_EVENTS;
+        }
+    };
+    AdapterDisbalanceFormatterComponent.prototype.getInfoMessage = function () {
+        return "(" + this.resolveAbsoluteDisbalance() + " [MB/s] -> " + this.data.value + "%";
+    };
+    AdapterDisbalanceFormatterComponent.prototype.resolveAbsoluteDisbalance = function () {
+        return this.resolveDisbalance(this.absolutType);
+    };
+    AdapterDisbalanceFormatterComponent.prototype.resolveRelativeDisbalance = function () {
+        return this.resolveDisbalance(this.percType);
+    };
+    AdapterDisbalanceFormatterComponent.prototype.resolveDisbalance = function (type) {
+        if (this.rowData !== undefined && this.rowData.getCell(type) != null) {
+            return this.rowData.getCell(type).value;
+        }
+    };
+    AdapterDisbalanceFormatterComponent.prototype.isVisible = function () {
+        if (this.rowData !== undefined && parseInt(this.rowData.getCell(this.eventsType).value, 10) > 0) {
+            return true;
+        }
+        return false;
+    };
+    AdapterDisbalanceFormatterComponent.prototype.getName = function () {
+        return this.rowData.getCell('name').value;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], AdapterDisbalanceFormatterComponent.prototype, "label", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__["SystemMetric"])
+    ], AdapterDisbalanceFormatterComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
+    ], AdapterDisbalanceFormatterComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
+    ], AdapterDisbalanceFormatterComponent.prototype, "rowData", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], AdapterDisbalanceFormatterComponent.prototype, "isPortMetric", void 0);
+    AdapterDisbalanceFormatterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-adapter-disbalance-formatter',
+            template: __webpack_require__(/*! ./adapter-disbalance-formatter.component.html */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.html"),
+            styles: [__webpack_require__(/*! ./adapter-disbalance-formatter.component.css */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AdapterDisbalanceFormatterComponent);
+    return AdapterDisbalanceFormatterComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.css":
 /*!********************************************************************************************!*\
   !*** ./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.css ***!
@@ -5070,147 +5343,6 @@ var AlertFormatterComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.css":
-/*!******************************************************************************************************!*\
-  !*** ./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.css ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "table {\n  margin: 2px;\n  border: 2px solid #EAEAEA;\n}\n\ntable thead {\n  background-color: #3C8CBC;\n  color: white;\n}\n\ntable td {\n  font-size: 11px;\n  padding: 2px;\n  border: 2px solid #EAEAEA;\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9kaXNiYWxhbmNlLWZvcm1hdHRlci9kaXNiYWxhbmNlLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVztFQUNYLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsWUFBWTtFQUNaLHlCQUF5Qjs7QUFFM0IiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9mb3JtYXR0ZXJzL2Rpc2JhbGFuY2UtZm9ybWF0dGVyL2Rpc2JhbGFuY2UtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XG4gIG1hcmdpbjogMnB4O1xuICBib3JkZXI6IDJweCBzb2xpZCAjRUFFQUVBO1xufVxuXG50YWJsZSB0aGVhZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzQzhDQkM7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxudGFibGUgdGQge1xuICBmb250LXNpemU6IDExcHg7XG4gIHBhZGRpbmc6IDJweDtcbiAgYm9yZGVyOiAycHggc29saWQgI0VBRUFFQTtcblxufVxuIl19 */"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.html":
-/*!*******************************************************************************************************!*\
-  !*** ./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.html ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<!--<div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"metric-value\">-->\n<!--  <i class=\"fa fa-exclamation-triangle text-alert-yellow\"></i>&nbsp;<span class=\"text-red\">{{getInfoMessage()}}</span>-->\n<!--</div>-->\n<table class=\"table table-bordered\" *ngIf=\"subData.length > 0\">\n  <thead>\n  <tr>\n    <td>Name</td>\n    <td>Type</td>\n    <td>Relative</td>\n    <td>Absolute</td>\n  </tr>\n  </thead>\n  <tbody>\n  <tr *ngFor=\"let row of subData\">\n    <td>{{row.cells['name'].value}}</td>\n    <td><i tooltip=\"{{getTooltip(row)}}\" [className]=\"getIcon(row)\"></i></td>\n    <td>{{getCellValue(row, imbalancePerc)}} [{{getUnit(row, imbalancePerc)}}]</td>\n    <td>{{getCellValue(row, imbalanceAbs)}} [{{getUnit(row, imbalanceAbs)}}]</td>\n  </tr>\n  </tbody>\n</table>\n"
-
-/***/ }),
-
-/***/ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.ts":
-/*!*****************************************************************************************************!*\
-  !*** ./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.ts ***!
-  \*****************************************************************************************************/
-/*! exports provided: DisbalanceFormatterComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DisbalanceFormatterComponent", function() { return DisbalanceFormatterComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetric */ "./src/app/common/models/metrics/SystemMetric.ts");
-/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
-/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var DisbalanceFormatterComponent = /** @class */ (function () {
-    function DisbalanceFormatterComponent() {
-        this.subData = [];
-        this.imbalancePerc = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_PERC;
-        this.imbalanceAbs = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT;
-    }
-    DisbalanceFormatterComponent_1 = DisbalanceFormatterComponent;
-    DisbalanceFormatterComponent.isVisible = function (row) {
-        if (row !== undefined && row.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS) !== null && parseInt(row.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS).value, 10) > 0) {
-            return true;
-        }
-        return false;
-    };
-    DisbalanceFormatterComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (DisbalanceFormatterComponent_1.isVisible(this.rowData)) {
-            this.subData = [this.rowData];
-        }
-        if (this.rowData !== undefined) {
-            this.rowData.subRows.filter(function (subRow) { return DisbalanceFormatterComponent_1.isVisible(subRow); }).forEach(function (subRow) { return _this.subData.push(subRow); });
-        }
-    };
-    DisbalanceFormatterComponent.prototype.getInfoMessage = function () {
-        return "Detected imbalance \"" + this.data.value + "%\" (" + this.resolveAbsoluteDisbalance() + " [MB/s])";
-    };
-    DisbalanceFormatterComponent.prototype.resolveAbsoluteDisbalance = function () {
-        if (this.rowData !== undefined && this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT) != null) {
-            return this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT).value;
-        }
-    };
-    DisbalanceFormatterComponent.prototype.getCellValue = function (row, type) {
-        var metric = row.getCell(type);
-        if (metric === null) {
-            return '';
-        }
-        return metric.value;
-    };
-    DisbalanceFormatterComponent.prototype.getUnit = function (row, type) {
-        var metric = row.getCell(type);
-        // console.log(metric);
-        if (metric === null) {
-            return '';
-        }
-        return metric.rawData.unit;
-    };
-    DisbalanceFormatterComponent.prototype.isAdapter = function (row) {
-        return this.rowData.getCell('name').value === row.getCell('name').value;
-    };
-    DisbalanceFormatterComponent.prototype.getIcon = function (row) {
-        if (this.isAdapter(row)) {
-            return 'fas fa-server';
-        }
-        return 'fas fa-ethernet';
-    };
-    DisbalanceFormatterComponent.prototype.getTooltip = function (row) {
-        if (this.isAdapter(row)) {
-            return 'Adapter';
-        }
-        return 'Port';
-    };
-    var DisbalanceFormatterComponent_1;
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], DisbalanceFormatterComponent.prototype, "label", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__["SystemMetric"])
-    ], DisbalanceFormatterComponent.prototype, "data", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
-    ], DisbalanceFormatterComponent.prototype, "column", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
-    ], DisbalanceFormatterComponent.prototype, "rowData", void 0);
-    DisbalanceFormatterComponent = DisbalanceFormatterComponent_1 = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-disbalance-formatter',
-            template: __webpack_require__(/*! ./disbalance-formatter.component.html */ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.html"),
-            styles: [__webpack_require__(/*! ./disbalance-formatter.component.css */ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], DisbalanceFormatterComponent);
-    return DisbalanceFormatterComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/global-statistics/formatters/emph-formatter/emph-formatter.component.css":
 /*!******************************************************************************************!*\
   !*** ./src/app/global-statistics/formatters/emph-formatter/emph-formatter.component.css ***!
@@ -5280,6 +5412,124 @@ var EmphFormatterComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], EmphFormatterComponent);
     return EmphFormatterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.css":
+/*!****************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.css ***!
+  \****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "table {\n  margin: 2px;\n  border: 2px solid #EAEAEA;\n}\n\ntable thead {\n  background-color: #3C8CBC;\n  color: white;\n}\n\ntable td {\n  font-size: 11px;\n  padding: 2px;\n  border: 2px solid #EAEAEA;\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9wb3J0LWRpc2JhbGFuY2UtZm9ybWF0dGVyL3BvcnQtZGlzYmFsYW5jZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVc7RUFDWCx5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsWUFBWTtBQUNkOztBQUVBO0VBQ0UsZUFBZTtFQUNmLFlBQVk7RUFDWix5QkFBeUI7O0FBRTNCIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9wb3J0LWRpc2JhbGFuY2UtZm9ybWF0dGVyL3BvcnQtZGlzYmFsYW5jZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcbiAgbWFyZ2luOiAycHg7XG4gIGJvcmRlcjogMnB4IHNvbGlkICNFQUVBRUE7XG59XG5cbnRhYmxlIHRoZWFkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNDOENCQztcbiAgY29sb3I6IHdoaXRlO1xufVxuXG50YWJsZSB0ZCB7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgcGFkZGluZzogMnB4O1xuICBib3JkZXI6IDJweCBzb2xpZCAjRUFFQUVBO1xuXG59XG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.html":
+/*!*****************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.html ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--&lt;!&ndash;<div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"metric-value\">&ndash;&gt;-->\n<!--&lt;!&ndash;  <i class=\"fa fa-exclamation-triangle text-alert-yellow\"></i>&nbsp;<span class=\"text-red\">{{getInfoMessage()}}</span>&ndash;&gt;-->\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\n<!--<table class=\"table table-bordered\" *ngIf=\"subData.length > 0\">-->\n<!--  <thead>-->\n<!--  <tr>-->\n<!--    <td>Name</td>-->\n<!--&lt;!&ndash;    <td>Type</td>&ndash;&gt;-->\n<!--    <td>Relative</td>-->\n<!--    <td>Absolute</td>-->\n<!--  </tr>-->\n<!--  </thead>-->\n<!--  <tbody>-->\n<!--  <tr *ngFor=\"let row of subData\">-->\n<!--    <td>{{row.cells['name'].value}}</td>-->\n<!--&lt;!&ndash;    <td><i tooltip=\"{{getTooltip(row)}}\" [className]=\"getIcon(row)\"></i></td>&ndash;&gt;-->\n<!--    <td>{{getCellValue(row, imbalancePerc)}} [{{getUnit(row, imbalancePerc)}}]</td>-->\n<!--    <td>{{getCellValue(row, imbalanceAbs)}} [{{getUnit(row, imbalanceAbs)}}]</td>-->\n<!--  </tr>-->\n<!--  </tbody>-->\n<!--</table>-->\n\n<div *ngFor=\"let row of subData\">\n  <app-adapter-disbalance-formatter [data]=\"row.getCell(imbalanceEvents)\" [rowData]=\"row\"\n                                    [isPortMetric]=\"true\"></app-adapter-disbalance-formatter>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.ts":
+/*!***************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.ts ***!
+  \***************************************************************************************************************/
+/*! exports provided: PortDisbalanceFormatterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortDisbalanceFormatterComponent", function() { return PortDisbalanceFormatterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetric */ "./src/app/common/models/metrics/SystemMetric.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var PortDisbalanceFormatterComponent = /** @class */ (function () {
+    function PortDisbalanceFormatterComponent() {
+        this.subData = [];
+        this.imbalanceEvents = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_EVENTS;
+    }
+    PortDisbalanceFormatterComponent_1 = PortDisbalanceFormatterComponent;
+    PortDisbalanceFormatterComponent.isVisible = function (row) {
+        if (row !== undefined && row.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_EVENTS) !== null && parseInt(row.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_EVENTS).value, 10) > 0) {
+            return true;
+        }
+        return false;
+    };
+    PortDisbalanceFormatterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.rowData !== undefined) {
+            this.rowData.subRows.filter(function (subRow) { return PortDisbalanceFormatterComponent_1.isVisible(subRow); }).forEach(function (subRow) { return _this.subData.push(subRow); });
+        }
+    };
+    PortDisbalanceFormatterComponent.prototype.resolveAbsoluteDisbalance = function () {
+        if (this.rowData !== undefined && this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_ABSOLUT) != null) {
+            return this.rowData.getCell(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_ABSOLUT).value;
+        }
+    };
+    PortDisbalanceFormatterComponent.prototype.getCellValue = function (row, type) {
+        var metric = row.getCell(type);
+        if (metric === null) {
+            return '';
+        }
+        return metric.value;
+    };
+    PortDisbalanceFormatterComponent.prototype.getUnit = function (row, type) {
+        var metric = row.getCell(type);
+        if (metric === null) {
+            return '';
+        }
+        return metric.rawData.unit;
+    };
+    var PortDisbalanceFormatterComponent_1;
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], PortDisbalanceFormatterComponent.prototype, "label", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__["SystemMetric"])
+    ], PortDisbalanceFormatterComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
+    ], PortDisbalanceFormatterComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
+    ], PortDisbalanceFormatterComponent.prototype, "rowData", void 0);
+    PortDisbalanceFormatterComponent = PortDisbalanceFormatterComponent_1 = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-port-disbalance-formatter',
+            template: __webpack_require__(/*! ./port-disbalance-formatter.component.html */ "./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.html"),
+            styles: [__webpack_require__(/*! ./port-disbalance-formatter.component.css */ "./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], PortDisbalanceFormatterComponent);
+    return PortDisbalanceFormatterComponent;
 }());
 
 
@@ -5982,7 +6232,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _formatters_text_formatter_text_formatter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./formatters/text-formatter/text-formatter.component */ "./src/app/global-statistics/formatters/text-formatter/text-formatter.component.ts");
 /* harmony import */ var _components_aggragated_statistics_aggragated_statistics_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/aggragated-statistics/aggragated-statistics.component */ "./src/app/global-statistics/components/aggragated-statistics/aggragated-statistics.component.ts");
 /* harmony import */ var _formatters_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./formatters/emph-formatter/emph-formatter.component */ "./src/app/global-statistics/formatters/emph-formatter/emph-formatter.component.ts");
-/* harmony import */ var _formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./formatters/disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.ts");
+/* harmony import */ var _formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./formatters/port-disbalance-formatter/port-disbalance-formatter.component */ "./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.ts");
 /* harmony import */ var _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./views/logical-capacity-statistics/logical-capacity-statistics.component */ "./src/app/global-statistics/views/logical-capacity-statistics/logical-capacity-statistics.component.ts");
 /* harmony import */ var _components_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/aggragated-statistics/global-physical-capacity-statistics.component */ "./src/app/global-statistics/components/aggragated-statistics/global-physical-capacity-statistics.component.ts");
 /* harmony import */ var _components_grouped_aggregated_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/grouped-aggregated-statistics/global-logical-statistics.component */ "./src/app/global-statistics/components/grouped-aggregated-statistics/global-logical-statistics.component.ts");
@@ -5990,12 +6240,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./views/host-groups-capacity/host-groups-capacity.component */ "./src/app/global-statistics/views/host-groups-capacity/host-groups-capacity.component.ts");
 /* harmony import */ var _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/aggragated-statistics/global-host-group-capacity.component */ "./src/app/global-statistics/components/aggragated-statistics/global-host-group-capacity.component.ts");
 /* harmony import */ var _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
+/* harmony import */ var _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -6042,13 +6294,14 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _components_aggragated_statistics_aggragated_statistics_component__WEBPACK_IMPORTED_MODULE_16__["AggragatedStatisticsComponent"],
                 _components_grouped_aggregated_statistics_grouped_aggregated_statistics_component__WEBPACK_IMPORTED_MODULE_22__["GroupedAggregatedStatisticsComponent"],
                 _formatters_emph_formatter_emph_formatter_component__WEBPACK_IMPORTED_MODULE_17__["EmphFormatterComponent"],
-                _formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_18__["DisbalanceFormatterComponent"],
+                _formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_18__["PortDisbalanceFormatterComponent"],
                 _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_19__["LogicalCapacityStatisticsComponent"],
                 _components_aggragated_statistics_global_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_20__["GlobalPhysicalCapacityStatisticsComponent"],
                 _components_grouped_aggregated_statistics_global_logical_statistics_component__WEBPACK_IMPORTED_MODULE_21__["GlobalLogicalStatisticsComponent"],
                 _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_23__["HostGroupsCapacityComponent"],
                 _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_24__["GlobalHostGroupCapacityComponent"],
-                _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_25__["TierFormatterComponent"]
+                _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_25__["TierFormatterComponent"],
+                _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_26__["AdapterDisbalanceFormatterComponent"]
             ],
             exports: [],
             imports: [
@@ -6446,7 +6699,7 @@ module.exports = ".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-10\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable: 'adapters'\" [tableOptions]=\"options\"></app-sasi-table>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable: 'adapters'\" [tableOptions]=\"options\"></app-sasi-table>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -6471,9 +6724,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
 /* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
 /* harmony import */ var _utils_SumValueServiceImpl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/SumValueServiceImpl */ "./src/app/global-statistics/utils/SumValueServiceImpl.ts");
-/* harmony import */ var _formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../formatters/disbalance-formatter/disbalance-formatter.component */ "./src/app/global-statistics/formatters/disbalance-formatter/disbalance-formatter.component.ts");
+/* harmony import */ var _formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../formatters/port-disbalance-formatter/port-disbalance-formatter.component */ "./src/app/global-statistics/formatters/port-disbalance-formatter/port-disbalance-formatter.component.ts");
 /* harmony import */ var _formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../formatters/simple-formatter/simple-formatter.component */ "./src/app/global-statistics/formatters/simple-formatter/simple-formatter.component.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-aggregate-value.impl */ "./src/app/common/components/sasi-table/group-sort-aggregate-value.impl.ts");
+/* harmony import */ var _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6483,6 +6737,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -6523,27 +6778,19 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_EVENTS)
             .withLabel('Cha Imbalances')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
-            // .withAggComponent(SimpleFormatterComponent)
+            .withComponent(_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_14__["AdapterDisbalanceFormatterComponent"])
+            .withAggComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
-            .withColumnWidth('12')
+            // .withColumnWidth('12')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PORT_IMBALANCE_EVENTS)
             .withLabel('Port Imbalances')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
-            // .withAggComponent(SimpleFormatterComponent)
+            .withComponent(_formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_11__["PortDisbalanceFormatterComponent"])
+            .withAggComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
-            .withColumnWidth('12')
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_PERC)
-            .withLabel('Details')
-            .withComponent(_formatters_disbalance_formatter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_11__["DisbalanceFormatterComponent"])
-            .withAltSortEnable(false)
-            .withIsAggregated(false)
             .build());
         this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_8__["AlertFormatterComponent"];
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_9__["RowGroupTableComponent"];
@@ -6552,7 +6799,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
         this.options.labelColumnWidth = '23';
-        this.options.valueColumnWidth = '49.5';
+        this.options.valueColumnWidth = '36.5';
         this.options.aggregateValuesService = new _utils_SumValueServiceImpl__WEBPACK_IMPORTED_MODULE_10__["SumValueServiceImpl"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortAggregateValueImpl"]();
     }
