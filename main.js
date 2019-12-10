@@ -171,12 +171,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _components_dashboard_charts_history_chart_history_chart_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/dashboard/charts/history-chart/history-chart.component */ "./src/app/components/dashboard/charts/history-chart/history-chart.component.ts");
+/* harmony import */ var _components_dashboard_charts_capacity_history_chart_capacity_history_chart_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/dashboard/charts/capacity-history-chart/capacity-history-chart.component */ "./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.ts");
+/* harmony import */ var _components_dashboard_charts_bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dashboard/charts/bar-chart/bar-chart.component */ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -206,6 +212,9 @@ var AppModule = /** @class */ (function () {
                 _components_iframe_iframe_component__WEBPACK_IMPORTED_MODULE_7__["IframeComponent"],
                 _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__["DashboardComponent"],
                 _components_dashboard_charts_region_donut_region_donut_component__WEBPACK_IMPORTED_MODULE_13__["RegionDonutComponent"],
+                _components_dashboard_charts_history_chart_history_chart_component__WEBPACK_IMPORTED_MODULE_17__["HistoryChartComponent"],
+                _components_dashboard_charts_capacity_history_chart_capacity_history_chart_component__WEBPACK_IMPORTED_MODULE_18__["CapacityHistoryChartComponent"],
+                _components_dashboard_charts_bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_19__["BarChartComponent"],
             ],
             imports: [
                 _global_statistics_global_statistics_module__WEBPACK_IMPORTED_MODULE_9__["GlobalStatisticsModule"],
@@ -3504,6 +3513,379 @@ var SystemPool2SasiTablePipe = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.css":
+/*!*******************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/bar-chart/bar-chart.component.css ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGFzaGJvYXJkL2NoYXJ0cy9iYXItY2hhcnQvYmFyLWNoYXJ0LmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.html":
+/*!********************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/bar-chart/bar-chart.component.html ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<apx-chart [chart]=\"chart\" [series]=\"series\" [title]=\"title\" [labels]=\"labels\" [tooltip]=\"tooltip\"\n           [plotOptions]=\"plotOptions\" [dataLabels]=\"dataLabels\" [yaxis]=\"yaxis\" [xaxis]=\"xaxis\"\n           [colors]=\"colors\"></apx-chart>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/bar-chart/bar-chart.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: BarChartComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BarChartComponent", function() { return BarChartComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../global-statistics/utils/number.formatter */ "./src/app/global-statistics/utils/number.formatter.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BarChartComponent = /** @class */ (function () {
+    function BarChartComponent() {
+        this.chart = {
+            type: 'bar',
+            animations: { enabled: false },
+            height: '300px',
+        };
+        this.xaxis = {
+            categories: [],
+            title: {
+                text: 'TB'
+            },
+            labels: {
+                formatter: function (val) {
+                    return Math.abs(Math.round(val)) + 'TB';
+                }
+            }
+        };
+        this.series = [{
+                name: 'Europe',
+                data: [78, -15, 33]
+            }];
+        this.regionLabels = [];
+        this.title = { text: 'Region', unit: '', useKFormatter: false }; // small hack for exposing unit attribute in formatters
+        this.unit = '';
+        this.useKFormatter = false;
+        this.dataLabels = {
+            enabled: true,
+            formatter: function (value, _a) {
+                var seriesIndex = _a.seriesIndex, dataPointIndex = _a.dataPointIndex, w = _a.w;
+                return Math.abs(Math.round(value)) + 'TB';
+            }
+        };
+        // plotOptions = {
+        //   pie: {
+        //     donut: {
+        //       labels: {
+        //         show: true,
+        //         name: {
+        //           show: true,
+        //           offsetY: -20,
+        //           fontSize: '12px'
+        //         },
+        //         value: {
+        //           offsetY: -10,
+        //         },
+        //         total: {
+        //           show: true,
+        //           showAlways: true,
+        //           offsetY: -10,
+        //           formatter: function (w) {
+        //             const aggValue = w.globals.seriesTotals.reduce((a, b) => {
+        //               return a + b;
+        //             }, 0);
+        //             return NumberFormatter.kFormat(parseFloat(aggValue).toFixed(0), w.config.labels.useKFormatter) + ' ' + w.config.labels.unit;
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        // };
+        this.plotOptions = {
+            bar: {
+                horizontal: true,
+                barHeight: '80%',
+            },
+        };
+        this.colors = ['#F44336', '#E91E63', '#9C27B0'];
+        this.yaxis = {
+            min: -405,
+            max: 405,
+            title: {
+            // text: 'Age',
+            },
+        };
+    }
+    BarChartComponent.prototype.ngOnInit = function () {
+        this.series = [{ name: 'Monthly changed', data: this.data }];
+        console.log(this.data);
+        this.xaxis.categories = this.regionLabels;
+        this.labels = this.regionLabels;
+        this.labels.unit = this.unit;
+        this.labels.useKFormatter = this.useKFormatter;
+        this.title.text = this.title.text + (" (" + this.labels.unit + ")");
+        this.tooltip = {
+            y: {
+                formatter: function (value, w) {
+                    var unit = '';
+                    var useKformatter = false;
+                    if (w !== undefined && w.config !== undefined) {
+                        unit = w.config.labels.unit;
+                        useKformatter = w.config.labels.useKFormatter;
+                    }
+                    return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(value).toFixed(0), useKformatter) + ' ' + unit;
+                }
+            }
+        };
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarChartComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarChartComponent.prototype, "regionLabels", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarChartComponent.prototype, "title", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarChartComponent.prototype, "unit", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarChartComponent.prototype, "useKFormatter", void 0);
+    BarChartComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-bar-chart',
+            template: __webpack_require__(/*! ./bar-chart.component.html */ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.html"),
+            styles: [__webpack_require__(/*! ./bar-chart.component.css */ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], BarChartComponent);
+    return BarChartComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.css":
+/*!*********************************************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.css ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGFzaGJvYXJkL2NoYXJ0cy9jYXBhY2l0eS1oaXN0b3J5LWNoYXJ0L2NhcGFjaXR5LWhpc3RvcnktY2hhcnQuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.html ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<apx-chart [series]=\"series\" [chart]=\"chart\" [colors]=\"fill\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [legend]=\"legend\"\n           [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.ts":
+/*!********************************************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.ts ***!
+  \********************************************************************************************************/
+/*! exports provided: CapacityHistoryChartComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CapacityHistoryChartComponent", function() { return CapacityHistoryChartComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../common/utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CapacityHistoryChartComponent = /** @class */ (function () {
+    function CapacityHistoryChartComponent() {
+        this.series = [];
+        this.chart = { type: 'area', height: '300' };
+        this.xaxis = { type: 'datetime', labels: { format: 'yyyy-MM-dd' } };
+        this.colors = ['#a09608', '#38a008', '#08a09d', '#421570', '#f56954'];
+        this.dataLabels = { enabled: false };
+        this.title = {};
+        this.yaxis = [
+            {
+                labels: {
+                    formatter: function (value) {
+                        var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__["FormatThousandsPipe"]();
+                        return pipe.transform(value) + ' TB';
+                    }
+                }
+            },
+        ];
+        this.legend = {
+            formatter: function (value, _a) {
+                var seriesIndex = _a.seriesIndex, w = _a.w;
+                var labels = ['Subscribed Capacity (TB)', 'Logical Capacity (TB)', 'Physical Capacity (TB)'];
+                return labels[seriesIndex];
+            }
+        };
+    }
+    CapacityHistoryChartComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], CapacityHistoryChartComponent.prototype, "series", void 0);
+    CapacityHistoryChartComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-capacity-history-chart',
+            template: __webpack_require__(/*! ./capacity-history-chart.component.html */ "./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.html"),
+            styles: [__webpack_require__(/*! ./capacity-history-chart.component.css */ "./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], CapacityHistoryChartComponent);
+    return CapacityHistoryChartComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/charts/history-chart/history-chart.component.css":
+/*!***************************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/history-chart/history-chart.component.css ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGFzaGJvYXJkL2NoYXJ0cy9oaXN0b3J5LWNoYXJ0L2hpc3RvcnktY2hhcnQuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/charts/history-chart/history-chart.component.html":
+/*!****************************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/history-chart/history-chart.component.html ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<apx-chart [series]=\"series\" [chart]=\"chart\" [colors]=\"fill\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [legend]=\"legend\"\n           [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/charts/history-chart/history-chart.component.ts":
+/*!**************************************************************************************!*\
+  !*** ./src/app/components/dashboard/charts/history-chart/history-chart.component.ts ***!
+  \**************************************************************************************/
+/*! exports provided: HistoryChartComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistoryChartComponent", function() { return HistoryChartComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../common/utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HistoryChartComponent = /** @class */ (function () {
+    function HistoryChartComponent() {
+        this.series = [];
+        this.chart = { type: 'area', height: '300' };
+        this.xaxis = { type: 'datetime', labels: { format: 'yyyy-MM-dd' } };
+        this.colors = ['#a09608', '#38a008', '#08a09d', '#421570', '#f56954'];
+        this.dataLabels = { enabled: false };
+        this.title = {};
+        this.yaxis = [
+            {
+                seriesName: 'Transfer',
+                labels: {
+                    formatter: function (value) {
+                        var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__["FormatThousandsPipe"]();
+                        return pipe.transform(value) + ' MBps';
+                    }
+                }
+            },
+            {
+                seriesName: 'Workload',
+                opposite: true,
+                labels: {
+                    formatter: function (value) {
+                        var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__["FormatThousandsPipe"]();
+                        return pipe.transform(value) + ' IOPS';
+                    }
+                }
+            }
+        ];
+        this.legend = {
+            formatter: function (value, _a) {
+                var seriesIndex = _a.seriesIndex, w = _a.w;
+                var labels = ['Transfer (MBps)', 'Workload (IOPS)'];
+                return labels[seriesIndex];
+            }
+        };
+    }
+    HistoryChartComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], HistoryChartComponent.prototype, "series", void 0);
+    HistoryChartComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-history-chart',
+            template: __webpack_require__(/*! ./history-chart.component.html */ "./src/app/components/dashboard/charts/history-chart/history-chart.component.html"),
+            styles: [__webpack_require__(/*! ./history-chart.component.css */ "./src/app/components/dashboard/charts/history-chart/history-chart.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HistoryChartComponent);
+    return HistoryChartComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/dashboard/charts/region-donut/region-donut.component.css":
 /*!*************************************************************************************!*\
   !*** ./src/app/components/dashboard/charts/region-donut/region-donut.component.css ***!
@@ -3670,7 +4052,7 @@ module.exports = ".content {\n  min-height: 60px !important;\n}\n\n/*# sourceMap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" *ngIf=\"alerts.length > 0\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alertType of alertsPerformance;let i = index\">\n      <div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                            [context]=\"getLinkContext(alertType)\"\n                            [label]=\"getAlertLabel(alertType)\"\n                            [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alertType of alertsOperations;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                          [context]=\"getLinkContext(alertType)\"\n                          [label]=\"getAlertLabel(alertType)\"\n                          [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\" *ngIf=\"metrics.length > 0\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h4>Total load (Last 24 hours)</h4>\n    <div *ngFor=\"let type of perfMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Workload and Transfer History</h3>\n        </div>\n        <div class=\"box-body\">\n          <apx-chart [series]=\"series\" [chart]=\"chart\" [colors]=\"fill\" [xaxis]=\"xaxis\" [yaxis]=\"yaxis\" [legend]=\"legend\"\n                     [dataLabels]=\"dataLabels\" [title]=\"title\"></apx-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let type of capacityMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <div class=\"row\">\n\n            <div class=\"col-md-6 col-lg-8\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-6 col-lg-4\">\n\n              <div class=\"row\">\n\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\" [sizeType]=\"'small'\"\n                            [metric]=\"datacenters\" [color]=\"getColor(1)\"></app-knob>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-knob *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\" [sizeType]=\"'small'\"\n                            [metric]=\"registeredSystems\" [color]=\"getColor(2)\"></app-knob>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n\n"
+module.exports = "<div class=\"row\" *ngIf=\"alerts.length > 0\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alertType of alertsPerformance;let i = index\">\n      <div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                            [context]=\"getLinkContext(alertType)\"\n                            [label]=\"getAlertLabel(alertType)\"\n                            [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alertType of alertsOperations;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                          [context]=\"getLinkContext(alertType)\"\n                          [label]=\"getAlertLabel(alertType)\"\n                          [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\" *ngIf=\"metrics.length > 0\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h4>Total load (Last 24 hours)</h4>\n    <div *ngFor=\"let type of perfMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Workload and Transfer History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-history-chart [series]=\"perfGraphSeries\"></app-history-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let type of displayCapacityType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-capacity-history-chart [series]=\"capacityGraphSeries\"></app-capacity-history-chart>\n        </div>\n      </div>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <div class=\"row\">\n\n            <div class=\"col-md-4 col-lg-6\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-8 col-lg-6\">\n\n              <div class=\"row\">\n\n                <div class=\"col-md-6\">\n                  <app-small-box *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\"\n                                 [data]=\"datacenters\" [color]=\"'bg-green'\" [icon]=\"'fas fa-building'\"></app-small-box>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-small-box *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\"\n                                 [data]=\"registeredSystems\" [color]=\"'bg-blue'\" [icon]=\"'fas fa-cubes'\"></app-small-box>\n                </div>\n              </div>\n              <div class=\"row\" *ngIf=\"metrics.length > 0\">\n                <app-bar-chart [data]=\"getMetricValueInRegions(logicalChangeType, regionOrder)\"\n                               [regionLabels]=\"getRegionLabels()\"\n                               [title]=\"{text: getMetricLabel(logicalChangeType)}\"\n                               [unit]=\"findUnitInMetric(logicalChangeType)\"\n                               [useKFormatter]=\"isKFormatterUsed(logicalChangeType)\"></app-bar-chart>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n\n"
 
 /***/ }),
 
@@ -3689,10 +4071,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_metrics_Metric__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/models/metrics/Metric */ "./src/app/common/models/metrics/Metric.ts");
 /* harmony import */ var _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/models/metrics/SystemMetricType */ "./src/app/common/models/metrics/SystemMetricType.ts");
 /* harmony import */ var _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/models/metrics/AlertType */ "./src/app/common/models/metrics/AlertType.ts");
-/* harmony import */ var _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
-/* harmony import */ var _common_models_dtos_region_metric_dto__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/models/dtos/region-metric.dto */ "./src/app/common/models/dtos/region-metric.dto.ts");
-/* harmony import */ var _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/models/dtos/region.enum */ "./src/app/common/models/dtos/region.enum.ts");
-/* harmony import */ var _common_storage_convert_pipe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/storage-convert.pipe */ "./src/app/common/storage-convert.pipe.ts");
+/* harmony import */ var _common_models_dtos_region_metric_dto__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/dtos/region-metric.dto */ "./src/app/common/models/dtos/region-metric.dto.ts");
+/* harmony import */ var _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/models/dtos/region.enum */ "./src/app/common/models/dtos/region.enum.ts");
+/* harmony import */ var _common_storage_convert_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/storage-convert.pipe */ "./src/app/common/storage-convert.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3702,7 +4083,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -3724,46 +4104,21 @@ var DashboardComponent = /** @class */ (function () {
         this.linkContext = {};
         this.colors = ['#a09608', '#38a008', '#08a09d', '#421570', '#f56954'];
         this.currentColor = 0;
-        this.chart = { type: 'area', height: '300' };
-        this.xaxis = { type: 'datetime', labels: { format: 'yyyy-MM-dd' } };
-        this.fill = ['#337ab7', '#d81b60'];
-        this.yaxis = [
-            {
-                seriesName: 'Transfer',
-                labels: {
-                    formatter: function (value) {
-                        var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_5__["FormatThousandsPipe"]();
-                        return pipe.transform(value) + ' MBps';
-                    }
-                }
-            },
-            {
-                seriesName: 'Workload',
-                opposite: true,
-                labels: {
-                    formatter: function (value) {
-                        var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_5__["FormatThousandsPipe"]();
-                        return pipe.transform(value) + ' IOPS';
-                    }
-                }
-            }
-        ];
-        this.legend = {
-            formatter: function (value, _a) {
-                var seriesIndex = _a.seriesIndex, w = _a.w;
-                var labels = ['Transfer (MBps)', 'Workload (IOPS)'];
-                return labels[seriesIndex];
-            }
-        };
-        this.dataLabels = { enabled: false };
-        this.series = [];
-        this.title = {};
+        this.perfGraphSeries = [];
+        this.capacityGraphSeries = [];
         this.perfMetricsType = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER];
+        this.logicalChangeType = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M;
+        // TODO refactor to have only one of this 2 following arrays
         this.capacityMetricsType = [
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M
+        ];
+        this.displayCapacityType = [
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY,
         ];
         this.capacityMetricSimple = [
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY,
@@ -3772,7 +4127,7 @@ var DashboardComponent = /** @class */ (function () {
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD,
             _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER
         ];
-        this.regionOrder = [_common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].EUROPE, _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].AMERICA, _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_7__["Region"].ASIA];
+        this.regionOrder = [_common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_6__["Region"].EUROPE, _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_6__["Region"].AMERICA, _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_6__["Region"].ASIA];
         this.allMetricType = this.perfMetricsType.concat(this.capacityMetricsType);
         this.useKFormatter = [_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD];
     }
@@ -3811,10 +4166,8 @@ var DashboardComponent = /** @class */ (function () {
         this.alertsPerformance.push(_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].WRITE_PENDING, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE);
         this.alertsOperations.push(_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].PORT_DISBALANCE_EVENTS, _common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS);
         this.metricService.getInfrastructureStats().subscribe(function (stats) {
-            console.log(stats);
             _this.alerts = stats.alerts;
             _this.metrics = _this.transformCapacityMetrics(stats.metrics);
-            console.log(_this.metrics);
         });
         this.metricService.getDatacenters().subscribe(function (data) {
             _this.datacenters = new _common_models_metrics_Metric__WEBPACK_IMPORTED_MODULE_2__["Metric"]();
@@ -3828,16 +4181,21 @@ var DashboardComponent = /** @class */ (function () {
         });
         this.metricService.getGraphData([_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER]).subscribe(function (dto) {
             dto.data.forEach(function (serie) {
-                _this.series.push({ name: serie.type, data: serie.data });
+                _this.perfGraphSeries.push({ name: serie.type, data: serie.data });
+            });
+        });
+        this.metricService.getCapacityGraphData([_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY]).subscribe(function (dto) {
+            dto.data.forEach(function (serie) {
+                _this.capacityGraphSeries.push({ name: serie.type, data: serie.data });
             });
         });
         this.getMap();
     };
     DashboardComponent.prototype.transformCapacityMetrics = function (regionData) {
         var _this = this;
-        var transformer = new _common_storage_convert_pipe__WEBPACK_IMPORTED_MODULE_8__["StorageConvertPipe"]();
+        var transformer = new _common_storage_convert_pipe__WEBPACK_IMPORTED_MODULE_7__["StorageConvertPipe"]();
         return regionData.map(function (region) {
-            var mappedRegion = new _common_models_dtos_region_metric_dto__WEBPACK_IMPORTED_MODULE_6__["RegionMetricDto"]();
+            var mappedRegion = new _common_models_dtos_region_metric_dto__WEBPACK_IMPORTED_MODULE_5__["RegionMetricDto"]();
             mappedRegion.region = region.region;
             _this.allMetricType.forEach(function (type) {
                 var metric;
@@ -3898,9 +4256,6 @@ var DashboardComponent = /** @class */ (function () {
         });
         return foundUnit;
     };
-    DashboardComponent.prototype.containsType = function (alertType, types) {
-        return types.find(function (type) { return type === alertType; }) !== undefined;
-    };
     DashboardComponent.prototype.getAlertIcon = function (type) {
         return this.alertIcons[type];
     };
@@ -3916,10 +4271,6 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.getAlert = function (type) {
         var alert = this.alerts.find(function (searchAlert) { return searchAlert.type === type; });
         return alert;
-    };
-    DashboardComponent.prototype.getColor = function (colorIndex) {
-        this.currentColor += 1;
-        return this.colors[colorIndex % this.colors.length];
     };
     DashboardComponent.prototype.getRegionLabels = function () {
         return ['Europe', 'America', 'Asia'];
@@ -8169,6 +8520,12 @@ var MetricService = /** @class */ (function () {
     MetricService.prototype.getGraphData = function (types) {
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/infrastructure/performance/graph');
         url = url + '&types[]=TRANSFER&types[]=WORKLOAD';
+        return this.http.get(url);
+    };
+    // TODO types not converted to URL
+    MetricService.prototype.getCapacityGraphData = function (types) {
+        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/infrastructure/capacity/graph');
+        url = url + '&types[]=SUBSCRIBED_CAPACITY&types[]=LOGICAL_CAPACITY&types[]=PHYSICAL_CAPACITY';
         return this.http.get(url);
     };
     MetricService.prototype.buildUrl = function (baseUrl, basePath, period) {
