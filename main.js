@@ -2928,21 +2928,21 @@ var SystemMetricType;
     SystemMetricType["WRITE_PENDING_PERC"] = "WRITE_PENDING_PERC";
     SystemMetricType["SLA_EVENTS"] = "SLA_EVENTS";
     SystemMetricType["OUT_OF_SLA_TIME"] = "OUT_OF_SLA_TIME";
-    SystemMetricType["IMBALANCE_EVENTS"] = "DISBALANCE_EVENTS";
+    SystemMetricType["IMBALANCE_EVENTS"] = "IMBALANCE_EVENTS";
     SystemMetricType["PREDICTION_L1"] = "PREDICTION_L1";
     SystemMetricType["PREDICTION_L2"] = "PREDICTION_L2";
     SystemMetricType["PREDICTION_L3"] = "PREDICTION_L3";
     SystemMetricType["CAPACITY_CHANGE_1D"] = "CHANGE_DAY";
     SystemMetricType["CAPACITY_CHANGE_1W"] = "CHANGE_WEEK";
     SystemMetricType["CAPACITY_CHANGE_1M"] = "CHANGE_MONTH";
-    SystemMetricType["IMBALANCE_PERC"] = "DISBALANCE_PERC";
-    SystemMetricType["IMBALANCE_ABSOLUT"] = "DISBALANCE_ABSOLUT";
+    SystemMetricType["IMBALANCE_PERC"] = "IMBALANCE_PERC";
+    SystemMetricType["IMBALANCE_ABSOLUT"] = "IMBALANCE_ABSOLUT";
     SystemMetricType["NET_SUBS_PERC"] = "NET_SUBS_PERC";
     SystemMetricType["LOGICAL_SUBS_PERC"] = "LOGICAL_SUBS_PERC";
     SystemMetricType["SUBSCRIBED_CAPACITY"] = "SUBSCRIBED_CAPACITY";
-    SystemMetricType["PORT_IMBALANCE_EVENTS"] = "PORT_DISBALANCE_EVENTS";
-    SystemMetricType["PORT_IMBALANCE_PERC"] = "PORT_DISBALANCE_PERC";
-    SystemMetricType["PORT_IMBALANCE_ABSOLUT"] = "PORT_DISBALANCE_ABSOLUT";
+    SystemMetricType["PORT_IMBALANCE_EVENTS"] = "PORT_IMBALANCE_EVENTS";
+    SystemMetricType["PORT_IMBALANCE_PERC"] = "PORT_IMBALANCE_PERC";
+    SystemMetricType["PORT_IMBALANCE_ABSOLUT"] = "PORT_IMBALANCE_ABSOLUT";
     // Counted in SA UI
     SystemMetricType["LOGICAL_CHANGE_1M"] = "LOGICAL_CHANGE_MONTH";
     // Mocked extarnal type for metric type,
@@ -2994,12 +2994,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _global_statistics_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../global-statistics/formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
 /* harmony import */ var _global_statistics_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
 /* harmony import */ var _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/info-box/alert-info-box.component */ "./src/app/common/components/info-box/alert-info-box.component.ts");
+/* harmony import */ var _global_statistics_formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../global-statistics/formatters/empty-formatter/empty-formatter.component */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -3090,7 +3092,8 @@ var SaCommonModule = /** @class */ (function () {
                 _global_statistics_formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_25__["PortDisbalanceFormatterComponent"],
                 _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__["RouteLinkFormatterComponent"],
                 _global_statistics_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_29__["TierFormatterComponent"],
-                _global_statistics_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_30__["AdapterDisbalanceFormatterComponent"]
+                _global_statistics_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_30__["AdapterDisbalanceFormatterComponent"],
+                _global_statistics_formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_32__["EmptyFormatterComponent"]
             ]
         })
     ], SaCommonModule);
@@ -4052,7 +4055,7 @@ module.exports = ".content {\n  min-height: 60px !important;\n}\n\n/*# sourceMap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" *ngIf=\"alerts.length > 0\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alertType of alertsPerformance;let i = index\">\n      <div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                            [context]=\"getLinkContext(alertType)\"\n                            [label]=\"getAlertLabel(alertType)\"\n                            [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alertType of alertsOperations;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                          [context]=\"getLinkContext(alertType)\"\n                          [label]=\"getAlertLabel(alertType)\"\n                          [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\" *ngIf=\"metrics.length > 0\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h4>Total load (Last 24 hours)</h4>\n    <div *ngFor=\"let type of perfMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Workload and Transfer History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-history-chart [series]=\"perfGraphSeries\"></app-history-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let type of displayCapacityType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-capacity-history-chart [series]=\"capacityGraphSeries\"></app-capacity-history-chart>\n        </div>\n      </div>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-body\">\n          <div class=\"row\">\n\n            <div class=\"col-md-4 col-lg-6\">\n              <h4>Geo-location of datacenters</h4>\n              <div id=\"world-map-markers\"></div>\n            </div>\n            <div class=\"col-md-8 col-lg-6\">\n\n              <div class=\"row\">\n\n                <div class=\"col-md-6\">\n                  <app-small-box *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\"\n                                 [data]=\"datacenters\" [color]=\"'bg-green'\" [icon]=\"'fas fa-building'\"></app-small-box>\n                </div>\n                <div class=\"col-md-6\">\n                  <app-small-box *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\"\n                                 [data]=\"registeredSystems\" [color]=\"'bg-blue'\" [icon]=\"'fas fa-cubes'\"></app-small-box>\n                </div>\n              </div>\n              <div class=\"row\" *ngIf=\"metrics.length > 0\">\n                <app-bar-chart [data]=\"getMetricValueInRegions(logicalChangeType, regionOrder)\"\n                               [regionLabels]=\"getRegionLabels()\"\n                               [title]=\"{text: getMetricLabel(logicalChangeType)}\"\n                               [unit]=\"findUnitInMetric(logicalChangeType)\"\n                               [useKFormatter]=\"isKFormatterUsed(logicalChangeType)\"></app-bar-chart>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n\n"
+module.exports = "<div class=\"row\" *ngIf=\"alerts.length > 0\">\n  <section class=\"content-header\">\n    <H1><i class=\"fa fa-bell\"></i> Alerts (Last 24 Hours)</H1>\n  </section>\n  <section class=\"content\">\n    <h4>Performance</h4>\n    <div *ngFor=\"let alertType of alertsPerformance;let i = index\">\n      <div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n        <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                            [context]=\"getLinkContext(alertType)\"\n                            [label]=\"getAlertLabel(alertType)\"\n                            [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n      </div>\n    </div>\n  </section>\n  <section class=\"content\">\n    <h4>Operations</h4>\n    <div *ngFor=\"let alertType of alertsOperations;let i = index\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-3\">\n      <app-alert-info-box [alert]=\"getAlert(alertType)\"\n                          [context]=\"getLinkContext(alertType)\"\n                          [label]=\"getAlertLabel(alertType)\"\n                          [icon]=\"getAlertIcon(alertType)\"></app-alert-info-box>\n    </div>\n  </section>\n\n\n</div>\n<div class=\"row\" *ngIf=\"metrics.length > 0\">\n  <section class=\"content-header\">\n    <h1><i class=\"fa fa-chart-area\"></i> Infrastructure stats</h1>\n  </section>\n</div>\n<div class=\"row\">\n\n\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h4>Total load (Last 24 hours)</h4>\n    <div *ngFor=\"let type of perfMetricsType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Workload and Transfer History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-history-chart [series]=\"perfGraphSeries\"></app-history-chart>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</div>\n<div class=\"row\">\n  <section class=\"content\" *ngIf=\"metrics.length > 0\">\n    <h3>Total capacity</h3>\n    <div *ngFor=\"let type of displayCapacityType\" class=\"col-12 col-sm-6 col-md-6 col-lg-4\">\n      <app-region-donut [data]=\"getMetricValueInRegions(type, regionOrder)\" [regionLabels]=\"getRegionLabels()\"\n                        [title]=\"{text: getMetricLabel(type)}\" [unit]=\"findUnitInMetric(type)\"\n                        [useKFormatter]=\"isKFormatterUsed(type)\"></app-region-donut>\n    </div>\n    <div class=\"col-md-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-capacity-history-chart [series]=\"capacityGraphSeries\"></app-capacity-history-chart>\n        </div>\n      </div>\n    </div>\n  </section>\n\n</div>\n<div class=\"row\">\n  <div class=\"col-md-6\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n          <div class=\"col-md-12\" *ngIf=\"metrics.length > 0\">\n            <app-bar-chart [data]=\"getMetricValueInRegions(logicalChangeType, regionOrder)\"\n                           [regionLabels]=\"getRegionLabels()\"\n                           [title]=\"{text: getMetricLabel(logicalChangeType)}\"\n                           [unit]=\"findUnitInMetric(logicalChangeType)\"\n                           [useKFormatter]=\"isKFormatterUsed(logicalChangeType)\"></app-bar-chart>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!--  <section class=\"content\">-->\n  <div class=\"col-md-6\">\n    <div class=\"box pad\">\n      <div class=\"box-body\">\n        <div class=\"row\">\n          <div class=\"col-md-4 col-lg-4\">\n            <div class=\"row\">\n              <div class=\"col-md-8\">\n                <app-small-box *ngIf=\"datacenters !== undefined\" [label]=\"'Datacenters'\"\n                               [data]=\"datacenters\" [color]=\"'bg-green'\" [icon]=\"'fas fa-building'\"></app-small-box>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-md-8\">\n                <app-small-box *ngIf=\"registeredSystems !== undefined\" [label]=\"'Registered systems'\"\n                               [data]=\"registeredSystems\" [color]=\"'bg-blue'\" [icon]=\"'fas fa-cubes'\"></app-small-box>\n              </div>\n            </div>\n          </div>\n          <div class=\"col-md-8 col-lg-8\">\n            <h4>Geo-location of datacenters</h4>\n            <div id=\"world-map-markers\"></div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!--  </section>-->\n  <!--  <section class=\"content\">-->\n\n  <!--  </section>-->\n</div>\n\n"
 
 /***/ }),
 
@@ -5494,7 +5497,7 @@ module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"data != null && data.value > 0 && isVisible()\">\n  <div class=\"col-md-2\" *ngIf=\"isPortMetric\" tooltip=\"Port pair\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div class=\"progress progress-sm col-md-8\" [tooltip]=\"resolveRelativeDisbalance() + '%'\">\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div class=\"col-md-2\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
+module.exports = "<div>\n  <div class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-4 col-sm-4 col-md-4\"\n       [tooltip]=\"resolveRelativeDisbalance() + '%'\">\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -5763,6 +5766,89 @@ var EmphFormatterComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], EmphFormatterComponent);
     return EmphFormatterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.css":
+/*!********************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2Zvcm1hdHRlcnMvZW1wdHktZm9ybWF0dGVyL2VtcHR5LWZvcm1hdHRlci5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.html":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.html ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts":
+/*!*******************************************************************************************!*\
+  !*** ./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts ***!
+  \*******************************************************************************************/
+/*! exports provided: EmptyFormatterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmptyFormatterComponent", function() { return EmptyFormatterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/SystemMetric */ "./src/app/common/models/metrics/SystemMetric.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var EmptyFormatterComponent = /** @class */ (function () {
+    function EmptyFormatterComponent() {
+    }
+    EmptyFormatterComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], EmptyFormatterComponent.prototype, "label", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_models_metrics_SystemMetric__WEBPACK_IMPORTED_MODULE_1__["SystemMetric"])
+    ], EmptyFormatterComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
+    ], EmptyFormatterComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
+    ], EmptyFormatterComponent.prototype, "rowData", void 0);
+    EmptyFormatterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-empty-formatter',
+            template: __webpack_require__(/*! ./empty-formatter.component.html */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.html"),
+            styles: [__webpack_require__(/*! ./empty-formatter.component.css */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], EmptyFormatterComponent);
+    return EmptyFormatterComponent;
 }());
 
 
@@ -6592,12 +6678,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/aggragated-statistics/global-host-group-capacity.component */ "./src/app/global-statistics/components/aggragated-statistics/global-host-group-capacity.component.ts");
 /* harmony import */ var _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
 /* harmony import */ var _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
+/* harmony import */ var _formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./formatters/empty-formatter/empty-formatter.component */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -6652,7 +6740,8 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_23__["HostGroupsCapacityComponent"],
                 _components_aggragated_statistics_global_host_group_capacity_component__WEBPACK_IMPORTED_MODULE_24__["GlobalHostGroupCapacityComponent"],
                 _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_25__["TierFormatterComponent"],
-                _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_26__["AdapterDisbalanceFormatterComponent"]
+                _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_26__["AdapterDisbalanceFormatterComponent"],
+                _formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_27__["EmptyFormatterComponent"]
             ],
             exports: [],
             imports: [
@@ -6931,10 +7020,9 @@ var SumValueServiceImpl = /** @class */ (function () {
         options.getAggregatedColumns().forEach(function (column) {
             var value = inputRowGroup[0].rows.map(function (row) {
                 return row.getCellValue(column);
-            }).reduce(function (valueA, valueB) { return valueA + valueB; });
+            }).reduce(function (valueA, valueB) { return valueA + valueB; }, 0);
             aggregatedValues.setValue(column.index, value, null);
         });
-        // console.log(aggregatedValues);
         return aggregatedValues;
     };
     return SumValueServiceImpl;
@@ -7050,7 +7138,7 @@ module.exports = ".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n      <app-sasi-table [data]=\"data | systemPool2SasiGroupTable: 'adapters'\" [tableOptions]=\"options\"></app-sasi-table>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n\n        <app-sasi-table [data]=\"data | systemPool2SasiGroupTable: 'adapters'\" [tableOptions]=\"options\"></app-sasi-table>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -7079,6 +7167,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../formatters/simple-formatter/simple-formatter.component */ "./src/app/global-statistics/formatters/simple-formatter/simple-formatter.component.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-aggregate-value.impl */ "./src/app/common/components/sasi-table/group-sort-aggregate-value.impl.ts");
 /* harmony import */ var _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
+/* harmony import */ var _formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../formatters/empty-formatter/empty-formatter.component */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7088,6 +7177,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -7122,7 +7212,7 @@ var AdaptersComponent = /** @class */ (function () {
             .withIndex('name')
             .withAltLabel('System')
             .withLabel('Cha pair')
-            .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_7__["RouteLinkFormatterComponent"])
+            .withComponent(_formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_15__["EmptyFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
@@ -7175,6 +7265,10 @@ var AdaptersComponent = /** @class */ (function () {
         this.metricService.getAdaptersStatistics(id, this.currentPeriod).subscribe(function (data) {
             _this.data = [];
             data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
+            // TODO change this filtering. checking first metric for non-null is not good
+            _this.data.forEach(function (system) { return system.pools.forEach(function (pool) { return pool.ports = pool.ports.filter(function (port) { return port.metrics.length > 0 && port.metrics[0].value > 0; }); }); });
+            _this.data.forEach(function (system) { return system.pools = system.pools.filter(function (pool) { return (pool.metrics.length > 0 && pool.metrics[0].value > 0) || pool.ports.length > 0; }); });
+            console.log(_this.data);
         }, function (error) {
             console.log(error);
             _this.data = [];
