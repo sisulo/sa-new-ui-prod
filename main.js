@@ -330,6 +330,17 @@ var AlertInfoBoxComponent = /** @class */ (function () {
         }
         return this.label + " between " + minValue + sanitizeUnit + " and " + maxValue + sanitizeUnit;
     };
+    AlertInfoBoxComponent.prototype.getContext = function (entityType) {
+        switch (entityType) {
+            case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].ADAPTER:
+            case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].PORT:
+                return 'adapters';
+            case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].POOL:
+                return 'capacityAnalysis';
+            case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].SYSTEM:
+                return 'dashboard';
+        }
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
@@ -389,7 +400,7 @@ module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"info-box\">\n\n  <span *ngIf=\"isOverThreshold()\" [tooltip]=\"infoBoxTooltip\" class=\"info-box-icon bg-orange info-box-icon cursor\"\n        (click)=\"openModal()\">\n    <i class=\"fa fa-exclamation-triangle\"></i>\n  </span>\n  <span *ngIf=\"!isOverThreshold()\" class=\"info-box-icon bg-green\">\n    <i class=\"fa {{icon}}\"></i>\n  </span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <div class=\"cut-text\">\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 10\"><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}</a> |\n          </span>\n      </span>\n    </span>\n    </div>\n    <span *ngIf=\"data.length > 2\"><a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\"\n                                     (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n          <tr>\n            <th>System</th>\n            <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n            <th *ngIf=\"data[0].entityType === entityType.ADAPTER\">Adapter</th>\n            <th>Value</th>\n          </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType !== null\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: metric.getSystemName(occurence.datacenterId, occurence.systemId)}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL || occurence.entityType === entityType.ADAPTER \">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: occurence.name}\"></app-route-link-formatter>\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurrences.datacenterId + '/' + context\">-->\n            <!--{{occurrences.name}}</a> - {{occurrences.value}} {{occurrences.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close\n        </button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
+module.exports = "<div class=\"info-box\">\n\n  <span *ngIf=\"isOverThreshold()\" [tooltip]=\"infoBoxTooltip\" class=\"info-box-icon bg-orange info-box-icon cursor\"\n        (click)=\"openModal()\">\n    <i class=\"fa fa-exclamation-triangle\"></i>\n  </span>\n  <span *ngIf=\"!isOverThreshold()\" class=\"info-box-icon bg-green\">\n    <i class=\"fa {{icon}}\"></i>\n  </span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <div class=\"cut-text\">\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 10\"><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}</a> |\n          </span>\n      </span>\n    </span>\n    </div>\n    <span *ngIf=\"data.length > 2\"><a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\"\n                                     (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n          <tr>\n            <th>System</th>\n            <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n            <th *ngIf=\"data[0].entityType === entityType.ADAPTER || data[0].middleEntityType === entityType.ADAPTER\">\n              Adapter\n            </th>\n            <th *ngIf=\"data[0].entityType === entityType.PORT\">Port</th>\n            <th>Value</th>\n          </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType !== null\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: metric.getSystemName(occurence.datacenterId, occurence.systemId)}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL || occurence.entityType === entityType.ADAPTER \">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: occurence.name}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.middleEntityType === entityType.ADAPTER\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.middleEntityType), value: occurence.middleEntityName}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.PORT\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: occurence.name}\"></app-route-link-formatter>\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurrences.datacenterId + '/' + context\">-->\n            <!--{{occurrences.name}}</a> - {{occurrences.value}} {{occurrences.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close\n        </button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
 
 /***/ }),
 
@@ -439,6 +450,7 @@ var InfoBoxComponent = /** @class */ (function () {
                 return occurrence2.value - occurence1.value;
             });
         }
+        console.log(this.data);
     };
     InfoBoxComponent.prototype.isOverThreshold = function () {
         return this.value > this.threshold;
@@ -455,6 +467,7 @@ var InfoBoxComponent = /** @class */ (function () {
     InfoBoxComponent.prototype.getIframeLink = function (entityType) {
         switch (entityType) {
             case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].ADAPTER:
+            case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].PORT:
                 return 'adapters';
             case _models_metrics_EntityType__WEBPACK_IMPORTED_MODULE_2__["EntityType"].POOL:
                 return 'capacityAnalysis';
@@ -2828,6 +2841,7 @@ var EntityType;
     EntityType["POOL"] = "pool";
     EntityType["SYSTEM"] = "system";
     EntityType["ADAPTER"] = "adapter";
+    EntityType["PORT"] = "port";
 })(EntityType || (EntityType = {}));
 
 
@@ -3197,6 +3211,29 @@ var UrlCreator = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/common/utils/array-utils.ts":
+/*!*********************************************!*\
+  !*** ./src/app/common/utils/array-utils.ts ***!
+  \*********************************************/
+/*! exports provided: ArrayUtils */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArrayUtils", function() { return ArrayUtils; });
+var ArrayUtils = /** @class */ (function () {
+    function ArrayUtils() {
+    }
+    ArrayUtils.min = function (data) {
+        return data.reduce(function (previousValue, currentValue) { return previousValue < currentValue ? previousValue : currentValue; });
+    };
+    return ArrayUtils;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/utils/format-thousands.pipe.ts":
 /*!*******************************************************!*\
   !*** ./src/app/common/utils/format-thousands.pipe.ts ***!
@@ -3549,7 +3586,6 @@ module.exports = "<apx-chart [chart]=\"chart\" [series]=\"series\" [title]=\"tit
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BarChartComponent", function() { return BarChartComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../global-statistics/utils/number.formatter */ "./src/app/global-statistics/utils/number.formatter.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3559,7 +3595,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 var BarChartComponent = /** @class */ (function () {
     function BarChartComponent() {
@@ -3571,7 +3606,7 @@ var BarChartComponent = /** @class */ (function () {
         this.xaxis = {
             categories: [],
             title: {
-                text: 'TB'
+            // text: 'TB'
             },
             labels: {
                 formatter: function (val) {
@@ -3588,10 +3623,10 @@ var BarChartComponent = /** @class */ (function () {
         this.unit = '';
         this.useKFormatter = false;
         this.dataLabels = {
-            enabled: true,
+            enabled: false,
             formatter: function (value, _a) {
                 var seriesIndex = _a.seriesIndex, dataPointIndex = _a.dataPointIndex, w = _a.w;
-                return Math.abs(Math.round(value)) + 'TB';
+                return Math.abs(Math.round(value)) + ' TB';
             }
         };
         // plotOptions = {
@@ -3625,22 +3660,19 @@ var BarChartComponent = /** @class */ (function () {
         this.plotOptions = {
             bar: {
                 horizontal: true,
-                barHeight: '80%',
             },
         };
-        this.colors = ['#F44336', '#E91E63', '#9C27B0'];
+        this.colors = ['rgb(0, 143, 251)', 'rgb(0, 227, 150)', 'rgb(254, 176, 25)'];
         this.yaxis = {
-            min: -405,
-            max: 405,
+            // range: 1,
             title: {
             // text: 'Age',
             },
         };
     }
     BarChartComponent.prototype.ngOnInit = function () {
-        this.series = [{ name: 'Monthly changed', data: this.data }];
-        console.log(this.data);
-        this.xaxis.categories = this.regionLabels;
+        this.series = this.convertToMoreSeries(this.data);
+        this.xaxis.categories = [''];
         this.labels = this.regionLabels;
         this.labels.unit = this.unit;
         this.labels.useKFormatter = this.useKFormatter;
@@ -3648,16 +3680,27 @@ var BarChartComponent = /** @class */ (function () {
         this.tooltip = {
             y: {
                 formatter: function (value, w) {
-                    var unit = '';
-                    var useKformatter = false;
-                    if (w !== undefined && w.config !== undefined) {
-                        unit = w.config.labels.unit;
-                        useKformatter = w.config.labels.useKFormatter;
-                    }
-                    return _global_statistics_utils_number_formatter__WEBPACK_IMPORTED_MODULE_1__["NumberFormatter"].kFormat(parseFloat(value).toFixed(0), useKformatter) + ' ' + unit;
+                    return value + ' TB';
+                    // let unit = '';
+                    // let useKformatter = false;
+                    // if (w !== undefined && w.config !== undefined) {
+                    //   unit = w.config.labels.unit;
+                    //   useKformatter = w.config.labels.useKFormatter;
+                    // }
+                    // return NumberFormatter.kFormat(parseFloat(value).toFixed(0), useKformatter) + ' ' + unit;
                 }
             }
         };
+    };
+    BarChartComponent.prototype.convertToMoreSeries = function (data) {
+        var convertData = [];
+        // tslint:disable-next-line:forin
+        for (var i in this.regionLabels) {
+            var emptyZeroArray = new Array(this.regionLabels.length).fill(0);
+            emptyZeroArray[i] = data[i];
+            convertData.push({ name: this.regionLabels[i], data: emptyZeroArray });
+        }
+        return convertData;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -3728,6 +3771,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CapacityHistoryChartComponent", function() { return CapacityHistoryChartComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../common/utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
+/* harmony import */ var _common_utils_array_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../common/utils/array-utils */ "./src/app/common/utils/array-utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3737,6 +3781,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var CapacityHistoryChartComponent = /** @class */ (function () {
@@ -3749,10 +3794,11 @@ var CapacityHistoryChartComponent = /** @class */ (function () {
         this.title = {};
         this.yaxis = [
             {
+                forceNiceScale: true,
                 labels: {
                     formatter: function (value) {
                         var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__["FormatThousandsPipe"]();
-                        return pipe.transform(value) + ' TB';
+                        return pipe.transform(value.toString()) + ' TB';
                     }
                 }
             },
@@ -3766,6 +3812,12 @@ var CapacityHistoryChartComponent = /** @class */ (function () {
         };
     }
     CapacityHistoryChartComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.yaxis[0].min = _common_utils_array_utils__WEBPACK_IMPORTED_MODULE_2__["ArrayUtils"].min(this.series.map(function (serie) { return _this.findMinimum(serie); }));
+    };
+    CapacityHistoryChartComponent.prototype.findMinimum = function (serie) {
+        var yValues = serie.data.map(function (value) { return value.y; });
+        return _common_utils_array_utils__WEBPACK_IMPORTED_MODULE_2__["ArrayUtils"].min(yValues);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -3820,6 +3872,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistoryChartComponent", function() { return HistoryChartComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../common/utils/format-thousands.pipe */ "./src/app/common/utils/format-thousands.pipe.ts");
+/* harmony import */ var _common_utils_array_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../common/utils/array-utils */ "./src/app/common/utils/array-utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3829,6 +3882,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var HistoryChartComponent = /** @class */ (function () {
@@ -3841,21 +3895,23 @@ var HistoryChartComponent = /** @class */ (function () {
         this.title = {};
         this.yaxis = [
             {
-                seriesName: 'Transfer',
+                seriesName: 'TRANSFER',
                 labels: {
                     formatter: function (value) {
                         var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__["FormatThousandsPipe"]();
-                        return pipe.transform(value) + ' MBps';
+                        return pipe.transform(value.toString()) + ' MBps';
                     }
-                }
+                },
+                forceNiceScale: true,
             },
             {
-                seriesName: 'Workload',
+                seriesName: 'WORKLOAD',
                 opposite: true,
+                forceNiceScale: true,
                 labels: {
                     formatter: function (value) {
                         var pipe = new _common_utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_1__["FormatThousandsPipe"]();
-                        return pipe.transform(value) + ' IOPS';
+                        return pipe.transform(value.toString()) + ' IOPS';
                     }
                 }
             }
@@ -3869,6 +3925,13 @@ var HistoryChartComponent = /** @class */ (function () {
         };
     }
     HistoryChartComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.series.forEach(function (serie) { return _this.setMinimum(serie); });
+    };
+    HistoryChartComponent.prototype.setMinimum = function (serie) {
+        var yaxis = this.yaxis.find(function (y) { return y.seriesName === serie.name; });
+        var yValues = serie.data.map(function (value) { return value.y; });
+        yaxis.min = _common_utils_array_utils__WEBPACK_IMPORTED_MODULE_2__["ArrayUtils"].min(yValues);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -4161,7 +4224,7 @@ var DashboardComponent = /** @class */ (function () {
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CAPACITY_USAGE] = 'physical-capacity';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].CPU] = 'performance';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].DISBALANCE_EVENTS] = 'adapters';
-        this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].PORT_DISBALANCE_EVENTS] = 'port';
+        this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].PORT_DISBALANCE_EVENTS] = 'adapters';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].HDD] = 'performance';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].RESPONSE] = 'performance';
         this.linkContext[_common_models_metrics_AlertType__WEBPACK_IMPORTED_MODULE_4__["AlertType"].SLA_EVENTS] = 'dp-sla';
