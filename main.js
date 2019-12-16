@@ -3623,10 +3623,10 @@ var BarChartComponent = /** @class */ (function () {
         this.unit = '';
         this.useKFormatter = false;
         this.dataLabels = {
-            enabled: false,
+            enabled: true,
             formatter: function (value, _a) {
                 var seriesIndex = _a.seriesIndex, dataPointIndex = _a.dataPointIndex, w = _a.w;
-                return Math.abs(Math.round(value)) + ' TB';
+                return (Math.round(value)) + ' TB';
             }
         };
         // plotOptions = {
@@ -5549,7 +5549,7 @@ var GroupedAggregatedStatisticsComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #ffd829;\n}\n\n.metric-value {\n  font-style: italic;\n}\n\ntable {\n  width: 100%;\n}\n\ndiv.progress {\n  /*width: 90%;*/\n  /*float:left;*/\n  padding: 0px;\n  border: 1px solid darkgrey;\n  margin: 5px auto auto auto;\n}\n\ndiv.progress-bar {\n  text-align: center;\n}\n\n.row {\n  margin: 0px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyL2FkYXB0ZXItZGlzYmFsYW5jZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsV0FBVztBQUNiOztBQUVBO0VBQ0UsY0FBYztFQUNkLGNBQWM7RUFDZCxZQUFZO0VBQ1osMEJBQTBCO0VBQzFCLDBCQUEwQjtBQUM1Qjs7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2Zvcm1hdHRlcnMvYWRhcHRlci1kaXNiYWxhbmNlLWZvcm1hdHRlci9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpIHtcbiAgZm9udC1zaXplOiAxMXB4O1xufVxuXG4udGV4dC1hbGVydC15ZWxsb3cge1xuICBjb2xvcjogI2ZmZDgyOTtcbn1cblxuLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cblxudGFibGUge1xuICB3aWR0aDogMTAwJTtcbn1cblxuZGl2LnByb2dyZXNzIHtcbiAgLyp3aWR0aDogOTAlOyovXG4gIC8qZmxvYXQ6bGVmdDsqL1xuICBwYWRkaW5nOiAwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGRhcmtncmV5O1xuICBtYXJnaW46IDVweCBhdXRvIGF1dG8gYXV0bztcbn1cblxuZGl2LnByb2dyZXNzLWJhciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLnJvdyB7XG4gIG1hcmdpbjogMHB4O1xufVxuIl19 */"
+module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #ffd829;\n}\n\n.metric-value {\n  font-style: italic;\n}\n\ntable {\n  width: 100%;\n}\n\ndiv.progress {\n  /*width: 90%;*/\n  /*float:left;*/\n  padding: 0px;\n  border: 1px solid darkgrey;\n  margin: 5px auto auto auto;\n  height: 20px;\n}\n\ndiv.progress-bar {\n  text-align: center;\n}\n\n.row {\n  margin: 0px;\n}\n\n.progress-value {\n  float: left;\n  position: absolute;\n  width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyL2FkYXB0ZXItZGlzYmFsYW5jZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsV0FBVztBQUNiOztBQUVBO0VBQ0UsY0FBYztFQUNkLGNBQWM7RUFDZCxZQUFZO0VBQ1osMEJBQTBCO0VBQzFCLDBCQUEwQjtFQUMxQixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxXQUFXO0FBQ2I7O0FBRUE7RUFDRSxXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLFdBQVc7RUFDWCxpQkFBaUI7RUFDakIsa0JBQWtCOztBQUVwQiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2Zvcm1hdHRlcnMvYWRhcHRlci1kaXNiYWxhbmNlLWZvcm1hdHRlci9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpIHtcbiAgZm9udC1zaXplOiAxMXB4O1xufVxuXG4udGV4dC1hbGVydC15ZWxsb3cge1xuICBjb2xvcjogI2ZmZDgyOTtcbn1cblxuLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cblxudGFibGUge1xuICB3aWR0aDogMTAwJTtcbn1cblxuZGl2LnByb2dyZXNzIHtcbiAgLyp3aWR0aDogOTAlOyovXG4gIC8qZmxvYXQ6bGVmdDsqL1xuICBwYWRkaW5nOiAwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGRhcmtncmV5O1xuICBtYXJnaW46IDVweCBhdXRvIGF1dG8gYXV0bztcbiAgaGVpZ2h0OiAyMHB4O1xufVxuXG5kaXYucHJvZ3Jlc3MtYmFyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ucm93IHtcbiAgbWFyZ2luOiAwcHg7XG59XG5cbi5wcm9ncmVzcy12YWx1ZSB7XG4gIGZsb2F0OiBsZWZ0O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tbGVmdDogYXV0bztcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuXG59XG4iXX0= */"
 
 /***/ }),
 
@@ -5560,7 +5560,7 @@ module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-4 col-sm-4 col-md-4\"\n       [tooltip]=\"resolveRelativeDisbalance() + '%'\">\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
+module.exports = "<div>\n  <div class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-4 col-sm-4 col-md-4\"\n       [tooltip]=\"resolveRelativeDisbalance() + '%'\">\n    <div class=\"progress-value\">{{resolveRelativeDisbalance()}}</div>\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
 
 /***/ }),
 
