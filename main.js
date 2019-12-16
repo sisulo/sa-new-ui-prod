@@ -400,7 +400,7 @@ module.exports = "div.modal.open {\n  display: block;\n  padding-right: 15px;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"info-box\">\n\n  <span *ngIf=\"isOverThreshold()\" [tooltip]=\"infoBoxTooltip\" class=\"info-box-icon bg-orange info-box-icon cursor\"\n        (click)=\"openModal()\">\n    <i class=\"fa fa-exclamation-triangle\"></i>\n  </span>\n  <span *ngIf=\"!isOverThreshold()\" class=\"info-box-icon bg-green\">\n    <i class=\"fa {{icon}}\"></i>\n  </span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <div class=\"cut-text\">\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 10\"><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}</a> |\n          </span>\n      </span>\n    </span>\n    </div>\n    <span *ngIf=\"data.length > 2\"><a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\"\n                                     (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n          <tr>\n            <th>System</th>\n            <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n            <th *ngIf=\"data[0].entityType === entityType.ADAPTER || data[0].middleEntityType === entityType.ADAPTER\">\n              Adapter\n            </th>\n            <th *ngIf=\"data[0].entityType === entityType.PORT\">Port</th>\n            <th>Value</th>\n          </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType !== null\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: metric.getSystemName(occurence.datacenterId, occurence.systemId)}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL || occurence.entityType === entityType.ADAPTER \">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: occurence.name}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.middleEntityType === entityType.ADAPTER\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.middleEntityType), value: occurence.middleEntityName}\"></app-route-link-formatter>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.PORT\">\n              <app-route-link-formatter\n                [data]=\"{id: occurence.systemId, iFrameLink: getIframeLink(occurence.entityType), value: occurence.name}\"></app-route-link-formatter>\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n            <!---->\n            <!--<a [routerLink]=\"'/global-statistics/' + occurrences.datacenterId + '/' + context\">-->\n            <!--{{occurrences.name}}</a> - {{occurrences.value}} {{occurrences.unit}} -->\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close\n        </button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
+module.exports = "<div class=\"info-box\">\n\n  <span *ngIf=\"isOverThreshold()\" [tooltip]=\"infoBoxTooltip\" class=\"info-box-icon bg-orange info-box-icon cursor\"\n        (click)=\"openModal()\">\n    <i class=\"fa fa-exclamation-triangle\"></i>\n  </span>\n  <span *ngIf=\"!isOverThreshold()\" class=\"info-box-icon bg-green\">\n    <i class=\"fa {{icon}}\"></i>\n  </span>\n\n  <div class=\"info-box-content\">\n    <span class=\"info-box-text\">{{label}}</span>\n    <span class=\"info-box-number\">{{value}}<small></small></span>\n    <div class=\"cut-text\">\n    <span *ngIf=\"data.length > 0\">\n      |<span *ngFor=\"let occurence of data; let i = index;\">\n        <span *ngIf=\"i < 10\"><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n          {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}</a> |\n          </span>\n      </span>\n    </span>\n    </div>\n    <span *ngIf=\"data.length > 2\"><a class=\"small-box-footer\" href=\"#\" [class.hidden]=\"!isOverThreshold()\"\n                                     (click)=\"openModal()\"> >>> </a> </span>\n  </div>\n  <!-- /.info-box-content -->\n</div>\n<div class=\"modal fade in\" id=\"modal-default\" [class.open]=\"isModalOpened()\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeModal()\">×</span></button>\n        <h4 class=\"modal-title\">{{label}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"data.length > 0\">\n        <table class=\"table table-bordered\">\n          <thead>\n          <tr>\n            <th>System</th>\n            <th *ngIf=\"data[0].entityType === entityType.POOL\">Pool</th>\n            <th *ngIf=\"data[0].entityType === entityType.ADAPTER || data[0].middleEntityType === entityType.ADAPTER\">\n              Adapter\n            </th>\n            <th *ngIf=\"data[0].entityType === entityType.PORT\">Port</th>\n            <th>Value</th>\n          </tr>\n          </thead>\n          <tr *ngFor=\"let occurence of data\">\n            <td *ngIf=\"occurence.entityType !== null\">\n              <span><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n                {{metric.getSystemName(occurence.datacenterId, occurence.systemId)}}</a>\n              </span>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.POOL || occurence.entityType === entityType.ADAPTER \">\n              <span><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n                {{occurence.name}}</a>\n              </span>\n            </td>\n            <td *ngIf=\"occurence.middleEntityType === entityType.ADAPTER\">\n              <span><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n                {{occurence.middleEntityName}}</a>\n              </span>\n            </td>\n            <td *ngIf=\"occurence.entityType === entityType.PORT\">\n              <span><a [routerLink]=\"'/global-statistics/' + context + '/' + occurence.datacenterId\">\n                {{occurence.name}}</a>\n              </span>\n            </td>\n            <td>\n              {{occurence.value}} {{occurence.unit}}\n            </td>\n          </tr>\n        </table>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" data-dismiss=\"modal\" (click)=\"closeModal()\">Close\n        </button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n"
 
 /***/ }),
 
@@ -446,11 +446,10 @@ var InfoBoxComponent = /** @class */ (function () {
     }
     InfoBoxComponent.prototype.ngOnInit = function () {
         if (this.data.length > 0) {
-            var result = this.data.sort(function (occurence1, occurrence2) {
+            this.data.sort(function (occurence1, occurrence2) {
                 return occurrence2.value - occurence1.value;
             });
         }
-        console.log(this.data);
     };
     InfoBoxComponent.prototype.isOverThreshold = function () {
         return this.value > this.threshold;
@@ -2456,13 +2455,6 @@ var SasiTableComponent = /** @class */ (function () {
             this.onSelectService.announceSelectAll(false);
         }
     };
-    SasiTableComponent.prototype.onSelect = function (rows) {
-        console.log('Sasi');
-        console.log(rows);
-        // this.selectedRows = [...rows];
-        console.log(this.selectedRows);
-        // this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
-    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
@@ -4250,7 +4242,11 @@ var DashboardComponent = /** @class */ (function () {
                 _this.perfGraphSeries.push({ name: serie.type, data: serie.data });
             });
         });
-        this.metricService.getCapacityGraphData([_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY, _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY]).subscribe(function (dto) {
+        this.metricService.getCapacityGraphData([
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].SUBSCRIBED_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CAPACITY,
+            _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY
+        ]).subscribe(function (dto) {
             dto.data.forEach(function (serie) {
                 _this.capacityGraphSeries.push({ name: serie.type, data: serie.data });
             });
@@ -4275,7 +4271,6 @@ var DashboardComponent = /** @class */ (function () {
                     metric.unit = 'GB';
                     metric.type = _common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_CHANGE_1M;
                     metric.value = changeMetric.value * totalSaving.value;
-                    console.log(changeMetric.value + '*' + totalSaving.value + '=' + metric.value);
                 }
                 if (metric === undefined) {
                     console.error('Cannot find ' + type + ' in ' + region);
@@ -4335,8 +4330,7 @@ var DashboardComponent = /** @class */ (function () {
         return this.alertLabels[type];
     };
     DashboardComponent.prototype.getAlert = function (type) {
-        var alert = this.alerts.find(function (searchAlert) { return searchAlert.type === type; });
-        return alert;
+        return this.alerts.find(function (searchAlert) { return searchAlert.type === type; });
     };
     DashboardComponent.prototype.getRegionLabels = function () {
         return ['Europe', 'America', 'Asia'];
@@ -5560,7 +5554,7 @@ module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-4 col-sm-4 col-md-4\"\n       [tooltip]=\"resolveRelativeDisbalance() + '%'\">\n    <div class=\"progress-value\">{{resolveRelativeDisbalance()}}</div>\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
+module.exports = "<div>\n  <div class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-4 col-sm-4 col-md-4\">\n    <div class=\"progress-value\">{{resolveRelativeDisbalance() + ' %'}}</div>\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -5936,7 +5930,7 @@ module.exports = "table {\n  margin: 2px;\n  border: 2px solid #EAEAEA;\n}\n\nta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--&lt;!&ndash;<div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"metric-value\">&ndash;&gt;-->\n<!--&lt;!&ndash;  <i class=\"fa fa-exclamation-triangle text-alert-yellow\"></i>&nbsp;<span class=\"text-red\">{{getInfoMessage()}}</span>&ndash;&gt;-->\n<!--&lt;!&ndash;</div>&ndash;&gt;-->\n<!--<table class=\"table table-bordered\" *ngIf=\"subData.length > 0\">-->\n<!--  <thead>-->\n<!--  <tr>-->\n<!--    <td>Name</td>-->\n<!--&lt;!&ndash;    <td>Type</td>&ndash;&gt;-->\n<!--    <td>Relative</td>-->\n<!--    <td>Absolute</td>-->\n<!--  </tr>-->\n<!--  </thead>-->\n<!--  <tbody>-->\n<!--  <tr *ngFor=\"let row of subData\">-->\n<!--    <td>{{row.cells['name'].value}}</td>-->\n<!--&lt;!&ndash;    <td><i tooltip=\"{{getTooltip(row)}}\" [className]=\"getIcon(row)\"></i></td>&ndash;&gt;-->\n<!--    <td>{{getCellValue(row, imbalancePerc)}} [{{getUnit(row, imbalancePerc)}}]</td>-->\n<!--    <td>{{getCellValue(row, imbalanceAbs)}} [{{getUnit(row, imbalanceAbs)}}]</td>-->\n<!--  </tr>-->\n<!--  </tbody>-->\n<!--</table>-->\n\n<div *ngFor=\"let row of subData\">\n  <app-adapter-disbalance-formatter [data]=\"row.getCell(imbalanceEvents)\" [rowData]=\"row\"\n                                    [isPortMetric]=\"true\"></app-adapter-disbalance-formatter>\n</div>\n"
+module.exports = "<div *ngFor=\"let row of subData\">\n  <div class=\"row\">\n    <app-adapter-disbalance-formatter [data]=\"row.getCell(imbalanceEvents)\" [rowData]=\"row\"\n                                      [isPortMetric]=\"true\"></app-adapter-disbalance-formatter>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -6271,7 +6265,6 @@ var TierFormatterComponent = /** @class */ (function () {
     function TierFormatterComponent() {
     }
     TierFormatterComponent.prototype.ngOnInit = function () {
-        console.log(this.rowData.externals);
     };
     TierFormatterComponent.prototype.isHidden = function () {
         return this.rowData.externals.length > 0;
@@ -7328,10 +7321,9 @@ var AdaptersComponent = /** @class */ (function () {
         this.metricService.getAdaptersStatistics(id, this.currentPeriod).subscribe(function (data) {
             _this.data = [];
             data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
-            // TODO change this filtering. checking first metric for non-null is not good
+            // TODO change this filtering. checking first metric for non-null is not good, and make it as some named function for readability
             _this.data.forEach(function (system) { return system.pools.forEach(function (pool) { return pool.ports = pool.ports.filter(function (port) { return port.metrics.length > 0 && port.metrics[0].value > 0; }); }); });
             _this.data.forEach(function (system) { return system.pools = system.pools.filter(function (pool) { return (pool.metrics.length > 0 && pool.metrics[0].value > 0) || pool.ports.length > 0; }); });
-            console.log(_this.data);
         }, function (error) {
             console.log(error);
             _this.data = [];
@@ -8225,7 +8217,6 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
             _this.getTableData(_this.currentDataCenterId);
         });
         this.periodService.announceEnablePeriod(true);
-        console.log('Init perf');
         this.periodService.announcePeriod(this.currentPeriod);
         this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CPU, new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 80, 10000)));
         this.options.cellDecoratorRules.push(new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_SystemMetricType__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC, new _AlertRule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 30, 10000)));
