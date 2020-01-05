@@ -104,7 +104,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-side-menu></app-side-menu>\n<div class=\"content-wrapper\">\n  <section class=\"container-fluid\">\n    <router-outlet></router-outlet>\n  </section>\n</div>\n\n"
+module.exports = "<app-header></app-header>\n<app-side-menu></app-side-menu>\n<ngx-spinner\n  bdOpacity=0.5\n  bdColor=\"#333\"\n  size=\"medium\"\n  color=\"#fff\"\n  type=\"line-scale\"\n  [fullScreen]=\"true\"\n>\n  <p style=\"color: white\"> Loading... </p>\n</ngx-spinner>\n<div class=\"content-wrapper\">\n  <section class=\"container-fluid\">\n    <router-outlet></router-outlet>\n  </section>\n</div>\n\n"
 
 /***/ }),
 
@@ -148,11 +148,12 @@ var AppComponent = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
-/*! exports provided: AppModule */
+/*! exports provided: httpInterceptorProviders, AppModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "httpInterceptorProviders", function() { return httpInterceptorProviders; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
@@ -174,6 +175,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dashboard_charts_history_chart_history_chart_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/dashboard/charts/history-chart/history-chart.component */ "./src/app/components/dashboard/charts/history-chart/history-chart.component.ts");
 /* harmony import */ var _components_dashboard_charts_capacity_history_chart_capacity_history_chart_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/dashboard/charts/capacity-history-chart/capacity-history-chart.component */ "./src/app/components/dashboard/charts/capacity-history-chart/capacity-history-chart.component.ts");
 /* harmony import */ var _components_dashboard_charts_bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dashboard/charts/bar-chart/bar-chart.component */ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+/* harmony import */ var _http_loading_interceptor__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./http-loading.interceptor */ "./src/app/http-loading.interceptor.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -200,6 +203,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+var httpInterceptorProviders = [
+    { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"], useClass: _http_loading_interceptor__WEBPACK_IMPORTED_MODULE_21__["HttpLoading"], multi: true },
+];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -226,8 +234,9 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_16__["BrowserAnimationsModule"],
                 _common_sa_common_module__WEBPACK_IMPORTED_MODULE_10__["SaCommonModule"],
                 ng_apexcharts__WEBPACK_IMPORTED_MODULE_12__["NgApexchartsModule"],
+                ngx_spinner__WEBPACK_IMPORTED_MODULE_20__["NgxSpinnerModule"],
             ],
-            providers: [_common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_11__["SystemPool2SasiGroupTablePipe"]],
+            providers: [_common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_11__["SystemPool2SasiGroupTablePipe"], httpInterceptorProviders],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
@@ -1655,7 +1664,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sasi_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 /* harmony import */ var d3_collection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! d3-collection */ "./node_modules/d3-collection/index.js");
-/* harmony import */ var _global_statistics_utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../global-statistics/utils/ConditionEvaluate */ "./src/app/global-statistics/utils/ConditionEvaluate.ts");
+/* harmony import */ var _global_statistics_utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../global-statistics/utils/condition-evaluate.utils */ "./src/app/global-statistics/utils/condition-evaluate.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1777,7 +1786,7 @@ var RowGroupTableComponent = /** @class */ (function () {
         this.options.cellDecoratorRules.forEach(function (rule) {
             var filteredData = _this.data.rows.filter(function (row) {
                 var cell = row.getCell(rule.type);
-                return cell != null ? _global_statistics_utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_4__["ConditionEvaluate"].eval(cell.value, rule) : false;
+                return cell != null ? _global_statistics_utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_4__["ConditionEvaluateUtils"].eval(cell.value, rule) : false;
             });
             if (filteredData.length > 0) {
                 _this.alertSummary.push(new AlertSummaryValue(rule.threshold.alertType, filteredData.length));
@@ -5701,7 +5710,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertFormatterComponent", function() { return AlertFormatterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
-/* harmony import */ var _utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/ConditionEvaluate */ "./src/app/global-statistics/utils/ConditionEvaluate.ts");
+/* harmony import */ var _utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/condition-evaluate.utils */ "./src/app/global-statistics/utils/condition-evaluate.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5723,14 +5732,14 @@ var AlertFormatterComponent = /** @class */ (function () {
         var _this = this;
         return this.options.cellDecoratorRules.find(function (rule) {
             var cell = _this.data.getCell(rule.type);
-            return cell != null ? _utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_2__["ConditionEvaluate"].eval(cell.value, rule) : false;
+            return cell != null ? _utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_2__["ConditionEvaluateUtils"].eval(cell.value, rule) : false;
         }) !== undefined;
     };
     AlertFormatterComponent.prototype.getDecoratorClass = function () {
         var _this = this;
         var alertDef = this.options.cellDecoratorRules.find(function (rule) {
             var cell = _this.data.getCell(rule.type);
-            return cell != null ? _utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_2__["ConditionEvaluate"].eval(cell.value, rule) : false;
+            return cell != null ? _utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_2__["ConditionEvaluateUtils"].eval(cell.value, rule) : false;
         });
         if (alertDef !== null) {
             return alertDef.threshold.alertType;
@@ -6437,7 +6446,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
-/* harmony import */ var _utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/ConditionEvaluate */ "./src/app/global-statistics/utils/ConditionEvaluate.ts");
+/* harmony import */ var _utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/condition-evaluate.utils */ "./src/app/global-statistics/utils/condition-evaluate.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6461,7 +6470,7 @@ var UnitFormatterComponent = /** @class */ (function () {
         var _this = this;
         var ruleDefinitions = this.findRulesByType(this.data.type);
         if (ruleDefinitions.length > 0) {
-            return ruleDefinitions.find(function (ruleDefinition) { return _utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_3__["ConditionEvaluate"].eval(_this.data.value, ruleDefinition); }) !== undefined;
+            return ruleDefinitions.find(function (ruleDefinition) { return _utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_3__["ConditionEvaluateUtils"].eval(_this.data.value, ruleDefinition); }) !== undefined;
         }
         return false;
     };
@@ -6476,12 +6485,12 @@ var UnitFormatterComponent = /** @class */ (function () {
         var _this = this;
         var ruleDefinitions = this.findRulesByType(this.data.type);
         if (ruleDefinitions.length > 0) {
-            return ruleDefinitions.find(function (ruleDefinition) { return _utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_3__["ConditionEvaluate"].eval(_this.data.value, ruleDefinition); });
+            return ruleDefinitions.find(function (ruleDefinition) { return _utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_3__["ConditionEvaluateUtils"].eval(_this.data.value, ruleDefinition); });
         }
     };
     UnitFormatterComponent.prototype.getViolatedRuleClass = function () {
         var ruleDefinition = this.getViolatedRule();
-        if (ruleDefinition !== undefined && _utils_ConditionEvaluate__WEBPACK_IMPORTED_MODULE_3__["ConditionEvaluate"].eval(this.data.value, ruleDefinition)) {
+        if (ruleDefinition !== undefined && _utils_condition_evaluate_utils__WEBPACK_IMPORTED_MODULE_3__["ConditionEvaluateUtils"].eval(this.data.value, ruleDefinition)) {
             return ruleDefinition.threshold.alertType;
         }
         return '';
@@ -6831,32 +6840,6 @@ var GlobalStatisticsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/global-statistics/utils/ConditionEvaluate.ts":
-/*!**************************************************************!*\
-  !*** ./src/app/global-statistics/utils/ConditionEvaluate.ts ***!
-  \**************************************************************/
-/*! exports provided: ConditionEvaluate */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConditionEvaluate", function() { return ConditionEvaluate; });
-var ConditionEvaluate = /** @class */ (function () {
-    function ConditionEvaluate() {
-    }
-    ConditionEvaluate.eval = function (value, rule) {
-        if (rule.threshold.max != null) {
-            return value >= rule.threshold.min && value < rule.threshold.max;
-        }
-        return value > rule.threshold.min;
-    };
-    return ConditionEvaluate;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts":
 /*!***********************************************************************!*\
   !*** ./src/app/global-statistics/utils/SasiWeightedArithmeticMean.ts ***!
@@ -7098,6 +7081,32 @@ var SumValueServiceImpl = /** @class */ (function () {
         return aggregatedValues;
     };
     return SumValueServiceImpl;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/utils/condition-evaluate.utils.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/global-statistics/utils/condition-evaluate.utils.ts ***!
+  \*********************************************************************/
+/*! exports provided: ConditionEvaluateUtils */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConditionEvaluateUtils", function() { return ConditionEvaluateUtils; });
+var ConditionEvaluateUtils = /** @class */ (function () {
+    function ConditionEvaluateUtils() {
+    }
+    ConditionEvaluateUtils.eval = function (value, rule) {
+        if (rule.threshold.max != null) {
+            return value >= rule.threshold.min && value < rule.threshold.max;
+        }
+        return value > rule.threshold.min;
+    };
+    return ConditionEvaluateUtils;
 }());
 
 
@@ -8555,6 +8564,58 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             ngx_store__WEBPACK_IMPORTED_MODULE_15__["LocalStorageService"]])
     ], PhysicalCapacityStatisticsComponent);
     return PhysicalCapacityStatisticsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/http-loading.interceptor.ts":
+/*!*********************************************!*\
+  !*** ./src/app/http-loading.interceptor.ts ***!
+  \*********************************************/
+/*! exports provided: HttpLoading */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpLoading", function() { return HttpLoading; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var HttpLoading = /** @class */ (function () {
+    function HttpLoading(spinnerService) {
+        this.spinnerService = spinnerService;
+        this.runningCalls = 0;
+    }
+    HttpLoading.prototype.intercept = function (req, next) {
+        var _this = this;
+        this.runningCalls++;
+        this.spinnerService.show();
+        return next.handle(req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["finalize"])(function () {
+            _this.runningCalls--;
+            if (_this.runningCalls === 0) {
+                _this.spinnerService.hide();
+            }
+        }));
+    };
+    HttpLoading = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [ngx_spinner__WEBPACK_IMPORTED_MODULE_2__["NgxSpinnerService"]])
+    ], HttpLoading);
+    return HttpLoading;
 }());
 
 
