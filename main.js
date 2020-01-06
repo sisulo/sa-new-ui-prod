@@ -104,7 +104,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-side-menu></app-side-menu>\n<ngx-spinner\n  bdOpacity=0.5\n  bdColor=\"#333\"\n  size=\"medium\"\n  color=\"#fff\"\n  type=\"line-scale\"\n  [fullScreen]=\"true\"\n>\n  <p style=\"color: white\"> Loading... </p>\n</ngx-spinner>\n<div class=\"content-wrapper\">\n  <section class=\"container-fluid\">\n    <router-outlet></router-outlet>\n  </section>\n</div>\n\n"
+module.exports = "<app-header></app-header>\n<app-side-menu></app-side-menu>\n<ngx-spinner\n  bdColor=\"rgba(34, 45, 50, 0.5)\"\n  size=\"medium\"\n  color=\"#3c8dbc\"\n  type=\"line-scale\"\n  [fullScreen]=\"false\"\n  fullScreen=\"false\"\n>\n  <p style=\"color: #3c8dbc\"> Loading... </p>\n</ngx-spinner>\n<div class=\"content-wrapper\">\n  <section class=\"container-fluid\">\n    <router-outlet></router-outlet>\n  </section>\n</div>\n\n"
 
 /***/ }),
 
@@ -1529,7 +1529,7 @@ var HighlightColumnService = /** @class */ (function () {
     }
     // Service message commands
     HighlightColumnService.prototype.setHighlightColumn = function (value) {
-        console.log('Highlight column: ' + value);
+        // console.log('Highlight column: ' + value);
         this.highlightColumn.next(value);
     };
     HighlightColumnService = __decorate([
@@ -1754,7 +1754,7 @@ var RowGroupTableComponent = /** @class */ (function () {
             _this.collapsedRows = data.newValue;
         });
         this.highlightColumnService.highlightColumn$.subscribe(function (columnIndex) {
-            console.log('Setting in row: ' + columnIndex);
+            // console.log('Setting in row: ' + columnIndex);
             _this.highlightedColumn = columnIndex;
             _this.cd.markForCheck();
         });
@@ -1960,7 +1960,7 @@ var RowTableComponent = /** @class */ (function () {
             this.selectedRows = [];
         }
         this.highlightColumnService.highlightColumn$.subscribe(function (columnIndex) {
-            console.log('Setting in row: ' + columnIndex);
+            // console.log('Setting in row: ' + columnIndex);
             _this.highlightedColumn = columnIndex;
             _this.cd.markForCheck();
         });
@@ -5620,7 +5620,7 @@ var GroupedAggregatedStatisticsComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #ffd829;\n}\n\n.metric-value {\n  font-style: italic;\n}\n\ntable {\n  width: 100%;\n}\n\ndiv.progress {\n  /*width: 90%;*/\n  /*float:left;*/\n  padding: 0px;\n  border: 1px solid darkgrey;\n  margin: 5px auto auto auto;\n  height: 20px;\n}\n\ndiv.progress-bar {\n  text-align: center;\n}\n\n.row {\n  margin: 0px;\n}\n\n.progress-value {\n  float: left;\n  position: absolute;\n  width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyL2FkYXB0ZXItZGlzYmFsYW5jZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsV0FBVztBQUNiOztBQUVBO0VBQ0UsY0FBYztFQUNkLGNBQWM7RUFDZCxZQUFZO0VBQ1osMEJBQTBCO0VBQzFCLDBCQUEwQjtFQUMxQixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxXQUFXO0FBQ2I7O0FBRUE7RUFDRSxXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLFdBQVc7RUFDWCxpQkFBaUI7RUFDakIsa0JBQWtCOztBQUVwQiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2Zvcm1hdHRlcnMvYWRhcHRlci1kaXNiYWxhbmNlLWZvcm1hdHRlci9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpIHtcbiAgZm9udC1zaXplOiAxMXB4O1xufVxuXG4udGV4dC1hbGVydC15ZWxsb3cge1xuICBjb2xvcjogI2ZmZDgyOTtcbn1cblxuLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cblxudGFibGUge1xuICB3aWR0aDogMTAwJTtcbn1cblxuZGl2LnByb2dyZXNzIHtcbiAgLyp3aWR0aDogOTAlOyovXG4gIC8qZmxvYXQ6bGVmdDsqL1xuICBwYWRkaW5nOiAwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGRhcmtncmV5O1xuICBtYXJnaW46IDVweCBhdXRvIGF1dG8gYXV0bztcbiAgaGVpZ2h0OiAyMHB4O1xufVxuXG5kaXYucHJvZ3Jlc3MtYmFyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ucm93IHtcbiAgbWFyZ2luOiAwcHg7XG59XG5cbi5wcm9ncmVzcy12YWx1ZSB7XG4gIGZsb2F0OiBsZWZ0O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tbGVmdDogYXV0bztcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuXG59XG4iXX0= */"
+module.exports = ".bg-progress-color {\n  background-color: #f94343;\n  color: white;\n}\n\ndiv.progress {\n  /*width: 90%;*/\n  /*float:left;*/\n  padding: 0px;\n  border: 1px solid darkgrey;\n  margin: 3px auto 3px auto;\n  height: 20px;\n}\n\ndiv.progress-bar {\n  text-align: center;\n}\n\n.progress-value {\n  float: left;\n  position: absolute;\n  width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n  font-weight: bolder;\n\n}\n\n.component-name, .absolute-value-badge {\n  margin: 2px 0 3px 0;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyL2FkYXB0ZXItZGlzYmFsYW5jZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsY0FBYztFQUNkLFlBQVk7RUFDWiwwQkFBMEI7RUFDMUIseUJBQXlCO0VBQ3pCLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsV0FBVztFQUNYLGlCQUFpQjtFQUNqQixrQkFBa0I7RUFDbEIsbUJBQW1COztBQUVyQjs7QUFFQTtFQUNFLG1CQUFtQjtBQUNyQiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2Zvcm1hdHRlcnMvYWRhcHRlci1kaXNiYWxhbmNlLWZvcm1hdHRlci9hZGFwdGVyLWRpc2JhbGFuY2UtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmctcHJvZ3Jlc3MtY29sb3Ige1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjk0MzQzO1xuICBjb2xvcjogd2hpdGU7XG59XG5cbmRpdi5wcm9ncmVzcyB7XG4gIC8qd2lkdGg6IDkwJTsqL1xuICAvKmZsb2F0OmxlZnQ7Ki9cbiAgcGFkZGluZzogMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCBkYXJrZ3JleTtcbiAgbWFyZ2luOiAzcHggYXV0byAzcHggYXV0bztcbiAgaGVpZ2h0OiAyMHB4O1xufVxuXG5kaXYucHJvZ3Jlc3MtYmFyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ucHJvZ3Jlc3MtdmFsdWUge1xuICBmbG9hdDogbGVmdDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB3aWR0aDogMTAwJTtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgZm9udC13ZWlnaHQ6IGJvbGRlcjtcblxufVxuXG4uY29tcG9uZW50LW5hbWUsIC5hYnNvbHV0ZS12YWx1ZS1iYWRnZSB7XG4gIG1hcmdpbjogMnB4IDAgM3B4IDA7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -5631,7 +5631,7 @@ module.exports = "i {\n  font-size: 11px;\n}\n\n.text-alert-yellow {\n  color: #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-4 col-sm-4 col-md-4\">\n    <div class=\"progress-value\">{{resolveRelativeDisbalance() + ' %'}}</div>\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
+module.exports = "<div>\n  <div class=\"component-name col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-4 col-sm-4 col-md-4\">\n    <div class=\"progress-value\">{{resolveRelativeDisbalance() + ' %'}}</div>\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"absolute-value-badge col-xs-4 col-sm-4 col-md-4\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -6312,7 +6312,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"isHidden()\" class=\"col-val col\">\n  <span *ngFor=\"let tier of getTierNameString(); index as i\" class=\"badge\" [class.bg-red]=\"isExceptionTier(i)\"\n        [class.bg-aqua]=\"!isExceptionTier(i)\" tooltip=\"{{label}}\">{{tier}}</span>\n</div>\n"
+module.exports = "<div *ngIf=\"isHidden()\" class=\"col-val col\">\n  <span *ngFor=\"let tier of getTierNameString(); index as i\" [class]=\"getTierColor(tier)\"\n        tooltip=\"{{label}}\">{{tier}}</span>\n</div>\n"
 
 /***/ }),
 
@@ -6343,8 +6343,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var TierFormatterComponent = /** @class */ (function () {
     function TierFormatterComponent() {
+        this.colorMapping = [];
     }
     TierFormatterComponent.prototype.ngOnInit = function () {
+        this.colorMapping['T0'] = 'bg-primary';
+        this.colorMapping['T1'] = 'bg-success';
+        this.colorMapping['T2'] = 'bg-warning';
+        this.colorMapping['T3'] = 'bg-danger';
+        this.colorMapping['T4'] = 'bg-teal';
+        this.colorMapping['T5'] = 'bg-purple';
+        this.colorMapping['T6'] = 'bg-maroon';
     };
     TierFormatterComponent.prototype.isHidden = function () {
         return this.rowData.externals.length > 0;
@@ -6353,8 +6361,8 @@ var TierFormatterComponent = /** @class */ (function () {
         return this.rowData.externals.map(function (external) { return external.value; })
             .sort();
     };
-    TierFormatterComponent.prototype.isExceptionTier = function (i) {
-        return i > 0;
+    TierFormatterComponent.prototype.getTierColor = function (name) {
+        return 'badge ' + this.colorMapping[name];
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
