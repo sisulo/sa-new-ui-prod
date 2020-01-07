@@ -6346,10 +6346,10 @@ var TierFormatterComponent = /** @class */ (function () {
         this.colorMapping = [];
     }
     TierFormatterComponent.prototype.ngOnInit = function () {
-        this.colorMapping['T0'] = 'bg-primary';
-        this.colorMapping['T1'] = 'bg-success';
-        this.colorMapping['T2'] = 'bg-warning';
-        this.colorMapping['T3'] = 'bg-danger';
+        this.colorMapping['T0'] = 'bg-red';
+        this.colorMapping['T1'] = 'bg-light-blue';
+        this.colorMapping['T2'] = 'bg-green';
+        this.colorMapping['T3'] = 'bg-yellow';
         this.colorMapping['T4'] = 'bg-teal';
         this.colorMapping['T5'] = 'bg-purple';
         this.colorMapping['T6'] = 'bg-maroon';
