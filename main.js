@@ -1338,6 +1338,112 @@ var CellTableComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/common/components/sasi-table/column/column.component.css":
+/*!**************************************************************************!*\
+  !*** ./src/app/common/components/sasi-table/column/column.component.css ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/*** Layout table ***/\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n}\n.col {\n  /*width: 13.33%;*/\n  display: inline-block;\n  vertical-align: middle;\n}\n.col-control i {\n  font-size: 11px;\n  padding: 3px;\n  cursor: pointer;\n}\n.col-control:after {\n  content: \"\";\n  font-size: 11px;\n  padding: 3px;\n}\n/**** Table data ****/\ndiv {\n  /*text-align: center;*/\n  border-right: 1px #EAEAEA solid;\n  display: inline-block;\n  vertical-align: middle;\n  margin: auto;\n}\n.selectedRow {\n  background-color: #BEECD1;\n  color: #3A738C;\n}\n.highlightColumn {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n.highlight-row:hover {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\ndiv.alt-border {\n  /*border-left: 1px solid black;*/\n  border-right: 2px dotted darkgrey;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9jb2x1bW4vY29sdW1uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEscUJBQXFCO0FBQ3JCO0VBQ0UsV0FBVztFQUNYLHFCQUFxQjtFQUNyQixzQkFBc0I7RUFDdEIsa0JBQWtCO0FBQ3BCO0FBRUE7RUFDRSxpQkFBaUI7RUFDakIscUJBQXFCO0VBQ3JCLHNCQUFzQjtBQUN4QjtBQUVBO0VBQ0UsZUFBZTtFQUNmLFlBQVk7RUFDWixlQUFlO0FBQ2pCO0FBRUE7RUFDRSxXQUFXO0VBQ1gsZUFBZTtFQUNmLFlBQVk7QUFDZDtBQUVBLHFCQUFxQjtBQUNyQjtFQUNFLHNCQUFzQjtFQUN0QiwrQkFBK0I7RUFDL0IscUJBQXFCO0VBQ3JCLHNCQUFzQjtFQUN0QixZQUFZO0FBQ2Q7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixjQUFjO0FBQ2hCO0FBRUE7RUFDRSxvQ0FBb0M7RUFDcEMsY0FBYztBQUNoQjtBQUVBO0VBQ0Usb0NBQW9DO0VBQ3BDLGNBQWM7QUFDaEI7QUFFQTtFQUNFLGdDQUFnQztFQUNoQyxpQ0FBaUM7QUFDbkMiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vY29tcG9uZW50cy9zYXNpLXRhYmxlL2NvbHVtbi9jb2x1bW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogTGF5b3V0IHRhYmxlICoqKi9cbi5jb2wtY29udHJvbCB7XG4gIHdpZHRoOiAzLjUlO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmNvbCB7XG4gIC8qd2lkdGg6IDEzLjMzJTsqL1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG59XG5cbi5jb2wtY29udHJvbCBpIHtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBwYWRkaW5nOiAzcHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmNvbC1jb250cm9sOmFmdGVyIHtcbiAgY29udGVudDogXCJcIjtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBwYWRkaW5nOiAzcHg7XG59XG5cbi8qKioqIFRhYmxlIGRhdGEgKioqKi9cbmRpdiB7XG4gIC8qdGV4dC1hbGlnbjogY2VudGVyOyovXG4gIGJvcmRlci1yaWdodDogMXB4ICNFQUVBRUEgc29saWQ7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgbWFyZ2luOiBhdXRvO1xufVxuXG4uc2VsZWN0ZWRSb3cge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjQkVFQ0QxO1xuICBjb2xvcjogIzNBNzM4Qztcbn1cblxuLmhpZ2hsaWdodENvbHVtbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNiNGQxZWUgIWltcG9ydGFudDtcbiAgY29sb3I6ICMzQTczOEM7XG59XG5cbi5oaWdobGlnaHQtcm93OmhvdmVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I0ZDFlZSAhaW1wb3J0YW50O1xuICBjb2xvcjogIzNBNzM4Qztcbn1cblxuZGl2LmFsdC1ib3JkZXIge1xuICAvKmJvcmRlci1sZWZ0OiAxcHggc29saWQgYmxhY2s7Ki9cbiAgYm9yZGVyLXJpZ2h0OiAycHggZG90dGVkIGRhcmtncmV5O1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/common/components/sasi-table/column/column.component.html":
+/*!***************************************************************************!*\
+  !*** ./src/app/common/components/sasi-table/column/column.component.html ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div [ngClass]=\"'col-val col'\" [style.width.%]=\"options.getColumnWidth(column.index)\"\n     (mouseout)=\"setHighlightedColumn(-1)\"\n     (mouseover)=\"setHighlightedColumn(colIndex)\"\n     [class.highlightColumn]=\"isColumnHighlighted(colIndex)\"\n     [class.text-right]=\"colIndex > 0 && options.columnAlign === 'right'\"\n     [class.text-center]=\"colIndex <= 0 || options.columnAlign !== 'right'\"\n     [class.alt-border]=\"column.altBorder\"\n>\n  <app-cell-table [componentFormatter]=\"column.component\" [data]=\"data.getCellRawData(column)\" [label]=\"column.label\"\n                  [rowData]=\"data\"\n                  [options]=\"options\" [column]=\"column\"></app-cell-table>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/common/components/sasi-table/column/column.component.ts":
+/*!*************************************************************************!*\
+  !*** ./src/app/common/components/sasi-table/column/column.component.ts ***!
+  \*************************************************************************/
+/*! exports provided: ColumnComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColumnComponent", function() { return ColumnComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _sasi_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _highlight_column_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../highlight-column.service */ "./src/app/common/components/sasi-table/highlight-column.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ColumnComponent = /** @class */ (function () {
+    function ColumnComponent(highlightColumnService, cd) {
+        this.highlightColumnService = highlightColumnService;
+        this.cd = cd;
+        this.colIndex = -1;
+        this.highlightedColumn = -1;
+    }
+    ColumnComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.highlightColumnService.highlightColumn$.subscribe(function (columnIndex) {
+            if (_this.highlightedColumn === _this.colIndex || columnIndex === _this.colIndex) {
+                // this.highlightedColumn = columnIndex;
+                _this.cd.markForCheck();
+            }
+            _this.highlightedColumn = columnIndex;
+        });
+    };
+    ColumnComponent.prototype.isColumnHighlighted = function (column) {
+        if (!this.options.highlightColumn) {
+            return false;
+        }
+        return column === this.highlightedColumn;
+    };
+    ColumnComponent.prototype.setHighlightedColumn = function (column) {
+        this.highlightColumnService.setHighlightColumn(column);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiTableOptions"])
+    ], ColumnComponent.prototype, "options", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiColumn"])
+    ], ColumnComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], ColumnComponent.prototype, "colIndex", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"])
+    ], ColumnComponent.prototype, "data", void 0);
+    ColumnComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-column',
+            template: __webpack_require__(/*! ./column.component.html */ "./src/app/common/components/sasi-table/column/column.component.html"),
+            changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+            styles: [__webpack_require__(/*! ./column.component.css */ "./src/app/common/components/sasi-table/column/column.component.css")]
+        }),
+        __metadata("design:paramtypes", [_highlight_column_service__WEBPACK_IMPORTED_MODULE_2__["HighlightColumnService"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
+    ], ColumnComponent);
+    return ColumnComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/components/sasi-table/formatter-host.directive.ts":
 /*!**************************************************************************!*\
   !*** ./src/app/common/components/sasi-table/formatter-host.directive.ts ***!
@@ -1632,7 +1738,6 @@ var RowDynamicComponent = /** @class */ (function () {
         componentRef.instance.data = this.data;
         componentRef.instance.label = this.label;
         componentRef.instance.options = this.options;
-        componentRef.instance.selectedRows = this.selectedRows;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -1650,10 +1755,6 @@ var RowDynamicComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], RowDynamicComponent.prototype, "options", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Array)
-    ], RowDynamicComponent.prototype, "selectedRows", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_formatter_host_directive__WEBPACK_IMPORTED_MODULE_1__["FormatterHostDirective"]),
         __metadata("design:type", _formatter_host_directive__WEBPACK_IMPORTED_MODULE_1__["FormatterHostDirective"])
@@ -1754,7 +1855,6 @@ var RowGroupTableComponent = /** @class */ (function () {
             _this.collapsedRows = data.newValue;
         });
         this.highlightColumnService.highlightColumn$.subscribe(function (columnIndex) {
-            // console.log('Setting in row: ' + columnIndex);
             _this.highlightedColumn = columnIndex;
             _this.cd.markForCheck();
         });
@@ -1902,7 +2002,7 @@ module.exports = "/*** Layout table ***/\n.col-control {\n  width: 3.5%;\n  disp
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"table-data \" [class.selectedRow]=\"isSelectedRow(data.getCell('name').value)\"\n     [class.highlight-row]=\"options.highlightRow\">\n  <div class=\"col-val col-control\" *ngIf=\"options.selectableRows\">\n    <i\n      [ngClass]=\"isSelectedRow(data.getCell('name').value) ? 'fa-check-square' : 'fa-square'\" class=\"far fa-fw\"\n      (click)=\"selectRow(data.getCell('name').value)\"></i>\n  </div>\n  <div *ngIf=\"options.colControlFormatter != null\" class=\"col-val col-control\">\n    <app-cell-table [componentFormatter]=\"options.colControlFormatter\" [data]=\"data\" [label]=\"''\"\n                    [options]=\"options\"\n    ></app-cell-table>\n  </div>\n  <div [ngClass]=\"'col-val col'\" [style.width.%]=\"options.getColumnWidth(column.index)\"\n       *ngFor=\"let column of options.columns; let colIndex = index\"\n       (mouseout)=\"setHighlightedColumn(-1)\"\n       (mouseover)=\"setHighlightedColumn(colIndex)\"\n       [class.highlightColumn]=\"isColumnHighlighted(colIndex)\"\n       [class.text-right]=\"colIndex > 0 && options.columnAlign === 'right'\"\n       [class.text-center]=\"colIndex <= 0 || options.columnAlign !== 'right'\"\n       [class.alt-border]=\"column.altBorder\"\n  >\n    <app-cell-table [componentFormatter]=\"column.component\" [data]=\"data.getCellRawData(column)\" [label]=\"column.label\"\n                    [rowData]=\"data\"\n                    [options]=\"options\" [column]=\"column\"></app-cell-table>\n  </div>\n</div>\n"
+module.exports = "<div class=\"table-data \" [class.selectedRow]=\"isSelectedRow(data.getCell('name').value)\"\n     [class.highlight-row]=\"options.highlightRow\">\n  <div class=\"col-val col-control\" *ngIf=\"options.selectableRows\">\n    <i\n      [ngClass]=\"isSelectedRow(data.getCell('name').value) ? 'fa-check-square' : 'fa-square'\" class=\"far fa-fw\"\n      (click)=\"selectRow(data.getCell('name').value)\"></i>\n  </div>\n  <div *ngIf=\"options.colControlFormatter != null\" class=\"col-val col-control\">\n    <app-cell-table [componentFormatter]=\"options.colControlFormatter\" [data]=\"data\" [label]=\"''\"\n                    [options]=\"options\"\n    ></app-cell-table>\n  </div>\n  <!--  Create new element for following div, store colIndex in the new component, and subscribe to highlight column service and call cd.markCheck only when columns are same,\n  or previously my column was highlighted, then i have to remove the colors-->\n  <app-column\n    *ngFor=\"let column of options.columns; let colIndex=index\"\n    [data]=\"data\"\n    [options]=\"options\"\n    [column]=\"column\"\n    [colIndex]=\"colIndex\">\n  </app-column>\n  <!--  <div [ngClass]=\"'col-val col'\" [style.width.%]=\"options.getColumnWidth(column.index)\"-->\n  <!--       *ngFor=\"let column of options.columns; let colIndex = index\"-->\n  <!--       (mouseout)=\"setHighlightedColumn(-1)\"-->\n  <!--       (mouseover)=\"setHighlightedColumn(colIndex)\"-->\n  <!--       [class.highlightColumn]=\"isColumnHighlighted(colIndex)\"-->\n  <!--       [class.text-right]=\"colIndex > 0 && options.columnAlign === 'right'\"-->\n  <!--       [class.text-center]=\"colIndex <= 0 || options.columnAlign !== 'right'\"-->\n  <!--       [class.alt-border]=\"column.altBorder\"-->\n  <!--  >-->\n  <!--    <app-cell-table [componentFormatter]=\"column.component\" [data]=\"data.getCellRawData(column)\" [label]=\"column.label\"-->\n  <!--                    [rowData]=\"data\"-->\n  <!--                    [options]=\"options\" [column]=\"column\"></app-cell-table>-->\n  <!--  </div>-->\n</div>\n"
 
 /***/ }),
 
@@ -1947,6 +2047,8 @@ var RowTableComponent = /** @class */ (function () {
         this.selectEmit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.highlightedColumn = -1;
     }
+    RowTableComponent.prototype.ngDoCheck = function () {
+    };
     RowTableComponent.prototype.ngOnDestroy = function () {
         if (this.subscription !== undefined) {
             this.subscription.unsubscribe();
@@ -1959,24 +2061,8 @@ var RowTableComponent = /** @class */ (function () {
         if (this.selectedRows === null) {
             this.selectedRows = [];
         }
-        this.highlightColumnService.highlightColumn$.subscribe(function (columnIndex) {
-            // console.log('Setting in row: ' + columnIndex);
-            _this.highlightedColumn = columnIndex;
-            _this.cd.markForCheck();
-        });
     };
     /* HIGHLIGHTNING */
-    RowTableComponent.prototype.isColumnHighlighted = function (column) {
-        if (!this.options.highlightColumn) {
-            return false;
-        }
-        // console.log(column);
-        // console.log(this.highlightedColumn);
-        return column === this.highlightedColumn;
-    };
-    RowTableComponent.prototype.setHighlightedColumn = function (column) {
-        this.highlightColumnService.setHighlightColumn(column);
-    };
     RowTableComponent.prototype.isSelectedRow = function (name) {
         return this.findIndex(name) > -1;
     };
@@ -3069,12 +3155,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _global_statistics_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
 /* harmony import */ var _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/info-box/alert-info-box.component */ "./src/app/common/components/info-box/alert-info-box.component.ts");
 /* harmony import */ var _global_statistics_formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../global-statistics/formatters/empty-formatter/empty-formatter.component */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts");
+/* harmony import */ var _components_sasi_table_column_column_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/sasi-table/column/column.component */ "./src/app/common/components/sasi-table/column/column.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -3132,7 +3220,8 @@ var SaCommonModule = /** @class */ (function () {
                 _utils_format_thousands_pipe__WEBPACK_IMPORTED_MODULE_26__["FormatThousandsPipe"],
                 _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_27__["RouteLinkFormatterComponent"],
                 _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_28__["StorageConvertPipe"],
-                _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_31__["AlertInfoBoxComponent"]
+                _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_31__["AlertInfoBoxComponent"],
+                _components_sasi_table_column_column_component__WEBPACK_IMPORTED_MODULE_33__["ColumnComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
