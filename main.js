@@ -3503,8 +3503,8 @@ var IframeUrlCreatorPipe = /** @class */ (function () {
         this.mapSystemToDirectory[23] = '72';
         this.mapSystemToDirectory[24] = '27';
         this.mapSystemToDirectory[25] = '63';
-        this.mapSystemToDirectory[26] = '120';
-        this.mapSystemToDirectory[27] = '130';
+        this.mapSystemToDirectory[26] = '12';
+        this.mapSystemToDirectory[27] = '13';
     }
     IframeUrlCreatorPipe.prototype.transform = function (value, args) {
         var anchorParam = '';
