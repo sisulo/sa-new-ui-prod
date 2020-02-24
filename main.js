@@ -9474,6 +9474,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__["RouteLinkFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
+            .withAltBorder(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_CAPACITY)
@@ -9517,6 +9518,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
+            .withAltBorder(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L1)
@@ -9544,6 +9546,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIsAggregated(false)
             .withTooltipText('Days to reach 88% of "Physical Used"')
             .withInfinity(true)
+            .withAltBorder(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1D)
