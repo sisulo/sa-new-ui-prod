@@ -5442,7 +5442,6 @@ var SideMenuComponent = /** @class */ (function () {
             { id: 4, linkPart: "/global-statistics/dp-sla", name: 'SLA Events' },
             { id: 5, linkPart: "/global-statistics/adapters", name: 'CHA&Port Imbalances' },
             { id: 6, linkPart: "/global-statistics/host-group-capacity", name: 'VMware Capacity' },
-            { id: 7, linkPart: "/global-statistics/latency", name: 'Latency Analysis' },
         ];
     };
     SideMenuComponent.prototype.search = function () {
@@ -6824,7 +6823,7 @@ var PortDisbalanceFormatterComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".text-alert-yellow {\n  color: #ffd829;\n}\n.metric-value {\n  font-size: 1.1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9zaW1wbGUtZm9ybWF0dGVyL3NpbXBsZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQWM7QUFDaEI7QUFDQTtFQUNFLGlCQUFpQjtBQUNuQiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL2Zvcm1hdHRlcnMvc2ltcGxlLWZvcm1hdHRlci9zaW1wbGUtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGV4dC1hbGVydC15ZWxsb3cge1xuICBjb2xvcjogI2ZmZDgyOTtcbn1cbi5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".text-alert-yellow {\n  color: #ffd829;\n}\n\n.metric-value {\n  font-size: 1.1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy9zaW1wbGUtZm9ybWF0dGVyL3NpbXBsZS1mb3JtYXR0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9mb3JtYXR0ZXJzL3NpbXBsZS1mb3JtYXR0ZXIvc2ltcGxlLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRleHQtYWxlcnQteWVsbG93IHtcbiAgY29sb3I6ICNmZmQ4Mjk7XG59XG5cbi5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cbiJdfQ== */");
 
 /***/ }),
 
@@ -7094,7 +7093,7 @@ var TierFormatterComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".metric-value{\n  font-size: 1.1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy90aW1lLWZvcm1hdHRlci90aW1lLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0FBQ25CIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy90aW1lLWZvcm1hdHRlci90aW1lLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1ldHJpYy12YWx1ZXtcbiAgZm9udC1zaXplOiAxLjFyZW07XG59XG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".metric-value {\n  font-size: 1.1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy90aW1lLWZvcm1hdHRlci90aW1lLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0FBQ25CIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy90aW1lLWZvcm1hdHRlci90aW1lLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMS4xcmVtO1xufVxuIl19 */");
 
 /***/ }),
 
@@ -7990,7 +7989,7 @@ var SumValueServiceImpl = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  width: 25% !important;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n:host /deep/ .groupped-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value{\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYWRhcHRlcnMvYWRhcHRlcnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGVBQWU7RUFDZixnQ0FBd0I7VUFBeEIsd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFDQTtFQUNFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9hZGFwdGVycy9hZGFwdGVycy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbCB7XG4gIHdpZHRoOiAzNS43NSUgIWltcG9ydGFudDtcbn1cblxuLmNvbC1sYWJlbCB7XG4gIHdpZHRoOiAyNSUgIWltcG9ydGFudDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6IDEzcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWV7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  width: 25% !important;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n:host /deep/ .groupped-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYWRhcHRlcnMvYWRhcHRlcnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGVBQWU7RUFDZixnQ0FBd0I7VUFBeEIsd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9hZGFwdGVycy9hZGFwdGVycy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbCB7XG4gIHdpZHRoOiAzNS43NSUgIWltcG9ydGFudDtcbn1cblxuLmNvbC1sYWJlbCB7XG4gIHdpZHRoOiAyNSUgIWltcG9ydGFudDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6IDEzcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cblxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOHB4O1xuICBtYXJnaW4tbGVmdDogM3B4O1xufVxuIl19 */");
 
 /***/ }),
 
@@ -8200,9 +8199,9 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
         this.dates = [];
         this.systems = [];
         this.pools = [];
-        this.selectedDates = [];
+        this.selectedDates = ['2019-09-12'];
         this.selectedSystems = [];
-        this.selectedPools = [];
+        this.selectedPools = [9];
     }
     BlockSizeLatencyComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -8304,31 +8303,55 @@ var BubbleChartComponent = /** @class */ (function () {
         this.dates = []; // TODO should be date
         this.operations = ['READ', 'WRITE']; // TODO should be OperationType
         this.chartOptions = {
-            series: null,
+            series: [
+                {
+                    name: 'Bubble1',
+                    data: [
+                        // [[2, 33], [3, 55]],
+                        { x: 1, y: 5, z: 33 },
+                        { x: 2, y: 2, z: 33 },
+                        { x: 4, y: 2, z: 33 },
+                        { x: 8, y: 2, z: 33 },
+                    ]
+                },
+                {
+                    name: 'Bubble2',
+                    data: [
+                        { x: 1, y: 5, z: 33 },
+                        { x: 2, y: 6, z: 33 },
+                        { x: 4, y: 7, z: 33 },
+                        { x: 8, y: 8, z: 33 },
+                    ]
+                }
+            ],
             chart: {
                 type: 'bubble',
-                height: 350,
-                width: 800
+                height: 500,
             },
             yaxis: {
-                type: 'numeric',
-                min: 0.0625,
-                max: 512,
-                tickAmount: 10,
+                // type: 'numeric',
+                // min: 0.0625,
+                // max: 9,
+                // tickAmount: 10,
                 logarithmic: true,
+                forceNiceScale: false,
+                saValues: [0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256],
+                // saValues: [2, 5, 6, 7, 8, 9],
                 axisBorder: {
                     show: true,
-                    offsetX: 88.5
+                    valueOffset: 2,
                 }
             },
             xaxis: {
-                // type: 'category',
-                // categories: [0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
-                min: 0,
-                max: 256,
-                tickAmount: 10,
+                type: 'category',
+                categories: [1, 2, 4, 8, 16, 32],
+                // min: 0,
+                // max: 256,
+                tickAmount: 6,
                 axisBorder: {
-                    offsetY: -82
+                    show: true,
+                    // offsetY: -82,
+                    valueOffset: 4,
                 }
             },
             fill: {
@@ -8339,14 +8362,14 @@ var BubbleChartComponent = /** @class */ (function () {
             },
             grid: {
                 show: false
-            }
+            },
         };
     }
     BubbleChartComponent.prototype.ngOnInit = function () {
         var _this = this;
         console.log(this.dates);
         this.metricService.getLatencyData(this.poolIds, this.dates, this.operations).subscribe(function (data) {
-            _this.chartOptions.series = _this.transformData(data);
+            // this.chartOptions.series = this.transformData(data);
             console.log(_this.chartOptions.series);
         });
     };
@@ -8362,7 +8385,7 @@ var BubbleChartComponent = /** @class */ (function () {
     BubbleChartComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
         this.metricService.getLatencyData(this.poolIds, this.dates, this.operations).subscribe(function (data) {
-            _this.chartOptions.series = _this.transformData(data);
+            // this.chartOptions.series = this.transformData(data);
             console.log(_this.chartOptions.series);
         });
     };
@@ -8489,7 +8512,7 @@ var FilterListComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  width: 25% !important;\n}\n\n:host /deep/ .groupped-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value{\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvZHAtc2xhL2RwLXNsYS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0UscUJBQXFCO0FBQ3ZCOztBQUVBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFDQTtFQUNFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9kcC1zbGEvZHAtc2xhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29sIHtcbiAgd2lkdGg6IDM1Ljc1JSAhaW1wb3J0YW50O1xufVxuXG4uY29sLWxhYmVsIHtcbiAgd2lkdGg6IDI1JSAhaW1wb3J0YW50O1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMS4xcmVtO1xufVxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZXtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogNjAwO1xufVxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOHB4O1xuICBtYXJnaW4tbGVmdDogM3B4O1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  width: 25% !important;\n}\n\n:host /deep/ .groupped-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvZHAtc2xhL2RwLXNsYS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0UscUJBQXFCO0FBQ3ZCOztBQUVBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9kcC1zbGEvZHAtc2xhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29sIHtcbiAgd2lkdGg6IDM1Ljc1JSAhaW1wb3J0YW50O1xufVxuXG4uY29sLWxhYmVsIHtcbiAgd2lkdGg6IDI1JSAhaW1wb3J0YW50O1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMS4xcmVtO1xufVxuXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogNjAwO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy11bml0IHtcbiAgZm9udC1zaXplOiA4cHg7XG4gIG1hcmdpbi1sZWZ0OiAzcHg7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -8651,7 +8674,7 @@ var DpSlaComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 5px;*/\n  /*padding-bottom: 5px;*/\n  padding-right: 2px;\n}\n\n.alert-red {\n  /*color: #900020;*/\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n/* TODO duplicated css definitions in all statistics component*/\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value{\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvaG9zdC1ncm91cHMtY2FwYWNpdHkvaG9zdC1ncm91cHMtY2FwYWNpdHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG9CQUFvQjtFQUNwQix1QkFBdUI7RUFDdkIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQSwrREFBK0Q7O0FBQy9EOztFQUVFLGlCQUFpQjtBQUNuQjs7QUFDQTtFQUNFLGtCQUFrQjtFQUNsQixnQkFBZ0I7QUFDbEI7O0FBRUE7O0VBRUUsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGVBQWU7RUFDZixnQ0FBd0I7VUFBeEIsd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQWdCO0VBQWhCLGdCQUFnQjtFQUNoQixXQUFXO0VBQ1gsV0FBVztBQUNiIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvaG9zdC1ncm91cHMtY2FwYWNpdHkvaG9zdC1ncm91cHMtY2FwYWNpdHkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDVweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiA1cHg7Ki9cbiAgcGFkZGluZy1yaWdodDogMnB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgLypjb2xvcjogIzkwMDAyMDsqL1xufVxuXG4uYWxlcnQtYW1iZXIge1xuICBjb2xvcjogI2RiOGIwYjtcbn1cblxuLmNvbCB7XG4gIHdpZHRoOiA4Ljg4JTtcbn1cblxuLyogVE9ETyBkdXBsaWNhdGVkIGNzcyBkZWZpbml0aW9ucyBpbiBhbGwgc3RhdGlzdGljcyBjb21wb25lbnQqL1xuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdmFsdWUsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zaXplOiAxLjFyZW07XG59XG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVle1xuICBmb250LXN0eWxlOiBpdGFsaWM7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59XG5cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXVuaXQsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6IDEzcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbn1cblxuLnN0aWNreS1ib3R0b20ge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDBweDtcbiAgei1pbmRleDogMTA7XG59XG5cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 5px;*/\n  /*padding-bottom: 5px;*/\n  padding-right: 2px;\n}\n\n.alert-red {\n  /*color: #900020;*/\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n/* TODO duplicated css definitions in all statistics component*/\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvaG9zdC1ncm91cHMtY2FwYWNpdHkvaG9zdC1ncm91cHMtY2FwYWNpdHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG9CQUFvQjtFQUNwQix1QkFBdUI7RUFDdkIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQSwrREFBK0Q7O0FBQy9EOztFQUVFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixnQkFBZ0I7QUFDbEI7O0FBRUE7O0VBRUUsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGVBQWU7RUFDZixnQ0FBd0I7VUFBeEIsd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQWdCO0VBQWhCLGdCQUFnQjtFQUNoQixXQUFXO0VBQ1gsV0FBVztBQUNiIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvaG9zdC1ncm91cHMtY2FwYWNpdHkvaG9zdC1ncm91cHMtY2FwYWNpdHkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDVweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiA1cHg7Ki9cbiAgcGFkZGluZy1yaWdodDogMnB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgLypjb2xvcjogIzkwMDAyMDsqL1xufVxuXG4uYWxlcnQtYW1iZXIge1xuICBjb2xvcjogI2RiOGIwYjtcbn1cblxuLmNvbCB7XG4gIHdpZHRoOiA4Ljg4JTtcbn1cblxuLyogVE9ETyBkdXBsaWNhdGVkIGNzcyBkZWZpbml0aW9ucyBpbiBhbGwgc3RhdGlzdGljcyBjb21wb25lbnQqL1xuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdmFsdWUsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zaXplOiAxLjFyZW07XG59XG5cbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXN0eWxlOiBpdGFsaWM7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59XG5cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXVuaXQsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6IDEzcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbn1cblxuLnN0aWNreS1ib3R0b20ge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDBweDtcbiAgei1pbmRleDogMTA7XG59XG5cbiJdfQ== */");
 
 /***/ }),
 
@@ -8882,7 +8905,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 1px;*/\n  /*padding-bottom: 1px;*/\n  padding-right: 5px;\n}\n\n.alert-red {\n  color: #900020;\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value{\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvbG9naWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0JBQW9CO0VBQ3BCLHVCQUF1QjtFQUN2QixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTs7RUFFRSxpQkFBaUI7QUFDbkI7O0FBQ0E7RUFDRSxrQkFBa0I7RUFDbEIsZ0JBQWdCO0FBQ2xCOztBQUNBOztFQUVFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsZ0NBQXdCO1VBQXhCLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUFnQjtFQUFoQixnQkFBZ0I7RUFDaEIsV0FBVztFQUNYLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9sb2dpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDFweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiAxcHg7Ki9cbiAgcGFkZGluZy1yaWdodDogNXB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgY29sb3I6ICM5MDAwMjA7XG59XG5cbi5hbGVydC1hbWJlciB7XG4gIGNvbG9yOiAjZGI4YjBiO1xufVxuXG4uY29sIHtcbiAgd2lkdGg6IDguODglO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSxcbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWV7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXVuaXQsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6IDEzcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbn1cblxuLnN0aWNreS1ib3R0b20ge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDBweDtcbiAgei1pbmRleDogMTA7XG59XG5cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 1px;*/\n  /*padding-bottom: 1px;*/\n  padding-right: 5px;\n}\n\n.alert-red {\n  color: #900020;\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvbG9naWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0JBQW9CO0VBQ3BCLHVCQUF1QjtFQUN2QixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTs7RUFFRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsZ0JBQWdCO0FBQ2xCOztBQUVBOztFQUVFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsZ0NBQXdCO1VBQXhCLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUFnQjtFQUFoQixnQkFBZ0I7RUFDaEIsV0FBVztFQUNYLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9sb2dpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDFweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiAxcHg7Ki9cbiAgcGFkZGluZy1yaWdodDogNXB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgY29sb3I6ICM5MDAwMjA7XG59XG5cbi5hbGVydC1hbWJlciB7XG4gIGNvbG9yOiAjZGI4YjBiO1xufVxuXG4uY29sIHtcbiAgd2lkdGg6IDguODglO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSxcbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cblxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdW5pdCxcbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOHB4O1xuICBtYXJnaW4tbGVmdDogM3B4O1xufVxuXG4uc29ydGluZyB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xufVxuXG4uc3RpY2t5LWJvdHRvbSB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIGJvdHRvbTogMHB4O1xuICB6LWluZGV4OiAxMDtcbn1cblxuIl19 */");
 
 /***/ }),
 
@@ -9387,7 +9410,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 5px;*/\n  /*padding-bottom: 5px;*/\n  padding-right: 2px;\n}\n\n.alert-red {\n  color: #900020;\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n/* TODO duplicated css definitions in all statistics component*/\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value{\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9waHlzaWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBb0I7RUFDcEIsdUJBQXVCO0VBQ3ZCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUdBLCtEQUErRDs7QUFDL0Q7O0VBRUUsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFDQTs7RUFFRSxjQUFjO0VBQ2QsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGdDQUF3QjtVQUF4Qix3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBZ0I7RUFBaEIsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxXQUFXO0FBQ2IiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9waHlzaWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL3BoeXNpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDVweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiA1cHg7Ki9cbiAgcGFkZGluZy1yaWdodDogMnB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgY29sb3I6ICM5MDAwMjA7XG59XG5cbi5hbGVydC1hbWJlciB7XG4gIGNvbG9yOiAjZGI4YjBiO1xufVxuXG4uY29sIHtcbiAgd2lkdGg6IDguODglO1xufVxuXG5cbi8qIFRPRE8gZHVwbGljYXRlZCBjc3MgZGVmaW5pdGlvbnMgaW4gYWxsIHN0YXRpc3RpY3MgY29tcG9uZW50Ki9cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXZhbHVlLFxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMS4xcmVtO1xufVxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZXtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogNjAwO1xufVxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdW5pdCxcbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOHB4O1xuICBtYXJnaW4tbGVmdDogM3B4O1xufVxuXG4uc29ydGluZyB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xufVxuXG4uc3RpY2t5LWJvdHRvbSB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIGJvdHRvbTogMHB4O1xuICB6LWluZGV4OiAxMDtcbn1cblxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 5px;*/\n  /*padding-bottom: 5px;*/\n  padding-right: 2px;\n}\n\n.alert-red {\n  color: #900020;\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n/* TODO duplicated css definitions in all statistics component*/\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9waHlzaWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBb0I7RUFDcEIsdUJBQXVCO0VBQ3ZCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUdBLCtEQUErRDs7QUFDL0Q7O0VBRUUsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFFQTs7RUFFRSxjQUFjO0VBQ2QsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGdDQUF3QjtVQUF4Qix3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBZ0I7RUFBaEIsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxXQUFXO0FBQ2IiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9waHlzaWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL3BoeXNpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDVweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiA1cHg7Ki9cbiAgcGFkZGluZy1yaWdodDogMnB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgY29sb3I6ICM5MDAwMjA7XG59XG5cbi5hbGVydC1hbWJlciB7XG4gIGNvbG9yOiAjZGI4YjBiO1xufVxuXG4uY29sIHtcbiAgd2lkdGg6IDguODglO1xufVxuXG5cbi8qIFRPRE8gZHVwbGljYXRlZCBjc3MgZGVmaW5pdGlvbnMgaW4gYWxsIHN0YXRpc3RpY3MgY29tcG9uZW50Ki9cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXZhbHVlLFxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMS4xcmVtO1xufVxuXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogNjAwO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy11bml0LFxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy11bml0IHtcbiAgZm9udC1zaXplOiA4cHg7XG4gIG1hcmdpbi1sZWZ0OiAzcHg7XG59XG5cbi5zb3J0aW5nIHtcbiAgZm9udC1zaXplOiAxM3B4O1xuICB0cmFuc2Zvcm06IHJvdGF0ZSg5MGRlZyk7XG59XG5cbi5zdGlja3ktYm90dG9tIHtcbiAgcG9zaXRpb246IHN0aWNreTtcbiAgYm90dG9tOiAwcHg7XG4gIHotaW5kZXg6IDEwO1xufVxuXG4iXX0= */");
 
 /***/ }),
 
