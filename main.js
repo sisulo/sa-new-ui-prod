@@ -440,7 +440,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"content\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <app-filter-list *ngIf=\"dates !== undefined\" [valueList]=\"dates\" title=\"Dates\"\n                       (valueListChange)=\"onDatesChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"systems !== undefined\" [valueList]=\"systems\" title=\"Systems\"\n                       (valueListChange)=\"onSystemChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"pools !== undefined\" [valueList]=\"pools\" [selectedValues]=\"selectedPools\" title=\"Pools\"\n                       (valueListChange)=\"onPoolChanged($event)\"></app-filter-list>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-bubble-chart [dates]=\"selectedDates\" [poolIds]=\"selectedPools\"></app-bubble-chart>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<section class=\"content\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <app-filter-list *ngIf=\"dates !== undefined\" [valueList]=\"dates\" title=\"Dates\"\n                       (valueListChange)=\"onDatesChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"systems !== undefined\" [valueList]=\"systems\" title=\"Systems\"\n                       (valueListChange)=\"onSystemChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"pools !== undefined\" [valueList]=\"pools\" [selectedValues]=\"selectedPools\" title=\"Pools\"\n                       (valueListChange)=\"onPoolChanged($event)\"></app-filter-list>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-bubble-chart [dates]=\"selectedDates\" [poolIds]=\"selectedPools\"></app-bubble-chart>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</section>\n");
 
 /***/ }),
 
@@ -453,7 +453,46 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"chart\" *ngIf=\"chartOptions.series !== null\">\n  <apx-chart\n    [series]=\"chartOptions.series\"\n    [chart]=\"chartOptions.chart\"\n    [xaxis]=\"chartOptions.xaxis\"\n    [fill]=\"chartOptions.fill\"\n    [dataLabels]=\"chartOptions.dataLabels\"\n    [yaxis]=\"chartOptions.yaxis\"\n    [grid]=\"chartOptions.grid\"\n  ></apx-chart>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"bubble\" class=\"col-md-12\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">\n\n  <svg [attr.width]=\"optionsGraphic.width\" [attr.height]=\"optionsGraphic.height\" xmlns=\"http://www.w3.org/2000/svg\"\n       version=\"1.2\">\n    <g id=\"quadrant-axis\">\n      <svg:g app-xaxis #xaxis [labels]=\"this.chartData.xlabels\" [canvas]=\"optionsGraphic\" [chartData]=\"chartData\"/>\n      <svg:g app-yaxis #yaxis [labels]=\"this.chartData.ylabels\" [canvas]=\"optionsGraphic\" [chartData]=\"chartData\"/>\n    </g>\n    <g id=\"data\">\n      <g *ngFor=\"let serie of chartData.series;index as i\" [attr.id]=\"serie.name\">\n        <g *ngIf=\"isSelectedSerie(serie.name)\">\n\n          <circle class=\"value\" stroke=\"#ffffff\" [attr.fill]=\"getColor(i)\"\n                  *ngFor=\"let circle of serie.data\" [attr.cx]=\"circle[0]\" [attr.cy]=\"circle[1]\"\n                  [attr.r]=\"circle[2]\"></circle>\n        </g>\n      </g>\n    </g>\n    <g id=\"legend\">\n      <foreignObject x=\"50%\" y=\"95%\" width=\"50%\" height=\"30\" text-anchor=\"middle\">\n        <xhtml:div app-legend [series]=\"chartData.series\" [colors]=\"chartData.colors\"\n                   (selectedSeriesEmit)=\"filterSeries($event)\"/>\n      </foreignObject>\n    </g>\n  </svg>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.html":
+/*!********************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.html ***!
+  \********************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"series.length != 0\">\n  <div class=\"legend-item\" *ngFor=\"let serie of series; index as i\" (click)=\"toggle(serie.name)\"\n       [class.disabled]=\"!isToggled(serie.name)\"><i class=\"fa fa-circle\" [style.color]=\"getColor(i)\"></i>{{serie.name}}\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.html":
+/*!******************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.html ***!
+  \******************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<svg>\n  <line [attr.x1]=\"x1\" [attr.y1]=\"y1\" [attr.x2]=\"y2\"\n        [attr.y2]=\"y1\" style=\"stroke:rgb(0,0,0);stroke-width:0.4px\"></line>\n\n  <line *ngFor=\"let label of labels;index as i\" [attr.x1]=\"getLabelPosition(i)\"\n        [attr.y1]=\"y1\"\n        [attr.x2]=\"getLabelPosition(i)\" [attr.y2]=\"markerEnds\"\n        style=\"stroke:rgb(0,0,0);stroke-width:0.4px\">\n  </line>\n  <text class=\"axis-value\" *ngFor=\"let label of labels;index as i\" [attr.text-anchor]=\"textAnchor\"\n        [attr.x]=\"getLabelPosition(i)\" [attr.y]=\"y1 + textOffset\">{{formatLabel(label, i)}}</text>\n  <text class=\"axis-label\" [attr.x]=\"10\" [attr.y]=\"y1\"\n        [attr.transform]=\"'rotate(-90 ' + 10 + ' ' + y1 + ')'\">{{chartData.xlabel}}</text>\n</svg>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.html":
+/*!******************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.html ***!
+  \******************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<svg>\n  <line [attr.x1]=\"x1\" [attr.y1]=\"y1\" [attr.x2]=\"x1\"\n        [attr.y2]=\"y2\" style=\"stroke:rgb(0,0,0);stroke-width:0.4px\"></line>\n  <line *ngFor=\"let label of labels;index as i\" [attr.x1]=\"x1\"\n        [attr.y1]=\"getLabelPosition(i)\"\n        [attr.x2]=\"markerEnds\" [attr.y2]=\"getLabelPosition(i)\"\n        style=\"stroke:rgb(0,0,0);stroke-width:0.4px\">\n  </line>\n  <text class=\"axis-value\" *ngFor=\"let label of labels;index as i\" [attr.x]=\"x1 - textOffset\"\n        [attr.text-anchor]=\"textAnchor\" [attr.y]=\"getLabelPosition(i) + 4\">{{formatLabel(label, i)}}</text>\n  <text class=\"axis-label\" [attr.x]=\"x1\" [attr.y]=\"10\">{{chartData.ylabel}}</text>\n\n</svg>\n");
 
 /***/ }),
 
@@ -5442,6 +5481,7 @@ var SideMenuComponent = /** @class */ (function () {
             { id: 4, linkPart: "/global-statistics/dp-sla", name: 'SLA Events' },
             { id: 5, linkPart: "/global-statistics/adapters", name: 'CHA&Port Imbalances' },
             { id: 6, linkPart: "/global-statistics/host-group-capacity", name: 'VMware Capacity' },
+            { id: 7, linkPart: "/global-statistics/latency", name: 'Latency Analysis' },
         ];
     };
     SideMenuComponent.prototype.search = function () {
@@ -7512,6 +7552,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_block_size_latency_filter_list_filter_list_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./views/block-size-latency/filter-list/filter-list.component */ "./src/app/global-statistics/views/block-size-latency/filter-list/filter-list.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @ng-select/ng-select */ "./node_modules/@ng-select/ng-select/fesm5/ng-select-ng-select.js");
+/* harmony import */ var _views_block_size_latency_bubble_chart_xaxis_xaxis_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./views/block-size-latency/bubble-chart/xaxis/xaxis.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.ts");
+/* harmony import */ var _views_block_size_latency_bubble_chart_yaxis_yaxis_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./views/block-size-latency/bubble-chart/yaxis/yaxis.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.ts");
+/* harmony import */ var _views_block_size_latency_bubble_chart_legend_legend_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./views/block-size-latency/bubble-chart/legend/legend.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7521,6 +7564,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
+
+
 
 
 
@@ -7586,7 +7632,10 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_27__["EmptyFormatterComponent"],
                 _views_block_size_latency_block_size_latency_component__WEBPACK_IMPORTED_MODULE_28__["BlockSizeLatencyComponent"],
                 _views_block_size_latency_bubble_chart_bubble_chart_component__WEBPACK_IMPORTED_MODULE_29__["BubbleChartComponent"],
-                _views_block_size_latency_filter_list_filter_list_component__WEBPACK_IMPORTED_MODULE_31__["FilterListComponent"]
+                _views_block_size_latency_filter_list_filter_list_component__WEBPACK_IMPORTED_MODULE_31__["FilterListComponent"],
+                _views_block_size_latency_bubble_chart_xaxis_xaxis_component__WEBPACK_IMPORTED_MODULE_34__["XaxisComponent"],
+                _views_block_size_latency_bubble_chart_yaxis_yaxis_component__WEBPACK_IMPORTED_MODULE_35__["YaxisComponent"],
+                _views_block_size_latency_bubble_chart_legend_legend_component__WEBPACK_IMPORTED_MODULE_36__["LegendComponent"]
             ],
             exports: [],
             imports: [
@@ -8262,7 +8311,7 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2Jsb2NrLXNpemUtbGF0ZW5jeS9idWJibGUtY2hhcnQvYnViYmxlLWNoYXJ0LmNvbXBvbmVudC5jc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("circle.value {\n  stroke: white;\n  stroke-width: 3;\n  stroke-opacity: 0.8;\n  fill-opacity: 0.8;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2J1YmJsZS1jaGFydC9idWJibGUtY2hhcnQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLGlCQUFpQjtBQUNuQiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2Jsb2NrLXNpemUtbGF0ZW5jeS9idWJibGUtY2hhcnQvYnViYmxlLWNoYXJ0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJjaXJjbGUudmFsdWUge1xuICBzdHJva2U6IHdoaXRlO1xuICBzdHJva2Utd2lkdGg6IDM7XG4gIHN0cm9rZS1vcGFjaXR5OiAwLjg7XG4gIGZpbGwtb3BhY2l0eTogMC44O1xufVxuIl19 */");
 
 /***/ }),
 
@@ -8278,8 +8327,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BubbleChartComponent", function() { return BubbleChartComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var ng_apexcharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ng-apexcharts */ "./node_modules/ng-apexcharts/fesm5/ng-apexcharts.js");
-/* harmony import */ var _common_models_metrics_operation_type_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../common/models/metrics/operation-type.enum */ "./src/app/common/models/metrics/operation-type.enum.ts");
+/* harmony import */ var _common_models_metrics_operation_type_enum__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../common/models/metrics/operation-type.enum */ "./src/app/common/models/metrics/operation-type.enum.ts");
+/* harmony import */ var _xaxis_xaxis_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./xaxis/xaxis.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.ts");
+/* harmony import */ var _yaxis_yaxis_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./yaxis/yaxis.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8296,106 +8346,107 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var BubbleChartComponent = /** @class */ (function () {
     function BubbleChartComponent(metricService) {
         this.metricService = metricService;
-        this.poolIds = [9];
+        this.poolIds = [];
         this.dates = []; // TODO should be date
         this.operations = ['READ', 'WRITE']; // TODO should be OperationType
-        this.chartOptions = {
-            series: [
-                {
-                    name: 'Bubble1',
-                    data: [
-                        // [[2, 33], [3, 55]],
-                        { x: 1, y: 5, z: 33 },
-                        { x: 2, y: 2, z: 33 },
-                        { x: 4, y: 2, z: 33 },
-                        { x: 8, y: 2, z: 33 },
-                    ]
-                },
-                {
-                    name: 'Bubble2',
-                    data: [
-                        { x: 1, y: 5, z: 33 },
-                        { x: 2, y: 6, z: 33 },
-                        { x: 4, y: 7, z: 33 },
-                        { x: 8, y: 8, z: 33 },
-                    ]
-                }
-            ],
-            chart: {
-                type: 'bubble',
-                height: 500,
-            },
-            yaxis: {
-                // type: 'numeric',
-                // min: 0.0625,
-                // max: 9,
-                // tickAmount: 10,
-                logarithmic: true,
-                forceNiceScale: false,
-                saValues: [0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256],
-                // saValues: [2, 5, 6, 7, 8, 9],
-                axisBorder: {
-                    show: true,
-                    valueOffset: 2,
-                }
-            },
-            xaxis: {
-                type: 'category',
-                categories: [1, 2, 4, 8, 16, 32],
-                // min: 0,
-                // max: 256,
-                tickAmount: 6,
-                axisBorder: {
-                    show: true,
-                    // offsetY: -82,
-                    valueOffset: 4,
-                }
-            },
-            fill: {
-                opacity: 0.8
-            },
-            dataLabels: {
-                enabled: false
-            },
-            grid: {
-                show: false
-            },
+        this.chartData = {
+            series: [],
+            xlabels: [0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
+            ylabels: [0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256],
+            crossing: { x: 32, y: 1 },
+            xlabel: 'Block Size [KB]',
+            ylabel: 'Latency [ms]',
+            colors: ['#008FFB', '#00E396'],
+            xFormatter: function (value, index) { return value + ' KB'; },
+            yFormatter: function (value, index) { return value + ' ms'; },
+        };
+        this.optionsGraphic = {
+            width: 900,
+            height: 500,
+            biggestValueSize: 70,
         };
     }
     BubbleChartComponent.prototype.ngOnInit = function () {
-        var _this = this;
         console.log(this.dates);
-        this.metricService.getLatencyData(this.poolIds, this.dates, this.operations).subscribe(function (data) {
-            // this.chartOptions.series = this.transformData(data);
-            console.log(_this.chartOptions.series);
-        });
+    };
+    BubbleChartComponent.prototype.ngOnChanges = function (changes) {
+        var _this = this;
+        if (this.poolIds.length > 0 && this.dates.length > 0) {
+            this.metricService.getLatencyData(this.poolIds, this.dates, this.operations).subscribe(function (data) {
+                _this.chartData.series = _this.transformData(data);
+                _this.selectedSeries = _this.chartData.series.map(function (serie) { return serie.name; });
+                console.log(_this.selectedSeries);
+            });
+        }
+    };
+    BubbleChartComponent.prototype.ngAfterViewInit = function () {
+        this.coordinatesX = this.xaxis.getCoordinates();
+        this.coordinatesY = this.yaxis.getCoordinates();
+        this.xaxis.setOffSetCoordinates(this.coordinatesY);
+        this.yaxis.setOffSetCoordinates(this.coordinatesX);
     };
     BubbleChartComponent.prototype.transformData = function (data) {
+        var _this = this;
         var returned = data.map(function (operationData) {
+            var min = _this.min(operationData.values);
+            var max = _this.max(operationData.values);
             return {
-                name: _common_models_metrics_operation_type_enum__WEBPACK_IMPORTED_MODULE_3__["OperationType"][operationData.operation],
-                data: operationData.values.map(function (value) { return [value.x, value.y, value.z]; })
+                name: _common_models_metrics_operation_type_enum__WEBPACK_IMPORTED_MODULE_2__["OperationType"][operationData.operation],
+                data: operationData.values
+                    .filter(function (value) { return value.z > 0; })
+                    .map(function (value) { return _this.mapToCoordinates(value, min, max); })
             };
         });
         return returned;
     };
-    BubbleChartComponent.prototype.ngOnChanges = function (changes) {
-        var _this = this;
-        this.metricService.getLatencyData(this.poolIds, this.dates, this.operations).subscribe(function (data) {
-            // this.chartOptions.series = this.transformData(data);
-            console.log(_this.chartOptions.series);
-        });
+    BubbleChartComponent.prototype.countCircleSize = function (value, min, max) {
+        return (value / max) * this.optionsGraphic.biggestValueSize;
+    };
+    BubbleChartComponent.prototype.max = function (data) {
+        return data.filter(function (value) { return value.z > 0; }).reduce(function (previousValue, currentValue) {
+            return previousValue.z < currentValue.z ? currentValue : previousValue;
+        }, { z: 0 }).z;
+    };
+    BubbleChartComponent.prototype.min = function (data) {
+        return data.filter(function (value) { return value.z > 0; }).reduce(function (previousValue, currentValue) {
+            return previousValue.z > currentValue.z ? currentValue : previousValue;
+        }, { z: Number.MAX_SAFE_INTEGER }).z;
+    };
+    BubbleChartComponent.prototype.mapToCoordinates = function (value, min, max) {
+        return [
+            this.xaxis.getCoordinateByLabel(value.x).x,
+            this.yaxis.getCoordinateByLabel(value.y).y,
+            this.countCircleSize(value.z, min, max)
+        ];
+    };
+    BubbleChartComponent.prototype.getColor = function (index) {
+        return this.chartData.colors[index];
+    };
+    BubbleChartComponent.prototype.filterSeries = function (selectedSeries) {
+        this.selectedSeries = selectedSeries;
+    };
+    BubbleChartComponent.prototype.isSelectedSerie = function (serieName) {
+        return this.selectedSeries.some(function (selectedSerie) { return selectedSerie === serieName; });
     };
     BubbleChartComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] }
     ]; };
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('chart', { static: false }),
-        __metadata("design:type", ng_apexcharts__WEBPACK_IMPORTED_MODULE_2__["ChartComponent"])
-    ], BubbleChartComponent.prototype, "chart", void 0);
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('bubble', { static: false }),
+        __metadata("design:type", BubbleChartComponent)
+    ], BubbleChartComponent.prototype, "bubbleChart", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('xaxis', { static: false }),
+        __metadata("design:type", _xaxis_xaxis_component__WEBPACK_IMPORTED_MODULE_3__["XaxisComponent"])
+    ], BubbleChartComponent.prototype, "xaxis", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('yaxis', { static: false }),
+        __metadata("design:type", _yaxis_yaxis_component__WEBPACK_IMPORTED_MODULE_4__["YaxisComponent"])
+    ], BubbleChartComponent.prototype, "yaxis", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
@@ -8417,6 +8468,316 @@ var BubbleChartComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"]])
     ], BubbleChartComponent);
     return BubbleChartComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.css":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.css ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("div.legend-item {\n  float: left;\n  margin: 0.5rem;\n  cursor: pointer;\n  cursor: pointer;\n}\n\ndiv.legend-item.disabled {\n  opacity: 0.5;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2J1YmJsZS1jaGFydC9sZWdlbmQvbGVnZW5kLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFXO0VBQ1gsY0FBYztFQUNkLGVBQWU7RUFDZixlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsWUFBWTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2J1YmJsZS1jaGFydC9sZWdlbmQvbGVnZW5kLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJkaXYubGVnZW5kLWl0ZW0ge1xuICBmbG9hdDogbGVmdDtcbiAgbWFyZ2luOiAwLjVyZW07XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG5kaXYubGVnZW5kLWl0ZW0uZGlzYWJsZWQge1xuICBvcGFjaXR5OiAwLjU7XG59XG4iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.ts":
+/*!****************************************************************************************************!*\
+  !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.ts ***!
+  \****************************************************************************************************/
+/*! exports provided: LegendComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LegendComponent", function() { return LegendComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+var LegendComponent = /** @class */ (function () {
+    function LegendComponent() {
+        this.colors = [];
+        this.selectedSeriesEmit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.selectedSeries = [];
+    }
+    LegendComponent.prototype.ngOnInit = function () {
+        this.seriesInit = this.series.map(function (serie) { return serie.name; });
+        this.selectedSeries = this.seriesInit;
+    };
+    LegendComponent.prototype.getColor = function (index) {
+        return this.colors[index];
+    };
+    LegendComponent.prototype.toggle = function (serieName) {
+        var index = this.selectedSeries.findIndex(function (selectedSerie) { return selectedSerie === serieName; });
+        if (index > -1) {
+            this.selectedSeries.splice(index, 1);
+        }
+        else {
+            this.selectedSeries.push(serieName);
+        }
+        this.selectedSeriesEmit.emit(this.selectedSeries);
+    };
+    LegendComponent.prototype.ngOnChanges = function (changes) {
+        this.seriesInit = this.series.map(function (serie) { return serie.name; });
+        this.selectedSeries = this.seriesInit;
+    };
+    LegendComponent.prototype.isToggled = function (serieName) {
+        return this.selectedSeries.some(function (serie) { return serie === serieName; });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], LegendComponent.prototype, "series", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], LegendComponent.prototype, "colors", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], LegendComponent.prototype, "selectedSeriesEmit", void 0);
+    LegendComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: '[app-legend]',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./legend.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./legend.component.css */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [])
+    ], LegendComponent);
+    return LegendComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.css":
+/*!***************************************************************************************************!*\
+  !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.css ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".axis-label {\n  font: italic 1.3rem 'Source Sans Pro', sans-serif;\n  text-anchor: middle;\n}\n\n.axis-value {\n  font: normal 1.0rem 'Source Sans Pro', sans-serif;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2J1YmJsZS1jaGFydC94YXhpcy94YXhpcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaURBQWlEO0VBQ2pELG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGlEQUFpRDtBQUNuRCIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2Jsb2NrLXNpemUtbGF0ZW5jeS9idWJibGUtY2hhcnQveGF4aXMveGF4aXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5heGlzLWxhYmVsIHtcbiAgZm9udDogaXRhbGljIDEuM3JlbSAnU291cmNlIFNhbnMgUHJvJywgc2Fucy1zZXJpZjtcbiAgdGV4dC1hbmNob3I6IG1pZGRsZTtcbn1cblxuLmF4aXMtdmFsdWUge1xuICBmb250OiBub3JtYWwgMS4wcmVtICdTb3VyY2UgU2FucyBQcm8nLCBzYW5zLXNlcmlmO1xufVxuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.ts":
+/*!**************************************************************************************************!*\
+  !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.ts ***!
+  \**************************************************************************************************/
+/*! exports provided: XaxisComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "XaxisComponent", function() { return XaxisComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+var XaxisComponent = /** @class */ (function () {
+    function XaxisComponent() {
+        this.markerLength = 5;
+        this.marginSize = 30;
+        this.textAnchor = 'middle';
+        this.textOffset = 20;
+        this.labelsCoordinates = [];
+    }
+    XaxisComponent.prototype.ngOnInit = function () {
+        this.x1 = this.marginSize;
+        this.y1 = (this.canvas.height - (2 * this.marginSize)) / 2;
+        this.setUpAxis();
+    };
+    XaxisComponent.prototype.setUpAxis = function () {
+        var _this = this;
+        this.markerEnds = this.y1 + this.markerLength;
+        this.axisLength = this.canvas.width - (2 * this.marginSize);
+        this.y2 = this.axisLength + this.marginSize;
+        this.coordinates = { x: this.getLabelPosition(this.labels.findIndex(function (label) { return label === _this.chartData.crossing.x; })), y: this.y1 };
+        this.labels.forEach(function (label, index) {
+            _this.labelsCoordinates[index] = { x: _this.getLabelPosition(index), y: _this.y1 };
+        });
+    };
+    XaxisComponent.prototype.getCoordinates = function () {
+        return this.coordinates;
+    };
+    XaxisComponent.prototype.setOffSetCoordinates = function (coordinates) {
+        this.coordinates = coordinates;
+        this.y1 = coordinates.y;
+        this.setUpAxis();
+    };
+    XaxisComponent.prototype.getLabelPosition = function (index) {
+        if (index === 0) {
+            return this.marginSize;
+        }
+        return ((this.axisLength / (this.labels.length - 1)) * index) + this.marginSize;
+    };
+    XaxisComponent.prototype.getCoordinateByLabel = function (label) {
+        var index = this.labels.findIndex(function (l) { return l === label; });
+        return this.labelsCoordinates[index];
+    };
+    XaxisComponent.prototype.formatLabel = function (label, index) {
+        return this.chartData.xFormatter.call(label, index) || label;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], XaxisComponent.prototype, "labels", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], XaxisComponent.prototype, "canvas", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], XaxisComponent.prototype, "chartData", void 0);
+    XaxisComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: '[app-xaxis]',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./xaxis.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./xaxis.component.css */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [])
+    ], XaxisComponent);
+    return XaxisComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.css":
+/*!***************************************************************************************************!*\
+  !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.css ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".axis-label {\n  font: italic 1.3rem 'Source Sans Pro', sans-serif;\n  text-anchor: middle;\n}\n\n.axis-value {\n  font: normal 1.0rem 'Source Sans Pro', sans-serif;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2J1YmJsZS1jaGFydC95YXhpcy95YXhpcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaURBQWlEO0VBQ2pELG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGlEQUFpRDtBQUNuRCIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2Jsb2NrLXNpemUtbGF0ZW5jeS9idWJibGUtY2hhcnQveWF4aXMveWF4aXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5heGlzLWxhYmVsIHtcbiAgZm9udDogaXRhbGljIDEuM3JlbSAnU291cmNlIFNhbnMgUHJvJywgc2Fucy1zZXJpZjtcbiAgdGV4dC1hbmNob3I6IG1pZGRsZTtcbn1cblxuLmF4aXMtdmFsdWUge1xuICBmb250OiBub3JtYWwgMS4wcmVtICdTb3VyY2UgU2FucyBQcm8nLCBzYW5zLXNlcmlmO1xufVxuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.ts":
+/*!**************************************************************************************************!*\
+  !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.ts ***!
+  \**************************************************************************************************/
+/*! exports provided: YaxisComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "YaxisComponent", function() { return YaxisComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+var YaxisComponent = /** @class */ (function () {
+    function YaxisComponent() {
+        this.markerLength = 5;
+        this.marginSize = 30;
+        this.textAnchor = 'end';
+        this.textOffset = 10;
+        this.labelsCoordinates = [];
+    }
+    YaxisComponent.prototype.ngOnInit = function () {
+        this.x1 = this.canvas.width / 2;
+        this.y1 = this.marginSize;
+        this.setUpAxis();
+    };
+    YaxisComponent.prototype.setUpAxis = function () {
+        var _this = this;
+        this.markerEnds = this.x1 - this.markerLength;
+        this.axisLength = this.canvas.height - (2 * this.marginSize);
+        this.y2 = this.axisLength + this.marginSize;
+        this.coordinates = { x: this.x1, y: this.getLabelPosition(this.labels.findIndex(function (label) { return label === _this.chartData.crossing.y; })) };
+        this.labels.forEach(function (label, index) {
+            _this.labelsCoordinates[index] = { x: _this.x1, y: _this.getLabelPosition(index) };
+        });
+    };
+    YaxisComponent.prototype.getLabelPosition = function (index) {
+        if (index === 0) {
+            return this.y2;
+        }
+        return this.y2 - ((this.axisLength / (this.labels.length - 1)) * index);
+    };
+    YaxisComponent.prototype.getCoordinates = function () {
+        return this.coordinates;
+    };
+    YaxisComponent.prototype.setOffSetCoordinates = function (coordinates) {
+        this.coordinates = coordinates;
+        this.x1 = coordinates.x;
+        this.setUpAxis();
+    };
+    YaxisComponent.prototype.getCoordinateByLabel = function (label) {
+        var index = this.labels.findIndex(function (l) { return l === label; });
+        return this.labelsCoordinates[index];
+    };
+    YaxisComponent.prototype.formatLabel = function (label, index) {
+        return this.chartData.yFormatter.call(label, index) || label;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], YaxisComponent.prototype, "labels", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], YaxisComponent.prototype, "canvas", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], YaxisComponent.prototype, "chartData", void 0);
+    YaxisComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: '[app-yaxis]',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./yaxis.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./yaxis.component.css */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [])
+    ], YaxisComponent);
+    return YaxisComponent;
 }());
 
 
