@@ -8248,9 +8248,9 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
         this.dates = [];
         this.systems = [];
         this.pools = [];
-        this.selectedDates = ['2019-09-12'];
+        this.selectedDates = [];
         this.selectedSystems = [];
-        this.selectedPools = [9];
+        this.selectedPools = [];
     }
     BlockSizeLatencyComponent.prototype.ngOnInit = function () {
         var _this = this;
