@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    TOP TABLE ROW\n  -->\n  <div class=\"row table-header sticky-top\">\n    <div class=\"col-control col\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div class=\"col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <div class=\"col\" [style.width.%]=\"options.getColumnWidth(columnOption.index)\"\n         [tooltip]=\"getColumnLabel(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\">\n      <span class=\"link\" (click)=\"setSort(columnOption, false)\">{{getColumnLabel(columnOption.index)}}\n      </span> <span><i\n      class=\"text-muted sorting sort-icon-right\"\n      [ngClass]=\"getSortIconClass(columnOption.index, false)\"></i>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <br/>\n      <span *ngIf=\"columnOption.altSortEnable === true\" (click)=\"setSort(columnOption, true)\" class=\"link\"><i\n        class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span> <i\n          class='sorting sort-icon-right' [ngClass]=\"getSortIconClass(columnOption.index, true)\"\n        ></i></span>\n    </div>\n  </div>\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"row\" *ngIf=\"selectedRows !== undefined\">\n    <!--<div  [class.highlight-row]=\"options.highlightRow\">-->\n    <app-row-dynamic-table *ngFor=\"let row of data\"\n                           [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                           [class.striped-row]=\"!options.isDataGrouped\"\n                           [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                           [options]=\"options\"></app-row-dynamic-table>\n    <!--</div>-->\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    TOP TABLE ROW\n  -->\n  <div class=\"row table-header sticky-top\">\n    <div class=\"col-control col\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div class=\"col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <div class=\"col\" [style.width.%]=\"options.getColumnWidth(columnOption.index)\"\n         [tooltip]=\"getColumnTooltipText(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\">\n      <span class=\"link\" (click)=\"setSort(columnOption, false)\">{{getColumnLabel(columnOption.index)}}\n      </span> <span><i\n      class=\"text-muted sorting sort-icon-right\"\n      [ngClass]=\"getSortIconClass(columnOption.index, false)\"></i>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <br/>\n      <span *ngIf=\"columnOption.altSortEnable === true\" (click)=\"setSort(columnOption, true)\" class=\"link\"><i\n        class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span> <i\n          class='sorting sort-icon-right' [ngClass]=\"getSortIconClass(columnOption.index, true)\"\n        ></i></span>\n    </div>\n  </div>\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"row\" *ngIf=\"selectedRows !== undefined\">\n    <!--<div  [class.highlight-row]=\"options.highlightRow\">-->\n    <app-row-dynamic-table *ngFor=\"let row of data\"\n                           [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                           [class.striped-row]=\"!options.isDataGrouped\"\n                           [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                           [options]=\"options\"></app-row-dynamic-table>\n    <!--</div>-->\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -2832,6 +2832,7 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.altSortEnable = false;
         this.isAggregated = false;
         this.tooltipText = null;
+        this.columnTooltipText = null;
         this.infinity = true;
         this.altBorder = false;
         this.altBorderLeft = false;
@@ -2884,8 +2885,12 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.columnWidth = width;
         return this;
     };
+    SasiColumnBuilder.prototype.withColumnTooltipText = function (text) {
+        this.columnTooltipText = text;
+        return this;
+    };
     SasiColumnBuilder.prototype.build = function () {
-        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.altBorderLeft, this.columnWidth);
+        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.altBorderLeft, this.columnWidth, this.columnTooltipText);
     };
     SasiColumnBuilder.prototype.withInfinity = function (isInfinity) {
         this.infinity = isInfinity;
@@ -2895,7 +2900,7 @@ var SasiColumnBuilder = /** @class */ (function () {
 }());
 
 var SasiColumn = /** @class */ (function () {
-    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, altBorderLeft, columnWidth) {
+    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, altBorderLeft, columnWidth, columnTooltipText) {
         this.index = index;
         this.label = label;
         this.component = component;
@@ -2908,6 +2913,7 @@ var SasiColumn = /** @class */ (function () {
         this.altBorder = altBorder;
         this.altBorderLeft = altBorderLeft;
         this.columnWidth = columnWidth;
+        this.columnTooltipText = columnTooltipText;
     }
     return SasiColumn;
 }());
@@ -3099,6 +3105,13 @@ var SasiTableComponent = /** @class */ (function () {
             return '';
         }
         return column.altLabel !== undefined ? column.altLabel : column.label;
+    };
+    SasiTableComponent.prototype.getColumnTooltipText = function (type) {
+        var column = this.options.columns.find(function (optionColumn) { return optionColumn.index === type; });
+        if (column === undefined) {
+            return '';
+        }
+        return column.columnTooltipText !== null ? column.columnTooltipText : this.getColumnLabel(type);
     };
     /* SORTING FEATURES */
     SasiTableComponent.prototype.getSortIconClass = function (column, isAltSort) {
@@ -8110,6 +8123,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_EVENTS)
             .withLabel('Cha Imbalances')
+            .withColumnTooltipText('Count of Channel Adapater Pair imbalances. Treshold definition = 10% imbalance AND 20MB/s')
             .withComponent(_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_14__["AdapterDisbalanceFormatterComponent"])
             .withAggComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
@@ -8119,6 +8133,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PORT_IMBALANCE_EVENTS)
             .withLabel('Port Imbalances')
+            .withColumnTooltipText('Count of FE Port Pair Imbalances. Treshold definition = 10% imbalance AND 20MB/s')
             .withComponent(_formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_11__["PortDisbalanceFormatterComponent"])
             .withAggComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
@@ -8717,7 +8732,7 @@ var XaxisComponent = /** @class */ (function () {
         return this.labelsCoordinates[index];
     };
     XaxisComponent.prototype.formatLabel = function (label, index) {
-        return this.chartData.xFormatter.call(label, index) || label;
+        return this.chartData.xFormatter.call(this, label, index) || label;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -8825,7 +8840,7 @@ var YaxisComponent = /** @class */ (function () {
         return this.labelsCoordinates[index];
     };
     YaxisComponent.prototype.formatLabel = function (label, index) {
-        return this.chartData.yFormatter.call(label, index) || label;
+        return this.chartData.yFormatter.call(this, label, index) || label;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -9021,6 +9036,7 @@ var DpSlaComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].SLA_EVENTS)
             .withLabel('SLA Events')
+            .withColumnTooltipText('Count of breach SLA occuracnces per DP Pool. SLA treshold = >1ms write response time for at least 10mins time period')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9028,6 +9044,7 @@ var DpSlaComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].OUT_OF_SLA_TIME)
             .withLabel('Out of SLA Time')
+            .withColumnTooltipText('Total time of breach SLA occuracnces per DP Pool.')
             .withComponent(_formatters_time_formatter_time_formatter_component__WEBPACK_IMPORTED_MODULE_11__["TimeFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9191,6 +9208,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TIER)
             .withLabel('Tier')
+            .withColumnTooltipText('Tier label - internal number of the Tier where VMware farm (HostGroup) is stored (reflects DP pool Tier)')
             .withComponent(_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_14__["TierFormatterComponent"])
             .withTooltipText('Tier')
             .withColumnWidth('6')
@@ -9198,6 +9216,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
             .withLabel('Provisioned Capacity')
+            .withColumnTooltipText('Total provisioned capacity to servers (to Host Group)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9206,6 +9225,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
             .withLabel('Used Capacity')
+            .withColumnTooltipText('Used capacity of servers in TB')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9214,6 +9234,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
             .withLabel('Used Capacity [%}')
+            .withColumnTooltipText('Used capacity of servers in percentage')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9222,6 +9243,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1D)
             .withLabel('Last Day Change')
+            .withColumnTooltipText('Calculated change in GB [Today]-[Yesterday] of USED capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9231,6 +9253,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1W)
             .withLabel('Last Week Change')
+            .withColumnTooltipText('Calculated change in GB [Today]-[7 Days Back] of USED capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9240,6 +9263,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1M)
             .withLabel('Last Month Change')
+            .withColumnTooltipText('Calculated change in GB [Today]-[30 Days Back] of USED capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9432,6 +9456,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY)
             .withLabel('Subs. Capacity')
+            .withColumnTooltipText('Total Subscribed capacity (TB) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9441,6 +9466,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC)
             .withLabel('Physical Subs.')
+            .withColumnTooltipText('Physical Subscribed capacity (%) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9449,6 +9475,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC)
             .withLabel('Logical Subs.')
+            .withColumnTooltipText('Logical Subscribed capacity (%) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9457,6 +9484,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC)
             .withLabel('Net Subs.')
+            .withColumnTooltipText('NET Subscribed capacity (%) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9466,6 +9494,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY)
             .withLabel('Physical Capacity')
+            .withColumnTooltipText('Total physical capacity (TB) of the DP Pool. Physical capacity = capacity of the real HW components (HDDs/FMDs/Spindles).')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9474,6 +9503,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED)
             .withLabel('Physical Used')
+            .withColumnTooltipText('Physically used capacity (TB) of the DP Pool. Meaning what is the physical occupation of data on HW components (HDDs/FMDs/Spindles) (so after compression and deduplication)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9482,6 +9512,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE)
             .withLabel('Physical Free')
+            .withColumnTooltipText('Physically free capacity (TB) of the DP Pool. Meaning what is the physical free space on HW components (HDDs/FMDs/Spindles)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9490,6 +9521,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC)
             .withLabel('Physical Used')
+            .withColumnTooltipText('Capacity which is physically stored on DP Pool HDD\'s in %')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9499,6 +9531,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY)
             .withLabel('Logical Capacity')
+            .withColumnTooltipText('Logical capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2 (because of default compression on FMDs)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9507,6 +9540,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED)
             .withLabel('Logical Used')
+            .withColumnTooltipText('\tLogical Used capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9515,6 +9549,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE)
             .withLabel('Logical Free')
+            .withColumnTooltipText('Logical Free capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9523,6 +9558,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
             .withLabel('Logical Used')
+            .withColumnTooltipText('Logical Used capacity (%) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9532,6 +9568,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
             .withLabel('Net Capacity')
+            .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Capacity] x [Total Saving Effect]')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9540,6 +9577,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
             .withLabel('Net Used')
+            .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Used] x [Total Saving Effect]')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9548,6 +9586,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE)
             .withLabel('Net Free')
+            .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Free] x [Total Saving Effect]')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9556,6 +9595,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
             .withLabel('Net Used')
+            .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression).')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9565,6 +9605,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO)
             .withLabel('Comp Ratio')
+            .withColumnTooltipText('Compression Ratio of the FMD\'s in the DP Pool. Summary calculation is performed on pools with compression ration >0')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9573,6 +9614,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO)
             .withLabel('Dedup Ratio')
+            .withColumnTooltipText('Deduplication Ratio of the DP Pool. Summmary calculation is performed on pools with dedup ration >0)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9581,6 +9623,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT)
             .withLabel('Saving effect')
+            .withColumnTooltipText('Total saving effect of Deduplication (SW feature) + Compression (FMD\'s). Summmary calculation is performed on pools with total saving effect >1)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9731,6 +9774,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD)
             .withLabel('Workload')
+            .withColumnTooltipText('Average/(Peak) value of transactions per second (IOPS) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9738,6 +9782,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER)
             .withLabel('Transfer')
+            .withColumnTooltipText('Average/(Peak) value of transferred data blocks per second (MB/s) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9745,6 +9790,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].RESPONSE)
             .withLabel('Response')
+            .withColumnTooltipText('Average/(Peak) value of latency on all LDEVs (both - read and write) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9752,6 +9798,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CPU)
             .withLabel('CPU')
+            .withColumnTooltipText('Average/(Peak) value of utilization on all system processors (MPBs) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9759,6 +9806,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].HDD)
             .withLabel('HDD')
+            .withColumnTooltipText('Average/(Peak) value of utilization on all hard disk drives / FMDs / SSD used in DP Pools for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9766,6 +9814,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC)
             .withLabel('Write Pending')
+            .withColumnTooltipText('Average/(Peak) value of Cache Write Pending rate on all cache modules for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9936,10 +9985,12 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
+            .withColumnTooltipText('Total physical capacity (TB) of the DP Pool. Physical capacity = capacity of the real HW components (HDDs/FMDs/Spindles).')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_SUBS_PERC)
             .withLabel('Physical Subs.')
+            .withColumnTooltipText('Physical Subscribed capacity (%) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9948,6 +9999,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].AVAILABLE_CAPACITY)
             .withLabel('Available\n' +
             'Capacity')
+            .withColumnTooltipText('Physically free capacity (TB) of the DP Pool. Meaning what is the physical free space on HW components (HDDs/FMDs/Spindles)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9955,6 +10007,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].LOGICAL_USED_PERC)
             .withLabel('Logical Used')
+            .withColumnTooltipText('Logical Used capacity (%) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9962,6 +10015,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_USED_PERC)
             .withLabel('Physical Used')
+            .withColumnTooltipText('Capacity which is physically stored on DP Pool HDD\'s in %')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9969,6 +10023,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].COMPRESS_RATIO)
             .withLabel('Comp. Ratio')
+            .withColumnTooltipText('Compression Ratio of the FMD\'s in the DP Pool. Summary calculation is performed on pools with compression ration >0')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9977,6 +10032,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L1)
             .withLabel('Reach 80%')
+            .withColumnTooltipText('Prediction how many days left before reaching 80% treshold of "Physical Used [%]" metric.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
@@ -9986,6 +10042,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L2)
             .withLabel('Reach 85%')
+            .withColumnTooltipText('Prediction how many days left before reaching 85% treshold of "Physical Used [%]" metric.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
@@ -9995,6 +10052,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L3)
             .withLabel('Reach 88%')
+            .withColumnTooltipText('Prediction how many days left before reaching 88% treshold of "Physical Used [%]" metric.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
@@ -10005,6 +10063,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1D)
             .withLabel('Change 1D')
+            .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[Yesterday] of the DP Pool')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withInfinity(false)
             .withAltSortEnable(false)
@@ -10014,6 +10073,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1W)
             .withLabel('Change 1W')
+            .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[7 Days Back] of the DP Pool')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -10023,6 +10083,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1M)
             .withLabel('Change 1M')
+            .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[30 Days Back] of the DP Pool')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
