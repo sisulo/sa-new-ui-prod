@@ -338,7 +338,7 @@ if (content.locals) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ivan/www/sa-new-ui-ts/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /mnt/data/www/sa-new-ui-ts/src/styles.css */"./src/styles.css");
 
 
 /***/ })
