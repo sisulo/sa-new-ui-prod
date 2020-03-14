@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    TOP TABLE ROW\n  -->\n  <div class=\"row table-header sticky-top\">\n    <div class=\"col-control col\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div class=\"col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <div class=\"col\" [style.width.%]=\"options.getColumnWidth(columnOption.index)\"\n         [tooltip]=\"getColumnLabel(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\">\n      <span class=\"link\" (click)=\"setSort(columnOption, false)\">{{getColumnLabel(columnOption.index)}}\n      </span> <span><i\n      class=\"text-muted sorting sort-icon-right\"\n      [ngClass]=\"getSortIconClass(columnOption.index, false)\"></i>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <br/>\n      <span *ngIf=\"columnOption.altSortEnable === true\" (click)=\"setSort(columnOption, true)\" class=\"link\"><i\n        class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span> <i\n          class='sorting sort-icon-right' [ngClass]=\"getSortIconClass(columnOption.index, true)\"\n        ></i></span>\n    </div>\n  </div>\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"row\" *ngIf=\"selectedRows !== undefined\">\n    <!--<div  [class.highlight-row]=\"options.highlightRow\">-->\n    <app-row-dynamic-table *ngFor=\"let row of data\"\n                           [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                           [class.striped-row]=\"!options.isDataGrouped\"\n                           [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                           [options]=\"options\"></app-row-dynamic-table>\n    <!--</div>-->\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"capacity-table sticky col-md-12\">\n  <!--\n    TOP TABLE ROW\n  -->\n  <div class=\"row table-header sticky-top\">\n    <div class=\"col-control col\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div class=\"col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <div class=\"col\" [style.width.%]=\"options.getColumnWidth(columnOption.index)\"\n         [tooltip]=\"getColumnTooltipText(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\">\n      <span class=\"link\" (click)=\"setSort(columnOption, false)\">{{getColumnLabel(columnOption.index)}}\n      </span> <span><i\n      class=\"text-muted sorting sort-icon-right\"\n      [ngClass]=\"getSortIconClass(columnOption.index, false)\"></i>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <br/>\n      <span *ngIf=\"columnOption.altSortEnable === true\" (click)=\"setSort(columnOption, true)\" class=\"link\"><i\n        class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span> <i\n          class='sorting sort-icon-right' [ngClass]=\"getSortIconClass(columnOption.index, true)\"\n        ></i></span>\n    </div>\n  </div>\n  <!--POOL ROWS-->\n  <!---->\n  <div class=\"row\" *ngIf=\"selectedRows !== undefined\">\n    <!--<div  [class.highlight-row]=\"options.highlightRow\">-->\n    <app-row-dynamic-table *ngFor=\"let row of data\"\n                           [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                           [class.striped-row]=\"!options.isDataGrouped\"\n                           [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                           [options]=\"options\"></app-row-dynamic-table>\n    <!--</div>-->\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -412,7 +412,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<section class=\"content\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <app-filter-list *ngIf=\"dates !== undefined\" [valueList]=\"dates\" title=\"Dates\"\n                       (valueListChange)=\"onDatesChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"systems !== undefined\" [valueList]=\"systems\" title=\"Systems\"\n                       (valueListChange)=\"onSystemChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"pools !== undefined\" [valueList]=\"pools\" [selectedValues]=\"selectedPools\" title=\"Pools\"\n                       (valueListChange)=\"onPoolChanged($event)\"></app-filter-list>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-bubble-chart [dates]=\"selectedDates\" [poolIds]=\"selectedPools\"></app-bubble-chart>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<section class=\"content\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <app-filter-list *ngIf=\"dates !== undefined\" [valueList]=\"dates\" title=\"Dates\"\n                       (valueListChange)=\"onDatesChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"systems !== undefined\" [valueList]=\"systems\" [selectedValues]=\"selectedSystems\" title=\"Systems\"\n                       (valueListChange)=\"onSystemChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"pools !== undefined\" [valueList]=\"pools\" [selectedValues]=\"selectedPools\" title=\"Pools\"\n                       (valueListChange)=\"onPoolChanged($event)\"></app-filter-list>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-bubble-chart [dates]=\"selectedDates\" [poolIds]=\"selectedPools\"></app-bubble-chart>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</section>\n");
 
 /***/ }),
 
@@ -425,7 +425,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"bubble\" class=\"col-md-12\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">\n\n  <svg [attr.width]=\"optionsGraphic.width\" [attr.height]=\"optionsGraphic.height\" xmlns=\"http://www.w3.org/2000/svg\"\n       version=\"1.2\">\n    <g id=\"quadrant-axis\">\n      <svg:g app-xaxis #xaxis [labels]=\"this.chartData.xlabels\" [canvas]=\"optionsGraphic\" [chartData]=\"chartData\"/>\n      <svg:g app-yaxis #yaxis [labels]=\"this.chartData.ylabels\" [canvas]=\"optionsGraphic\" [chartData]=\"chartData\"/>\n    </g>\n    <g id=\"data\">\n      <g *ngFor=\"let serie of chartData.series;index as i\" [attr.id]=\"serie.name\">\n        <g *ngIf=\"isSelectedSerie(serie.name)\">\n\n          <circle class=\"value\" stroke=\"#ffffff\" [attr.fill]=\"getColor(i)\"\n                  *ngFor=\"let circle of serie.data\" [attr.cx]=\"circle[0]\" [attr.cy]=\"circle[1]\"\n                  [attr.r]=\"circle[2]\"></circle>\n        </g>\n      </g>\n    </g>\n    <g id=\"legend\">\n      <foreignObject x=\"50%\" y=\"95%\" width=\"50%\" height=\"30\" text-anchor=\"middle\">\n        <xhtml:div app-legend [series]=\"chartData.series\" [colors]=\"chartData.colors\"\n                   (selectedSeriesEmit)=\"filterSeries($event)\"/>\n      </foreignObject>\n    </g>\n  </svg>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"bubble\" class=\"col-md-12\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">\n\n  <svg [attr.width]=\"optionsGraphic.width\" [attr.height]=\"optionsGraphic.height\" xmlns=\"http://www.w3.org/2000/svg\"\n       version=\"1.2\">\n    <g id=\"data\">\n      <g *ngFor=\"let serie of chartData.series;index as i\" [attr.id]=\"serie.name\">\n        <g *ngIf=\"isSelectedSerie(serie.name)\">\n\n          <circle class=\"value\" stroke=\"#ffffff\" [attr.fill]=\"getColor(i)\"\n                  *ngFor=\"let circle of serie.data\" [attr.cx]=\"circle.coordinates[0]\" [attr.cy]=\"circle.coordinates[1]\"\n                  [attr.r]=\"circle.coordinates[2]\" (mousemove)=\"displayPopup($event, circle, serie.name)\"\n                  (mouseout)=\"displayClose($event)\"></circle>\n        </g>\n      </g>\n    </g>\n    <g id=\"legend\">\n      <foreignObject x=\"50%\" y=\"95%\" width=\"50%\" height=\"30\" text-anchor=\"middle\">\n        <xhtml:div app-legend [series]=\"chartData.series\" [colors]=\"chartData.colors\"\n                   (selectedSeriesEmit)=\"filterSeries($event)\"/>\n      </foreignObject>\n<!--      <foreignObject *ngIf=\"displayedPopup\" [attr.x]=\"popupDetail.positionX\" [attr.y]=\"popupDetail.positionY\"-->\n<!--                     width=\"50%\" height=\"100\" text-anchor=\"middle\">-->\n<!--        -->\n<!--      </foreignObject>-->\n    </g>\n    <g id=\"quadrant-axis\">\n      <svg:g app-xaxis #xaxis [labels]=\"this.chartData.xlabels\" [canvas]=\"optionsGraphic\" [chartData]=\"chartData\"/>\n      <svg:g app-yaxis #yaxis [labels]=\"this.chartData.ylabels\" [canvas]=\"optionsGraphic\" [chartData]=\"chartData\"/>\n    </g>\n  </svg>\n  <app-popup-data [displayed]=\"displayedPopup\" [config]=\"popupDetail\"></app-popup-data>\n</div>\n");
 
 /***/ }),
 
@@ -439,6 +439,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"series.length != 0\">\n  <div class=\"legend-item\" *ngFor=\"let serie of series; index as i\" (click)=\"toggle(serie.name)\"\n       [class.disabled]=\"!isToggled(serie.name)\"><i class=\"fa fa-circle\" [style.color]=\"getColor(i)\"></i>{{serie.name}}\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.html":
+/*!****************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.html ***!
+  \****************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class='popup-data' *ngIf=\"displayed\" [style.top.px]=\"config.positionY\" [style.left.px]=\"config.positionX + 15\">\n  <div class=\"popup-header\">Operation: {{config.serieName}}</div>\n  <div class=\"popup-body\">\n    <div>Block: {{config.value.x}} KB</div>\n    <div>Latency: {{config.value.y}} ms</div>\n    <div>Size: {{config.value.z}}</div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -464,7 +477,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<svg>\n  <line [attr.x1]=\"x1\" [attr.y1]=\"y1\" [attr.x2]=\"x1\"\n        [attr.y2]=\"y2\" style=\"stroke:rgb(0,0,0);stroke-width:0.4px\"></line>\n  <line *ngFor=\"let label of labels;index as i\" [attr.x1]=\"x1\"\n        [attr.y1]=\"getLabelPosition(i)\"\n        [attr.x2]=\"markerEnds\" [attr.y2]=\"getLabelPosition(i)\"\n        style=\"stroke:rgb(0,0,0);stroke-width:0.4px\">\n  </line>\n  <text class=\"axis-value\" *ngFor=\"let label of labels;index as i\" [attr.x]=\"x1 - textOffset\"\n        [attr.text-anchor]=\"textAnchor\" [attr.y]=\"getLabelPosition(i) + 4\">{{formatLabel(label, i)}}</text>\n  <text class=\"axis-label\" [attr.x]=\"x1\" [attr.y]=\"10\">{{chartData.ylabel}}</text>\n\n</svg>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<svg class=\"yaxis\">\n  <line [attr.x1]=\"x1\" [attr.y1]=\"y1\" [attr.x2]=\"x1\"\n        [attr.y2]=\"y2\" style=\"stroke:rgb(0,0,0);stroke-width:0.4px\"></line>\n  <line *ngFor=\"let label of labels;index as i\" [attr.x1]=\"x1\"\n        [attr.y1]=\"getLabelPosition(i)\"\n        [attr.x2]=\"markerEnds\" [attr.y2]=\"getLabelPosition(i)\"\n        style=\"stroke:rgb(0,0,0);stroke-width:0.4px\">\n  </line>\n  <text class=\"axis-value\" *ngFor=\"let label of labels;index as i\" [attr.x]=\"x1 - textOffset\"\n        [attr.text-anchor]=\"textAnchor\" [attr.y]=\"getLabelPosition(i) + 4\">{{formatLabel(label, i)}}</text>\n  <text class=\"axis-label\" [attr.x]=\"x1\" [attr.y]=\"10\">{{chartData.ylabel}}</text>\n\n</svg>\n");
 
 /***/ }),
 
@@ -477,7 +490,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\">\n  <div class=\"box-header with-border\">\n    <h3 class=\"box-title\">{{title}}</h3>\n  </div>\n  <div class=\"box-body\">\n    <ng-select\n      [items]=\"valueList\"\n      [multiple]=\"true\"\n      [closeOnSelect]=\"false\"\n      [hideSelected]=\"true\"\n      bindLabel=\"name\"\n      bindValue=\"id\"\n      placeholder=\"Select\"\n      [(ngModel)]=\"selectedValues\"\n      (change)=\"selectValue($event)\">\n    </ng-select>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\">\n  <div class=\"box-header with-border\">\n    <h3 class=\"box-title\">{{title}}</h3>\n    <div class=\"box-tools pull-right\">\n      <a type=\"button\" class=\"btn btn-block btn-default\" (click)=\"selectAll()\" placement=\"left\" tooltip=\"Select All\"><i class=\"fas fa-check-double\"></i></a>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <ng-select\n      #ngSelect\n      [items]=\"valueList\"\n      [multiple]=\"true\"\n      [closeOnSelect]=\"false\"\n      [hideSelected]=\"false\"\n      bindLabel=\"name\"\n      bindValue=\"id\"\n      placeholder=\"Select\"\n      [(ngModel)]=\"selectedValues\"\n      (change)=\"selectValue($event)\"\n    (clear)=\"clear()\">\n      <ng-template ng-multi-label-tmp let-items=\"items\" let-clear=\"clear\">\n        <div class=\"ng-value\" *ngFor=\"let item of items | slice:0:2\">\n          <span class=\"ng-value-label\">{{item.name}}</span>\n          <span class=\"ng-value-icon right\" (click)=\"clear(item)\" aria-hidden=\"true\">×</span>\n        </div>\n        <div class=\"ng-value\" *ngIf=\"items.length > 2\">\n          <span class=\"ng-value-label\">{{items.length - 2}} more...</span>\n        </div>\n      </ng-template>\n    </ng-select>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -1897,7 +1910,7 @@ var CellTableComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/*** Layout table ***/\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n}\n.col {\n  display: inline-block;\n  padding-right: 10px;\n}\n.col-control i {\n  font-size: 11px;\n  padding: 3px;\n  cursor: pointer;\n}\n.col-control:after {\n  content: \"\";\n  font-size: 11px;\n  padding: 3px;\n}\n/**** Table data ****/\ndiv {\n  /*text-align: center;*/\n  border-right: 1px #EAEAEA solid;\n  display: inline-block;\n  /*vertical-align: middle;*/\n  margin: auto;\n}\ndiv.center-margin {\n  text-align: left;\n  padding-left: 3rem;\n}\n.selectedRow {\n  background-color: #BEECD1;\n  color: #3A738C;\n}\n.highlightColumn {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n.highlight-row:hover {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\ndiv.alt-border {\n  /*border-left: 1px solid black;*/\n  border-right: 3px double darkgrey;\n}\ndiv.alt-border-left {\n  /*border-left: 1px solid black;*/\n  border-left: 3px double darkgrey;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9jb2x1bW4vY29sdW1uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEscUJBQXFCO0FBQ3JCO0VBQ0UsV0FBVztFQUNYLHFCQUFxQjtFQUNyQixzQkFBc0I7RUFDdEIsa0JBQWtCO0FBQ3BCO0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsbUJBQW1CO0FBQ3JCO0FBRUE7RUFDRSxlQUFlO0VBQ2YsWUFBWTtFQUNaLGVBQWU7QUFDakI7QUFFQTtFQUNFLFdBQVc7RUFDWCxlQUFlO0VBQ2YsWUFBWTtBQUNkO0FBRUEscUJBQXFCO0FBQ3JCO0VBQ0Usc0JBQXNCO0VBQ3RCLCtCQUErQjtFQUMvQixxQkFBcUI7RUFDckIsMEJBQTBCO0VBQzFCLFlBQVk7QUFDZDtBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGtCQUFrQjtBQUNwQjtBQUVBO0VBQ0UseUJBQXlCO0VBQ3pCLGNBQWM7QUFDaEI7QUFFQTtFQUNFLG9DQUFvQztFQUNwQyxjQUFjO0FBQ2hCO0FBRUE7RUFDRSxvQ0FBb0M7RUFDcEMsY0FBYztBQUNoQjtBQUVBO0VBQ0UsZ0NBQWdDO0VBQ2hDLGlDQUFpQztBQUNuQztBQUVBO0VBQ0UsZ0NBQWdDO0VBQ2hDLGdDQUFnQztBQUNsQyIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi9jb21wb25lbnRzL3Nhc2ktdGFibGUvY29sdW1uL2NvbHVtbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqKiBMYXlvdXQgdGFibGUgKioqL1xuLmNvbC1jb250cm9sIHtcbiAgd2lkdGg6IDMuNSU7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uY29sIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuXG4uY29sLWNvbnRyb2wgaSB7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgcGFkZGluZzogM3B4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi5jb2wtY29udHJvbDphZnRlciB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIGZvbnQtc2l6ZTogMTFweDtcbiAgcGFkZGluZzogM3B4O1xufVxuXG4vKioqKiBUYWJsZSBkYXRhICoqKiovXG5kaXYge1xuICAvKnRleHQtYWxpZ246IGNlbnRlcjsqL1xuICBib3JkZXItcmlnaHQ6IDFweCAjRUFFQUVBIHNvbGlkO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIC8qdmVydGljYWwtYWxpZ246IG1pZGRsZTsqL1xuICBtYXJnaW46IGF1dG87XG59XG5cbmRpdi5jZW50ZXItbWFyZ2luIHtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgcGFkZGluZy1sZWZ0OiAzcmVtO1xufVxuXG4uc2VsZWN0ZWRSb3cge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjQkVFQ0QxO1xuICBjb2xvcjogIzNBNzM4Qztcbn1cblxuLmhpZ2hsaWdodENvbHVtbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNiNGQxZWUgIWltcG9ydGFudDtcbiAgY29sb3I6ICMzQTczOEM7XG59XG5cbi5oaWdobGlnaHQtcm93OmhvdmVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I0ZDFlZSAhaW1wb3J0YW50O1xuICBjb2xvcjogIzNBNzM4Qztcbn1cblxuZGl2LmFsdC1ib3JkZXIge1xuICAvKmJvcmRlci1sZWZ0OiAxcHggc29saWQgYmxhY2s7Ki9cbiAgYm9yZGVyLXJpZ2h0OiAzcHggZG91YmxlIGRhcmtncmV5O1xufVxuXG5kaXYuYWx0LWJvcmRlci1sZWZ0IHtcbiAgLypib3JkZXItbGVmdDogMXB4IHNvbGlkIGJsYWNrOyovXG4gIGJvcmRlci1sZWZ0OiAzcHggZG91YmxlIGRhcmtncmV5O1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("/*** Layout table ***/\n.col-control {\n  width: 3.5%;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: center;\n}\n.col {\n  display: inline-block;\n  padding-right: 10px;\n}\n.col-control i {\n  font-size: 11px;\n  padding: 3px;\n  cursor: pointer;\n}\n.col-control:after {\n  content: \"\";\n  font-size: 11px;\n  padding: 3px;\n}\n/**** Table data ****/\ndiv {\n  /*text-align: center;*/\n  border-right: 1px #EAEAEA solid;\n  display: inline-block;\n  vertical-align: middle;\n  height: 100%;\n  margin: auto;\n}\ndiv.center-margin {\n  text-align: left;\n  padding-left: 3rem;\n}\n.selectedRow {\n  background-color: #BEECD1;\n  color: #3A738C;\n}\n.highlightColumn {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n.highlight-row:hover {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\ndiv.alt-border {\n  /*border-left: 1px solid black;*/\n  border-right: 3px double darkgrey;\n}\ndiv.alt-border-left {\n  /*border-left: 1px solid black;*/\n  border-left: 3px double darkgrey;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9jb2x1bW4vY29sdW1uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEscUJBQXFCO0FBQ3JCO0VBQ0UsV0FBVztFQUNYLHFCQUFxQjtFQUNyQixzQkFBc0I7RUFDdEIsa0JBQWtCO0FBQ3BCO0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsbUJBQW1CO0FBQ3JCO0FBRUE7RUFDRSxlQUFlO0VBQ2YsWUFBWTtFQUNaLGVBQWU7QUFDakI7QUFFQTtFQUNFLFdBQVc7RUFDWCxlQUFlO0VBQ2YsWUFBWTtBQUNkO0FBRUEscUJBQXFCO0FBQ3JCO0VBQ0Usc0JBQXNCO0VBQ3RCLCtCQUErQjtFQUMvQixxQkFBcUI7RUFDckIsc0JBQXNCO0VBQ3RCLFlBQVk7RUFDWixZQUFZO0FBQ2Q7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixrQkFBa0I7QUFDcEI7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixjQUFjO0FBQ2hCO0FBRUE7RUFDRSxvQ0FBb0M7RUFDcEMsY0FBYztBQUNoQjtBQUVBO0VBQ0Usb0NBQW9DO0VBQ3BDLGNBQWM7QUFDaEI7QUFFQTtFQUNFLGdDQUFnQztFQUNoQyxpQ0FBaUM7QUFDbkM7QUFFQTtFQUNFLGdDQUFnQztFQUNoQyxnQ0FBZ0M7QUFDbEMiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vY29tcG9uZW50cy9zYXNpLXRhYmxlL2NvbHVtbi9jb2x1bW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiogTGF5b3V0IHRhYmxlICoqKi9cbi5jb2wtY29udHJvbCB7XG4gIHdpZHRoOiAzLjUlO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmNvbCB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbn1cblxuLmNvbC1jb250cm9sIGkge1xuICBmb250LXNpemU6IDExcHg7XG4gIHBhZGRpbmc6IDNweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG4uY29sLWNvbnRyb2w6YWZ0ZXIge1xuICBjb250ZW50OiBcIlwiO1xuICBmb250LXNpemU6IDExcHg7XG4gIHBhZGRpbmc6IDNweDtcbn1cblxuLyoqKiogVGFibGUgZGF0YSAqKioqL1xuZGl2IHtcbiAgLyp0ZXh0LWFsaWduOiBjZW50ZXI7Ki9cbiAgYm9yZGVyLXJpZ2h0OiAxcHggI0VBRUFFQSBzb2xpZDtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG1hcmdpbjogYXV0bztcbn1cblxuZGl2LmNlbnRlci1tYXJnaW4ge1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xuICBwYWRkaW5nLWxlZnQ6IDNyZW07XG59XG5cbi5zZWxlY3RlZFJvdyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNCRUVDRDE7XG4gIGNvbG9yOiAjM0E3MzhDO1xufVxuXG4uaGlnaGxpZ2h0Q29sdW1uIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I0ZDFlZSAhaW1wb3J0YW50O1xuICBjb2xvcjogIzNBNzM4Qztcbn1cblxuLmhpZ2hsaWdodC1yb3c6aG92ZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjRkMWVlICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjM0E3MzhDO1xufVxuXG5kaXYuYWx0LWJvcmRlciB7XG4gIC8qYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBibGFjazsqL1xuICBib3JkZXItcmlnaHQ6IDNweCBkb3VibGUgZGFya2dyZXk7XG59XG5cbmRpdi5hbHQtYm9yZGVyLWxlZnQge1xuICAvKmJvcmRlci1sZWZ0OiAxcHggc29saWQgYmxhY2s7Ki9cbiAgYm9yZGVyLWxlZnQ6IDNweCBkb3VibGUgZGFya2dyZXk7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -2819,6 +2832,7 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.altSortEnable = false;
         this.isAggregated = false;
         this.tooltipText = null;
+        this.columnTooltipText = null;
         this.infinity = true;
         this.altBorder = false;
         this.altBorderLeft = false;
@@ -2871,8 +2885,12 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.columnWidth = width;
         return this;
     };
+    SasiColumnBuilder.prototype.withColumnTooltipText = function (text) {
+        this.columnTooltipText = text;
+        return this;
+    };
     SasiColumnBuilder.prototype.build = function () {
-        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.altBorderLeft, this.columnWidth);
+        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.altBorderLeft, this.columnWidth, this.columnTooltipText);
     };
     SasiColumnBuilder.prototype.withInfinity = function (isInfinity) {
         this.infinity = isInfinity;
@@ -2882,7 +2900,7 @@ var SasiColumnBuilder = /** @class */ (function () {
 }());
 
 var SasiColumn = /** @class */ (function () {
-    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, altBorderLeft, columnWidth) {
+    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, altBorderLeft, columnWidth, columnTooltipText) {
         this.index = index;
         this.label = label;
         this.component = component;
@@ -2895,6 +2913,7 @@ var SasiColumn = /** @class */ (function () {
         this.altBorder = altBorder;
         this.altBorderLeft = altBorderLeft;
         this.columnWidth = columnWidth;
+        this.columnTooltipText = columnTooltipText;
     }
     return SasiColumn;
 }());
@@ -3086,6 +3105,13 @@ var SasiTableComponent = /** @class */ (function () {
             return '';
         }
         return column.altLabel !== undefined ? column.altLabel : column.label;
+    };
+    SasiTableComponent.prototype.getColumnTooltipText = function (type) {
+        var column = this.options.columns.find(function (optionColumn) { return optionColumn.index === type; });
+        if (column === undefined) {
+            return '';
+        }
+        return column.columnTooltipText !== null ? column.columnTooltipText : this.getColumnLabel(type);
     };
     /* SORTING FEATURES */
     SasiTableComponent.prototype.getSortIconClass = function (column, isAltSort) {
@@ -7527,6 +7553,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_block_size_latency_bubble_chart_xaxis_xaxis_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./views/block-size-latency/bubble-chart/xaxis/xaxis.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.ts");
 /* harmony import */ var _views_block_size_latency_bubble_chart_yaxis_yaxis_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./views/block-size-latency/bubble-chart/yaxis/yaxis.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/yaxis/yaxis.component.ts");
 /* harmony import */ var _views_block_size_latency_bubble_chart_legend_legend_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./views/block-size-latency/bubble-chart/legend/legend.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/legend/legend.component.ts");
+/* harmony import */ var _views_block_size_latency_bubble_chart_popup_data_popup_data_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./views/block-size-latency/bubble-chart/popup-data/popup-data.component */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7536,6 +7563,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -7607,7 +7635,8 @@ var GlobalStatisticsModule = /** @class */ (function () {
                 _views_block_size_latency_filter_list_filter_list_component__WEBPACK_IMPORTED_MODULE_31__["FilterListComponent"],
                 _views_block_size_latency_bubble_chart_xaxis_xaxis_component__WEBPACK_IMPORTED_MODULE_34__["XaxisComponent"],
                 _views_block_size_latency_bubble_chart_yaxis_yaxis_component__WEBPACK_IMPORTED_MODULE_35__["YaxisComponent"],
-                _views_block_size_latency_bubble_chart_legend_legend_component__WEBPACK_IMPORTED_MODULE_36__["LegendComponent"]
+                _views_block_size_latency_bubble_chart_legend_legend_component__WEBPACK_IMPORTED_MODULE_36__["LegendComponent"],
+                _views_block_size_latency_bubble_chart_popup_data_popup_data_component__WEBPACK_IMPORTED_MODULE_37__["PopupDataComponent"]
             ],
             exports: [],
             imports: [
@@ -8094,6 +8123,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].IMBALANCE_EVENTS)
             .withLabel('Cha Imbalances')
+            .withColumnTooltipText('Count of Channel Adapater Pair imbalances. Treshold definition = 10% imbalance AND 20MB/s')
             .withComponent(_formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_14__["AdapterDisbalanceFormatterComponent"])
             .withAggComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
@@ -8103,6 +8133,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PORT_IMBALANCE_EVENTS)
             .withLabel('Port Imbalances')
+            .withColumnTooltipText('Count of FE Port Pair Imbalances. Treshold definition = 10% imbalance AND 20MB/s')
             .withComponent(_formatters_port_disbalance_formatter_port_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_11__["PortDisbalanceFormatterComponent"])
             .withAggComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_12__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
@@ -8255,10 +8286,19 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
     BlockSizeLatencyComponent.prototype.onSystemChanged = function (selectedSystems) {
         var _this = this;
         this.selectedSystems = selectedSystems.map(function (val) { return parseInt(val, 10); });
-        this.selectedSystems.forEach(function (system) { return _this.selectedPools = _this.selectedPools.concat(_this.pools.filter(function (pool) { return pool.systemId === system; }).map(function (pool) { return pool.id; })); });
+        this.selectedPools = [];
+        this.selectedSystems.forEach(function (system) { return _this.selectedPools = _this.selectedPools.concat(_this.pools.filter(function (pool) { return pool.systemId === system; })
+            .map(function (pool) { return pool.id; })); });
     };
     BlockSizeLatencyComponent.prototype.onPoolChanged = function (selectedPools) {
-        this.selectedPools = selectedPools.map(function (val) { return parseInt(val, 10); }) || [];
+        var _this = this;
+        this.selectedPools = selectedPools.map(function (val) { return val; }) || [];
+        this.selectedSystems = this.systems.filter(function (systems) { return _this.isAllPoolsSelected(systems.id); }).map(function (system) { return system.id; });
+    };
+    BlockSizeLatencyComponent.prototype.isAllPoolsSelected = function (id) {
+        var _this = this;
+        var allPools = this.pools.filter(function (pool) { return pool.systemId === id; });
+        return allPools.every(function (pool) { return _this.selectedPools.includes(pool.id); });
     };
     BlockSizeLatencyComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] }
@@ -8329,6 +8369,7 @@ var BubbleChartComponent = /** @class */ (function () {
         this.poolIds = [];
         this.dates = []; // TODO should be date
         this.operations = ['READ', 'WRITE']; // TODO should be OperationType
+        this.displayedPopup = false;
         this.chartData = {
             series: [],
             xlabels: [0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
@@ -8356,6 +8397,10 @@ var BubbleChartComponent = /** @class */ (function () {
                 _this.selectedSeries = _this.chartData.series.map(function (serie) { return serie.name; });
             });
         }
+        else {
+            this.chartData.series = [];
+            this.selectedSeries = [];
+        }
     };
     BubbleChartComponent.prototype.ngAfterViewInit = function () {
         this.coordinatesX = this.xaxis.getCoordinates();
@@ -8372,7 +8417,9 @@ var BubbleChartComponent = /** @class */ (function () {
                 name: _common_models_metrics_operation_type_enum__WEBPACK_IMPORTED_MODULE_2__["OperationType"][operationData.operation],
                 data: operationData.values
                     .filter(function (value) { return value.z > 0; })
-                    .map(function (value) { return _this.mapToCoordinates(value, min, max); })
+                    .map(function (value) {
+                    return { coordinates: _this.mapToCoordinates(value, min, max), values: _this.mapToValues(value) };
+                })
             };
         });
         return returned;
@@ -8405,6 +8452,19 @@ var BubbleChartComponent = /** @class */ (function () {
     };
     BubbleChartComponent.prototype.isSelectedSerie = function (serieName) {
         return this.selectedSeries.some(function (selectedSerie) { return selectedSerie === serieName; });
+    };
+    BubbleChartComponent.prototype.displayPopup = function ($event, circle, serieName) {
+        console.log($event);
+        console.log(circle);
+        this.displayedPopup = true;
+        this.popupDetail = { positionX: $event.layerX, positionY: $event.layerY, value: circle.values, serieName: serieName };
+    };
+    BubbleChartComponent.prototype.displayClose = function ($event) {
+        this.displayedPopup = false;
+        this.popupDetail = { positionX: $event.screenX, positionY: $event.screenY, value: null, serieName: null };
+    };
+    BubbleChartComponent.prototype.mapToValues = function (value) {
+        return { x: value.x, y: value.y, z: value.z };
     };
     BubbleChartComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] }
@@ -8542,6 +8602,77 @@ var LegendComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.css":
+/*!*************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.css ***!
+  \*************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("div.popup-data {\n  position: absolute;\n  z-index: 1000;\n  background-color: white;\n  border-radius: 5px;\n  border: 1px solid #b1b1b1;\n}\ndiv.popup-header {\n  background-color: #b1b1b1;\n  padding: 2px 10px 0px 10px;\n  border-radius: 5px 5px 0 0;\n}\ndiv.popup-body{\n  padding: 5px 10px 5px 10px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2J1YmJsZS1jaGFydC9wb3B1cC1kYXRhL3BvcHVwLWRhdGEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFrQjtFQUNsQixhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLGtCQUFrQjtFQUNsQix5QkFBeUI7QUFDM0I7QUFDQTtFQUNFLHlCQUF5QjtFQUN6QiwwQkFBMEI7RUFDMUIsMEJBQTBCO0FBQzVCO0FBQ0E7RUFDRSwwQkFBMEI7QUFDNUIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9ibG9jay1zaXplLWxhdGVuY3kvYnViYmxlLWNoYXJ0L3BvcHVwLWRhdGEvcG9wdXAtZGF0YS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZGl2LnBvcHVwLWRhdGEge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHotaW5kZXg6IDEwMDA7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNiMWIxYjE7XG59XG5kaXYucG9wdXAtaGVhZGVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2IxYjFiMTtcbiAgcGFkZGluZzogMnB4IDEwcHggMHB4IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDVweCA1cHggMCAwO1xufVxuZGl2LnBvcHVwLWJvZHl7XG4gIHBhZGRpbmc6IDVweCAxMHB4IDVweCAxMHB4O1xufVxuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.ts":
+/*!************************************************************************************************************!*\
+  !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.ts ***!
+  \************************************************************************************************************/
+/*! exports provided: PopupDataComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopupDataComponent", function() { return PopupDataComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+var PopupDataComponent = /** @class */ (function () {
+    function PopupDataComponent() {
+        this.displayed = false;
+        this.config = null;
+    }
+    PopupDataComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], PopupDataComponent.prototype, "positionX", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], PopupDataComponent.prototype, "displayed", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], PopupDataComponent.prototype, "config", void 0);
+    PopupDataComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-popup-data',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./popup-data.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./popup-data.component.css */ "./src/app/global-statistics/views/block-size-latency/bubble-chart/popup-data/popup-data.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [])
+    ], PopupDataComponent);
+    return PopupDataComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.css":
 /*!***************************************************************************************************!*\
   !*** ./src/app/global-statistics/views/block-size-latency/bubble-chart/xaxis/xaxis.component.css ***!
@@ -8621,7 +8752,7 @@ var XaxisComponent = /** @class */ (function () {
         return this.labelsCoordinates[index];
     };
     XaxisComponent.prototype.formatLabel = function (label, index) {
-        return this.chartData.xFormatter.call(label, index) || label;
+        return this.chartData.xFormatter.call(this, label, index) || label;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -8659,7 +8790,7 @@ var XaxisComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".axis-label {\n  font: italic 1.3rem 'Source Sans Pro', sans-serif;\n  text-anchor: middle;\n}\n\n.axis-value {\n  font: normal 1.0rem 'Source Sans Pro', sans-serif;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2J1YmJsZS1jaGFydC95YXhpcy95YXhpcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaURBQWlEO0VBQ2pELG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGlEQUFpRDtBQUNuRCIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2Jsb2NrLXNpemUtbGF0ZW5jeS9idWJibGUtY2hhcnQveWF4aXMveWF4aXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5heGlzLWxhYmVsIHtcbiAgZm9udDogaXRhbGljIDEuM3JlbSAnU291cmNlIFNhbnMgUHJvJywgc2Fucy1zZXJpZjtcbiAgdGV4dC1hbmNob3I6IG1pZGRsZTtcbn1cblxuLmF4aXMtdmFsdWUge1xuICBmb250OiBub3JtYWwgMS4wcmVtICdTb3VyY2UgU2FucyBQcm8nLCBzYW5zLXNlcmlmO1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".axis-label {\n  font: italic 1.3rem 'Source Sans Pro', sans-serif;\n  text-anchor: middle;\n}\n\n.axis-value {\n  font: normal 1.0rem 'Source Sans Pro', sans-serif;\n}\n\nline {\n  z-index: 50;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2J1YmJsZS1jaGFydC95YXhpcy95YXhpcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaURBQWlEO0VBQ2pELG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGlEQUFpRDtBQUNuRDs7QUFFQTtFQUNFLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2Jsb2NrLXNpemUtbGF0ZW5jeS9idWJibGUtY2hhcnQveWF4aXMveWF4aXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5heGlzLWxhYmVsIHtcbiAgZm9udDogaXRhbGljIDEuM3JlbSAnU291cmNlIFNhbnMgUHJvJywgc2Fucy1zZXJpZjtcbiAgdGV4dC1hbmNob3I6IG1pZGRsZTtcbn1cblxuLmF4aXMtdmFsdWUge1xuICBmb250OiBub3JtYWwgMS4wcmVtICdTb3VyY2UgU2FucyBQcm8nLCBzYW5zLXNlcmlmO1xufVxuXG5saW5lIHtcbiAgei1pbmRleDogNTA7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -8729,7 +8860,7 @@ var YaxisComponent = /** @class */ (function () {
         return this.labelsCoordinates[index];
     };
     YaxisComponent.prototype.formatLabel = function (label, index) {
-        return this.chartData.yFormatter.call(label, index) || label;
+        return this.chartData.yFormatter.call(this, label, index) || label;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -8853,6 +8984,13 @@ var FilterListComponent = /** @class */ (function () {
     FilterListComponent.prototype.selectValue = function (value) {
         this.valueListChange.emit(this.selectedValues);
     };
+    FilterListComponent.prototype.selectAll = function () {
+        this.selectedValues = this.valueList.map(function (value) { return value.id; });
+        this.valueListChange.emit(this.selectedValues);
+    };
+    FilterListComponent.prototype.clear = function () {
+        this.valueListChange.emit(this.selectedValues);
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
@@ -8972,6 +9110,7 @@ var DpSlaComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].SLA_EVENTS)
             .withLabel('SLA Events')
+            .withColumnTooltipText('Count of breach SLA occuracnces per DP Pool. SLA treshold = >1ms write response time for at least 10mins time period')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -8979,6 +9118,7 @@ var DpSlaComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].OUT_OF_SLA_TIME)
             .withLabel('Out of SLA Time')
+            .withColumnTooltipText('Total time of breach SLA occuracnces per DP Pool.')
             .withComponent(_formatters_time_formatter_time_formatter_component__WEBPACK_IMPORTED_MODULE_11__["TimeFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9142,6 +9282,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TIER)
             .withLabel('Tier')
+            .withColumnTooltipText('Tier label - internal number of the Tier where VMware farm (HostGroup) is stored (reflects DP pool Tier)')
             .withComponent(_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_14__["TierFormatterComponent"])
             .withTooltipText('Tier')
             .withColumnWidth('6')
@@ -9149,6 +9290,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
             .withLabel('Provisioned Capacity')
+            .withColumnTooltipText('Total provisioned capacity to servers (to Host Group)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9157,6 +9299,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
             .withLabel('Used Capacity')
+            .withColumnTooltipText('Used capacity of servers in TB')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9165,6 +9308,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
             .withLabel('Used Capacity [%}')
+            .withColumnTooltipText('Used capacity of servers in percentage')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9173,6 +9317,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1D)
             .withLabel('Last Day Change')
+            .withColumnTooltipText('Calculated change in GB [Today]-[Yesterday] of USED capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9182,6 +9327,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1W)
             .withLabel('Last Week Change')
+            .withColumnTooltipText('Calculated change in GB [Today]-[7 Days Back] of USED capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9191,6 +9337,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1M)
             .withLabel('Last Month Change')
+            .withColumnTooltipText('Calculated change in GB [Today]-[30 Days Back] of USED capacity')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9383,6 +9530,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY)
             .withLabel('Subs. Capacity')
+            .withColumnTooltipText('Total Subscribed capacity (TB) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9392,6 +9540,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC)
             .withLabel('Physical Subs.')
+            .withColumnTooltipText('Physical Subscribed capacity (%) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9400,6 +9549,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC)
             .withLabel('Logical Subs.')
+            .withColumnTooltipText('Logical Subscribed capacity (%) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9408,6 +9558,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC)
             .withLabel('Net Subs.')
+            .withColumnTooltipText('NET Subscribed capacity (%) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9417,6 +9568,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY)
             .withLabel('Physical Capacity')
+            .withColumnTooltipText('Total physical capacity (TB) of the DP Pool. Physical capacity = capacity of the real HW components (HDDs/FMDs/Spindles).')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9425,6 +9577,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED)
             .withLabel('Physical Used')
+            .withColumnTooltipText('Physically used capacity (TB) of the DP Pool. Meaning what is the physical occupation of data on HW components (HDDs/FMDs/Spindles) (so after compression and deduplication)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9433,6 +9586,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE)
             .withLabel('Physical Free')
+            .withColumnTooltipText('Physically free capacity (TB) of the DP Pool. Meaning what is the physical free space on HW components (HDDs/FMDs/Spindles)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9441,6 +9595,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC)
             .withLabel('Physical Used')
+            .withColumnTooltipText('Capacity which is physically stored on DP Pool HDD\'s in %')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9450,6 +9605,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY)
             .withLabel('Logical Capacity')
+            .withColumnTooltipText('Logical capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2 (because of default compression on FMDs)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9458,6 +9614,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED)
             .withLabel('Logical Used')
+            .withColumnTooltipText('\tLogical Used capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9466,6 +9623,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE)
             .withLabel('Logical Free')
+            .withColumnTooltipText('Logical Free capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9474,6 +9632,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
             .withLabel('Logical Used')
+            .withColumnTooltipText('Logical Used capacity (%) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9483,6 +9642,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
             .withLabel('Net Capacity')
+            .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Capacity] x [Total Saving Effect]')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9491,6 +9651,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
             .withLabel('Net Used')
+            .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Used] x [Total Saving Effect]')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9499,6 +9660,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE)
             .withLabel('Net Free')
+            .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Free] x [Total Saving Effect]')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9507,6 +9669,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
             .withLabel('Net Used')
+            .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression).')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9516,6 +9679,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO)
             .withLabel('Comp Ratio')
+            .withColumnTooltipText('Compression Ratio of the FMD\'s in the DP Pool. Summary calculation is performed on pools with compression ration >0')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9524,6 +9688,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO)
             .withLabel('Dedup Ratio')
+            .withColumnTooltipText('Deduplication Ratio of the DP Pool. Summmary calculation is performed on pools with dedup ration >0)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9532,6 +9697,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT)
             .withLabel('Saving effect')
+            .withColumnTooltipText('Total saving effect of Deduplication (SW feature) + Compression (FMD\'s). Summmary calculation is performed on pools with total saving effect >1)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9682,6 +9848,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD)
             .withLabel('Workload')
+            .withColumnTooltipText('Average/(Peak) value of transactions per second (IOPS) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9689,6 +9856,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER)
             .withLabel('Transfer')
+            .withColumnTooltipText('Average/(Peak) value of transferred data blocks per second (MB/s) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9696,6 +9864,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].RESPONSE)
             .withLabel('Response')
+            .withColumnTooltipText('Average/(Peak) value of latency on all LDEVs (both - read and write) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9703,6 +9872,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CPU)
             .withLabel('CPU')
+            .withColumnTooltipText('Average/(Peak) value of utilization on all system processors (MPBs) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9710,6 +9880,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].HDD)
             .withLabel('HDD')
+            .withColumnTooltipText('Average/(Peak) value of utilization on all hard disk drives / FMDs / SSD used in DP Pools for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9717,6 +9888,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC)
             .withLabel('Write Pending')
+            .withColumnTooltipText('Average/(Peak) value of Cache Write Pending rate on all cache modules for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
@@ -9887,10 +10059,12 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
+            .withColumnTooltipText('Total physical capacity (TB) of the DP Pool. Physical capacity = capacity of the real HW components (HDDs/FMDs/Spindles).')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_SUBS_PERC)
             .withLabel('Physical Subs.')
+            .withColumnTooltipText('Physical Subscribed capacity (%) of the DP Pool.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9899,6 +10073,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].AVAILABLE_CAPACITY)
             .withLabel('Available\n' +
             'Capacity')
+            .withColumnTooltipText('Physically free capacity (TB) of the DP Pool. Meaning what is the physical free space on HW components (HDDs/FMDs/Spindles)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9906,6 +10081,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].LOGICAL_USED_PERC)
             .withLabel('Logical Used')
+            .withColumnTooltipText('Logical Used capacity (%) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9913,6 +10089,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_USED_PERC)
             .withLabel('Physical Used')
+            .withColumnTooltipText('Capacity which is physically stored on DP Pool HDD\'s in %')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9920,6 +10097,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].COMPRESS_RATIO)
             .withLabel('Comp. Ratio')
+            .withColumnTooltipText('Compression Ratio of the FMD\'s in the DP Pool. Summary calculation is performed on pools with compression ration >0')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9928,6 +10106,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L1)
             .withLabel('Reach 80%')
+            .withColumnTooltipText('Prediction how many days left before reaching 80% treshold of "Physical Used [%]" metric.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
@@ -9937,6 +10116,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L2)
             .withLabel('Reach 85%')
+            .withColumnTooltipText('Prediction how many days left before reaching 85% treshold of "Physical Used [%]" metric.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
@@ -9946,6 +10126,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L3)
             .withLabel('Reach 88%')
+            .withColumnTooltipText('Prediction how many days left before reaching 88% treshold of "Physical Used [%]" metric.')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
@@ -9956,6 +10137,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1D)
             .withLabel('Change 1D')
+            .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[Yesterday] of the DP Pool')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withInfinity(false)
             .withAltSortEnable(false)
@@ -9965,6 +10147,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1W)
             .withLabel('Change 1W')
+            .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[7 Days Back] of the DP Pool')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
@@ -9974,6 +10157,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1M)
             .withLabel('Change 1M')
+            .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[30 Days Back] of the DP Pool')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
