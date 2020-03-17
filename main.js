@@ -451,7 +451,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class='popup-data' *ngIf=\"displayed\" [style.top.px]=\"config.positionY\" [style.left.px]=\"config.positionX + 15\">\n  <div class=\"popup-header\">Operation: {{config.serieName}}</div>\n  <div class=\"popup-body\">\n    <div>Block: {{config.value.x}} KB</div>\n    <div>Latency: {{config.value.y}} ms</div>\n    <div>Size: {{config.value.z}}</div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class='popup-data' *ngIf=\"displayed\" [style.top.px]=\"config.positionY\" [style.left.px]=\"config.positionX + 15\">\n  <div class=\"popup-header\">Operation: {{config.serieName}}</div>\n  <div class=\"popup-body\">\n    <div>Block: {{config.value.x}} KB</div>\n    <div>Latency: {{config.value.y}} ms</div>\n    <div>Count: {{config.value.z.toString() | formatThousands}}</div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -490,7 +490,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\">\n  <div class=\"box-header with-border\">\n    <h3 class=\"box-title\">{{title}}</h3>\n    <div class=\"box-tools pull-right\">\n      <a type=\"button\" class=\"btn btn-block btn-default\" (click)=\"selectAll()\" placement=\"left\" tooltip=\"Select All\"><i class=\"fas fa-check-double\"></i></a>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <ng-select\n      #ngSelect\n      [items]=\"valueList\"\n      [multiple]=\"true\"\n      [closeOnSelect]=\"false\"\n      [hideSelected]=\"false\"\n      bindLabel=\"name\"\n      bindValue=\"id\"\n      placeholder=\"Select\"\n      [(ngModel)]=\"selectedValues\"\n      (change)=\"selectValue($event)\"\n    (clear)=\"clear()\">\n      <ng-template ng-multi-label-tmp let-items=\"items\" let-clear=\"clear\">\n        <div class=\"ng-value\" *ngFor=\"let item of items | slice:0:2\">\n          <span class=\"ng-value-label\">{{item.name}}</span>\n          <span class=\"ng-value-icon right\" (click)=\"clear(item)\" aria-hidden=\"true\">×</span>\n        </div>\n        <div class=\"ng-value\" *ngIf=\"items.length > 2\">\n          <span class=\"ng-value-label\">{{items.length - 2}} more...</span>\n        </div>\n      </ng-template>\n    </ng-select>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\">\n  <div class=\"box-header with-border\">\n    <h3 class=\"box-title\">{{title}}</h3>\n    <div class=\"box-tools pull-right\">\n      <a type=\"button\" class=\"btn btn-block btn-default\" (click)=\"selectAll()\" placement=\"left\" tooltip=\"Select All\"><i class=\"fas fa-check-square\"></i></a>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <ng-select\n      #ngSelect\n      [items]=\"valueList\"\n      [multiple]=\"true\"\n      [closeOnSelect]=\"false\"\n      [hideSelected]=\"false\"\n      bindLabel=\"name\"\n      bindValue=\"id\"\n      placeholder=\"Select\"\n      [(ngModel)]=\"selectedValues\"\n      (change)=\"selectValue($event)\"\n    (clear)=\"clear()\">\n      <ng-template ng-multi-label-tmp let-items=\"items\" let-clear=\"clear\">\n        <div class=\"ng-value\" *ngFor=\"let item of items | slice:0:2\">\n          <span class=\"ng-value-label\">{{item.name}}</span>\n          <span class=\"ng-value-icon right\" (click)=\"clear(item)\" aria-hidden=\"true\">×</span>\n        </div>\n        <div class=\"ng-value\" *ngIf=\"items.length > 2\">\n          <span class=\"ng-value-label\">{{items.length - 2}} more...</span>\n        </div>\n      </ng-template>\n    </ng-select>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -4948,6 +4948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_dtos_region_metric_dto__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/dtos/region-metric.dto */ "./src/app/common/models/dtos/region-metric.dto.ts");
 /* harmony import */ var _common_models_dtos_region_enum__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/models/dtos/region.enum */ "./src/app/common/models/dtos/region.enum.ts");
 /* harmony import */ var _common_storage_convert_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/storage-convert.pipe */ "./src/app/common/storage-convert.pipe.ts");
+/* harmony import */ var _period_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../period.service */ "./src/app/period.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4968,9 +4969,11 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent(metricService) {
+    function DashboardComponent(metricService, periodService) {
         this.metricService = metricService;
+        this.periodService = periodService;
         this.metricLabels = {};
         this.alertLabels = {};
         this.metrics = [];
@@ -5071,6 +5074,7 @@ var DashboardComponent = /** @class */ (function () {
             });
         });
         this.getMap();
+        this.periodService.announceEnablePeriod(false);
     };
     DashboardComponent.prototype.transformCapacityMetrics = function (regionData) {
         var _this = this;
@@ -5203,7 +5207,8 @@ var DashboardComponent = /** @class */ (function () {
         });
     };
     DashboardComponent.ctorParameters = function () { return [
-        { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] }
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] },
+        { type: _period_service__WEBPACK_IMPORTED_MODULE_8__["PeriodService"] }
     ]; };
     DashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -5211,7 +5216,8 @@ var DashboardComponent = /** @class */ (function () {
             template: __importDefault(__webpack_require__(/*! raw-loader!./dashboard.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/dashboard/dashboard.component.html")).default,
             styles: [__importDefault(__webpack_require__(/*! ./dashboard.component.css */ "./src/app/components/dashboard/dashboard.component.css")).default]
         }),
-        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"]])
+        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"],
+            _period_service__WEBPACK_IMPORTED_MODULE_8__["PeriodService"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -8165,6 +8171,9 @@ var AdaptersComponent = /** @class */ (function () {
         this.periodService.announceEnablePeriod(true);
         this.periodService.announcePeriod(this.currentPeriod);
     };
+    AdaptersComponent.prototype.ngOnDestroy = function () {
+        this.periodService.announceEnablePeriod(false);
+    };
     AdaptersComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.currentDataCenterId = id;
@@ -8260,9 +8269,9 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
     BlockSizeLatencyComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.metricService.getLatencyMetadata().subscribe(function (data) {
-            _this.dates = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setDatesFilters(data));
-            _this.systems = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setSystemFilters(data));
-            _this.pools = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setPoolFilters(data));
+            _this.dates = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setDatesFilters(data), _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["SortType"].DESC);
+            _this.systems = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setSystemFilters(data), _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["SortType"].ASC);
+            _this.pools = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setPoolFilters(data), _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["SortType"].ASC);
         });
     };
     BlockSizeLatencyComponent.prototype.setDatesFilters = function (data) {
@@ -8293,12 +8302,12 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
     BlockSizeLatencyComponent.prototype.onPoolChanged = function (selectedPools) {
         var _this = this;
         this.selectedPools = selectedPools.map(function (val) { return val; }) || [];
-        this.selectedSystems = this.systems.filter(function (systems) { return _this.isAllPoolsSelected(systems.id); }).map(function (system) { return system.id; });
+        this.selectedSystems = this.systems.filter(function (systems) { return _this.isAnyPoolSelected(systems.id); }).map(function (system) { return system.id; });
     };
-    BlockSizeLatencyComponent.prototype.isAllPoolsSelected = function (id) {
+    BlockSizeLatencyComponent.prototype.isAnyPoolSelected = function (id) {
         var _this = this;
         var allPools = this.pools.filter(function (pool) { return pool.systemId === id; });
-        return allPools.every(function (pool) { return _this.selectedPools.includes(pool.id); });
+        return allPools.some(function (pool) { return _this.selectedPools.includes(pool.id); });
     };
     BlockSizeLatencyComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] }
@@ -8454,8 +8463,6 @@ var BubbleChartComponent = /** @class */ (function () {
         return this.selectedSeries.some(function (selectedSerie) { return selectedSerie === serieName; });
     };
     BubbleChartComponent.prototype.displayPopup = function ($event, circle, serieName) {
-        console.log($event);
-        console.log(circle);
         this.displayedPopup = true;
         this.popupDetail = { positionX: $event.layerX, positionY: $event.layerY, value: circle.values, serieName: serieName };
     };
@@ -8893,42 +8900,59 @@ var YaxisComponent = /** @class */ (function () {
 /*!**************************************************************************************!*\
   !*** ./src/app/global-statistics/views/block-size-latency/filter-list-data.utils.ts ***!
   \**************************************************************************************/
-/*! exports provided: FilterListDataUtils */
+/*! exports provided: SortType, FilterListDataUtils */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SortType", function() { return SortType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FilterListDataUtils", function() { return FilterListDataUtils; });
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+var SortType;
+(function (SortType) {
+    SortType[SortType["ASC"] = 0] = "ASC";
+    SortType[SortType["DESC"] = 1] = "DESC";
+})(SortType || (SortType = {}));
 var FilterListDataUtils = /** @class */ (function () {
     function FilterListDataUtils() {
     }
-    FilterListDataUtils.sort = function (data) {
+    FilterListDataUtils.sort = function (data, type) {
         return data.sort(function (itemA, itemB) {
             if (isNaN(itemA.name.charCodeAt(Number('@')))) {
-                return FilterListDataUtils.compare(itemA, itemB);
+                return FilterListDataUtils.compare(itemA, itemB, type);
             }
             else {
                 var splitA = itemA.name.split('@');
                 var splitB = itemB.name.split('@');
-                var compareResult = FilterListDataUtils.compare(splitA[0], splitB[0]);
+                var compareResult = FilterListDataUtils.compare(splitA[0], splitB[0], type);
                 if (compareResult === 0) {
-                    return FilterListDataUtils.compare(splitA[1], splitB[1]);
+                    return FilterListDataUtils.compare(splitA[1], splitB[1], type);
                 }
                 return compareResult;
             }
         });
     };
-    FilterListDataUtils.compare = function (valueA, valueB) {
-        if (valueA > valueB) {
+    FilterListDataUtils.compare = function (valueA, valueB, type) {
+        if (type === SortType.ASC) {
+            if (valueA > valueB) {
+                return 1;
+            }
+            else if (valueA === valueB) {
+                return 0;
+            }
+            return -1;
+        }
+        else {
+            if (valueA > valueB) {
+                return -1;
+            }
+            else if (valueA === valueB) {
+                return 0;
+            }
             return 1;
         }
-        else if (valueA === valueB) {
-            return 0;
-        }
-        return -1;
     };
     return FilterListDataUtils;
 }());
@@ -9149,6 +9173,9 @@ var DpSlaComponent = /** @class */ (function () {
         this.periodService.announceEnablePeriod(true);
         this.periodService.announcePeriod(this.currentPeriod);
     };
+    DpSlaComponent.prototype.ngOnDestroy = function () {
+        this.periodService.announceEnablePeriod(false);
+    };
     DpSlaComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.currentDataCenterId = id;
@@ -9214,17 +9241,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric-type.enum */ "./src/app/common/models/metrics/system-metric-type.enum.ts");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _period_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../period.service */ "./src/app/period.service.ts");
-/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../bus.service */ "./src/app/global-statistics/bus.service.ts");
-/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
-/* harmony import */ var _formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../formatters/simple-formatter/simple-formatter.component */ "./src/app/global-statistics/formatters/simple-formatter/simple-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
-/* harmony import */ var _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../common/components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
-/* harmony import */ var _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/sasi-weighted-arithmetic-mean.utils */ "./src/app/global-statistics/utils/sasi-weighted-arithmetic-mean.utils.ts");
-/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
-/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
-/* harmony import */ var _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../bus.service */ "./src/app/global-statistics/bus.service.ts");
+/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
+/* harmony import */ var _formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../formatters/simple-formatter/simple-formatter.component */ "./src/app/global-statistics/formatters/simple-formatter/simple-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
+/* harmony import */ var _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../common/components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
+/* harmony import */ var _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/sasi-weighted-arithmetic-mean.utils */ "./src/app/global-statistics/utils/sasi-weighted-arithmetic-mean.utils.ts");
+/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+/* harmony import */ var _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9251,12 +9277,10 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-
 var HostGroupsCapacityComponent = /** @class */ (function () {
-    function HostGroupsCapacityComponent(route, router, periodService, metricService, bus, localStorageService) {
+    function HostGroupsCapacityComponent(route, router, metricService, bus, localStorageService) {
         this.route = route;
         this.router = router;
-        this.periodService = periodService;
         this.metricService = metricService;
         this.bus = bus;
         this.localStorageService = localStorageService;
@@ -9275,7 +9299,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withIndex('name')
             .withLabel('Host-Group')
             .withAltLabel('System')
-            .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_10__["RouteLinkFormatterComponent"])
+            .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__["RouteLinkFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
@@ -9283,7 +9307,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TIER)
             .withLabel('Tier')
             .withColumnTooltipText('Tier label - internal number of the Tier where VMware farm (HostGroup) is stored (reflects DP pool Tier)')
-            .withComponent(_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_14__["TierFormatterComponent"])
+            .withComponent(_formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_13__["TierFormatterComponent"])
             .withTooltipText('Tier')
             .withColumnWidth('6')
             .build());
@@ -9291,7 +9315,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
             .withLabel('Provisioned Capacity')
             .withColumnTooltipText('Total provisioned capacity to servers (to Host Group)')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Provisioned Capacity')
@@ -9300,7 +9324,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
             .withLabel('Used Capacity')
             .withColumnTooltipText('Used capacity of servers in TB')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Used Capacity')
@@ -9309,7 +9333,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
             .withLabel('Used Capacity [%}')
             .withColumnTooltipText('Used capacity of servers in percentage')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Used Capacity')
@@ -9318,7 +9342,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1D)
             .withLabel('Last Day Change')
             .withColumnTooltipText('Calculated change in GB [Today]-[Yesterday] of USED capacity')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('One Day Change')
@@ -9328,7 +9352,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1W)
             .withLabel('Last Week Change')
             .withColumnTooltipText('Calculated change in GB [Today]-[7 Days Back] of USED capacity')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('One Week Change')
@@ -9338,22 +9362,22 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].CAPACITY_CHANGE_1M)
             .withLabel('Last Month Change')
             .withColumnTooltipText('Calculated change in GB [Today]-[30 Days Back] of USED capacity')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('One Month Change')
             .withInfinity(false)
             .build());
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_9__["RowGroupTableComponent"];
-        this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_10__["RouteLinkFormatterComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_8__["RowGroupTableComponent"];
+        this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__["RouteLinkFormatterComponent"];
         this.options.isDataGrouped = true;
         this.options.highlightRow = true;
         this.options.labelColumnWidth = '13';
         this.options.valueColumnWidth = '12.9';
         this.options.storageNamePrefix = 'hostGroupCap';
         this.options.selectableRows = true;
-        this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_11__["SasiWeightedArithmeticMeanUtils"]();
-        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_12__["GroupSortImpl"]();
+        this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_10__["SasiWeightedArithmeticMeanUtils"]();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__["GroupSortImpl"]();
         this.options.columnAlign = 'right';
     }
     // Todo common with logical stats
@@ -9365,7 +9389,6 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             _this.bus.announceContext('host-group-capacity');
             _this.getTableData(id);
         });
-        this.periodService.announceEnablePeriod(false);
         this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) {
             _this.selectedRows = data.newValue;
         });
@@ -9384,39 +9407,37 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
     HostGroupsCapacityComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-        { type: _period_service__WEBPACK_IMPORTED_MODULE_4__["PeriodService"] },
-        { type: _metric_service__WEBPACK_IMPORTED_MODULE_5__["MetricService"] },
-        { type: _bus_service__WEBPACK_IMPORTED_MODULE_6__["BusService"] },
-        { type: ngx_store__WEBPACK_IMPORTED_MODULE_7__["LocalStorageService"] }
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_4__["MetricService"] },
+        { type: _bus_service__WEBPACK_IMPORTED_MODULE_5__["BusService"] },
+        { type: ngx_store__WEBPACK_IMPORTED_MODULE_6__["LocalStorageService"] }
     ]; };
     HostGroupsCapacityComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-host-groups-capacity',
             template: __importDefault(__webpack_require__(/*! raw-loader!./host-groups-capacity.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/host-groups-capacity/host-groups-capacity.component.html")).default,
             animations: [
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["trigger"])('slideInOut', [
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["style"])({ height: '0px', overflow: 'hidden', margin: '0' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["style"])({ 'height': '*', overflow: 'hidden', margin: '0' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["animate"])('500ms ease-in')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["animate"])('500ms ease-out'))
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["trigger"])('slideInOut', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["style"])({ height: '0px', overflow: 'hidden', margin: '0' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["style"])({ 'height': '*', overflow: 'hidden', margin: '0' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["animate"])('500ms ease-in')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["animate"])('500ms ease-out'))
                 ]),
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["trigger"])('iconRotate', [
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["style"])({ transform: 'rotate(0deg)' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["style"])({ transform: 'rotate(90deg)' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["animate"])('500ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["transition"])(':enter', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["animate"])('0ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["transition"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["animate"])('0ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_13__["animate"])('500ms'))
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["trigger"])('iconRotate', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["style"])({ transform: 'rotate(0deg)' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["style"])({ transform: 'rotate(90deg)' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["animate"])('500ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["transition"])(':enter', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["animate"])('0ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["transition"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["animate"])('0ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_12__["animate"])('500ms'))
                 ])
             ],
             styles: [__importDefault(__webpack_require__(/*! ./host-groups-capacity.component.css */ "./src/app/global-statistics/views/host-groups-capacity/host-groups-capacity.component.css")).default]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            _period_service__WEBPACK_IMPORTED_MODULE_4__["PeriodService"],
-            _metric_service__WEBPACK_IMPORTED_MODULE_5__["MetricService"],
-            _bus_service__WEBPACK_IMPORTED_MODULE_6__["BusService"],
-            ngx_store__WEBPACK_IMPORTED_MODULE_7__["LocalStorageService"]])
+            _metric_service__WEBPACK_IMPORTED_MODULE_4__["MetricService"],
+            _bus_service__WEBPACK_IMPORTED_MODULE_5__["BusService"],
+            ngx_store__WEBPACK_IMPORTED_MODULE_6__["LocalStorageService"]])
     ], HostGroupsCapacityComponent);
     return HostGroupsCapacityComponent;
 }());
@@ -9452,15 +9473,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric-type.enum */ "./src/app/common/models/metrics/system-metric-type.enum.ts");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _period_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../period.service */ "./src/app/period.service.ts");
-/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../bus.service */ "./src/app/global-statistics/bus.service.ts");
-/* harmony import */ var _formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../formatters/simple-formatter/simple-formatter.component */ "./src/app/global-statistics/formatters/simple-formatter/simple-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
-/* harmony import */ var _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../common/components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
-/* harmony import */ var _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/sasi-weighted-arithmetic-mean.utils */ "./src/app/global-statistics/utils/sasi-weighted-arithmetic-mean.utils.ts");
-/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
-/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../bus.service */ "./src/app/global-statistics/bus.service.ts");
+/* harmony import */ var _formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../formatters/simple-formatter/simple-formatter.component */ "./src/app/global-statistics/formatters/simple-formatter/simple-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
+/* harmony import */ var _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../common/components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
+/* harmony import */ var _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/sasi-weighted-arithmetic-mean.utils */ "./src/app/global-statistics/utils/sasi-weighted-arithmetic-mean.utils.ts");
+/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
+/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9485,12 +9505,10 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-
 var LogicalCapacityStatisticsComponent = /** @class */ (function () {
-    function LogicalCapacityStatisticsComponent(route, router, periodService, metricService, bus, localStorageService) {
+    function LogicalCapacityStatisticsComponent(route, router, metricService, bus, localStorageService) {
         this.route = route;
         this.router = router;
-        this.periodService = periodService;
         this.metricService = metricService;
         this.bus = bus;
         this.localStorageService = localStorageService;
@@ -9522,7 +9540,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex('name')
             .withLabel('Pool')
             .withAltLabel('System')
-            .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__["RouteLinkFormatterComponent"])
+            .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__["RouteLinkFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .withAltBorder(true)
@@ -9531,7 +9549,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY)
             .withLabel('Subs. Capacity')
             .withColumnTooltipText('Total Subscribed capacity (TB) of the DP Pool.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Subscribed Capacity')
@@ -9541,7 +9559,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC)
             .withLabel('Physical Subs.')
             .withColumnTooltipText('Physical Subscribed capacity (%) of the DP Pool.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Subscription')
@@ -9550,7 +9568,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC)
             .withLabel('Logical Subs.')
             .withColumnTooltipText('Logical Subscribed capacity (%) of the DP Pool.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Subscription')
@@ -9559,7 +9577,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC)
             .withLabel('Net Subs.')
             .withColumnTooltipText('NET Subscribed capacity (%) of the DP Pool.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Subscription')
@@ -9569,7 +9587,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY)
             .withLabel('Physical Capacity')
             .withColumnTooltipText('Total physical capacity (TB) of the DP Pool. Physical capacity = capacity of the real HW components (HDDs/FMDs/Spindles).')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Capacity (Physical data occupation on HDD/FMD/SSD)')
@@ -9578,7 +9596,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED)
             .withLabel('Physical Used')
             .withColumnTooltipText('Physically used capacity (TB) of the DP Pool. Meaning what is the physical occupation of data on HW components (HDDs/FMDs/Spindles) (so after compression and deduplication)')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Used')
@@ -9587,7 +9605,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE)
             .withLabel('Physical Free')
             .withColumnTooltipText('Physically free capacity (TB) of the DP Pool. Meaning what is the physical free space on HW components (HDDs/FMDs/Spindles)')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Free')
@@ -9596,7 +9614,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC)
             .withLabel('Physical Used')
             .withColumnTooltipText('Capacity which is physically stored on DP Pool HDD\'s in %')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Used')
@@ -9606,7 +9624,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY)
             .withLabel('Logical Capacity')
             .withColumnTooltipText('Logical capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2 (because of default compression on FMDs)')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Capacity')
@@ -9615,7 +9633,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED)
             .withLabel('Logical Used')
             .withColumnTooltipText('\tLogical Used capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Used')
@@ -9624,7 +9642,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE)
             .withLabel('Logical Free')
             .withColumnTooltipText('Logical Free capacity (TB) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Free')
@@ -9633,7 +9651,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
             .withLabel('Logical Used')
             .withColumnTooltipText('Logical Used capacity (%) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Used')
@@ -9643,7 +9661,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
             .withLabel('Net Capacity')
             .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Capacity] x [Total Saving Effect]')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Capacity (Virtual capacity without any saving mechanism)')
@@ -9652,7 +9670,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
             .withLabel('Net Used')
             .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Used] x [Total Saving Effect]')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Used')
@@ -9661,7 +9679,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE)
             .withLabel('Net Free')
             .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression). Calculated as [Physical Free] x [Total Saving Effect]')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Free')
@@ -9670,7 +9688,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
             .withLabel('Net Used')
             .withColumnTooltipText('NET capacity = Capacity without any saving mechanism (Dedup/Compression).')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Used')
@@ -9680,7 +9698,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO)
             .withLabel('Comp Ratio')
             .withColumnTooltipText('Compression Ratio of the FMD\'s in the DP Pool. Summary calculation is performed on pools with compression ration >0')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Compression Ratio')
@@ -9689,7 +9707,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO)
             .withLabel('Dedup Ratio')
             .withColumnTooltipText('Deduplication Ratio of the DP Pool. Summmary calculation is performed on pools with dedup ration >0)')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Deduplication Ratio')
@@ -9698,21 +9716,21 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT)
             .withLabel('Saving effect')
             .withColumnTooltipText('Total saving effect of Deduplication (SW feature) + Compression (FMD\'s). Summmary calculation is performed on pools with total saving effect >1)')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Total Saving Effect')
             .build());
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_8__["RowGroupTableComponent"];
-        this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__["RouteLinkFormatterComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_7__["RowGroupTableComponent"];
+        this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__["RouteLinkFormatterComponent"];
         this.options.isDataGrouped = true;
         this.options.highlightRow = true;
         this.options.labelColumnWidth = '10.5';
         this.options.valueColumnWidth = '4.52';
         this.options.storageNamePrefix = 'logicalCap';
         this.options.selectableRows = true;
-        this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_10__["SasiWeightedArithmeticMeanUtils"]();
-        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__["GroupSortImpl"]();
+        this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_9__["SasiWeightedArithmeticMeanUtils"]();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_10__["GroupSortImpl"]();
         this.options.columnAlign = 'right';
     }
     LogicalCapacityStatisticsComponent.prototype.ngOnInit = function () {
@@ -9726,7 +9744,6 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) {
             _this.selectedRows = data.newValue;
         });
-        this.periodService.announceEnablePeriod(false);
     };
     LogicalCapacityStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
@@ -9742,10 +9759,9 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
     LogicalCapacityStatisticsComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-        { type: _period_service__WEBPACK_IMPORTED_MODULE_4__["PeriodService"] },
-        { type: _metric_service__WEBPACK_IMPORTED_MODULE_5__["MetricService"] },
-        { type: _bus_service__WEBPACK_IMPORTED_MODULE_6__["BusService"] },
-        { type: ngx_store__WEBPACK_IMPORTED_MODULE_12__["LocalStorageService"] }
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_4__["MetricService"] },
+        { type: _bus_service__WEBPACK_IMPORTED_MODULE_5__["BusService"] },
+        { type: ngx_store__WEBPACK_IMPORTED_MODULE_11__["LocalStorageService"] }
     ]; };
     LogicalCapacityStatisticsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -9755,10 +9771,9 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            _period_service__WEBPACK_IMPORTED_MODULE_4__["PeriodService"],
-            _metric_service__WEBPACK_IMPORTED_MODULE_5__["MetricService"],
-            _bus_service__WEBPACK_IMPORTED_MODULE_6__["BusService"],
-            ngx_store__WEBPACK_IMPORTED_MODULE_12__["LocalStorageService"]])
+            _metric_service__WEBPACK_IMPORTED_MODULE_4__["MetricService"],
+            _bus_service__WEBPACK_IMPORTED_MODULE_5__["BusService"],
+            ngx_store__WEBPACK_IMPORTED_MODULE_11__["LocalStorageService"]])
     ], LogicalCapacityStatisticsComponent);
     return LogicalCapacityStatisticsComponent;
 }());
@@ -9917,6 +9932,9 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CPU, new _alert_rule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 80, 10000)));
         this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 30, 10000)));
     };
+    PerformanceStatisticsComponent.prototype.ngOnDestroy = function () {
+        this.periodService.announceEnablePeriod(false);
+    };
     PerformanceStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.currentDataCenterId = id;
@@ -9981,19 +9999,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var _period_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../period.service */ "./src/app/period.service.ts");
-/* harmony import */ var _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric-type.enum */ "./src/app/common/models/metrics/system-metric-type.enum.ts");
-/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
-/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../bus.service */ "./src/app/global-statistics/bus.service.ts");
-/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
-/* harmony import */ var _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../common/components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
-/* harmony import */ var _formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../formatters/simple-formatter/simple-formatter.component */ "./src/app/global-statistics/formatters/simple-formatter/simple-formatter.component.ts");
-/* harmony import */ var _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
-/* harmony import */ var _alert_rule__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../alert-rule */ "./src/app/global-statistics/alert-rule.ts");
-/* harmony import */ var _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/sasi-weighted-arithmetic-mean.utils */ "./src/app/global-statistics/utils/sasi-weighted-arithmetic-mean.utils.ts");
-/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
-/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
+/* harmony import */ var _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric-type.enum */ "./src/app/common/models/metrics/system-metric-type.enum.ts");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+/* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../bus.service */ "./src/app/global-statistics/bus.service.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../common/components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
+/* harmony import */ var _formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../formatters/simple-formatter/simple-formatter.component */ "./src/app/global-statistics/formatters/simple-formatter/simple-formatter.component.ts");
+/* harmony import */ var _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
+/* harmony import */ var _alert_rule__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../alert-rule */ "./src/app/global-statistics/alert-rule.ts");
+/* harmony import */ var _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/sasi-weighted-arithmetic-mean.utils */ "./src/app/global-statistics/utils/sasi-weighted-arithmetic-mean.utils.ts");
+/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
+/* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10021,164 +10038,162 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-
 var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
-    function PhysicalCapacityStatisticsComponent(route, router, periodService, metricService, bus, localStorageService) {
+    function PhysicalCapacityStatisticsComponent(route, router, metricService, bus, localStorageService) {
         this.route = route;
         this.router = router;
-        this.periodService = periodService;
         this.metricService = metricService;
         this.bus = bus;
         this.localStorageService = localStorageService;
         this.types = [
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_SUBS_PERC,
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_CAPACITY,
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].AVAILABLE_CAPACITY,
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].LOGICAL_USED_PERC,
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_USED_PERC,
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].COMPRESS_RATIO,
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L1,
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L2,
-            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L3
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_SUBS_PERC,
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY,
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].AVAILABLE_CAPACITY,
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED_PERC,
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC,
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].COMPRESS_RATIO,
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PREDICTION_L1,
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PREDICTION_L2,
+            _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PREDICTION_L3
         ];
         this.data = []; // Todo caching data by dataCenters
         this.aggregatedStats = new Array();
-        this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiTableOptions"]();
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
+        this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiTableOptions"]();
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex('name')
             .withLabel('Pool')
             .withAltLabel('System')
-            .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__["RouteLinkFormatterComponent"])
+            .withComponent(_common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_7__["RouteLinkFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .withAltBorder(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_CAPACITY)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_CAPACITY)
             .withLabel('Physical\nCapacity')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withColumnTooltipText('Total physical capacity (TB) of the DP Pool. Physical capacity = capacity of the real HW components (HDDs/FMDs/Spindles).')
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_SUBS_PERC)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_SUBS_PERC)
             .withLabel('Physical Subs.')
             .withColumnTooltipText('Physical Subscribed capacity (%) of the DP Pool.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].AVAILABLE_CAPACITY)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].AVAILABLE_CAPACITY)
             .withLabel('Available\n' +
             'Capacity')
             .withColumnTooltipText('Physically free capacity (TB) of the DP Pool. Meaning what is the physical free space on HW components (HDDs/FMDs/Spindles)')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].LOGICAL_USED_PERC)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].LOGICAL_USED_PERC)
             .withLabel('Logical Used')
             .withColumnTooltipText('Logical Used capacity (%) of the DP Pool. Logical capacity is "virtual" capacity for non-spindle disk pools. It is calculated as [physical capacity] x [constant]. In common cases [constant] is set to 2')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_USED_PERC)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC)
             .withLabel('Physical Used')
             .withColumnTooltipText('Capacity which is physically stored on DP Pool HDD\'s in %')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].COMPRESS_RATIO)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].COMPRESS_RATIO)
             .withLabel('Comp. Ratio')
             .withColumnTooltipText('Compression Ratio of the FMD\'s in the DP Pool. Summary calculation is performed on pools with compression ration >0')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withAltBorder(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L1)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PREDICTION_L1)
             .withLabel('Reach 80%')
             .withColumnTooltipText('Prediction how many days left before reaching 80% treshold of "Physical Used [%]" metric.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .withTooltipText('Days to reach 80% of "Physical Used"')
             .withInfinity(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L2)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PREDICTION_L2)
             .withLabel('Reach 85%')
             .withColumnTooltipText('Prediction how many days left before reaching 85% treshold of "Physical Used [%]" metric.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .withTooltipText('Days to reach 85% of "Physical Used"')
             .withInfinity(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PREDICTION_L3)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PREDICTION_L3)
             .withLabel('Reach 88%')
             .withColumnTooltipText('Prediction how many days left before reaching 88% treshold of "Physical Used [%]" metric.')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .withTooltipText('Days to reach 88% of "Physical Used"')
             .withInfinity(true)
             .withAltBorder(true)
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1D)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CAPACITY_CHANGE_1D)
             .withLabel('Change 1D')
             .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[Yesterday] of the DP Pool')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withInfinity(false)
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('One Day Change')
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1W)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CAPACITY_CHANGE_1W)
             .withLabel('Change 1W')
             .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[7 Days Back] of the DP Pool')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withInfinity(false)
             .withTooltipText('One Week Change')
             .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_7__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].CAPACITY_CHANGE_1M)
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CAPACITY_CHANGE_1M)
             .withLabel('Change 1M')
             .withColumnTooltipText('Calculated change of "Physical Capacity" in GB [Today]-[30 Days Back] of the DP Pool')
-            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SimpleFormatterComponent"])
+            .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withInfinity(false)
             .withTooltipText('One Month Change')
             .build());
-        this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_10__["AlertFormatterComponent"];
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_11__["RowGroupTableComponent"];
-        this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__["RouteLinkFormatterComponent"];
+        this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_9__["AlertFormatterComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_10__["RowGroupTableComponent"];
+        this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_7__["RouteLinkFormatterComponent"];
         this.options.isDataGrouped = true;
         this.options.highlightRow = true;
         this.options.labelColumnWidth = '13';
         this.options.valueColumnWidth = '6.65';
         this.options.storageNamePrefix = 'physicalCap';
         this.options.selectableRows = true;
-        this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_13__["SasiWeightedArithmeticMeanUtils"]();
-        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_14__["GroupSortImpl"]();
+        this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_12__["SasiWeightedArithmeticMeanUtils"]();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortImpl"]();
         this.options.columnAlign = 'right';
-        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_12__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_12__["Threshold"]('text-green', 80, 84.9)));
-        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_12__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_12__["Threshold"]('text-alert-yellow', 85, 88)));
-        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_12__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_4__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_12__["Threshold"]('text-red', 88, 10000)));
+        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["Threshold"]('text-green', 80, 84.9)));
+        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["Threshold"]('text-alert-yellow', 85, 88)));
+        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["Threshold"]('text-red', 88, 10000)));
     }
     // Todo common with logical stats
     PhysicalCapacityStatisticsComponent.prototype.ngOnInit = function () {
@@ -10189,7 +10204,6 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             _this.bus.announceContext('physical-capacity');
             _this.getTableData(id);
         });
-        this.periodService.announceEnablePeriod(false);
         this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) {
             _this.selectedRows = data.newValue;
         });
@@ -10208,39 +10222,37 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
     PhysicalCapacityStatisticsComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
-        { type: _period_service__WEBPACK_IMPORTED_MODULE_3__["PeriodService"] },
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"] },
-        { type: _bus_service__WEBPACK_IMPORTED_MODULE_6__["BusService"] },
-        { type: ngx_store__WEBPACK_IMPORTED_MODULE_15__["LocalStorageService"] }
+        { type: _bus_service__WEBPACK_IMPORTED_MODULE_5__["BusService"] },
+        { type: ngx_store__WEBPACK_IMPORTED_MODULE_14__["LocalStorageService"] }
     ]; };
     PhysicalCapacityStatisticsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-capacity-statistics',
             template: __importDefault(__webpack_require__(/*! raw-loader!./physical-capacity-statistics.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/views/physical-capacity-statistics/physical-capacity-statistics.component.html")).default,
             animations: [
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["trigger"])('slideInOut', [
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({ height: '0px', overflow: 'hidden', margin: '0' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({ 'height': '*', overflow: 'hidden', margin: '0' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('500ms ease-in')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('500ms ease-out'))
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('slideInOut', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ height: '0px', overflow: 'hidden', margin: '0' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ 'height': '*', overflow: 'hidden', margin: '0' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('500ms ease-in')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('500ms ease-out'))
                 ]),
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["trigger"])('iconRotate', [
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({ transform: 'rotate(0deg)' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({ transform: 'rotate(90deg)' })),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('500ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])(':enter', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('0ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('0ms')),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('500ms'))
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('iconRotate', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('false', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ transform: 'rotate(0deg)' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('true', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ transform: 'rotate(90deg)' })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('1 => 0', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('500ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])(':enter', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('0ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])(':leave', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('0ms')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('0 => 1', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('500ms'))
                 ])
             ],
             styles: [__importDefault(__webpack_require__(/*! ./physical-capacity-statistics.component.css */ "./src/app/global-statistics/views/physical-capacity-statistics/physical-capacity-statistics.component.css")).default, __importDefault(__webpack_require__(/*! ../../global-statistics.component.css */ "./src/app/global-statistics/global-statistics.component.css")).default]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _period_service__WEBPACK_IMPORTED_MODULE_3__["PeriodService"],
             _metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"],
-            _bus_service__WEBPACK_IMPORTED_MODULE_6__["BusService"],
-            ngx_store__WEBPACK_IMPORTED_MODULE_15__["LocalStorageService"]])
+            _bus_service__WEBPACK_IMPORTED_MODULE_5__["BusService"],
+            ngx_store__WEBPACK_IMPORTED_MODULE_14__["LocalStorageService"]])
     ], PhysicalCapacityStatisticsComponent);
     return PhysicalCapacityStatisticsComponent;
 }());
