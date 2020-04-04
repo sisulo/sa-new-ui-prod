@@ -412,7 +412,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<section class=\"content\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <app-filter-list *ngIf=\"dates !== undefined\" [valueList]=\"dates\" title=\"Dates\"\n                       (valueListChange)=\"onDatesChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"systems !== undefined\" [valueList]=\"systems\" [selectedValues]=\"selectedSystems\" title=\"Systems\"\n                       (valueListChange)=\"onSystemChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"pools !== undefined\" [valueList]=\"pools\" [selectedValues]=\"selectedPools\" title=\"Pools\"\n                       (valueListChange)=\"onPoolChanged($event)\"></app-filter-list>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-bubble-chart [dates]=\"selectedDates\" [poolIds]=\"selectedPools\"></app-bubble-chart>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"content\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <app-filter-list *ngIf=\"dates !== undefined\" [valueList]=\"dates\" title=\"Dates\"\n                       (valueListChange)=\"onDatesChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"systems !== undefined\" [valueList]=\"systems\" [selectedValues]=\"selectedSystems\"\n                       title=\"Systems\"\n                       (valueListChange)=\"onSystemChanged($event)\"></app-filter-list>\n    </div>\n\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"pools !== undefined\" [valueList]=\"pools\" [selectedValues]=\"selectedPools\" title=\"Pools\"\n                       (valueListChange)=\"onPoolChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n      <div class=\"box\">\n        <div class=\"box-header with-border\">\n          <h3 class=\"box-title\">SLA Filters</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"col-md-3\" *ngFor=\"let item of predefinedFilters;let i = index;\">\n            <button class=\"btn btn-sm {{filterColors[i]}}\" [class.active]=\"isSelected(i)\" [class.disabled]=\"!isSelected(i)\"\n                    (click)=\"onSelectFilter(i)\">{{filtersName[i]}}</button>\n\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"blockSizes !== undefined\" [valueList]=\"blockSizes\" [selectedValues]=\"selectedBlockSizes\"\n                       title=\"Block size\"\n                       (valueListChange)=\"onBlockSizeChange($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"latencies !== undefined\" [valueList]=\"latencies\" [selectedValues]=\"selectedLatencies\"\n                       title=\"Latency\"\n                       (valueListChange)=\"onLatenciesChanged($event)\"></app-filter-list>\n    </div>\n\n  </div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Total Capacity History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-bubble-chart [dates]=\"selectedDates\" [poolIds]=\"selectedPools\" [blockSizes]=\"selectedBlockSizes\"\n                            [latencies]=\"selectedLatencies\"></app-bubble-chart>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</section>\n");
 
 /***/ }),
 
@@ -451,7 +451,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class='popup-data' *ngIf=\"displayed\" [style.top.px]=\"config.positionY\" [style.left.px]=\"config.positionX + 15\">\n  <div class=\"popup-header\">Operation: {{config.serieName}}</div>\n  <div class=\"popup-body\">\n    <div>Block: {{config.value.x}} KB</div>\n    <div>Latency: {{config.value.y}} ms</div>\n    <div>Count: {{config.value.z.toString() | formatThousands}}</div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class='popup-data' *ngIf=\"displayed\" [style.top.px]=\"config.positionY\" [style.left.px]=\"config.positionX + 15\">\n  <div class=\"popup-header\">Operation: {{config.serieName}}</div>\n  <div class=\"popup-body\">\n    <div>Block: {{config.value.x}} KB</div>\n    <div>Latency: {{config.value.y}} ms</div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -8045,7 +8045,7 @@ var SumValueServiceImpl = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  width: 25% !important;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n:host /deep/ .groupped-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYWRhcHRlcnMvYWRhcHRlcnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGVBQWU7RUFDZixnQ0FBd0I7VUFBeEIsd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9hZGFwdGVycy9hZGFwdGVycy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbCB7XG4gIHdpZHRoOiAzNS43NSUgIWltcG9ydGFudDtcbn1cblxuLmNvbC1sYWJlbCB7XG4gIHdpZHRoOiAyNSUgIWltcG9ydGFudDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6IDEzcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cblxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOHB4O1xuICBtYXJnaW4tbGVmdDogM3B4O1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".col {\n  width: 35.75% !important;\n}\n\n.col-label {\n  width: 25% !important;\n}\n\n.sorting {\n  font-size: 13px;\n  transform: rotate(90deg);\n}\n\n:host /deep/ .groupped-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYWRhcHRlcnMvYWRhcHRlcnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGVBQWU7RUFDZix3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtBQUNsQiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2FkYXB0ZXJzL2FkYXB0ZXJzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29sIHtcbiAgd2lkdGg6IDM1Ljc1JSAhaW1wb3J0YW50O1xufVxuXG4uY29sLWxhYmVsIHtcbiAgd2lkdGg6IDI1JSAhaW1wb3J0YW50O1xufVxuXG4uc29ydGluZyB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMS4xcmVtO1xufVxuXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogNjAwO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy11bml0IHtcbiAgZm9udC1zaXplOiA4cHg7XG4gIG1hcmdpbi1sZWZ0OiAzcHg7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -8224,7 +8224,7 @@ var AdaptersComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2Jsb2NrLXNpemUtbGF0ZW5jeS9ibG9jay1zaXplLWxhdGVuY3kuY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("button {\n  /*width: 100%;*/\n  border-right-width: 2px;\n}\nbutton.disabled:hover {\n  cursor: pointer !important;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2Jsb2NrLXNpemUtbGF0ZW5jeS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZUFBZTtFQUNmLHVCQUF1QjtBQUN6QjtBQUNBO0VBQ0UsMEJBQTBCO0FBQzVCIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvYmxvY2stc2l6ZS1sYXRlbmN5L2Jsb2NrLXNpemUtbGF0ZW5jeS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYnV0dG9uIHtcbiAgLyp3aWR0aDogMTAwJTsqL1xuICBib3JkZXItcmlnaHQtd2lkdGg6IDJweDtcbn1cbmJ1dHRvbi5kaXNhYmxlZDpob3ZlciB7XG4gIGN1cnNvcjogcG9pbnRlciAhaW1wb3J0YW50O1xufVxuIl19 */");
 
 /***/ }),
 
@@ -8256,15 +8256,46 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+var Quadrant;
+(function (Quadrant) {
+    Quadrant[Quadrant["ONE"] = 0] = "ONE";
+    Quadrant[Quadrant["TWO"] = 1] = "TWO";
+    Quadrant[Quadrant["THREE"] = 2] = "THREE";
+    Quadrant[Quadrant["FOUR"] = 3] = "FOUR";
+})(Quadrant || (Quadrant = {}));
 var BlockSizeLatencyComponent = /** @class */ (function () {
     function BlockSizeLatencyComponent(metricService) {
         this.metricService = metricService;
+        this.latencies = [];
+        this.blockSizes = [];
         this.dates = [];
         this.systems = [];
         this.pools = [];
         this.selectedDates = [];
         this.selectedSystems = [];
         this.selectedPools = [];
+        this.selectedLatencies = [];
+        this.selectedBlockSizes = [];
+        this.selectedFilters = [];
+        this.predefinedFilters = [];
+        this.filtersName = [];
+        this.filterColors = [];
+        this.predefinedFilters[Quadrant.ONE] = { blockSize: [0.5, 1, 2, 4, 8, 16, 32], latency: [0.0625, 0.125, 0.25, 0.5, 1] };
+        this.predefinedFilters[Quadrant.TWO] = { blockSize: [64, 128, 256, 512, 1024], latency: [0.0625, 0.125, 0.25, 0.5, 1] };
+        this.predefinedFilters[Quadrant.THREE] = { blockSize: [64, 128, 256, 512, 1024], latency: [2, 4, 8, 16, 32, 64, 128, 256] };
+        this.predefinedFilters[Quadrant.FOUR] = { blockSize: [0.5, 1, 2, 4, 8, 16, 32], latency: [2, 4, 8, 16, 32, 64, 128, 256] };
+        this.filtersName[Quadrant.ONE] = 'SLA-OK-CUS';
+        this.filtersName[Quadrant.TWO] = 'SLA-OK-SUP';
+        this.filtersName[Quadrant.THREE] = 'BREACH-CUS';
+        this.filtersName[Quadrant.FOUR] = 'BREACH-SUP';
+        this.filterColors[Quadrant.ONE] = 'btn-success';
+        this.filterColors[Quadrant.TWO] = 'btn-success';
+        this.filterColors[Quadrant.THREE] = 'btn-danger';
+        this.filterColors[Quadrant.FOUR] = 'btn-danger';
+        this.latencies = this.setNumberValues([0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256]);
+        this.blockSizes = this.setNumberValues([0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]);
+        this.selectedBlockSizes = this.blockSizes.map(function (value) { return value.id; });
+        this.selectedLatencies = this.latencies.map(function (value) { return value.id; });
     }
     BlockSizeLatencyComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -8272,6 +8303,11 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
             _this.dates = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setDatesFilters(data), _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["SortType"].DESC);
             _this.systems = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setSystemFilters(data), _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["SortType"].ASC);
             _this.pools = _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["FilterListDataUtils"].sort(_this.setPoolFilters(data), _filter_list_data_utils__WEBPACK_IMPORTED_MODULE_2__["SortType"].ASC);
+        });
+    };
+    BlockSizeLatencyComponent.prototype.setNumberValues = function (data) {
+        return data.map(function (value) {
+            return { id: value, name: value.toString(), systemId: null };
         });
     };
     BlockSizeLatencyComponent.prototype.setDatesFilters = function (data) {
@@ -8292,6 +8328,12 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
     BlockSizeLatencyComponent.prototype.onDatesChanged = function (selectedDates) {
         this.selectedDates = selectedDates.map(function (val) { return val; });
     };
+    BlockSizeLatencyComponent.prototype.onLatenciesChanged = function (selectedValues) {
+        this.selectedLatencies = selectedValues.map(function (val) { return val; });
+    };
+    BlockSizeLatencyComponent.prototype.onBlockSizeChange = function (selectedValues) {
+        this.selectedBlockSizes = selectedValues.map(function (val) { return val; });
+    };
     BlockSizeLatencyComponent.prototype.onSystemChanged = function (selectedSystems) {
         var _this = this;
         this.selectedSystems = selectedSystems.map(function (val) { return parseInt(val, 10); });
@@ -8299,10 +8341,31 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
         this.selectedSystems.forEach(function (system) { return _this.selectedPools = _this.selectedPools.concat(_this.pools.filter(function (pool) { return pool.systemId === system; })
             .map(function (pool) { return pool.id; })); });
     };
+    BlockSizeLatencyComponent.prototype.onSelectFilter = function (quadrant) {
+        var _this = this;
+        if (!this.selectedFilters.includes(quadrant)) {
+            this.selectedFilters.push(quadrant);
+        }
+        else {
+            this.selectedFilters = this.selectedFilters.filter(function (value) { return value !== quadrant; });
+        }
+        this.selectedLatencies = [];
+        this.selectedBlockSizes = [];
+        this.selectedFilters.forEach(function (filter) {
+            _this.selectedLatencies = _this.selectedLatencies.concat(_this.predefinedFilters[filter].latency);
+            _this.selectedBlockSizes = _this.selectedBlockSizes.concat(_this.predefinedFilters[filter].blockSize);
+        });
+        console.log(this.selectedFilters);
+        console.log(this.selectedLatencies);
+        console.log(this.selectedBlockSizes);
+    };
     BlockSizeLatencyComponent.prototype.onPoolChanged = function (selectedPools) {
         var _this = this;
         this.selectedPools = selectedPools.map(function (val) { return val; }) || [];
         this.selectedSystems = this.systems.filter(function (systems) { return _this.isAnyPoolSelected(systems.id); }).map(function (system) { return system.id; });
+    };
+    BlockSizeLatencyComponent.prototype.isSelected = function (quadrant) {
+        return this.selectedFilters.includes(quadrant);
     };
     BlockSizeLatencyComponent.prototype.isAnyPoolSelected = function (id) {
         var _this = this;
@@ -8401,7 +8464,7 @@ var BubbleChartComponent = /** @class */ (function () {
     BubbleChartComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
         if (this.poolIds.length > 0 && this.dates.length > 0) {
-            this.metricService.getLatencyData(this.poolIds, this.dates, this.operations).subscribe(function (data) {
+            this.metricService.getLatencyData(this.poolIds, this.dates, this.operations, this.blockSizes, this.latencies).subscribe(function (data) {
                 _this.chartData.series = _this.transformData(data);
                 _this.selectedSeries = _this.chartData.series.map(function (serie) { return serie.name; });
             });
@@ -8500,6 +8563,14 @@ var BubbleChartComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
     ], BubbleChartComponent.prototype, "operations", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], BubbleChartComponent.prototype, "blockSizes", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], BubbleChartComponent.prototype, "latencies", void 0);
     BubbleChartComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-bubble-chart',
@@ -9223,7 +9294,7 @@ var DpSlaComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 5px;*/\n  /*padding-bottom: 5px;*/\n  padding-right: 2px;\n}\n\n.alert-red {\n  /*color: #900020;*/\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n/* TODO duplicated css definitions in all statistics component*/\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvaG9zdC1ncm91cHMtY2FwYWNpdHkvaG9zdC1ncm91cHMtY2FwYWNpdHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG9CQUFvQjtFQUNwQix1QkFBdUI7RUFDdkIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQSwrREFBK0Q7O0FBQy9EOztFQUVFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixnQkFBZ0I7QUFDbEI7O0FBRUE7O0VBRUUsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGVBQWU7RUFDZixnQ0FBd0I7VUFBeEIsd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQWdCO0VBQWhCLGdCQUFnQjtFQUNoQixXQUFXO0VBQ1gsV0FBVztBQUNiIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvaG9zdC1ncm91cHMtY2FwYWNpdHkvaG9zdC1ncm91cHMtY2FwYWNpdHkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDVweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiA1cHg7Ki9cbiAgcGFkZGluZy1yaWdodDogMnB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgLypjb2xvcjogIzkwMDAyMDsqL1xufVxuXG4uYWxlcnQtYW1iZXIge1xuICBjb2xvcjogI2RiOGIwYjtcbn1cblxuLmNvbCB7XG4gIHdpZHRoOiA4Ljg4JTtcbn1cblxuLyogVE9ETyBkdXBsaWNhdGVkIGNzcyBkZWZpbml0aW9ucyBpbiBhbGwgc3RhdGlzdGljcyBjb21wb25lbnQqL1xuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdmFsdWUsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zaXplOiAxLjFyZW07XG59XG5cbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXN0eWxlOiBpdGFsaWM7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59XG5cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXVuaXQsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6IDEzcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbn1cblxuLnN0aWNreS1ib3R0b20ge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDBweDtcbiAgei1pbmRleDogMTA7XG59XG5cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 5px;*/\n  /*padding-bottom: 5px;*/\n  padding-right: 2px;\n}\n\n.alert-red {\n  /*color: #900020;*/\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n/* TODO duplicated css definitions in all statistics component*/\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvaG9zdC1ncm91cHMtY2FwYWNpdHkvaG9zdC1ncm91cHMtY2FwYWNpdHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG9CQUFvQjtFQUNwQix1QkFBdUI7RUFDdkIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0Usa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQSwrREFBK0Q7O0FBQy9EOztFQUVFLGlCQUFpQjtBQUNuQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixnQkFBZ0I7QUFDbEI7O0FBRUE7O0VBRUUsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGVBQWU7RUFDZix3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBZ0I7RUFBaEIsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxXQUFXO0FBQ2IiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9ob3N0LWdyb3Vwcy1jYXBhY2l0eS9ob3N0LWdyb3Vwcy1jYXBhY2l0eS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5jb2wtdmFsIHtcbiAgLypwYWRkaW5nLXRvcDogNXB4OyovXG4gIC8qcGFkZGluZy1ib3R0b206IDVweDsqL1xuICBwYWRkaW5nLXJpZ2h0OiAycHg7XG59XG5cbi5hbGVydC1yZWQge1xuICAvKmNvbG9yOiAjOTAwMDIwOyovXG59XG5cbi5hbGVydC1hbWJlciB7XG4gIGNvbG9yOiAjZGI4YjBiO1xufVxuXG4uY29sIHtcbiAgd2lkdGg6IDguODglO1xufVxuXG4vKiBUT0RPIGR1cGxpY2F0ZWQgY3NzIGRlZmluaXRpb25zIGluIGFsbCBzdGF0aXN0aWNzIGNvbXBvbmVudCovXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSxcbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cblxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdW5pdCxcbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOHB4O1xuICBtYXJnaW4tbGVmdDogM3B4O1xufVxuXG4uc29ydGluZyB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xufVxuXG4uc3RpY2t5LWJvdHRvbSB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIGJvdHRvbTogMHB4O1xuICB6LWluZGV4OiAxMDtcbn1cblxuIl19 */");
 
 /***/ }),
 
@@ -9455,7 +9526,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 1px;*/\n  /*padding-bottom: 1px;*/\n  padding-right: 5px;\n}\n\n.alert-red {\n  color: #900020;\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvbG9naWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0JBQW9CO0VBQ3BCLHVCQUF1QjtFQUN2QixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTs7RUFFRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsZ0JBQWdCO0FBQ2xCOztBQUVBOztFQUVFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsZ0NBQXdCO1VBQXhCLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUFnQjtFQUFoQixnQkFBZ0I7RUFDaEIsV0FBVztFQUNYLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9sb2dpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDFweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiAxcHg7Ki9cbiAgcGFkZGluZy1yaWdodDogNXB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgY29sb3I6ICM5MDAwMjA7XG59XG5cbi5hbGVydC1hbWJlciB7XG4gIGNvbG9yOiAjZGI4YjBiO1xufVxuXG4uY29sIHtcbiAgd2lkdGg6IDguODglO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy12YWx1ZSxcbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cblxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbn1cblxuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdW5pdCxcbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOHB4O1xuICBtYXJnaW4tbGVmdDogM3B4O1xufVxuXG4uc29ydGluZyB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xufVxuXG4uc3RpY2t5LWJvdHRvbSB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIGJvdHRvbTogMHB4O1xuICB6LWluZGV4OiAxMDtcbn1cblxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 1px;*/\n  /*padding-bottom: 1px;*/\n  padding-right: 5px;\n}\n\n.alert-red {\n  color: #900020;\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvbG9naWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0JBQW9CO0VBQ3BCLHVCQUF1QjtFQUN2QixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7QUFDZDs7QUFFQTs7RUFFRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsZ0JBQWdCO0FBQ2xCOztBQUVBOztFQUVFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2Ysd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQWdCO0VBQWhCLGdCQUFnQjtFQUNoQixXQUFXO0VBQ1gsV0FBVztBQUNiIiwiZmlsZSI6InNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvbG9naWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL2xvZ2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5jb2wtdmFsIHtcbiAgLypwYWRkaW5nLXRvcDogMXB4OyovXG4gIC8qcGFkZGluZy1ib3R0b206IDFweDsqL1xuICBwYWRkaW5nLXJpZ2h0OiA1cHg7XG59XG5cbi5hbGVydC1yZWQge1xuICBjb2xvcjogIzkwMDAyMDtcbn1cblxuLmFsZXJ0LWFtYmVyIHtcbiAgY29sb3I6ICNkYjhiMGI7XG59XG5cbi5jb2wge1xuICB3aWR0aDogOC44OCU7XG59XG5cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXZhbHVlLFxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMS4xcmVtO1xufVxuXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogNjAwO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy11bml0LFxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy11bml0IHtcbiAgZm9udC1zaXplOiA4cHg7XG4gIG1hcmdpbi1sZWZ0OiAzcHg7XG59XG5cbi5zb3J0aW5nIHtcbiAgZm9udC1zaXplOiAxM3B4O1xuICB0cmFuc2Zvcm06IHJvdGF0ZSg5MGRlZyk7XG59XG5cbi5zdGlja3ktYm90dG9tIHtcbiAgcG9zaXRpb246IHN0aWNreTtcbiAgYm90dG9tOiAwcHg7XG4gIHotaW5kZXg6IDEwO1xufVxuXG4iXX0= */");
 
 /***/ }),
 
@@ -9982,7 +10053,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 5px;*/\n  /*padding-bottom: 5px;*/\n  padding-right: 2px;\n}\n\n.alert-red {\n  color: #900020;\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n/* TODO duplicated css definitions in all statistics component*/\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9waHlzaWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBb0I7RUFDcEIsdUJBQXVCO0VBQ3ZCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUdBLCtEQUErRDs7QUFDL0Q7O0VBRUUsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFFQTs7RUFFRSxjQUFjO0VBQ2QsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGdDQUF3QjtVQUF4Qix3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBZ0I7RUFBaEIsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxXQUFXO0FBQ2IiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy92aWV3cy9waHlzaWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzL3BoeXNpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IC9kZWVwLyAuY29sLXZhbCB7XG4gIC8qcGFkZGluZy10b3A6IDVweDsqL1xuICAvKnBhZGRpbmctYm90dG9tOiA1cHg7Ki9cbiAgcGFkZGluZy1yaWdodDogMnB4O1xufVxuXG4uYWxlcnQtcmVkIHtcbiAgY29sb3I6ICM5MDAwMjA7XG59XG5cbi5hbGVydC1hbWJlciB7XG4gIGNvbG9yOiAjZGI4YjBiO1xufVxuXG4uY29sIHtcbiAgd2lkdGg6IDguODglO1xufVxuXG5cbi8qIFRPRE8gZHVwbGljYXRlZCBjc3MgZGVmaW5pdGlvbnMgaW4gYWxsIHN0YXRpc3RpY3MgY29tcG9uZW50Ki9cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXZhbHVlLFxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy12YWx1ZSB7XG4gIGZvbnQtc2l6ZTogMS4xcmVtO1xufVxuXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogNjAwO1xufVxuXG46aG9zdCAvZGVlcC8gLmdyb3VwcGVkLWRhdGEgLm1ldHJpYy11bml0LFxuOmhvc3QgL2RlZXAvIC5hZ2dyZWdhdGVkLWRhdGEgLm1ldHJpYy11bml0IHtcbiAgZm9udC1zaXplOiA4cHg7XG4gIG1hcmdpbi1sZWZ0OiAzcHg7XG59XG5cbi5zb3J0aW5nIHtcbiAgZm9udC1zaXplOiAxM3B4O1xuICB0cmFuc2Zvcm06IHJvdGF0ZSg5MGRlZyk7XG59XG5cbi5zdGlja3ktYm90dG9tIHtcbiAgcG9zaXRpb246IHN0aWNreTtcbiAgYm90dG9tOiAwcHg7XG4gIHotaW5kZXg6IDEwO1xufVxuXG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .col-val {\n  /*padding-top: 5px;*/\n  /*padding-bottom: 5px;*/\n  padding-right: 2px;\n}\n\n.alert-red {\n  color: #900020;\n}\n\n.alert-amber {\n  color: #db8b0b;\n}\n\n.col {\n  width: 8.88%;\n}\n\n/* TODO duplicated css definitions in all statistics component*/\n\n:host /deep/ .groupped-data .metric-value,\n:host /deep/ .aggregated-data .metric-value {\n  font-size: 1.1rem;\n}\n\n:host /deep/ .aggregated-data .metric-value {\n  font-style: italic;\n  font-weight: 600;\n}\n\n:host /deep/ .groupped-data .metric-unit,\n:host /deep/ .aggregated-data .metric-unit {\n  font-size: 8px;\n  margin-left: 3px;\n}\n\n.sorting {\n  font-size: 13px;\n  transform: rotate(90deg);\n}\n\n.sticky-bottom {\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0px;\n  z-index: 10;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3Mvdmlld3MvcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy9waHlzaWNhbC1jYXBhY2l0eS1zdGF0aXN0aWNzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBb0I7RUFDcEIsdUJBQXVCO0VBQ3ZCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUdBLCtEQUErRDs7QUFDL0Q7O0VBRUUsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGdCQUFnQjtBQUNsQjs7QUFFQTs7RUFFRSxjQUFjO0VBQ2QsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUFnQjtFQUFoQixnQkFBZ0I7RUFDaEIsV0FBVztFQUNYLFdBQVc7QUFDYiIsImZpbGUiOiJzcmMvYXBwL2dsb2JhbC1zdGF0aXN0aWNzL3ZpZXdzL3BoeXNpY2FsLWNhcGFjaXR5LXN0YXRpc3RpY3MvcGh5c2ljYWwtY2FwYWNpdHktc3RhdGlzdGljcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5jb2wtdmFsIHtcbiAgLypwYWRkaW5nLXRvcDogNXB4OyovXG4gIC8qcGFkZGluZy1ib3R0b206IDVweDsqL1xuICBwYWRkaW5nLXJpZ2h0OiAycHg7XG59XG5cbi5hbGVydC1yZWQge1xuICBjb2xvcjogIzkwMDAyMDtcbn1cblxuLmFsZXJ0LWFtYmVyIHtcbiAgY29sb3I6ICNkYjhiMGI7XG59XG5cbi5jb2wge1xuICB3aWR0aDogOC44OCU7XG59XG5cblxuLyogVE9ETyBkdXBsaWNhdGVkIGNzcyBkZWZpbml0aW9ucyBpbiBhbGwgc3RhdGlzdGljcyBjb21wb25lbnQqL1xuOmhvc3QgL2RlZXAvIC5ncm91cHBlZC1kYXRhIC5tZXRyaWMtdmFsdWUsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXZhbHVlIHtcbiAgZm9udC1zaXplOiAxLjFyZW07XG59XG5cbjpob3N0IC9kZWVwLyAuYWdncmVnYXRlZC1kYXRhIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXN0eWxlOiBpdGFsaWM7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG59XG5cbjpob3N0IC9kZWVwLyAuZ3JvdXBwZWQtZGF0YSAubWV0cmljLXVuaXQsXG46aG9zdCAvZGVlcC8gLmFnZ3JlZ2F0ZWQtZGF0YSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDhweDtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLnNvcnRpbmcge1xuICBmb250LXNpemU6IDEzcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbn1cblxuLnN0aWNreS1ib3R0b20ge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICBib3R0b206IDBweDtcbiAgei1pbmRleDogMTA7XG59XG5cbiJdfQ== */");
 
 /***/ }),
 
@@ -10452,8 +10523,8 @@ var MetricService = /** @class */ (function () {
         url = url + this.convertTypeToUrlParams('types', types);
         return this.http.get(url);
     };
-    MetricService.prototype.getLatencyData = function (poolIdsIn, datesIn, operationTypes) {
-        var request = { operations: operationTypes, dates: datesIn, poolIds: poolIdsIn };
+    MetricService.prototype.getLatencyData = function (poolIdsIn, datesIn, operationTypes, blockSizes, latencies) {
+        var request = { operations: operationTypes, dates: datesIn, poolIds: poolIdsIn, latencies: latencies, blockSizes: blockSizes };
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/latency/data');
         var headersParams = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' });
         return this.http.post(url, request, { headers: headersParams });
@@ -10619,7 +10690,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/data/www/sa-new-ui-ts/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /mnt/wd_data/www/sa-new-ui-ts/src/main.ts */"./src/main.ts");
 
 
 /***/ })
