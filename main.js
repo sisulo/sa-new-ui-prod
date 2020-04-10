@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<app-side-menu></app-side-menu>\n<ngx-spinner\n  bdColor=\"rgba(34, 45, 50, 0.5)\"\n  size=\"medium\"\n  color=\"#3c8dbc\"\n  type=\"line-scale\"\n  [fullScreen]=\"false\"\n  fullScreen=\"false\"\n>\n  <p style=\"color: #3c8dbc\"> Loading... </p>\n</ngx-spinner>\n<div class=\"content-wrapper\">\n  <section class=\"container-fluid\">\n    <router-outlet></router-outlet>\n  </section>\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<app-side-menu></app-side-menu>\n<ngx-spinner\n  bdColor=\"rgba(34, 45, 50, 0.5)\"\n  size=\"medium\"\n  color=\"#3c8dbc\"\n  type=\"line-scale\"\n  [fullScreen]=\"false\"\n  fullScreen=\"false\"\n>\n  <p style=\"color: #3c8dbc\"> Loading... </p>\n</ngx-spinner>\n<div class=\"content-wrapper\">\n <a> <app-breadcrumb></app-breadcrumb></a>\n  <section class=\"container-fluid\">\n    <router-outlet></router-outlet>\n  </section>\n</div>\n\n");
 
 /***/ }),
 
@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"sasi-table-container\"\n     [style]=\"style\">\n  <div class=\"sasi-table-header\">\n    <div class=\"sasi-table-item sasi-table-controls\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\"\n         class=\"sasi-table-item sasi-table-alerts\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <div [tooltip]=\"getColumnTooltipText(columnOption.index)\"\n         *ngFor=\"let columnOption of options.columns\"\n         class=\"sasi-table-item sasi-table-data\">\n      <span>\n        <span (click)=\"setSort(columnOption, false)\"\n              class=\"link sasi-header-label\">{{getColumnLabel(columnOption.index)}}</span>\n        <span class=\"sasi-header-icon\">\n          <i [ngClass]=\"getSortIconClass(columnOption.index, false)\"\n             class=\"text-muted sorting sort-icon-right\"></i>\n        </span>\n      </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <span *ngIf=\"columnOption.altSortEnable === true\"\n            (click)=\"setSort(columnOption, true)\"\n            class=\"link sasi-header-icon\">\n        <i class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span>\n        <i class='sorting sort-icon-right'\n           [ngClass]=\"getSortIconClass(columnOption.index, true)\"></i>\n      </span>\n    </div>\n  </div>\n  <app-row-dynamic-table *ngFor=\"let row of data\"\n                         [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                         [class.striped-row]=\"!options.isDataGrouped\"\n                         [class.not-data-grouped]=\"!options.isDataGrouped\"\n                         [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                         [options]=\"options\">\n  </app-row-dynamic-table>\n</div>\n\n<!--<div class=\"capacity-table sticky col-md-12\">-->\n<!--  &lt;!&ndash;-->\n<!--    TOP TABLE ROW-->\n<!--  &ndash;&gt;-->\n<!--  <div class=\"row table-header sticky-top\">-->\n<!--    <div class=\"col-control col\">-->\n<!--      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"-->\n<!--         [@iconRotate]=\"isCollapseAll()\"-->\n<!--         [ngClass]=\"'fa-angle-down'\"-->\n<!--         (click)=\"collapseAll()\"-->\n<!--         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>-->\n<!--      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>-->\n<!--      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"-->\n<!--         (click)=\"selectAll()\"></i>-->\n<!--      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"-->\n<!--         (click)=\"selectAll()\"></i>-->\n<!--    </div>-->\n<!--    <div class=\"col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">-->\n<!--      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>-->\n<!--    </div>-->\n<!--  </div>-->\n<!--  &lt;!&ndash;POOL ROWS&ndash;&gt;-->\n<!--  &lt;!&ndash;&ndash;&gt;-->\n<!--<div class=\"row\" *ngIf=\"selectedRows !== undefined\">-->\n<!--  &lt;!&ndash;<div  [class.highlight-row]=\"options.highlightRow\">&ndash;&gt;-->\n<!--  <app-row-dynamic-table *ngFor=\"let row of data\"-->\n<!--                         [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"-->\n<!--                         [class.striped-row]=\"!options.isDataGrouped\"-->\n<!--                         [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"-->\n<!--                         [options]=\"options\"></app-row-dynamic-table>-->\n<!--  &lt;!&ndash;</div>&ndash;&gt;-->\n<!--</div>-->\n<!--</div>-->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"sasi-table-container\"\n     [style]=\"style\">\n  <div class=\"sasi-table-header\">\n<!--    <div class=\"sasi-table-item sasi-table-controls\"-->\n<!--    style=\"grid-column-start: 1\"></div>-->\n<!--    <div class=\"sasi-table-item sasi-table-alerts\"></div>-->\n    <div *ngFor=\"let headerGroup of options.headerGroups; let i = index;\" class=\"sasi-table-item sasi-table-data sasi-table-header-group\"\n        [style]=\"getHeaderGridStyle(i)\">\n      {{headerGroup.name}}\n    </div>\n    <!-- Labels -->\n    <div class=\"sasi-table-item sasi-table-controls\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\"\n         class=\"sasi-table-item sasi-table-alerts\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <!--\n      Non-Group header\n    -->\n\n    <div [tooltip]=\"getColumnTooltipText(columnOption.index)\"\n         *ngFor=\"let columnOption of getColumns()\"\n         class=\"sasi-table-item sasi-table-data\">\n\n      <span>\n        <span (click)=\"setSort(columnOption, false)\"\n              class=\"link sasi-header-label\">{{getColumnLabel(columnOption.index)}}</span>\n      </span>\n      <span class=\"sasi-header-icon\">\n          <i [ngClass]=\"getSortIconClass(columnOption.index, false)\"\n             class=\"text-muted sorting sort-icon-right\"></i>\n        </span>\n      <!-- [class.highlightColumn]=\"isColumnHighlighted(column)\" -->\n      <span *ngIf=\"columnOption.altSortEnable === true\"\n            (click)=\"setSort(columnOption, true)\"\n            class=\"link sasi-header-icon\">\n        <i class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span>\n        <i class='sorting sort-icon-right'\n           [ngClass]=\"getSortIconClass(columnOption.index, true)\"></i>\n      </span>\n    </div>\n  </div>\n  <app-row-dynamic-table *ngFor=\"let row of data\"\n                         [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                         [class.striped-row]=\"!options.isDataGrouped\"\n                         [class.not-data-grouped]=\"!options.isDataGrouped\"\n                         [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                         [options]=\"options\">\n  </app-row-dynamic-table>\n</div>\n\n<!--<div class=\"capacity-table sticky col-md-12\">-->\n<!--  &lt;!&ndash;-->\n<!--    TOP TABLE ROW-->\n<!--  &ndash;&gt;-->\n<!--  <div class=\"row table-header sticky-top\">-->\n<!--    <div class=\"col-control col\">-->\n<!--      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"-->\n<!--         [@iconRotate]=\"isCollapseAll()\"-->\n<!--         [ngClass]=\"'fa-angle-down'\"-->\n<!--         (click)=\"collapseAll()\"-->\n<!--         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>-->\n<!--      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>-->\n<!--      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"-->\n<!--         (click)=\"selectAll()\"></i>-->\n<!--      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"-->\n<!--         (click)=\"selectAll()\"></i>-->\n<!--    </div>-->\n<!--    <div class=\"col-control\" *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\">-->\n<!--      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>-->\n<!--    </div>-->\n<!--  </div>-->\n<!--  &lt;!&ndash;POOL ROWS&ndash;&gt;-->\n<!--  &lt;!&ndash;&ndash;&gt;-->\n<!--<div class=\"row\" *ngIf=\"selectedRows !== undefined\">-->\n<!--  &lt;!&ndash;<div  [class.highlight-row]=\"options.highlightRow\">&ndash;&gt;-->\n<!--  <app-row-dynamic-table *ngFor=\"let row of data\"-->\n<!--                         [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"-->\n<!--                         [class.striped-row]=\"!options.isDataGrouped\"-->\n<!--                         [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"-->\n<!--                         [options]=\"options\"></app-row-dynamic-table>-->\n<!--  &lt;!&ndash;</div>&ndash;&gt;-->\n<!--</div>-->\n<!--</div>-->\n");
 
 /***/ }),
 
@@ -114,6 +114,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"small-box\" ngClass=\"{{color}}\">\n  <div class=\"inner\">\n    <h3>{{data.value | localeNumberFormat}} <span>{{data.unit}}</span></h3>\n\n    <p>{{label}}</p>\n  </div>\n  <div class=\"icon\">\n\n    <i ngClass=\"{{icon}}\"></i>\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/breadcrumb/breadcrumb.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/breadcrumb/breadcrumb.component.html ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ol class=\"breadcrumb\">\n  <li *ngFor=\"let breadcrumb of breadcrumbs\">\n      <span [routerLink]=\"breadcrumb.url\" routerLinkActive=\"router-link-active\">\n      <a> {{ breadcrumb.label }} </a>\n      </span>\n  </li>\n</ol>\n");
 
 /***/ }),
 
@@ -386,7 +399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2>{{getTitle()}}</h2>\n<div *ngIf=\"context === 'physical-capacity'\" class=\"global-stats col-md-12\">\n  <h3>Overall Datacenters Physical Capacity</h3>\n  <app-infrastructure-statistics></app-infrastructure-statistics>\n</div>\n<div *ngIf=\"context === 'logical-capacity'\" class=\"global-stats col-md-12\">\n  <h3>Overall Datacenters Logical Capacity</h3>\n  <app-global-logical-statistics></app-global-logical-statistics>\n</div>\n<div *ngIf=\"context === 'host-group-capacity'\" class=\"global-stats col-md-12\">\n  <h3>Overall Datacenters VMware Capacity</h3>\n  <app-global-host-group-capacity></app-global-host-group-capacity>\n</div>\n<div class=\"col-md-12\">\n  <h3>{{getTabTitle()}}</h3>\n</div>\n<div class=\"col-md-12\">\n  <div class=\"nav-tabs-custom\">\n    <ul class=\"nav nav-tabs\">\n      <li *ngFor=\"let dataCenter of dataCenters\"\n          [class.active]=\"isCurrentTab(dataCenter.id)\">\n        <a (click)=\"activeTab(dataCenter.id)\"\n           [routerLink]=\"['./' + context, dataCenter.id]\">\n          {{dataCenter.label}}\n        </a>\n      </li>\n    </ul>\n    <div class=\"tab-content\">\n      <router-outlet></router-outlet>\n    </div>\n    <!-- /.performance-statistics-content -->\n  </div>\n  <!-- /.nav-tabs-custom -->\n</div>\n\n\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n\n<h2>{{getTitle()}}</h2>\n<div *ngIf=\"context === 'physical-capacity'\" class=\"global-stats col-md-12\">\n  <h3>Overall Datacenters Physical Capacity</h3>\n  <app-infrastructure-statistics></app-infrastructure-statistics>\n</div>\n<div *ngIf=\"context === 'logical-capacity'\" class=\"global-stats col-md-12\">\n  <h3>Overall Datacenters Logical Capacity</h3>\n  <app-global-logical-statistics></app-global-logical-statistics>\n</div>\n<div *ngIf=\"context === 'host-group-capacity'\" class=\"global-stats col-md-12\">\n  <h3>Overall Datacenters VMware Capacity</h3>\n  <app-global-host-group-capacity></app-global-host-group-capacity>\n</div>\n<div class=\"col-md-12\">\n  <h3>{{getTabTitle()}}</h3>\n</div>\n<div class=\"col-md-12\">\n  <div class=\"nav-tabs-custom\">\n    <ul class=\"nav nav-tabs\">\n      <li *ngFor=\"let dataCenter of dataCenters\"\n          [class.active]=\"isCurrentTab(dataCenter.id)\">\n        <a (click)=\"activeTab(dataCenter.id)\"\n           [routerLink]=\"['./' + context, dataCenter.id]\">\n          {{dataCenter.label}}\n        </a>\n      </li>\n    </ul>\n    <div class=\"tab-content\">\n      <router-outlet></router-outlet>\n    </div>\n    <!-- /.performance-statistics-content -->\n  </div>\n  <!-- /.nav-tabs-custom -->\n</div>\n\n\n\n");
 
 /***/ }),
 
@@ -618,13 +631,22 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 var routes = [
-    { path: 'dashboard', component: _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"] },
+    {
+        path: 'dashboard', component: _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"],
+        data: {
+            breadcrumb: 'Dashboard'
+        },
+    },
     { path: 'iframe/:url', component: _components_iframe_iframe_component__WEBPACK_IMPORTED_MODULE_2__["IframeComponent"] },
     {
         path: 'global-statistics',
         loadChildren: './global-statistics/global-statistics.module#GlobalStatisticsModule',
     },
-    { path: '', component: _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"] },
+    {
+        path: '', component: _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"], data: {
+            breadcrumb: 'Dashboard'
+        }
+    },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -730,6 +752,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dashboard_charts_bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dashboard/charts/bar-chart/bar-chart.component */ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.ts");
 /* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
 /* harmony import */ var _http_loading_interceptor__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./http-loading.interceptor */ "./src/app/http-loading.interceptor.ts");
+/* harmony import */ var _components_breadcrumb_breadcrumb_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/breadcrumb/breadcrumb.component */ "./src/app/components/breadcrumb/breadcrumb.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -739,6 +762,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -779,6 +803,7 @@ var AppModule = /** @class */ (function () {
                 _components_dashboard_charts_history_chart_history_chart_component__WEBPACK_IMPORTED_MODULE_17__["HistoryChartComponent"],
                 _components_dashboard_charts_capacity_history_chart_capacity_history_chart_component__WEBPACK_IMPORTED_MODULE_18__["CapacityHistoryChartComponent"],
                 _components_dashboard_charts_bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_19__["BarChartComponent"],
+                _components_breadcrumb_breadcrumb_component__WEBPACK_IMPORTED_MODULE_22__["BreadcrumbComponent"],
             ],
             imports: [
                 _global_statistics_global_statistics_module__WEBPACK_IMPORTED_MODULE_9__["GlobalStatisticsModule"],
@@ -2752,7 +2777,7 @@ var SelectedRow = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/********\n * sasi-table-container - is grid\n * sasi-table-item - is grid item\n * sasi-table-data\n * sasi-table-header - is wrapper element for header\n * sasi-table-controls - is wrapper for control elements like select and collapse\n * sasi-table-alerts - is wrapper for alerting elements(mostly icons)\n */\n/******** LAYOUT ***********/\n.sasi-table-container {\n  display: grid;\n  /*grid-template-columns: 40px 120px repeat(19, 1fr);*/\n  grid-template-rows: minmax(40px, -webkit-max-content);\n  grid-template-rows: minmax(40px, max-content);\n  grid-auto-rows: minmax(30px, -webkit-max-content);\n  grid-auto-rows: minmax(30px, max-content);\n}\n/*\n Remove parent elements which contains elements for grid\n*/\n:host /deep/ app-row-group-table,\n:host /deep/ app-row-table,\n:host /deep/ app-column,\napp-row-dynamic-table,\n.sasi-table-header {\n  display: contents;\n}\n/** TODO this should be used only when data are align to right **/\n:host /deep/ .sasi-table-cell {\n  padding-right: 5px;\n}\n/********* Appearance *************/\n.sasi-table-container {\n  border: 3px #EAEAEA solid;\n}\n.sasi-table-header > .sasi-table-item {\n  border-right: 1px #EAEAEA solid;\n  background-color: #3C8CBC;\n  font-size: 1.1rem;\n  font-weight: bolder;\n  color: white;\n  display: flex;\n  flex-flow: column;\n  align-items: center;\n  justify-content: center;\n  align-content: center;\n}\n.sasi-table-header > .sasi-table-item.sasi-table-controls {\n  flex-flow: row;\n}\n:host /deep/ app-row-dynamic-table.striped-row:nth-of-type(odd) .sasi-table-item,\n:host /deep/ app-row-table.striped-row:nth-of-type(odd) .sasi-table-item {\n  background-color: #f3f8fa;\n}\n/** Table header **/\n.sasi-table-header > .sasi-table-item {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 50px;\n  z-index: 10;\n}\n.sasi-table-header > .sasi-table-item i {\n  color: white;\n}\n.sasi-table-header .sorting {\n  font-size: 0.9rem;\n}\n.sasi-table-header .peak-label {\n  color: #c7e1f8;\n}\n.sasi-table-header i.sort-icon-left {\n  margin-right: 5px;\n}\n.sasi-table-header i.sort-icon-right {\n  margin-left: 5px;\n}\n.sasi-table-header span.link {\n  color: white;\n  cursor: pointer;\n}\n.sasi-table-header span.link:hover {\n  color: white;\n  cursor: pointer;\n  -webkit-text-decoration: white underline;\n          text-decoration: white underline;\n}\n/** Table header end **/\n:host /deep/ app-row-dynamic-table .sasi-table-item {\n  border-right: 1px #EAEAEA solid;\n}\n:host /deep/ app-row-table:hover .sasi-table-item {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n:host /deep/ .not-data-grouped app-row-table .sasi-table-item,\n:host /deep/ .not-data-grouped app-row-table app-column > .sasi-table-item {\n  margin-bottom: 2px;\n  border-top: 3px solid #EAEAEA;\n  border-bottom: 3px solid #EAEAEA;\n}\n/*app-row-dynamic-table.highlight-row:hover {*/\n/*  background-color: #b4d1ee !important;*/\n/*  color: #3A738C;*/\n/*}*/\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9zYXNpLXRhYmxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7RUFPRTtBQUNGLDRCQUE0QjtBQUM1QjtFQUNFLGFBQWE7RUFDYixxREFBcUQ7RUFDckQscURBQTZDO0VBQTdDLDZDQUE2QztFQUM3QyxpREFBeUM7RUFBekMseUNBQXlDO0FBQzNDO0FBRUE7O0NBRUM7QUFDRDs7Ozs7RUFLRSxpQkFBaUI7QUFDbkI7QUFFQSxpRUFBaUU7QUFDakU7RUFDRSxrQkFBa0I7QUFDcEI7QUFFQSxtQ0FBbUM7QUFDbkM7RUFDRSx5QkFBeUI7QUFDM0I7QUFFQTtFQUNFLCtCQUErQjtFQUMvQix5QkFBeUI7RUFDekIsaUJBQWlCO0VBQ2pCLG1CQUFtQjtFQUNuQixZQUFZO0VBQ1osYUFBYTtFQUNiLGlCQUFpQjtFQUNqQixtQkFBbUI7RUFDbkIsdUJBQXVCO0VBQ3ZCLHFCQUFxQjtBQUN2QjtBQUNBO0VBQ0UsY0FBYztBQUNoQjtBQUNBOztFQUVFLHlCQUF5QjtBQUMzQjtBQUVBLG1CQUFtQjtBQUNuQjtFQUNFLHdCQUFnQjtFQUFoQixnQkFBZ0I7RUFDaEIsU0FBUztFQUNULFdBQVc7QUFDYjtBQUVBO0VBQ0UsWUFBWTtBQUNkO0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7QUFFQTtFQUNFLGNBQWM7QUFDaEI7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjtBQUVBO0VBQ0UsZ0JBQWdCO0FBQ2xCO0FBRUE7RUFDRSxZQUFZO0VBQ1osZUFBZTtBQUNqQjtBQUVBO0VBQ0UsWUFBWTtFQUNaLGVBQWU7RUFDZix3Q0FBZ0M7VUFBaEMsZ0NBQWdDO0FBQ2xDO0FBRUEsdUJBQXVCO0FBQ3ZCO0VBQ0UsK0JBQStCO0FBQ2pDO0FBRUE7RUFDRSxvQ0FBb0M7RUFDcEMsY0FBYztBQUNoQjtBQUNBOztFQUVFLGtCQUFrQjtFQUNsQiw2QkFBNkI7RUFDN0IsZ0NBQWdDO0FBQ2xDO0FBQ0EsOENBQThDO0FBQzlDLDBDQUEwQztBQUMxQyxvQkFBb0I7QUFDcEIsSUFBSSIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi9jb21wb25lbnRzL3Nhc2ktdGFibGUvc2FzaS10YWJsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqKioqKioqXG4gKiBzYXNpLXRhYmxlLWNvbnRhaW5lciAtIGlzIGdyaWRcbiAqIHNhc2ktdGFibGUtaXRlbSAtIGlzIGdyaWQgaXRlbVxuICogc2FzaS10YWJsZS1kYXRhXG4gKiBzYXNpLXRhYmxlLWhlYWRlciAtIGlzIHdyYXBwZXIgZWxlbWVudCBmb3IgaGVhZGVyXG4gKiBzYXNpLXRhYmxlLWNvbnRyb2xzIC0gaXMgd3JhcHBlciBmb3IgY29udHJvbCBlbGVtZW50cyBsaWtlIHNlbGVjdCBhbmQgY29sbGFwc2VcbiAqIHNhc2ktdGFibGUtYWxlcnRzIC0gaXMgd3JhcHBlciBmb3IgYWxlcnRpbmcgZWxlbWVudHMobW9zdGx5IGljb25zKVxuICovXG4vKioqKioqKiogTEFZT1VUICoqKioqKioqKioqL1xuLnNhc2ktdGFibGUtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgLypncmlkLXRlbXBsYXRlLWNvbHVtbnM6IDQwcHggMTIwcHggcmVwZWF0KDE5LCAxZnIpOyovXG4gIGdyaWQtdGVtcGxhdGUtcm93czogbWlubWF4KDQwcHgsIG1heC1jb250ZW50KTtcbiAgZ3JpZC1hdXRvLXJvd3M6IG1pbm1heCgzMHB4LCBtYXgtY29udGVudCk7XG59XG5cbi8qXG4gUmVtb3ZlIHBhcmVudCBlbGVtZW50cyB3aGljaCBjb250YWlucyBlbGVtZW50cyBmb3IgZ3JpZFxuKi9cbjpob3N0IC9kZWVwLyBhcHAtcm93LWdyb3VwLXRhYmxlLFxuOmhvc3QgL2RlZXAvIGFwcC1yb3ctdGFibGUsXG46aG9zdCAvZGVlcC8gYXBwLWNvbHVtbixcbmFwcC1yb3ctZHluYW1pYy10YWJsZSxcbi5zYXNpLXRhYmxlLWhlYWRlciB7XG4gIGRpc3BsYXk6IGNvbnRlbnRzO1xufVxuXG4vKiogVE9ETyB0aGlzIHNob3VsZCBiZSB1c2VkIG9ubHkgd2hlbiBkYXRhIGFyZSBhbGlnbiB0byByaWdodCAqKi9cbjpob3N0IC9kZWVwLyAuc2FzaS10YWJsZS1jZWxsIHtcbiAgcGFkZGluZy1yaWdodDogNXB4O1xufVxuXG4vKioqKioqKioqIEFwcGVhcmFuY2UgKioqKioqKioqKioqKi9cbi5zYXNpLXRhYmxlLWNvbnRhaW5lciB7XG4gIGJvcmRlcjogM3B4ICNFQUVBRUEgc29saWQ7XG59XG5cbi5zYXNpLXRhYmxlLWhlYWRlciA+IC5zYXNpLXRhYmxlLWl0ZW0ge1xuICBib3JkZXItcmlnaHQ6IDFweCAjRUFFQUVBIHNvbGlkO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjM0M4Q0JDO1xuICBmb250LXNpemU6IDEuMXJlbTtcbiAgZm9udC13ZWlnaHQ6IGJvbGRlcjtcbiAgY29sb3I6IHdoaXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWZsb3c6IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbn1cbi5zYXNpLXRhYmxlLWhlYWRlciA+IC5zYXNpLXRhYmxlLWl0ZW0uc2FzaS10YWJsZS1jb250cm9scyB7XG4gIGZsZXgtZmxvdzogcm93O1xufVxuOmhvc3QgL2RlZXAvIGFwcC1yb3ctZHluYW1pYy10YWJsZS5zdHJpcGVkLXJvdzpudGgtb2YtdHlwZShvZGQpIC5zYXNpLXRhYmxlLWl0ZW0sXG46aG9zdCAvZGVlcC8gYXBwLXJvdy10YWJsZS5zdHJpcGVkLXJvdzpudGgtb2YtdHlwZShvZGQpIC5zYXNpLXRhYmxlLWl0ZW0ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjNmOGZhO1xufVxuXG4vKiogVGFibGUgaGVhZGVyICoqL1xuLnNhc2ktdGFibGUtaGVhZGVyID4gLnNhc2ktdGFibGUtaXRlbSB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHRvcDogNTBweDtcbiAgei1pbmRleDogMTA7XG59XG5cbi5zYXNpLXRhYmxlLWhlYWRlciA+IC5zYXNpLXRhYmxlLWl0ZW0gaSB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuLnNhc2ktdGFibGUtaGVhZGVyIC5zb3J0aW5nIHtcbiAgZm9udC1zaXplOiAwLjlyZW07XG59XG5cbi5zYXNpLXRhYmxlLWhlYWRlciAucGVhay1sYWJlbCB7XG4gIGNvbG9yOiAjYzdlMWY4O1xufVxuXG4uc2FzaS10YWJsZS1oZWFkZXIgaS5zb3J0LWljb24tbGVmdCB7XG4gIG1hcmdpbi1yaWdodDogNXB4O1xufVxuXG4uc2FzaS10YWJsZS1oZWFkZXIgaS5zb3J0LWljb24tcmlnaHQge1xuICBtYXJnaW4tbGVmdDogNXB4O1xufVxuXG4uc2FzaS10YWJsZS1oZWFkZXIgc3Bhbi5saW5rIHtcbiAgY29sb3I6IHdoaXRlO1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi5zYXNpLXRhYmxlLWhlYWRlciBzcGFuLmxpbms6aG92ZXIge1xuICBjb2xvcjogd2hpdGU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgdGV4dC1kZWNvcmF0aW9uOiB3aGl0ZSB1bmRlcmxpbmU7XG59XG5cbi8qKiBUYWJsZSBoZWFkZXIgZW5kICoqL1xuOmhvc3QgL2RlZXAvIGFwcC1yb3ctZHluYW1pYy10YWJsZSAuc2FzaS10YWJsZS1pdGVtIHtcbiAgYm9yZGVyLXJpZ2h0OiAxcHggI0VBRUFFQSBzb2xpZDtcbn1cblxuOmhvc3QgL2RlZXAvIGFwcC1yb3ctdGFibGU6aG92ZXIgLnNhc2ktdGFibGUtaXRlbSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNiNGQxZWUgIWltcG9ydGFudDtcbiAgY29sb3I6ICMzQTczOEM7XG59XG46aG9zdCAvZGVlcC8gLm5vdC1kYXRhLWdyb3VwZWQgYXBwLXJvdy10YWJsZSAuc2FzaS10YWJsZS1pdGVtLFxuOmhvc3QgL2RlZXAvIC5ub3QtZGF0YS1ncm91cGVkIGFwcC1yb3ctdGFibGUgYXBwLWNvbHVtbiA+IC5zYXNpLXRhYmxlLWl0ZW0ge1xuICBtYXJnaW4tYm90dG9tOiAycHg7XG4gIGJvcmRlci10b3A6IDNweCBzb2xpZCAjRUFFQUVBO1xuICBib3JkZXItYm90dG9tOiAzcHggc29saWQgI0VBRUFFQTtcbn1cbi8qYXBwLXJvdy1keW5hbWljLXRhYmxlLmhpZ2hsaWdodC1yb3c6aG92ZXIgeyovXG4vKiAgYmFja2dyb3VuZC1jb2xvcjogI2I0ZDFlZSAhaW1wb3J0YW50OyovXG4vKiAgY29sb3I6ICMzQTczOEM7Ki9cbi8qfSovXG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("/********\n * sasi-table-container - is grid\n * sasi-table-item - is grid item\n * sasi-table-data\n * sasi-table-header - is wrapper element for header\n * sasi-table-controls - is wrapper for control elements like select and collapse\n * sasi-table-alerts - is wrapper for alerting elements(mostly icons)\n */\n/******** LAYOUT ***********/\n.sasi-table-container {\n  display: grid;\n  /*grid-template-columns: 40px 120px repeat(19, 1fr);*/\n  grid-template-rows: minmax(40px, -webkit-max-content);\n  grid-template-rows: minmax(40px, max-content);\n  grid-auto-rows: minmax(30px, -webkit-max-content);\n  grid-auto-rows: minmax(30px, max-content);\n}\n/*\n Remove parent elements which contains elements for grid\n*/\n:host /deep/ app-row-group-table,\n:host /deep/ app-row-table,\n:host /deep/ app-column,\napp-row-dynamic-table,\n.sasi-table-header {\n  display: contents;\n}\n/** TODO this should be used only when data are align to right **/\n:host /deep/ .sasi-table-cell {\n  padding-right: 5px;\n}\n/********* Appearance *************/\n.sasi-table-container {\n  border: 3px #EAEAEA solid;\n}\n.sasi-table-header > .sasi-table-item {\n  border-right: 1px #EAEAEA solid;\n  background-color: #3C8CBC;\n  font-size: 1.1rem;\n  font-weight: bolder;\n  color: white;\n  display: flex;\n  /*flex-flow: column;*/\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: center;\n  align-content: center;\n  text-align: center;\n}\n.sasi-table-header > .sasi-table-item.sasi-table-controls {\n  flex-flow: row;\n}\n.sasi-table-header > .sasi-table-header-group {\n  border-bottom: 1px #EAEAEA solid;\n}\n:host /deep/ app-row-dynamic-table.striped-row:nth-of-type(odd) .sasi-table-item,\n:host /deep/ app-row-table.striped-row:nth-of-type(odd) .sasi-table-item {\n  background-color: #f3f8fa;\n}\n/** Table header **/\n.sasi-table-header > .sasi-table-item {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 50px;\n  z-index: 10;\n}\n.sasi-table-header > .sasi-table-item i {\n  color: white;\n}\n.sasi-table-header .sorting {\n  font-size: 0.9rem;\n}\n.sasi-table-header .peak-label {\n  color: #c7e1f8;\n}\n.sasi-table-header i.sort-icon-left {\n  margin-right: 5px;\n}\n.sasi-table-header i.sort-icon-right {\n  margin-left: 5px;\n}\n.sasi-table-header span.link {\n  color: white;\n  cursor: pointer;\n}\n.sasi-table-header span.link:hover {\n  color: white;\n  cursor: pointer;\n  -webkit-text-decoration: white underline;\n          text-decoration: white underline;\n}\n/** Table header end **/\n:host /deep/ app-row-dynamic-table .sasi-table-item {\n  border-right: 1px #EAEAEA solid;\n}\n:host /deep/ app-row-table:hover .sasi-table-item {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n:host /deep/ .not-data-grouped app-row-table .sasi-table-item,\n:host /deep/ .not-data-grouped app-row-table app-column > .sasi-table-item {\n  margin-bottom: 2px;\n  border-top: 3px solid #EAEAEA;\n  border-bottom: 3px solid #EAEAEA;\n}\n/*app-row-dynamic-table.highlight-row:hover {*/\n/*  background-color: #b4d1ee !important;*/\n/*  color: #3A738C;*/\n/*}*/\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9zYXNpLXRhYmxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7RUFPRTtBQUNGLDRCQUE0QjtBQUM1QjtFQUNFLGFBQWE7RUFDYixxREFBcUQ7RUFDckQscURBQTZDO0VBQTdDLDZDQUE2QztFQUM3QyxpREFBeUM7RUFBekMseUNBQXlDO0FBQzNDO0FBRUE7O0NBRUM7QUFDRDs7Ozs7RUFLRSxpQkFBaUI7QUFDbkI7QUFFQSxpRUFBaUU7QUFDakU7RUFDRSxrQkFBa0I7QUFDcEI7QUFFQSxtQ0FBbUM7QUFDbkM7RUFDRSx5QkFBeUI7QUFDM0I7QUFFQTtFQUNFLCtCQUErQjtFQUMvQix5QkFBeUI7RUFDekIsaUJBQWlCO0VBQ2pCLG1CQUFtQjtFQUNuQixZQUFZO0VBQ1osYUFBYTtFQUNiLHFCQUFxQjtFQUNyQixlQUFlO0VBQ2YsbUJBQW1CO0VBQ25CLHVCQUF1QjtFQUN2QixxQkFBcUI7RUFDckIsa0JBQWtCO0FBQ3BCO0FBQ0E7RUFDRSxjQUFjO0FBQ2hCO0FBRUE7RUFDRSxnQ0FBZ0M7QUFDbEM7QUFDQTs7RUFFRSx5QkFBeUI7QUFDM0I7QUFFQSxtQkFBbUI7QUFDbkI7RUFDRSx3QkFBZ0I7RUFBaEIsZ0JBQWdCO0VBQ2hCLFNBQVM7RUFDVCxXQUFXO0FBQ2I7QUFFQTtFQUNFLFlBQVk7QUFDZDtBQUVBO0VBQ0UsaUJBQWlCO0FBQ25CO0FBRUE7RUFDRSxjQUFjO0FBQ2hCO0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7QUFFQTtFQUNFLGdCQUFnQjtBQUNsQjtBQUVBO0VBQ0UsWUFBWTtFQUNaLGVBQWU7QUFDakI7QUFFQTtFQUNFLFlBQVk7RUFDWixlQUFlO0VBQ2Ysd0NBQWdDO1VBQWhDLGdDQUFnQztBQUNsQztBQUVBLHVCQUF1QjtBQUN2QjtFQUNFLCtCQUErQjtBQUNqQztBQUVBO0VBQ0Usb0NBQW9DO0VBQ3BDLGNBQWM7QUFDaEI7QUFDQTs7RUFFRSxrQkFBa0I7RUFDbEIsNkJBQTZCO0VBQzdCLGdDQUFnQztBQUNsQztBQUNBLDhDQUE4QztBQUM5QywwQ0FBMEM7QUFDMUMsb0JBQW9CO0FBQ3BCLElBQUkiLCJmaWxlIjoic3JjL2FwcC9jb21tb24vY29tcG9uZW50cy9zYXNpLXRhYmxlL3Nhc2ktdGFibGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKioqKioqKlxuICogc2FzaS10YWJsZS1jb250YWluZXIgLSBpcyBncmlkXG4gKiBzYXNpLXRhYmxlLWl0ZW0gLSBpcyBncmlkIGl0ZW1cbiAqIHNhc2ktdGFibGUtZGF0YVxuICogc2FzaS10YWJsZS1oZWFkZXIgLSBpcyB3cmFwcGVyIGVsZW1lbnQgZm9yIGhlYWRlclxuICogc2FzaS10YWJsZS1jb250cm9scyAtIGlzIHdyYXBwZXIgZm9yIGNvbnRyb2wgZWxlbWVudHMgbGlrZSBzZWxlY3QgYW5kIGNvbGxhcHNlXG4gKiBzYXNpLXRhYmxlLWFsZXJ0cyAtIGlzIHdyYXBwZXIgZm9yIGFsZXJ0aW5nIGVsZW1lbnRzKG1vc3RseSBpY29ucylcbiAqL1xuLyoqKioqKioqIExBWU9VVCAqKioqKioqKioqKi9cbi5zYXNpLXRhYmxlLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIC8qZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiA0MHB4IDEyMHB4IHJlcGVhdCgxOSwgMWZyKTsqL1xuICBncmlkLXRlbXBsYXRlLXJvd3M6IG1pbm1heCg0MHB4LCBtYXgtY29udGVudCk7XG4gIGdyaWQtYXV0by1yb3dzOiBtaW5tYXgoMzBweCwgbWF4LWNvbnRlbnQpO1xufVxuXG4vKlxuIFJlbW92ZSBwYXJlbnQgZWxlbWVudHMgd2hpY2ggY29udGFpbnMgZWxlbWVudHMgZm9yIGdyaWRcbiovXG46aG9zdCAvZGVlcC8gYXBwLXJvdy1ncm91cC10YWJsZSxcbjpob3N0IC9kZWVwLyBhcHAtcm93LXRhYmxlLFxuOmhvc3QgL2RlZXAvIGFwcC1jb2x1bW4sXG5hcHAtcm93LWR5bmFtaWMtdGFibGUsXG4uc2FzaS10YWJsZS1oZWFkZXIge1xuICBkaXNwbGF5OiBjb250ZW50cztcbn1cblxuLyoqIFRPRE8gdGhpcyBzaG91bGQgYmUgdXNlZCBvbmx5IHdoZW4gZGF0YSBhcmUgYWxpZ24gdG8gcmlnaHQgKiovXG46aG9zdCAvZGVlcC8gLnNhc2ktdGFibGUtY2VsbCB7XG4gIHBhZGRpbmctcmlnaHQ6IDVweDtcbn1cblxuLyoqKioqKioqKiBBcHBlYXJhbmNlICoqKioqKioqKioqKiovXG4uc2FzaS10YWJsZS1jb250YWluZXIge1xuICBib3JkZXI6IDNweCAjRUFFQUVBIHNvbGlkO1xufVxuXG4uc2FzaS10YWJsZS1oZWFkZXIgPiAuc2FzaS10YWJsZS1pdGVtIHtcbiAgYm9yZGVyLXJpZ2h0OiAxcHggI0VBRUFFQSBzb2xpZDtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzNDOENCQztcbiAgZm9udC1zaXplOiAxLjFyZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkZXI7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgLypmbGV4LWZsb3c6IGNvbHVtbjsqL1xuICBmbGV4LXdyYXA6IHdyYXA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cbi5zYXNpLXRhYmxlLWhlYWRlciA+IC5zYXNpLXRhYmxlLWl0ZW0uc2FzaS10YWJsZS1jb250cm9scyB7XG4gIGZsZXgtZmxvdzogcm93O1xufVxuXG4uc2FzaS10YWJsZS1oZWFkZXIgPiAuc2FzaS10YWJsZS1oZWFkZXItZ3JvdXAge1xuICBib3JkZXItYm90dG9tOiAxcHggI0VBRUFFQSBzb2xpZDtcbn1cbjpob3N0IC9kZWVwLyBhcHAtcm93LWR5bmFtaWMtdGFibGUuc3RyaXBlZC1yb3c6bnRoLW9mLXR5cGUob2RkKSAuc2FzaS10YWJsZS1pdGVtLFxuOmhvc3QgL2RlZXAvIGFwcC1yb3ctdGFibGUuc3RyaXBlZC1yb3c6bnRoLW9mLXR5cGUob2RkKSAuc2FzaS10YWJsZS1pdGVtIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2YzZjhmYTtcbn1cblxuLyoqIFRhYmxlIGhlYWRlciAqKi9cbi5zYXNpLXRhYmxlLWhlYWRlciA+IC5zYXNpLXRhYmxlLWl0ZW0ge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICB0b3A6IDUwcHg7XG4gIHotaW5kZXg6IDEwO1xufVxuXG4uc2FzaS10YWJsZS1oZWFkZXIgPiAuc2FzaS10YWJsZS1pdGVtIGkge1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5zYXNpLXRhYmxlLWhlYWRlciAuc29ydGluZyB7XG4gIGZvbnQtc2l6ZTogMC45cmVtO1xufVxuXG4uc2FzaS10YWJsZS1oZWFkZXIgLnBlYWstbGFiZWwge1xuICBjb2xvcjogI2M3ZTFmODtcbn1cblxuLnNhc2ktdGFibGUtaGVhZGVyIGkuc29ydC1pY29uLWxlZnQge1xuICBtYXJnaW4tcmlnaHQ6IDVweDtcbn1cblxuLnNhc2ktdGFibGUtaGVhZGVyIGkuc29ydC1pY29uLXJpZ2h0IHtcbiAgbWFyZ2luLWxlZnQ6IDVweDtcbn1cblxuLnNhc2ktdGFibGUtaGVhZGVyIHNwYW4ubGluayB7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG4uc2FzaS10YWJsZS1oZWFkZXIgc3Bhbi5saW5rOmhvdmVyIHtcbiAgY29sb3I6IHdoaXRlO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHRleHQtZGVjb3JhdGlvbjogd2hpdGUgdW5kZXJsaW5lO1xufVxuXG4vKiogVGFibGUgaGVhZGVyIGVuZCAqKi9cbjpob3N0IC9kZWVwLyBhcHAtcm93LWR5bmFtaWMtdGFibGUgLnNhc2ktdGFibGUtaXRlbSB7XG4gIGJvcmRlci1yaWdodDogMXB4ICNFQUVBRUEgc29saWQ7XG59XG5cbjpob3N0IC9kZWVwLyBhcHAtcm93LXRhYmxlOmhvdmVyIC5zYXNpLXRhYmxlLWl0ZW0ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjRkMWVlICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjM0E3MzhDO1xufVxuOmhvc3QgL2RlZXAvIC5ub3QtZGF0YS1ncm91cGVkIGFwcC1yb3ctdGFibGUgLnNhc2ktdGFibGUtaXRlbSxcbjpob3N0IC9kZWVwLyAubm90LWRhdGEtZ3JvdXBlZCBhcHAtcm93LXRhYmxlIGFwcC1jb2x1bW4gPiAuc2FzaS10YWJsZS1pdGVtIHtcbiAgbWFyZ2luLWJvdHRvbTogMnB4O1xuICBib3JkZXItdG9wOiAzcHggc29saWQgI0VBRUFFQTtcbiAgYm9yZGVyLWJvdHRvbTogM3B4IHNvbGlkICNFQUVBRUE7XG59XG4vKmFwcC1yb3ctZHluYW1pYy10YWJsZS5oaWdobGlnaHQtcm93OmhvdmVyIHsqL1xuLyogIGJhY2tncm91bmQtY29sb3I6ICNiNGQxZWUgIWltcG9ydGFudDsqL1xuLyogIGNvbG9yOiAjM0E3MzhDOyovXG4vKn0qL1xuIl19 */");
 
 /***/ }),
 
@@ -2898,17 +2923,21 @@ var SasiColumnBuilder = /** @class */ (function () {
         return this;
     };
     SasiColumnBuilder.prototype.build = function () {
-        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.altBorderLeft, this.columnWidth, this.columnTooltipText);
+        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.altBorderLeft, this.columnWidth, this.columnTooltipText, this.shortLabel === undefined ? this.label : this.shortLabel);
     };
     SasiColumnBuilder.prototype.withInfinity = function (isInfinity) {
         this.infinity = isInfinity;
+        return this;
+    };
+    SasiColumnBuilder.prototype.withShortLabel = function (shortLabel) {
+        this.shortLabel = shortLabel;
         return this;
     };
     return SasiColumnBuilder;
 }());
 
 var SasiColumn = /** @class */ (function () {
-    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, altBorderLeft, columnWidth, columnTooltipText) {
+    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, altBorderLeft, columnWidth, columnTooltipText, shortLabel) {
         this.index = index;
         this.label = label;
         this.component = component;
@@ -2922,6 +2951,7 @@ var SasiColumn = /** @class */ (function () {
         this.altBorderLeft = altBorderLeft;
         this.columnWidth = columnWidth;
         this.columnTooltipText = columnTooltipText;
+        this.shortLabel = shortLabel;
     }
     return SasiColumn;
 }());
@@ -3058,6 +3088,7 @@ var SasiTableComponent = /** @class */ (function () {
             controlColumnSize: '30px',
             alertColumnSize: '40px',
             nameColumnSize: '130px',
+            headerGroups: [],
             getColumnWidth: function (name) {
                 var columnOption = this.columns.find(function (column) { return column.index === name; });
                 if (columnOption !== undefined && columnOption.columnWidth !== null) {
@@ -3129,6 +3160,9 @@ var SasiTableComponent = /** @class */ (function () {
         var column = this.options.columns.find(function (optionColumn) { return optionColumn.index === type; });
         if (column === undefined) {
             return '';
+        }
+        if (this.options.headerGroups.length > 0) {
+            return column.shortLabel;
         }
         return column.altLabel !== undefined ? column.altLabel : column.label;
     };
@@ -3234,6 +3268,22 @@ var SasiTableComponent = /** @class */ (function () {
         else {
             this.onSelectService.announceSelectAll(false);
         }
+    };
+    SasiTableComponent.prototype.getColumns = function () {
+        // if (this.options.headerGroups.length > 0) {
+        //   return this.options.headerGroups;
+        // }
+        return this.options.columns;
+    };
+    SasiTableComponent.prototype.getHeaderGridStyle = function (i) {
+        var offsetPosition = 1;
+        var groupsBefore = this.options.headerGroups.slice(0, i);
+        var startPosition = groupsBefore.reduce(function (previousValue, currentValue) { return previousValue + currentValue.columns.length; }, offsetPosition);
+        var headerGroup = this.options.headerGroups[i];
+        var endPosition = startPosition + headerGroup.columns.length;
+        return this.domSanitizer.bypassSecurityTrustStyle('grid-column-start: ' + startPosition + ';' +
+            'grid-column-end: ' + endPosition + ';' +
+            'grid-row-start: 1;');
     };
     SasiTableComponent.ctorParameters = function () { return [
         { type: ngx_store__WEBPACK_IMPORTED_MODULE_1__["LocalStorageService"] },
@@ -4438,6 +4488,141 @@ var UrlCreator = /** @class */ (function () {
         return this.hrefEncode(_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].iframeBaseUrl + systemPrefix + linkPart);
     };
     return UrlCreator;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/breadcrumb/breadcrumb.component.css":
+/*!****************************************************************!*\
+  !*** ./src/app/components/breadcrumb/breadcrumb.component.css ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".breadcrumb {\n    background: white;\n    font-size: 1em;\n    margin: 0;\n    height: 30px;\n    text-align: center;\n    }\n    a,\n    span {\n      color: grey;\n      margin-bottom: 5px;\n    }\n    a:hover,\n    span:hover {\n      color: black;\n      text-decoration: none;\n      cursor: pointer;\n    }\n    li {\n      list-style: none;\n      float: left;\n      margin-bottom: 5px;\n    }\n    li:last-child {\n      margin-right: 20px;\n    }\n    li::after {\n      color: darkgrey;\n    }\n    ol {\n      margin: 0;\n    }\n\n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9icmVhZGNydW1iL2JyZWFkY3J1bWIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlCQUFpQjtJQUNqQixjQUFjO0lBQ2QsU0FBUztJQUNULFlBQVk7SUFDWixrQkFBa0I7SUFDbEI7SUFDQTs7TUFFRSxXQUFXO01BQ1gsa0JBQWtCO0lBQ3BCO0lBQ0E7O01BRUUsWUFBWTtNQUNaLHFCQUFxQjtNQUNyQixlQUFlO0lBQ2pCO0lBQ0E7TUFDRSxnQkFBZ0I7TUFDaEIsV0FBVztNQUNYLGtCQUFrQjtJQUNwQjtJQUNBO01BQ0Usa0JBQWtCO0lBQ3BCO0lBQ0E7TUFDRSxlQUFlO0lBQ2pCO0lBQ0E7TUFDRSxTQUFTO0lBQ1giLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2JyZWFkY3J1bWIvYnJlYWRjcnVtYi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJyZWFkY3J1bWIge1xuICAgIGJhY2tncm91bmQ6IHdoaXRlO1xuICAgIGZvbnQtc2l6ZTogMWVtO1xuICAgIG1hcmdpbjogMDtcbiAgICBoZWlnaHQ6IDMwcHg7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIH1cbiAgICBhLFxuICAgIHNwYW4ge1xuICAgICAgY29sb3I6IGdyZXk7XG4gICAgICBtYXJnaW4tYm90dG9tOiA1cHg7XG4gICAgfVxuICAgIGE6aG92ZXIsXG4gICAgc3Bhbjpob3ZlciB7XG4gICAgICBjb2xvcjogYmxhY2s7XG4gICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgfVxuICAgIGxpIHtcbiAgICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgICBmbG9hdDogbGVmdDtcbiAgICAgIG1hcmdpbi1ib3R0b206IDVweDtcbiAgICB9XG4gICAgbGk6bGFzdC1jaGlsZCB7XG4gICAgICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG4gICAgfVxuICAgIGxpOjphZnRlciB7XG4gICAgICBjb2xvcjogZGFya2dyZXk7XG4gICAgfVxuICAgIG9sIHtcbiAgICAgIG1hcmdpbjogMDtcbiAgICB9XG5cbiAgIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/components/breadcrumb/breadcrumb.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/breadcrumb/breadcrumb.component.ts ***!
+  \***************************************************************/
+/*! exports provided: BreadcrumbComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BreadcrumbComponent", function() { return BreadcrumbComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+
+var BreadcrumbComponent = /** @class */ (function () {
+    function BreadcrumbComponent(router, activatedRoute, metricService) {
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.metricService = metricService;
+        this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
+    }
+    BreadcrumbComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["distinctUntilChanged"])()).subscribe(function () {
+            _this.metricService.getDatacenters().subscribe(function (dto) {
+                _this.dataCenters = dto.datacenters;
+                _this.breadcrumbs = _this.buildBreadCrumb(_this.activatedRoute.root);
+            });
+        });
+    };
+    BreadcrumbComponent.prototype.buildBreadCrumb = function (route, url, breadcrumbs) {
+        if (url === void 0) { url = ''; }
+        if (breadcrumbs === void 0) { breadcrumbs = []; }
+        var previousBreadCrumb = null;
+        var newBreadcrumbs = [];
+        var data = route.routeConfig && route.routeConfig.data ? route.routeConfig.data : null;
+        var label = data ? data.breadcrumb : '';
+        var path = data ? route.routeConfig.path : '';
+        var lastRoutePart = path.split('/').pop();
+        var isDynamicRoute = lastRoutePart.startsWith(':');
+        if (isDynamicRoute && !!route.snapshot) {
+            var splittedPart = lastRoutePart.split(':');
+            var paramName = splittedPart[1];
+            path = path.replace(lastRoutePart, route.snapshot.params[paramName]);
+            if (route.snapshot.params[paramName] === '-1') {
+                label = 'All';
+            }
+            else {
+                label = this.getDatacenterName(parseInt(route.snapshot.params[paramName], 10));
+            }
+            previousBreadCrumb = {
+                label: data.breadcrumb,
+                url: url + "/" + path.split('/')[0]
+            };
+        }
+        var nextUrl = path ? url + "/" + path : url;
+        var breadcrumb = {
+            label: label,
+            url: this.resolveUrl(data, nextUrl),
+        };
+        if (previousBreadCrumb) {
+            newBreadcrumbs = breadcrumb.label ? breadcrumbs.concat([previousBreadCrumb, breadcrumb]) : breadcrumbs.slice();
+        }
+        else {
+            newBreadcrumbs = breadcrumb.label ? breadcrumbs.concat([breadcrumb]) : breadcrumbs.slice();
+        }
+        if (route.firstChild) {
+            return this.buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs);
+        }
+        return newBreadcrumbs;
+    };
+    BreadcrumbComponent.prototype.getDatacenterName = function (idDatacenter) {
+        var datacenterObj = this.dataCenters.find(function (datacenter) { return datacenter.id === idDatacenter; });
+        if (datacenterObj === undefined) {
+            return '';
+        }
+        return datacenterObj.label;
+    };
+    BreadcrumbComponent.prototype.resolveUrl = function (data, nextUrl) {
+        if (data !== null && data.url !== undefined) {
+            return data.url;
+        }
+        return nextUrl;
+    };
+    BreadcrumbComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] },
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"] }
+    ]; };
+    BreadcrumbComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-breadcrumb',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./breadcrumb.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/breadcrumb/breadcrumb.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./breadcrumb.component.css */ "./src/app/components/breadcrumb/breadcrumb.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"]])
+    ], BreadcrumbComponent);
+    return BreadcrumbComponent;
 }());
 
 
@@ -7380,23 +7565,95 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 var routes = [
-    { path: 'global-statistics/latency', component: _views_block_size_latency_block_size_latency_component__WEBPACK_IMPORTED_MODULE_9__["BlockSizeLatencyComponent"] },
+    {
+        path: 'global-statistics/latency',
+        component: _views_block_size_latency_block_size_latency_component__WEBPACK_IMPORTED_MODULE_9__["BlockSizeLatencyComponent"],
+        data: {
+            breadcrumb: 'Workload Structure'
+        }
+    },
     {
         path: 'global-statistics',
-        component: _global_statistics_component__WEBPACK_IMPORTED_MODULE_2__["GlobalStatisticsComponent"],
+        component: _global_statistics_component__WEBPACK_IMPORTED_MODULE_2__["GlobalStatisticsComponent"], data: {
+            breadcrumb: 'Global Statistics',
+            url: '/'
+        },
         children: [
-            { path: 'performance/:id', component: _views_performance_statistics_performance_statistics_component__WEBPACK_IMPORTED_MODULE_3__["PerformanceStatisticsComponent"] },
-            { path: 'performance', redirectTo: 'performance/-1', pathMatch: 'full' },
-            { path: 'physical-capacity/:id', component: _views_physical_capacity_statistics_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_7__["PhysicalCapacityStatisticsComponent"] },
-            { path: 'physical-capacity', redirectTo: 'physical-capacity/-1', pathMatch: 'full' },
-            { path: 'logical-capacity/:id', component: _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_6__["LogicalCapacityStatisticsComponent"] },
-            { path: 'logical-capacity', redirectTo: 'logical-capacity/-1', pathMatch: 'full' },
-            { path: 'dp-sla/:id', component: _views_dp_sla_dp_sla_component__WEBPACK_IMPORTED_MODULE_4__["DpSlaComponent"] },
-            { path: 'dp-sla', redirectTo: 'dp-sla/-1', pathMatch: 'full' },
-            { path: 'adapters/:id', component: _views_adapters_adapters_component__WEBPACK_IMPORTED_MODULE_5__["AdaptersComponent"] },
-            { path: 'adapters', redirectTo: 'adapters/-1', pathMatch: 'full' },
-            { path: 'host-group-capacity/:id', component: _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_8__["HostGroupsCapacityComponent"] },
-            { path: 'host-group-capacity', redirectTo: 'host-group-capacity/-1', pathMatch: 'full' }
+            {
+                path: 'performance/:id',
+                component: _views_performance_statistics_performance_statistics_component__WEBPACK_IMPORTED_MODULE_3__["PerformanceStatisticsComponent"],
+                data: {
+                    breadcrumb: 'Performance Statistics'
+                }
+            },
+            {
+                path: 'performance',
+                redirectTo: 'performance/-1',
+                pathMatch: 'full'
+            },
+            {
+                path: 'physical-capacity/:id',
+                component: _views_physical_capacity_statistics_physical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_7__["PhysicalCapacityStatisticsComponent"],
+                data: {
+                    breadcrumb: 'Physical Capacity'
+                }
+            },
+            {
+                path: 'physical-capacity',
+                redirectTo: 'physical-capacity/-1',
+                pathMatch: 'full'
+            },
+            {
+                path: 'logical-capacity/:id',
+                component: _views_logical_capacity_statistics_logical_capacity_statistics_component__WEBPACK_IMPORTED_MODULE_6__["LogicalCapacityStatisticsComponent"],
+                data: {
+                    breadcrumb: 'Logical Capacity'
+                }
+            },
+            {
+                path: 'logical-capacity',
+                redirectTo: 'logical-capacity/-1',
+                pathMatch: 'full'
+            },
+            {
+                path: 'dp-sla/:id',
+                component: _views_dp_sla_dp_sla_component__WEBPACK_IMPORTED_MODULE_4__["DpSlaComponent"],
+                data: {
+                    breadcrumb: 'SLA Events'
+                }
+            },
+            {
+                path: 'dp-sla',
+                redirectTo: 'dp-sla/1',
+                pathMatch: 'full'
+            },
+            {
+                path: 'adapters/:id',
+                component: _views_adapters_adapters_component__WEBPACK_IMPORTED_MODULE_5__["AdaptersComponent"],
+                data: {
+                    breadcrumb: 'CHA & Port Imbalances '
+                }
+            },
+            {
+                path: 'adapters',
+                redirectTo: 'adapters/-1',
+                pathMatch: 'full'
+            },
+            {
+                path: 'host-group-capacity/:id',
+                component: _views_host_groups_capacity_host_groups_capacity_component__WEBPACK_IMPORTED_MODULE_8__["HostGroupsCapacityComponent"],
+                data: {
+                    breadcrumb: 'VMWare Capacity'
+                }
+            },
+            {
+                path: 'host-group-capacity',
+                redirectTo: 'host-group-capacity/-1',
+                pathMatch: 'full',
+                data: {
+                    breadcrumb: ' '
+                }
+            }
         ]
     },
 ];
@@ -9662,6 +9919,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Subscription')
+            .withShortLabel('Physical')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC)
@@ -9671,6 +9929,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Subscription')
+            .withShortLabel('Logical')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC)
@@ -9680,6 +9939,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Subscription')
+            .withShortLabel('Net')
             .withAltBorder(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
@@ -9690,6 +9950,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Capacity (Physical data occupation on HDD/FMD/SSD)')
+            .withShortLabel('Capacity')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED)
@@ -9699,6 +9960,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Used')
+            .withShortLabel('Used')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE)
@@ -9708,6 +9970,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Physical Free')
+            .withShortLabel('Free')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED_PERC)
@@ -9718,6 +9981,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIsAggregated(true)
             .withTooltipText('Physical Used')
             .withAltBorder(true)
+            .withShortLabel('Used [%]')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY)
@@ -9727,6 +9991,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Capacity')
+            .withShortLabel('Capacity')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED)
@@ -9736,6 +10001,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Used')
+            .withShortLabel('Used')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE)
@@ -9745,6 +10011,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Logical Free')
+            .withShortLabel('Free')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED_PERC)
@@ -9755,6 +10022,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withIsAggregated(true)
             .withTooltipText('Logical Used')
             .withAltBorder(true)
+            .withShortLabel('Used [%]')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL)
@@ -9764,6 +10032,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Capacity (Virtual capacity without any saving mechanism)')
+            .withShortLabel('Total')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED)
@@ -9773,6 +10042,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Used')
+            .withShortLabel('Used')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE)
@@ -9782,6 +10052,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Free')
+            .withShortLabel('Free')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED_PERC)
@@ -9791,6 +10062,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Net Used')
+            .withShortLabel('Used [%]')
             .withAltBorder(true)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
@@ -9801,6 +10073,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Compression Ratio')
+            .withShortLabel('Compression')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO)
@@ -9810,6 +10083,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Deduplication Ratio')
+            .withShortLabel('Dedup')
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT)
@@ -9819,6 +10093,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .withTooltipText('Total Saving Effect')
+            .withShortLabel('Total')
             .build());
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_7__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__["RouteLinkFormatterComponent"];
@@ -9831,6 +10106,63 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_9__["SasiWeightedArithmeticMeanUtils"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_10__["GroupSortImpl"]();
         this.options.columnAlign = 'right';
+        this.options.headerGroups = [
+            {
+                name: '',
+                columns: ['controls']
+            },
+            {
+                name: '',
+                columns: ['name']
+            },
+            {
+                name: '',
+                columns: [_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].SUBSCRIBED_CAPACITY]
+            },
+            {
+                name: 'Subscriptions',
+                columns: [
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_SUBS_PERC,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_SUBS_PERC,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC
+                ]
+            },
+            {
+                name: 'Physical',
+                columns: [
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_CAPACITY,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_FREE,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].PHYSICAL_USED
+                ]
+            },
+            {
+                name: 'Logical',
+                columns: [
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_CAPACITY,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_FREE,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].LOGICAL_USED
+                ]
+            },
+            {
+                name: 'Network',
+                columns: [
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_TOTAL,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_USED,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_FREE,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].NET_SUBS_PERC
+                ]
+            },
+            {
+                name: 'Savings',
+                columns: [
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].COMPRESS_RATIO,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].DEDUP_RATIO,
+                    _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_1__["SystemMetricType"].TOTAL_SAVING_EFFECT
+                ]
+            },
+        ];
     }
     LogicalCapacityStatisticsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -10458,6 +10790,7 @@ var PeriodType;
 var MetricService = /** @class */ (function () {
     function MetricService(http) {
         this.http = http;
+        this.dataCenterObservable = null;
         this.currentDate = new Date();
         this.getDatacenters();
     }
@@ -10467,10 +10800,13 @@ var MetricService = /** @class */ (function () {
     };
     MetricService.prototype.getDatacenters = function () {
         var _this = this;
+        if (this.dataCenterObservable !== null) {
+            return this.dataCenterObservable;
+        }
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters');
-        var dtoObservable = this.http.get(url);
-        dtoObservable.subscribe(function (dto) { return _this.infrastructure = dto.datacenters; });
-        return dtoObservable;
+        this.dataCenterObservable = this.http.get(url);
+        this.dataCenterObservable.subscribe(function (dto) { return _this.infrastructure = dto.datacenters; });
+        return this.dataCenterObservable;
     };
     MetricService.prototype.getSystemName = function (datacenterId, systemId) {
         var datacenterObj = this.infrastructure.find(function (datacenter) { return datacenter.id === datacenterId; });
