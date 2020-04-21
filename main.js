@@ -230,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!--<script src=\"../../../../WEB/sub-content-loader.js\"></script>-->\n<aside class=\"main-sidebar\">\n\n  <!-- sidebar: style can be found in sidebar.less -->\n  <section class=\"sidebar\">\n    <div class=\"top-part-menu\">\n      <ul id=\"dash-link\" class=\"sidebar-menu\">\n        <li><a href=\"\"><i class=\"fa fa-home\"></i><span>Main dashboard</span></a></li>\n      </ul>\n      <!-- Sidebar Menu.ts -->\n      <ul id=\"dash-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n\n        <li class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-chart-area\"></i><span>Global Statistics</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let globalLink of globalStatisticsLinks\"\n            ><a [routerLink]=\"[globalLink.linkPart]\" routerLinkActive=\"active\">{{globalLink.name}}</a></li>\n          </ul>\n        </li>\n\n      </ul>\n    </div>\n    <div class=\"central-part-menu\">\n      <ul id=\"main-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n        <li class=\"header\">STORAGE ARRAYS</li>\n        <!-- search form (Optional) -->\n        <form action=\"#\" method=\"get\" class=\"sidebar-form\" autocomplete=\"off\">\n          <div class=\"input-group\">\n            <input [(ngModel)]=\"searchExpression\" (input)=\"search()\" type=\"text\" name=\"searchExp\" class=\"form-control\"\n                   placeholder=\"Search...\" id=\"menu-search-input\"/>\n            <span class=\"input-group-btn\">\n              <button type=\"button\" name=\"search\" id=\"search-btn\" class=\"btn btn-flat\"><i class=\"fa fa-search\"></i>\n              </button>\n            </span>\n          </div>\n        </form>\n        <!-- /.search form -->\n        <li *ngFor=\"let menuItem of filteredItems\" class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{menuItem.label}}</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let link of menuItem.items\" class=\"treeview\">\n              <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{link.name}}</span>\n                <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n              </a>\n              <ul class=\"treeview-menu\">\n                <li *ngFor=\"let poolLink of poolMetricLinks\"><a\n                  [routerLink]=\"link.id | iframeUrlCreator:{iframeLink:poolLink.linkPart}\"\n                  routerLinkActive=\"active\">{{poolLink.name}}</a></li>\n              </ul>\n            </li>\n          </ul>\n        </li>\n      </ul>\n    </div>\n    <div class=\"bottom-part-menu\">\n\n    </div>\n    <!-- /.sidebar-menu -->\n  </section>\n  <!-- /.sidebar -->\n</aside>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!--<script src=\"../../../../WEB/sub-content-loader.js\"></script>-->\n<aside class=\"main-sidebar\">\n\n  <!-- sidebar: style can be found in sidebar.less -->\n  <section class=\"sidebar\">\n    <div class=\"top-part-menu\">\n      <ul id=\"dash-link\" class=\"sidebar-menu\">\n        <li><a href=\"\"><i class=\"fa fa-home\"></i><span>Main dashboard</span></a></li>\n      </ul>\n      <!-- Sidebar Menu.ts -->\n      <ul id=\"dash-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n\n        <li class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-chart-area\"></i><span>Global Statistics</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let globalLink of globalStatisticsLinks\"\n            ><a [routerLink]=\"[globalLink.linkPart]\" routerLinkActive=\"active\">{{globalLink.name}}</a></li>\n          </ul>\n        </li>\n\n      </ul>\n    </div>\n    <div class=\"central-part-menu\">\n      <ul id=\"main-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n        <li class=\"header\">STORAGE ARRAYS</li>\n        <!-- search form (Optional) -->\n        <form action=\"#\" method=\"get\" class=\"sidebar-form\" autocomplete=\"off\">\n          <div class=\"input-group\">\n            <input [(ngModel)]=\"searchExpression\" (input)=\"search()\" type=\"text\" name=\"searchExp\" class=\"form-control\"\n                   placeholder=\"Search...\" id=\"menu-search-input\"/>\n            <span class=\"input-group-btn\">\n              <button type=\"button\" name=\"search\" id=\"search-btn\" class=\"btn btn-flat\"><i class=\"fa fa-search\"></i>\n              </button>\n            </span>\n          </div>\n        </form>\n        <!-- /.search form -->\n        <li *ngFor=\"let menuItem of filteredItems\" class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{menuItem.label}}</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let link of menuItem.items\" class=\"treeview\">\n              <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{link.name}}</span>\n                <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n              </a>\n              <ul class=\"treeview-menu\">\n                <li *ngFor=\"let poolLink of poolMetricLinks\"><a\n                  [routerLink]=\"link.name | iframeUrlCreator:{iframeLink: poolLink.linkPart}\"\n                  routerLinkActive=\"active\">{{poolLink.name}}</a></li>\n              </ul>\n            </li>\n          </ul>\n        </li>\n      </ul>\n    </div>\n    <div class=\"bottom-part-menu\">\n\n    </div>\n    <!-- /.sidebar-menu -->\n  </section>\n  <!-- /.sidebar -->\n</aside>\n");
 
 /***/ }),
 
@@ -4224,35 +4224,35 @@ var IframeUrlCreatorPipe = /** @class */ (function () {
             hostGroups: '9%20Capacity%20Analysis/VM%20Capacity%20Analysis.html',
         };
         this.mapSystemToDirectory = [];
-        this.mapSystemToDirectory[1] = '01';
-        this.mapSystemToDirectory[2] = '02';
-        this.mapSystemToDirectory[3] = '03';
-        this.mapSystemToDirectory[4] = '04';
-        this.mapSystemToDirectory[5] = '05';
-        this.mapSystemToDirectory[6] = '06';
+        this.mapSystemToDirectory['XP7_G11_58417'] = '01';
+        this.mapSystemToDirectory['XP7_G12_58416'] = '02';
+        this.mapSystemToDirectory['XP7_G13_58734'] = '03';
+        this.mapSystemToDirectory['XP7_G14_10560'] = '04';
+        this.mapSystemToDirectory['XP7_G15_20028'] = '05';
+        this.mapSystemToDirectory['XP7_G16_20359'] = '06';
         // this.mapToDirectory[7] = '';
-        this.mapSystemToDirectory[8] = '22';
-        this.mapSystemToDirectory[9] = '23';
-        this.mapSystemToDirectory[10] = '24';
-        this.mapSystemToDirectory[11] = '25';
-        this.mapSystemToDirectory[12] = '26';
+        this.mapSystemToDirectory['XP7_B12_58678'] = '22';
+        this.mapSystemToDirectory['XP7_B13_59006'] = '23';
+        this.mapSystemToDirectory['XP7_B14_10554'] = '24';
+        this.mapSystemToDirectory['XP7_B15_10640'] = '25';
+        this.mapSystemToDirectory['XP7_B16_11114'] = '26';
         // this.mapToDirectory[13] = '';
-        this.mapSystemToDirectory[14] = '62';
-        this.mapSystemToDirectory[15] = '41';
-        this.mapSystemToDirectory[16] = '42';
-        this.mapSystemToDirectory[17] = '43';
-        this.mapSystemToDirectory[18] = '44';
-        this.mapSystemToDirectory[19] = '81';
-        this.mapSystemToDirectory[20] = '51';
-        this.mapSystemToDirectory[21] = '52';
+        this.mapSystemToDirectory['XP7_STL2_10558'] = '62';
+        this.mapSystemToDirectory['XP7_CBJ2_57216'] = '41';
+        this.mapSystemToDirectory['XP7_CBJ3_57222'] = '42';
+        this.mapSystemToDirectory['XP7_CBJ4_20575'] = '43';
+        this.mapSystemToDirectory['XP7_CBJ5_56053'] = '44';
+        this.mapSystemToDirectory['XP7_AIMS1_20627'] = '81';
+        this.mapSystemToDirectory['XP7_QAS1_20610'] = '51';
+        this.mapSystemToDirectory['XP7_QAS2_56139'] = '52';
         // this.mapSystemToDirectory[22] = '71';
-        this.mapSystemToDirectory[23] = '72';
-        this.mapSystemToDirectory[24] = '27';
-        this.mapSystemToDirectory[25] = '63';
-        this.mapSystemToDirectory[26] = '12';
-        this.mapSystemToDirectory[27] = '13';
-        this.mapSystemToDirectory[28] = '11';
-        this.mapSystemToDirectory[29] = '32';
+        this.mapSystemToDirectory['XP7_MEG2_20725'] = '72';
+        this.mapSystemToDirectory['XP7_B17_50225'] = '27';
+        this.mapSystemToDirectory['XP7_STL3_58634'] = '63';
+        this.mapSystemToDirectory['XP8_G22_30738'] = '12';
+        this.mapSystemToDirectory['XP8_G23_30739'] = '13';
+        this.mapSystemToDirectory['XP8_G21_30759'] = '32';
+        this.mapSystemToDirectory['XP8_B22_30754'] = '11';
     }
     IframeUrlCreatorPipe.prototype.transform = function (value, args) {
         var anchorParam = '';
@@ -4265,7 +4265,7 @@ var IframeUrlCreatorPipe = /** @class */ (function () {
         if (this.mapSystemToDirectory[id] !== undefined) {
             return this.mapSystemToDirectory[id];
         }
-        throw new Error("ID: " + id + " not found in mapping");
+        // throw new Error(`ID: ${id} not found in mapping`);
     };
     IframeUrlCreatorPipe.prototype.normalizeAnchor = function (value) {
         if (value != null) {
@@ -4370,9 +4370,9 @@ var SystemPool2SasiGroupTablePipe = /** @class */ (function () {
         return systems.map(function (system) {
             var row = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiGroupRow"]();
             var groupRow = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"]();
-            groupRow.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](system.name, { id: system.id, iFrameLink: context, value: system.name });
+            groupRow.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](system.name, { id: system.name, iFrameLink: context, value: system.name });
             row.groupRow = groupRow;
-            row.rows = _this.rowPipe.transform(system.pools, context, system.id);
+            row.rows = _this.rowPipe.transform(system.pools, context, system.name);
             return row;
         });
     };
@@ -4427,7 +4427,7 @@ var SystemPool2SasiTablePipe = /** @class */ (function () {
         var _this = this;
         return systems.map(function (system) {
             var row = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"]();
-            var linkIdInput = system.id;
+            var linkIdInput = system.name;
             if (linkId != null) {
                 linkIdInput = linkId;
             }
@@ -5596,6 +5596,7 @@ var IframeComponent = /** @class */ (function () {
         var _this = this;
         this.route.paramMap.subscribe(function (params) {
             _this.url = _this.sanitizer.bypassSecurityTrustResourceUrl(atob(params.get('url')));
+            console.log(atob(params.get('url')));
         });
     };
     IframeComponent.ctorParameters = function () { return [
