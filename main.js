@@ -3519,6 +3519,12 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 var Datacenter = /** @class */ (function () {
     function Datacenter() {
     }
+    Datacenter.of = function (dto) {
+        var dc = new Datacenter();
+        dc.label = dto.storageEntity.name;
+        dc.id = dto.storageEntity.id;
+        return dc;
+    };
     return Datacenter;
 }());
 
@@ -4372,7 +4378,7 @@ var SystemPool2SasiGroupTablePipe = /** @class */ (function () {
             var groupRow = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"]();
             groupRow.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](system.name, { id: system.name, iFrameLink: context, value: system.name });
             row.groupRow = groupRow;
-            row.rows = _this.rowPipe.transform(system.pools, context, system.name);
+            row.rows = _this.rowPipe.transform(system.children, context, system.name);
             return row;
         });
     };
@@ -4432,9 +4438,11 @@ var SystemPool2SasiTablePipe = /** @class */ (function () {
                 linkIdInput = linkId;
             }
             row.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](system.name, { id: linkIdInput, iFrameLink: context, value: system.name });
-            system.metrics.forEach(function (metric) { return row.cells[metric.type] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.value, metric); });
-            if (system.ports !== undefined) {
-                row.subRows = _this.transform(system.ports, null, null);
+            if (system.metrics !== undefined) {
+                system.metrics.forEach(function (metric) { return row.cells[metric.type] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.value, metric); });
+            }
+            if (system.children !== undefined) {
+                row.subRows = _this.transform(system.children, null, null);
                 var metric = new _models_metrics_metric_vo__WEBPACK_IMPORTED_MODULE_3__["Metric"]();
                 metric.value = _this.countPortImbalances(row.subRows);
                 metric.type = _models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PORT_IMBALANCE_EVENTS;
@@ -4523,6 +4531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _common_models_datacenter_vo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/models/datacenter.vo */ "./src/app/common/models/datacenter.vo.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4539,6 +4548,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var BreadcrumbComponent = /** @class */ (function () {
     function BreadcrumbComponent(router, activatedRoute, metricService) {
         this.router = router;
@@ -4549,8 +4559,8 @@ var BreadcrumbComponent = /** @class */ (function () {
     BreadcrumbComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["distinctUntilChanged"])()).subscribe(function () {
-            _this.metricService.getDatacenters().subscribe(function (dto) {
-                _this.dataCenters = dto.datacenters;
+            _this.metricService.getDataCenters().subscribe(function (dto) {
+                _this.dataCenters = dto.map(_common_models_datacenter_vo__WEBPACK_IMPORTED_MODULE_4__["Datacenter"].of);
                 _this.breadcrumbs = _this.buildBreadCrumb(_this.activatedRoute.root);
             });
         });
@@ -5264,14 +5274,14 @@ var DashboardComponent = /** @class */ (function () {
             _this.alerts = stats.alerts;
             _this.metrics = _this.transformCapacityMetrics(stats.metrics);
         });
-        this.metricService.getDatacenters().subscribe(function (data) {
+        this.metricService.getDataCenters().subscribe(function (data) {
             _this.datacenters = new _common_models_metrics_metric_vo__WEBPACK_IMPORTED_MODULE_2__["Metric"]();
-            _this.datacenters.value = data.datacenters.length;
+            _this.datacenters.value = data.length;
             _this.datacenters.unit = '';
             _this.registeredSystems = new _common_models_metrics_metric_vo__WEBPACK_IMPORTED_MODULE_2__["Metric"]();
             _this.registeredSystems.unit = '';
-            _this.registeredSystems.value = data.datacenters.reduce(function (previousValue, currentValue) {
-                return previousValue + currentValue.systems.length;
+            _this.registeredSystems.value = data.reduce(function (previousValue, currentValue) {
+                return previousValue + currentValue.storageEntity.children.length;
             }, 0);
         });
         this.metricService.getGraphData([_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD]).subscribe(function (dto) {
@@ -5681,15 +5691,15 @@ var SideMenuComponent = /** @class */ (function () {
     }
     SideMenuComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.metricService.getDatacenters().subscribe(function (data) {
-            _this.items = _this.convertMenu(data.datacenters);
-            _this.setDefaultDataCenter(data.datacenters);
+        this.metricService.getDataCenters().subscribe(function (data) {
+            _this.items = _this.convertMenu(data);
+            _this.setDefaultDataCenter(data);
             _this.filteredItems = _this.items;
         });
     };
     SideMenuComponent.prototype.setDefaultDataCenter = function (dataCenters) {
         if (dataCenters.length > 0) {
-            this.defaultDataCenter = dataCenters[0].id;
+            this.defaultDataCenter = dataCenters[0].storageEntity.id;
             this.setGlobalStatisticsLinks();
         }
     };
@@ -5733,11 +5743,11 @@ var SideMenuComponent = /** @class */ (function () {
         for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
             var dataCenter = data_1[_i];
             var items = [];
-            for (var _a = 0, _b = dataCenter.systems; _a < _b.length; _a++) {
+            for (var _a = 0, _b = dataCenter.storageEntity.children; _a < _b.length; _a++) {
                 var system = _b[_a];
                 items.push(new _common_models_menu_item_vo__WEBPACK_IMPORTED_MODULE_3__["MenuItem"](system.id, system.name));
             }
-            menu.push(new _common_models_menu_tree_vo__WEBPACK_IMPORTED_MODULE_1__["MenuTree"](dataCenter.label, items));
+            menu.push(new _common_models_menu_tree_vo__WEBPACK_IMPORTED_MODULE_1__["MenuTree"](dataCenter.storageEntity.name, items));
         }
         return menu;
     };
@@ -6055,11 +6065,12 @@ var GlobalHostGroupCapacityComponent = /** @class */ (function (_super) {
         this.metricService.getGlobalHostGroupCapacityStatistics().subscribe(function (data) {
             var average = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_4__["SasiWeightedArithmeticMeanUtils"]();
             var filter = [];
-            data.systems.forEach(function (system) { return system.pools.forEach(function (pool) {
+            data.forEach(function (system) { return system.children.forEach(function (pool) {
                 var row = new _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_5__["SelectedRow"](system.name, pool.name);
                 filter.push(row);
             }); });
-            _this.result = average.computeSummaries(_this.transformer.transform(data.systems, ''), filter);
+            _this.result = average.computeSummaries(_this.transformer.transform(data, ''), filter);
+            console.log(_this.result);
         }, function (error) {
             console.log(error);
             _this.result = null;
@@ -6207,11 +6218,12 @@ var GlobalPhysicalCapacityStatisticsComponent = /** @class */ (function (_super)
         this.metricService.getGlobalCapacityStatistics().subscribe(function (data) {
             var average = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_4__["SasiWeightedArithmeticMeanUtils"]();
             var filter = [];
-            data.systems.forEach(function (system) { return system.pools.forEach(function (pool) {
+            data.forEach(function (system) { return system.children.forEach(function (pool) {
                 var row = new _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_5__["SelectedRow"](system.name, pool.name);
                 filter.push(row);
             }); });
-            _this.result = average.computeSummaries(_this.transformer.transform(data.systems, ''), filter);
+            _this.result = average.computeSummaries(_this.transformer.transform(data, ''), filter);
+            console.log(_this.result);
         }, function (error) {
             console.log(error);
             _this.result = null;
@@ -6377,11 +6389,12 @@ var GlobalLogicalStatisticsComponent = /** @class */ (function (_super) {
         this.metricService.getGlobalCapacityStatistics().subscribe(function (data) {
             var average = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_3__["SasiWeightedArithmeticMeanUtils"]();
             var filter = [];
-            data.systems.forEach(function (system) { return system.pools.forEach(function (pool) {
+            data.forEach(function (system) { return system.children.forEach(function (pool) {
                 var row = new _common_components_sasi_table_row_table_selected_row__WEBPACK_IMPORTED_MODULE_4__["SelectedRow"](system.name, pool.name);
                 filter.push(row);
             }); });
-            _this.result = average.computeSummaries(_this.transformer.transform(data.systems, ''), filter);
+            _this.result = average.computeSummaries(_this.transformer.transform(data, ''), filter);
+            console.log(_this.result);
         }, function (error) {
             console.log(error);
             _this.data = null;
@@ -7627,7 +7640,7 @@ var routes = [
             },
             {
                 path: 'dp-sla',
-                redirectTo: 'dp-sla/1',
+                redirectTo: 'dp-sla/-1',
                 pathMatch: 'full'
             },
             {
@@ -7727,7 +7740,7 @@ var GlobalStatisticsComponent = /** @class */ (function () {
     }
     GlobalStatisticsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.bus.datacenterAnnouncement$.subscribe(function (id) { return _this.getDatacenters(id); });
+        this.bus.datacenterAnnouncement$.subscribe(function (id) { return _this.getDataCenters(id); });
         this.bus.contextAnnouncement$.subscribe(function (context) {
             setTimeout(function () {
                 return _this.context = context;
@@ -7740,15 +7753,15 @@ var GlobalStatisticsComponent = /** @class */ (function () {
     GlobalStatisticsComponent.prototype.isCurrentTab = function (id) {
         return id === this.currentTab;
     };
-    GlobalStatisticsComponent.prototype.getDatacenters = function (currentTab) {
+    GlobalStatisticsComponent.prototype.getDataCenters = function (currentTab) {
         var _this = this;
-        this.metricService.getDatacenters().subscribe(function (data) {
+        this.metricService.getDataCenters().subscribe(function (data) {
             _this.dataCenters = [];
             var defaultDatacenter = new _common_models_datacenter_vo__WEBPACK_IMPORTED_MODULE_1__["Datacenter"]();
             defaultDatacenter.label = 'All';
             defaultDatacenter.id = -1;
             _this.dataCenters.push(defaultDatacenter);
-            _this.dataCenters = _this.dataCenters.concat(data.datacenters);
+            _this.dataCenters = _this.dataCenters.concat(data.map(_common_models_datacenter_vo__WEBPACK_IMPORTED_MODULE_1__["Datacenter"].of));
             _this.currentTab = currentTab;
         });
     };
@@ -7980,6 +7993,36 @@ var ConditionEvaluateUtils = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/global-statistics/utils/metric-handler.utils.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/global-statistics/utils/metric-handler.utils.ts ***!
+  \*****************************************************************/
+/*! exports provided: MetricHandlerUtils */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MetricHandlerUtils", function() { return MetricHandlerUtils; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var MetricHandlerUtils = /** @class */ (function () {
+    function MetricHandlerUtils() {
+    }
+    MetricHandlerUtils.success = function (data) {
+        return data.reduce(function (previousValue, currentValue) { return previousValue.concat(currentValue.children); }, []);
+    };
+    MetricHandlerUtils.error = function (error) {
+        console.log(error);
+        return [];
+    };
+    return MetricHandlerUtils;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/global-statistics/utils/number.formatter.ts":
 /*!*************************************************************!*\
   !*** ./src/app/global-statistics/utils/number.formatter.ts ***!
@@ -8058,12 +8101,20 @@ var SystemAggregatedStatistics = /** @class */ (function () {
         this.values[type] = value;
     };
     SystemAggregatedStatistics.prototype.setValue = function (type, value, unit) {
+        if (value === null || value === undefined) {
+            return;
+        }
         if (this.values[type] === undefined) {
             var metric = new _common_models_metrics_metric_vo__WEBPACK_IMPORTED_MODULE_1__["Metric"]();
             metric.type = type;
             metric.unit = unit;
             metric.value = 0;
             this.setMetric(type, metric);
+        }
+        else {
+            if (this.values[type].unit === null && unit != null) {
+                this.values[type].unit = unit;
+            }
         }
         this.values[type].value += value;
     };
@@ -8115,50 +8166,29 @@ var SasiWeightedArithmeticMeanUtils = /** @class */ (function () {
             }
             var physicalCapacity = _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY);
             var netTotal = _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL);
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC) * physicalCapacity, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC) * physicalCapacity, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC) * physicalCapacity, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC) * physicalCapacity, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC) * physicalCapacity, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC) * netTotal, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC));
-            var compRatio = _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO);
-            if (compRatio > 0) {
-                _this.physicalCapacityCompRatio += physicalCapacity;
-                _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO, compRatio * physicalCapacity, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO));
-            }
-            else {
-                _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO, 0, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO));
-            }
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W));
-            _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M, _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M), _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M));
-            var dedupRatio = _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO);
-            if (dedupRatio > 0) {
-                _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO, dedupRatio * physicalCapacity, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO));
-                _this.physicalCapacityDedupRatio += physicalCapacity;
-            }
-            else {
-                _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO, 0, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO));
-            }
-            var totalSaving = _this.getMetricValueByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT);
-            if (totalSaving > 1) {
-                _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT, totalSaving * physicalCapacity, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT));
-                _this.physicalCapacityTotalSaving += physicalCapacity;
-            }
-            else {
-                _this.partiallySummarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT, 0, _this.getUnitByName(sasiRow, _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT));
-            }
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC, sasiRow, _this.partiallySummarizedValues, physicalCapacity);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC, sasiRow, _this.partiallySummarizedValues, physicalCapacity);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC, sasiRow, _this.partiallySummarizedValues, physicalCapacity);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC, sasiRow, _this.partiallySummarizedValues, physicalCapacity);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC, sasiRow, _this.partiallySummarizedValues, physicalCapacity);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC, sasiRow, _this.partiallySummarizedValues, netTotal);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO, sasiRow, _this.partiallySummarizedValues, physicalCapacity, 0);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M, sasiRow, _this.partiallySummarizedValues);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO, sasiRow, _this.partiallySummarizedValues, physicalCapacity, 0);
+            _this.setPartialValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT, sasiRow, _this.partiallySummarizedValues, physicalCapacity, 1);
         });
         var result = this.summarizeStats(this.partiallySummarizedValues, 'all');
         result.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SELECTED_COUNT, amendFilter.length, '');
@@ -8166,29 +8196,34 @@ var SasiWeightedArithmeticMeanUtils = /** @class */ (function () {
     };
     SasiWeightedArithmeticMeanUtils.prototype.summarizeStats = function (values, name) {
         var summarizedValues = new SystemAggregatedStatistics(name);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC).value / summarizedValues.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC).value / summarizedValues.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC).value / summarizedValues.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC).value / summarizedValues.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC).value / summarizedValues.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC).value / summarizedValues.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M).value, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO).value / (this.physicalCapacityCompRatio === 0 ? 1 : this.physicalCapacityCompRatio), values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO).value / (this.physicalCapacityDedupRatio === 0 ? 1 : this.physicalCapacityDedupRatio), values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO).unit);
-        summarizedValues.setValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT, values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT).value / (this.physicalCapacityTotalSaving === 0 ? 1 : this.physicalCapacityTotalSaving), values.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT).unit);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].SUBSCRIBED_CAPACITY, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_CAPACITY, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].AVAILABLE_CAPACITY, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_FREE, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_FREE, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_FREE, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1D, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1W, values, summarizedValues);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].CAPACITY_CHANGE_1M, values, summarizedValues);
+        var physicalCapacitySummarized = this.getSafeValue(summarizedValues.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_CAPACITY));
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_SUBS_PERC, values, summarizedValues, physicalCapacitySummarized);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_SUBS_PERC, values, summarizedValues, physicalCapacitySummarized);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_SUBS_PERC, values, summarizedValues, physicalCapacitySummarized);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].LOGICAL_USED_PERC, values, summarizedValues, physicalCapacitySummarized);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].PHYSICAL_USED_PERC, values, summarizedValues, physicalCapacitySummarized);
+        var netTotalSummarized = this.getSafeValue(summarizedValues.getValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_TOTAL));
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].NET_USED_PERC, values, summarizedValues, netTotalSummarized);
+        var compRatio = (this.physicalCapacityCompRatio === 0 ? 1 : this.physicalCapacityCompRatio);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO, values, summarizedValues, compRatio);
+        var dedupRatio = (this.physicalCapacityDedupRatio === 0 ? 1 : this.physicalCapacityDedupRatio);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO, values, summarizedValues, dedupRatio);
+        var totalSaving = (this.physicalCapacityTotalSaving === 0 ? 1 : this.physicalCapacityTotalSaving);
+        this.setSummarizeValue(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT, values, summarizedValues, totalSaving);
         return summarizedValues;
     };
     SasiWeightedArithmeticMeanUtils.prototype.getMetricByName = function (metrics, type) {
@@ -8205,12 +8240,47 @@ var SasiWeightedArithmeticMeanUtils = /** @class */ (function () {
         }
         return Number(metric.value);
     };
-    SasiWeightedArithmeticMeanUtils.prototype.getUnitByName = function (metrics, type) {
-        var metric = this.getMetricByName(metrics, type);
-        if (metric == null || metric.rawData == null) {
-            return null;
+    SasiWeightedArithmeticMeanUtils.prototype.setPartialValue = function (metricType, values, summarizeValue, meanValue, minimalValue) {
+        if (meanValue === void 0) { meanValue = 1; }
+        if (minimalValue === void 0) { minimalValue = null; }
+        var metric = this.getMetricByName(values, metricType);
+        var computedValue = 0;
+        if (metric !== null) {
+            if (minimalValue === null || metric.value > minimalValue) {
+                if (metricType === _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].COMPRESS_RATIO) {
+                    this.physicalCapacityCompRatio += meanValue;
+                }
+                if (metricType === _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].DEDUP_RATIO) {
+                    this.physicalCapacityDedupRatio += meanValue;
+                }
+                if (metricType === _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_0__["SystemMetricType"].TOTAL_SAVING_EFFECT) {
+                    this.physicalCapacityTotalSaving += meanValue;
+                }
+                computedValue = Number(metric.value) * meanValue;
+            }
+            else {
+                computedValue = 0;
+            }
+            summarizeValue.setValue(metricType, computedValue, metric.rawData.unit);
         }
-        return metric.rawData.unit;
+    };
+    SasiWeightedArithmeticMeanUtils.prototype.setSummarizeValue = function (metricType, values, summarizedValue, meanValue) {
+        if (meanValue === void 0) { meanValue = null; }
+        var metric = values.getValue(metricType);
+        if (metric !== undefined) {
+            if (meanValue != null) {
+                summarizedValue.setValue(metricType, metric.value / meanValue, metric.unit);
+            }
+            else {
+                summarizedValue.setValue(metricType, metric.value, metric.unit);
+            }
+        }
+    };
+    SasiWeightedArithmeticMeanUtils.prototype.getSafeValue = function (metric) {
+        if (metric === undefined) {
+            return 0;
+        }
+        return metric.value;
     };
     return SasiWeightedArithmeticMeanUtils;
 }());
@@ -8363,6 +8433,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-aggregate-value.impl */ "./src/app/common/components/sasi-table/group-sort-aggregate-value.impl.ts");
 /* harmony import */ var _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
 /* harmony import */ var _formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../formatters/empty-formatter/empty-formatter.component */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts");
+/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8375,6 +8446,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -8466,15 +8538,11 @@ var AdaptersComponent = /** @class */ (function () {
         var _this = this;
         this.currentDataCenterId = id;
         this.metricService.getAdaptersStatistics(id, this.currentPeriod).subscribe(function (data) {
-            _this.data = [];
-            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
+            _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_16__["MetricHandlerUtils"].success(data);
             // TODO change this filtering. checking first metric for non-null is not good, and make it as some named function for readability
-            _this.data.forEach(function (system) { return system.pools.forEach(function (pool) { return pool.ports = pool.ports.filter(function (port) { return port.metrics.length > 0 && port.metrics[0].value > 0; }); }); });
-            _this.data.forEach(function (system) { return system.pools = system.pools.filter(function (pool) { return (pool.metrics.length > 0 && pool.metrics[0].value > 0) || pool.ports.length > 0; }); });
-        }, function (error) {
-            console.log(error);
-            _this.data = [];
-        });
+            _this.data.forEach(function (system) { return system.children.forEach(function (pool) { return pool.children = pool.children.filter(function (port) { return port.metrics.length > 0 && port.metrics[0].value > 0; }); }); });
+            _this.data.forEach(function (system) { return system.children = system.children.filter(function (pool) { return (pool.metrics.length > 0 && pool.metrics[0].value > 0) || pool.children.length > 0; }); });
+        }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_16__["MetricHandlerUtils"].error(error); });
         return this.data;
     };
     AdaptersComponent.ctorParameters = function () { return [
@@ -9443,6 +9511,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _formatters_time_formatter_time_formatter_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../formatters/time-formatter/time-formatter.component */ "./src/app/global-statistics/formatters/time-formatter/time-formatter.component.ts");
 /* harmony import */ var _utils_sum_value_service_impl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/sum-value-service.impl */ "./src/app/global-statistics/utils/sum-value-service.impl.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-aggregate-value.impl */ "./src/app/common/components/sasi-table/group-sort-aggregate-value.impl.ts");
+/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9455,6 +9524,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -9538,13 +9608,7 @@ var DpSlaComponent = /** @class */ (function () {
     DpSlaComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.currentDataCenterId = id;
-        this.metricService.getDpSlaStatistics(id, this.currentPeriod).subscribe(function (data) {
-            _this.data = [];
-            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
-        }, function (error) {
-            console.log(error);
-            _this.data = [];
-        });
+        this.metricService.getDpSlaStatistics(id, this.currentPeriod).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_14__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_14__["MetricHandlerUtils"].error(error); });
         return this.data;
     };
     DpSlaComponent.ctorParameters = function () { return [
@@ -9610,6 +9674,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
 /* harmony import */ var _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
+/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9622,6 +9687,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -9754,13 +9820,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
     };
     HostGroupsCapacityComponent.prototype.getTableData = function (id) {
         var _this = this;
-        this.metricService.getHostGroupCapacityStatistics(id).subscribe(function (data) {
-            _this.data = [];
-            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
-        }, function (error) {
-            console.log(error);
-            _this.data = [];
-        });
+        this.metricService.getHostGroupCapacityStatistics(id).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_14__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_14__["MetricHandlerUtils"].error(error); });
         return this.data;
     };
     HostGroupsCapacityComponent.ctorParameters = function () { return [
@@ -9840,6 +9900,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/sasi-weighted-arithmetic-mean.utils */ "./src/app/global-statistics/utils/sasi-weighted-arithmetic-mean.utils.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
+/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9852,6 +9913,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -10179,13 +10241,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
     };
     LogicalCapacityStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
-        this.metricService.getCapacityStatistics(id).subscribe(function (data) {
-            _this.data = [];
-            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
-        }, function (error) {
-            console.log(error);
-            _this.data = [];
-        });
+        this.metricService.getCapacityStatistics(id).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__["MetricHandlerUtils"].error(error); });
         return this.data;
     };
     LogicalCapacityStatisticsComponent.ctorParameters = function () { return [
@@ -10250,6 +10306,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _alert_rule__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../alert-rule */ "./src/app/global-statistics/alert-rule.ts");
 /* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
 /* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
+/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10262,6 +10319,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -10370,13 +10428,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
     PerformanceStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.currentDataCenterId = id;
-        this.metricService.getPerformanceStatistics(id, this.currentPeriod).subscribe(function (data) {
-            _this.data = [];
-            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
-        }, function (error) {
-            console.log(error);
-            _this.data = [];
-        });
+        this.metricService.getPerformanceStatistics(id, this.currentPeriod).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_13__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_13__["MetricHandlerUtils"].error(error); });
         return this.data;
     };
     PerformanceStatisticsComponent.ctorParameters = function () { return [
@@ -10443,6 +10495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/sasi-weighted-arithmetic-mean.utils */ "./src/app/global-statistics/utils/sasi-weighted-arithmetic-mean.utils.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 /* harmony import */ var ngx_store__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-store */ "./node_modules/ngx-store/esm5/ngx-store.js");
+/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10455,6 +10508,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -10642,13 +10696,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
     };
     PhysicalCapacityStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
-        this.metricService.getCapacityStatistics(id).subscribe(function (data) {
-            _this.data = [];
-            data.datacenters.forEach(function (datacenter) { return _this.data = _this.data.concat(datacenter.systems); });
-        }, function (error) {
-            console.log(error);
-            _this.data = [];
-        });
+        this.metricService.getCapacityStatistics(id).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_15__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_15__["MetricHandlerUtils"].error(error); });
         return this.data;
     };
     PhysicalCapacityStatisticsComponent.ctorParameters = function () { return [
@@ -10793,32 +10841,32 @@ var MetricService = /** @class */ (function () {
         this.http = http;
         this.dataCenterObservable = null;
         this.currentDate = new Date();
-        this.getDatacenters();
+        this.getDataCenters();
     }
     MetricService.prototype.getInfrastructureStats = function () {
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/infrastructure/alerts');
         return this.http.get(url);
     };
-    MetricService.prototype.getDatacenters = function () {
+    MetricService.prototype.getDataCenters = function () {
         var _this = this;
         if (this.dataCenterObservable !== null) {
             return this.dataCenterObservable;
         }
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/datacenters');
         this.dataCenterObservable = this.http.get(url);
-        this.dataCenterObservable.subscribe(function (dto) { return _this.infrastructure = dto.datacenters; });
+        this.dataCenterObservable.subscribe(function (dto) { return _this.infrastructure = dto; });
         return this.dataCenterObservable;
     };
     MetricService.prototype.getSystemName = function (datacenterId, systemId) {
-        var datacenterObj = this.infrastructure.find(function (datacenter) { return datacenter.id === datacenterId; });
+        var datacenterObj = this.infrastructure.find(function (datacenter) { return datacenter.storageEntity.id === datacenterId; });
         if (datacenterObj === undefined) {
             return '';
         }
-        var systemObj = datacenterObj.systems.find(function (system) { return system.id === systemId; });
+        var systemObj = datacenterObj.storageEntity.children.find(function (system) { return system.id === systemId; });
         if (systemObj === undefined) {
             return '';
         }
-        return datacenterObj.systems.find(function (system) { return system.id === systemId; }).name;
+        return systemObj.name;
     };
     MetricService.prototype.getPerformanceStatistics = function (id, period) {
         var url;
