@@ -8677,7 +8677,7 @@ var BlockSizeLatencyComponent = /** @class */ (function () {
         });
     };
     BlockSizeLatencyComponent.prototype.setPoolFilters = function (data) {
-        return data.systems.map(function (system) { return system.pools.map(function (pool) {
+        return data.systems.map(function (system) { return system.children.map(function (pool) {
             return { id: pool.id, name: pool.name + '@' + system.name, systemId: system.id };
         }); }).reduce(function (previousValue, currentValue) { return previousValue.concat.apply(previousValue, currentValue); });
     };
