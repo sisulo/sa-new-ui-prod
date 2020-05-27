@@ -4441,7 +4441,7 @@ var SystemPool2SasiTablePipe = /** @class */ (function () {
             if (system.metrics !== undefined) {
                 system.metrics.forEach(function (metric) { return row.cells[metric.type] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.value, metric); });
             }
-            if (system.children !== undefined) {
+            if (system.children !== undefined && system.children.length > 0) {
                 row.subRows = _this.transform(system.children, null, null);
                 var metric = new _models_metrics_metric_vo__WEBPACK_IMPORTED_MODULE_3__["Metric"]();
                 metric.value = _this.countPortImbalances(row.subRows);
