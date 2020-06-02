@@ -4777,6 +4777,7 @@ var BarChartComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-bar-chart',
             template: __importDefault(__webpack_require__(/*! raw-loader!./bar-chart.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/dashboard/charts/bar-chart/bar-chart.component.html")).default,
+            changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
             styles: [__importDefault(__webpack_require__(/*! ./bar-chart.component.css */ "./src/app/components/dashboard/charts/bar-chart/bar-chart.component.css")).default]
         }),
         __metadata("design:paramtypes", [])
