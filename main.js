@@ -8526,8 +8526,10 @@ var AdaptersComponent = /** @class */ (function () {
             _this.getTableData(id); // TODO initInternal removed, check collapse/select behavior
         });
         this.periodService.periodAnnouncement$.subscribe(function (period) {
-            _this.currentPeriod = period;
-            _this.getTableData(_this.currentDataCenterId);
+            if (_this.currentPeriod !== period) {
+                _this.currentPeriod = period;
+                _this.getTableData(_this.currentDataCenterId);
+            }
         });
         this.periodService.announceEnablePeriod(true);
         this.periodService.announcePeriod(this.currentPeriod);
@@ -9597,8 +9599,10 @@ var DpSlaComponent = /** @class */ (function () {
             _this.getTableData(id); // TODO initInternal removed, check collapse/select behavior
         });
         this.periodService.periodAnnouncement$.subscribe(function (period) {
-            _this.currentPeriod = period;
-            _this.getTableData(_this.currentDataCenterId);
+            if (_this.currentPeriod !== period) {
+                _this.currentPeriod = period;
+                _this.getTableData(_this.currentDataCenterId);
+            }
         });
         this.periodService.announceEnablePeriod(true);
         this.periodService.announcePeriod(this.currentPeriod);
@@ -10415,8 +10419,10 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
             _this.data = _this.getTableData(id);
         });
         this.periodService.periodAnnouncement$.subscribe(function (period) {
-            _this.currentPeriod = period;
-            _this.getTableData(_this.currentDataCenterId);
+            if (_this.currentPeriod !== period) {
+                _this.currentPeriod = period;
+                _this.getTableData(_this.currentDataCenterId);
+            }
         });
         this.periodService.announceEnablePeriod(true);
         this.periodService.announcePeriod(this.currentPeriod);
