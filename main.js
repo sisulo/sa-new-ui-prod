@@ -230,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!--<script src=\"../../../../WEB/sub-content-loader.js\"></script>-->\n<aside class=\"main-sidebar\">\n\n  <!-- sidebar: style can be found in sidebar.less -->\n  <section class=\"sidebar\">\n    <div class=\"top-part-menu\">\n      <ul id=\"dash-link\" class=\"sidebar-menu\">\n        <li><a href=\"\"><i class=\"fa fa-home\"></i><span>Main dashboard</span></a></li>\n      </ul>\n      <!-- Sidebar Menu.ts -->\n      <ul id=\"dash-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n\n        <li class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-chart-area\"></i><span>Global Statistics</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let globalLink of globalStatisticsLinks\"\n            ><a [routerLink]=\"[globalLink.linkPart]\" routerLinkActive=\"active\">{{globalLink.name}}</a></li>\n          </ul>\n        </li>\n\n      </ul>\n    </div>\n    <div class=\"central-part-menu\">\n      <ul id=\"main-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n        <li class=\"header\">STORAGE ARRAYS</li>\n        <!-- search form (Optional) -->\n        <form action=\"#\" method=\"get\" class=\"sidebar-form\" autocomplete=\"off\">\n          <div class=\"input-group\">\n            <input [(ngModel)]=\"searchExpression\" (input)=\"search()\" type=\"text\" name=\"searchExp\" class=\"form-control\"\n                   placeholder=\"Search...\" id=\"menu-search-input\"/>\n            <span class=\"input-group-btn\">\n              <button type=\"button\" name=\"search\" id=\"search-btn\" class=\"btn btn-flat\"><i class=\"fa fa-search\"></i>\n              </button>\n            </span>\n          </div>\n        </form>\n        <!-- /.search form -->\n        <li *ngFor=\"let menuItem of filteredItems\" class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{menuItem.label}}</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let link of menuItem.items\" class=\"treeview\">\n              <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{link.name}}</span>\n                <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n              </a>\n              <ul class=\"treeview-menu\">\n                <li *ngFor=\"let poolLink of poolMetricLinks\"><a\n                  [routerLink]=\"link.name | iframeUrlCreator:{iframeLink: poolLink.linkPart}\"\n                  routerLinkActive=\"active\">{{poolLink.name}}</a></li>\n              </ul>\n            </li>\n          </ul>\n        </li>\n      </ul>\n    </div>\n    <div class=\"bottom-part-menu\">\n\n    </div>\n    <!-- /.sidebar-menu -->\n  </section>\n  <!-- /.sidebar -->\n</aside>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!--<script src=\"../../../../WEB/sub-content-loader.js\"></script>-->\n<aside class=\"main-sidebar\">\n\n  <!-- sidebar: style can be found in sidebar.less -->\n  <section class=\"sidebar\">\n    <div class=\"top-part-menu\">\n      <ul id=\"dash-link\" class=\"sidebar-menu\">\n        <li><a href=\"\"><i class=\"fa fa-home\"></i><span>Main dashboard</span></a></li>\n      </ul>\n      <!-- Sidebar Menu.ts -->\n      <ul id=\"dash-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n\n        <li class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-chart-area\"></i><span>Global Statistics</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let globalLink of globalStatisticsLinks\"\n            ><a [routerLink]=\"[globalLink.linkPart]\" routerLinkActive=\"active\">{{globalLink.name}}</a></li>\n          </ul>\n        </li>\n        <li class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-chart-area\"></i><span>Storage configuration</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let globalLink of storageConfigurationLinks\"\n            ><a [routerLink]=\"[globalLink.linkPart]\" routerLinkActive=\"active\">{{globalLink.name}}</a></li>\n          </ul>\n        </li>\n\n      </ul>\n    </div>\n    <div class=\"central-part-menu\">\n      <ul id=\"main-menu\" class=\"sidebar-menu\" data-widget=\"tree\">\n        <li class=\"header\">STORAGE ARRAYS</li>\n        <!-- search form (Optional) -->\n        <form action=\"#\" method=\"get\" class=\"sidebar-form\" autocomplete=\"off\">\n          <div class=\"input-group\">\n            <input [(ngModel)]=\"searchExpression\" (input)=\"search()\" type=\"text\" name=\"searchExp\" class=\"form-control\"\n                   placeholder=\"Search...\" id=\"menu-search-input\"/>\n            <span class=\"input-group-btn\">\n              <button type=\"button\" name=\"search\" id=\"search-btn\" class=\"btn btn-flat\"><i class=\"fa fa-search\"></i>\n              </button>\n            </span>\n          </div>\n        </form>\n        <!-- /.search form -->\n        <li *ngFor=\"let menuItem of filteredItems\" class=\"treeview\">\n          <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{menuItem.label}}</span>\n            <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n          </a>\n          <ul class=\"treeview-menu\">\n            <li *ngFor=\"let link of menuItem.items\" class=\"treeview\">\n              <a href=\"#\"><i class=\"fa fa-cogs\"></i><span>{{link.name}}</span>\n                <span class=\"pull-right-container\">\n                <i class=\"fa fa-angle-left pull-right\"></i>\n              </span>\n              </a>\n              <ul class=\"treeview-menu\">\n                <li *ngFor=\"let poolLink of poolMetricLinks\"><a\n                  [routerLink]=\"link.name | iframeUrlCreator:{iframeLink: poolLink.linkPart}\"\n                  routerLinkActive=\"active\">{{poolLink.name}}</a></li>\n              </ul>\n            </li>\n          </ul>\n        </li>\n      </ul>\n    </div>\n    <div class=\"bottom-part-menu\">\n\n    </div>\n    <!-- /.sidebar-menu -->\n  </section>\n  <!-- /.sidebar -->\n</aside>\n");
 
 /***/ }),
 
@@ -425,7 +425,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"content\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <app-filter-list *ngIf=\"dates !== undefined\"\n                       [valueList]=\"dates\"\n                       title=\"Dates\"\n                       (valueListChange)=\"onDatesChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"systems !== undefined\"\n                       [valueList]=\"systems\"\n                       [selectedValues]=\"selectedSystems\"\n                       title=\"Systems\"\n                       (valueListChange)=\"onSystemChanged($event)\"></app-filter-list>\n    </div>\n\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"pools !== undefined\"\n                       [valueList]=\"pools\"\n                       [selectedValues]=\"selectedPools\"\n                       title=\"Pools\"\n                       (valueListChange)=\"onPoolChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n      <div class=\"box\">\n        <div class=\"box-header with-border\">\n          <h3 class=\"box-title\">SLA Filters</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"col-md-3\" *ngFor=\"let item of predefinedFilters;let i = index;\">\n            <button class=\"btn btn-sm {{filterColors[i]}}\" [class.active]=\"isSelected(i)\" [class.disabled]=\"!isSelected(i)\"\n                    (click)=\"onSelectFilter(i)\">{{filtersName[i]}}</button>\n\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"blockSizes !== undefined\"\n                       [valueList]=\"blockSizes\"\n                       [selectedValues]=\"selectedBlockSizes\"\n                       title=\"Block Size\"\n                       (valueListChange)=\"onBlockSizeChange($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"latencies !== undefined\"\n                       [valueList]=\"latencies\"\n                       [selectedValues]=\"selectedLatencies\"\n                       title=\"Latency\"\n                       (valueListChange)=\"onLatenciesChanged($event)\"></app-filter-list>\n    </div>\n\n  </div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">W History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-bubble-chart [dates]=\"selectedDates\" [poolIds]=\"selectedPools\" [blockSizes]=\"selectedBlockSizes\"\n                            [latencies]=\"selectedLatencies\"></app-bubble-chart>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"content\">\n  <div class=\"row\">\n    <div class=\"col-md-4\">\n      <app-filter-list *ngIf=\"dates !== undefined\"\n                       [valueList]=\"dates\"\n                       title=\"Dates\"\n                       (valueListChange)=\"onDatesChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"systems !== undefined\"\n                       [valueList]=\"systems\"\n                       [selectedValues]=\"selectedSystems\"\n                       title=\"Systems\"\n                       (valueListChange)=\"onSystemChanged($event)\"></app-filter-list>\n    </div>\n\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"pools !== undefined\"\n                       [valueList]=\"pools\"\n                       [selectedValues]=\"selectedPools\"\n                       title=\"Pools\"\n                       (valueListChange)=\"onPoolChanged($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n      <div class=\"box\">\n        <div class=\"box-header with-border\">\n          <h3 class=\"box-title\">SLA Filters</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"col-md-3\" *ngFor=\"let item of predefinedFilters;let i = index;\">\n            <button class=\"btn btn-sm {{filterColors[i]}}\" [class.active]=\"isSelected(i)\" [class.disabled]=\"!isSelected(i)\"\n                    (click)=\"onSelectFilter(i)\">{{filtersName[i]}}</button>\n\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"blockSizes !== undefined\"\n                       [valueList]=\"blockSizes\"\n                       [selectedValues]=\"selectedBlockSizes\"\n                       title=\"Block Size\"\n                       (valueListChange)=\"onBlockSizeChange($event)\"></app-filter-list>\n    </div>\n    <div class=\"col-md-4\">\n\n      <app-filter-list *ngIf=\"latencies !== undefined\"\n                       [valueList]=\"latencies\"\n                       [selectedValues]=\"selectedLatencies\"\n                       title=\"Latency\"\n                       (valueListChange)=\"onLatenciesChanged($event)\"></app-filter-list>\n    </div>\n\n  </div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"box pad\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Workload History</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-bubble-chart [dates]=\"selectedDates\" [poolIds]=\"selectedPools\" [blockSizes]=\"selectedBlockSizes\"\n                            [latencies]=\"selectedLatencies\"></app-bubble-chart>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</section>\n");
 
 /***/ }),
 
@@ -572,6 +572,58 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.html":
+/*!********************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.html ***!
+  \********************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data != undefined\" class=\"metric-value\">\n  <span >{{getValue()}}</span>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.html":
+/*!********************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.html ***!
+  \********************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data != undefined\" class=\"metric-value\">\n  <span >{{getValue()}}</span>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.html":
+/*!************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.html ***!
+  \************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">×</span></button>\n        <h4 class=\"modal-title\">Add / Edit System</h4>\n      </div>\n      <div class=\"modal-body\">\n        <form role=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         [(ngModel)]=\"data.parentId\" name=\"parentId\">\n              </ng-select>\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"name\">Name: </label>\n              <input id=\"name\" class=\"form-control\" type=\"text\" [(ngModel)]=\"data.name\" name=\"name\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <div class=\"\">\n                <label for=\"serial\">Serial Number: </label>\n              </div>\n              <div class=\"col-md-2\">\n                <input id=\"prefix\" class=\"form-control\" type=\"text\" [(ngModel)]=\"data.prefixReferenceId\"\n                       name=\"prefixReferenceId\"/>\n              </div>\n              <div class=\"col-md-2\"><input id=\"serial\" class=\"form-control\" type=\"text\" [(ngModel)]=\"data.serialNumber\"\n                                           name=\"serialNumber\"/></div>\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"model\">Model: </label>\n              <input id=\"model\" class=\"form-control\" type=\"text\" [(ngModel)]=\"data.arrayModel\" name=\"arrayModel\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"dkc\">Dkc: </label>\n              <input id=\"dkc\" class=\"form-control\" type=\"text\" [(ngModel)]=\"data.dkc\" name=\"dkc\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"room\">Room: </label>\n              <input id=\"room\" class=\"form-control\" type=\"text\" [(ngModel)]=\"data.room\" name=\"room\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"rack\">Rack: </label>\n              <input id=\"rack\" class=\"form-control\" type=\"text\" [(ngModel)]=\"data.rack\" name=\"rack\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"managementIp\">Management IP: </label>\n              <input id=\"managementIp\" class=\"form-control\" type=\"text\" [(ngModel)]=\"data.managementIp\" name=\"managementIp\">\n            </div>\n          </div>\n          <!-- /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"saveChanges()\">Save changes</button>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-location/storage-location.component.html":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-location/storage-location.component.html ***!
+  \******************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm()\">\n            Add system\n          </button>\n        </div>\n      </div>\n    </div>\n    <app-storage-entity-form [dataCenterList]=\"datacenterList\" [displayForm]=\"displayForm\"\n                             (displayed)=\"changeFormState($event)\"></app-storage-entity-form>\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
+
+/***/ }),
+
 /***/ "./src/$$_lazy_route_resource lazy recursive":
 /*!**********************************************************!*\
   !*** ./src/$$_lazy_route_resource lazy namespace object ***!
@@ -580,7 +632,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./global-statistics/global-statistics.module": "./src/app/global-statistics/global-statistics.module.ts"
+	"./global-statistics/global-statistics.module": "./src/app/global-statistics/global-statistics.module.ts",
+	"./storage-configuration/storage-configuration.module": "./src/app/storage-configuration/storage-configuration.module.ts"
 };
 
 function webpackAsyncContext(req) {
@@ -638,6 +691,13 @@ var routes = [
         },
     },
     { path: 'iframe/:url', component: _components_iframe_iframe_component__WEBPACK_IMPORTED_MODULE_2__["IframeComponent"] },
+    {
+        path: 'storage-config',
+        loadChildren: './storage-configuration/storage-configuration.module#StorageConfigurationModule',
+        data: {
+            breadcrumb: 'Storage Configuration'
+        }
+    },
     {
         path: 'global-statistics',
         loadChildren: './global-statistics/global-statistics.module#GlobalStatisticsModule',
@@ -753,6 +813,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
 /* harmony import */ var _http_loading_interceptor__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./http-loading.interceptor */ "./src/app/http-loading.interceptor.ts");
 /* harmony import */ var _components_breadcrumb_breadcrumb_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/breadcrumb/breadcrumb.component */ "./src/app/components/breadcrumb/breadcrumb.component.ts");
+/* harmony import */ var _storage_configuration_storage_configuration_module__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./storage-configuration/storage-configuration.module */ "./src/app/storage-configuration/storage-configuration.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -762,6 +823,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -816,6 +878,7 @@ var AppModule = /** @class */ (function () {
                 _common_sa_common_module__WEBPACK_IMPORTED_MODULE_10__["SaCommonModule"],
                 ng_apexcharts__WEBPACK_IMPORTED_MODULE_12__["NgApexchartsModule"],
                 ngx_spinner__WEBPACK_IMPORTED_MODULE_20__["NgxSpinnerModule"],
+                _storage_configuration_storage_configuration_module__WEBPACK_IMPORTED_MODULE_23__["StorageConfigurationModule"]
             ],
             providers: [_common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_11__["SystemPool2SasiGroupTablePipe"], httpInterceptorProviders],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -2492,7 +2555,9 @@ var RowGroupTableComponent = /** @class */ (function () {
         if (this.selectedRows === null) {
             this.selectedRows = [];
         }
-        this.aggregateValues(this.selectedRows);
+        if (this.options.aggregateValuesService !== undefined && this.options.aggregateValuesService !== null) {
+            this.aggregateValues(this.selectedRows);
+        }
     };
     RowGroupTableComponent.prototype.addCollapsed = function (systemName) {
         if (this.collapsedRows === null) {
@@ -2524,7 +2589,7 @@ var RowGroupTableComponent = /** @class */ (function () {
     };
     RowGroupTableComponent.prototype.onSelectRow = function (selectedRows) {
         this.selectedRows = selectedRows;
-        if (this.options.aggregateValuesService !== undefined) {
+        if (this.options.aggregateValuesService !== undefined && this.options.aggregateValuesService !== null) {
             this.aggregateValues(selectedRows);
         }
     };
@@ -3115,6 +3180,7 @@ var SasiTableComponent = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
+                        console.log(this.data);
                         this.options = Object.assign(this.defaultOptions, this.tableOptions);
                         this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) { return _this.selectedRows = data.newValue; });
                         this.localStorageService.observe(this.options.storageNamePrefix + '_collapsed').subscribe(function (data) {
@@ -3532,6 +3598,39 @@ var Datacenter = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/common/models/dtos/owner.dto.ts":
+/*!*************************************************!*\
+  !*** ./src/app/common/models/dtos/owner.dto.ts ***!
+  \*************************************************/
+/*! exports provided: StorageEntityType, Owner */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityType", function() { return StorageEntityType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Owner", function() { return Owner; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var StorageEntityType;
+(function (StorageEntityType) {
+    StorageEntityType[StorageEntityType["DATA_CENTER"] = 1] = "DATA_CENTER";
+    StorageEntityType[StorageEntityType["SYSTEM"] = 2] = "SYSTEM";
+    StorageEntityType[StorageEntityType["POOL"] = 3] = "POOL";
+    StorageEntityType[StorageEntityType["ADAPTER"] = 4] = "ADAPTER";
+    StorageEntityType[StorageEntityType["PORT"] = 5] = "PORT";
+    StorageEntityType[StorageEntityType["HOST_GROUP"] = 6] = "HOST_GROUP";
+})(StorageEntityType || (StorageEntityType = {}));
+var Owner = /** @class */ (function () {
+    function Owner() {
+    }
+    return Owner;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/models/dtos/region-metric.dto.ts":
 /*!*********************************************************!*\
   !*** ./src/app/common/models/dtos/region-metric.dto.ts ***!
@@ -3575,6 +3674,52 @@ var Region;
     Region[Region["ASIA"] = 1] = "ASIA";
     Region[Region["AMERICA"] = 2] = "AMERICA";
 })(Region || (Region = {}));
+
+
+/***/ }),
+
+/***/ "./src/app/common/models/dtos/storage-entity-detail-request.dto.ts":
+/*!*************************************************************************!*\
+  !*** ./src/app/common/models/dtos/storage-entity-detail-request.dto.ts ***!
+  \*************************************************************************/
+/*! exports provided: StorageEntityDetailRequestDto */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityDetailRequestDto", function() { return StorageEntityDetailRequestDto; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var StorageEntityDetailRequestDto = /** @class */ (function () {
+    function StorageEntityDetailRequestDto() {
+    }
+    return StorageEntityDetailRequestDto;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/models/dtos/storage-entity-request.dto.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/common/models/dtos/storage-entity-request.dto.ts ***!
+  \******************************************************************/
+/*! exports provided: StorageEntityRequestDto */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityRequestDto", function() { return StorageEntityRequestDto; });
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var StorageEntityRequestDto = /** @class */ (function () {
+    function StorageEntityRequestDto() {
+    }
+    return StorageEntityRequestDto;
+}());
+
 
 
 /***/ }),
@@ -3899,6 +4044,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/info-box/alert-info-box.component */ "./src/app/common/components/info-box/alert-info-box.component.ts");
 /* harmony import */ var _global_statistics_formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../global-statistics/formatters/empty-formatter/empty-formatter.component */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts");
 /* harmony import */ var _components_sasi_table_column_column_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/sasi-table/column/column.component */ "./src/app/common/components/sasi-table/column/column.component.ts");
+/* harmony import */ var _utils_storage_entity_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./utils/storage-entity-2-sasi-group-table.pipe */ "./src/app/common/utils/storage-entity-2-sasi-group-table.pipe.ts");
+/* harmony import */ var _utils_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./utils/storage-entity-detail-2-sasi-table.pipe */ "./src/app/common/utils/storage-entity-detail-2-sasi-table.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3908,6 +4055,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
+
 
 
 
@@ -3958,6 +4107,8 @@ var SaCommonModule = /** @class */ (function () {
                 _components_sasi_table_row_dynamic_component__WEBPACK_IMPORTED_MODULE_17__["RowDynamicComponent"],
                 _components_small_box_small_box_component__WEBPACK_IMPORTED_MODULE_13__["SmallBoxComponent"],
                 _utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_15__["SystemPool2SasiGroupTablePipe"],
+                _utils_storage_entity_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_34__["StorageEntity2SasiGroupTablePipe"],
+                _utils_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_35__["StorageEntityDetail2SasiTablePipe"],
                 _components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_16__["RowGroupTableComponent"],
                 _components_knob_knob_sa_component__WEBPACK_IMPORTED_MODULE_2__["KnobSaComponent"],
                 _components_knob_ng_2_knob_directive__WEBPACK_IMPORTED_MODULE_19__["Ng2KnobDirective"],
@@ -3979,6 +4130,8 @@ var SaCommonModule = /** @class */ (function () {
                 _components_info_box_info_box_component__WEBPACK_IMPORTED_MODULE_4__["InfoBoxComponent"],
                 _utils_system_pool_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_5__["SystemPool2SasiTablePipe"],
                 _utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_15__["SystemPool2SasiGroupTablePipe"],
+                _utils_storage_entity_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_34__["StorageEntity2SasiGroupTablePipe"],
+                _utils_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_35__["StorageEntityDetail2SasiTablePipe"],
                 _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiTableComponent"],
                 _components_knob_knob_sa_component__WEBPACK_IMPORTED_MODULE_2__["KnobSaComponent"],
                 _components_small_box_small_box_component__WEBPACK_IMPORTED_MODULE_13__["SmallBoxComponent"],
@@ -4339,6 +4492,125 @@ var SafeHtmlPipe = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/common/utils/storage-entity-2-sasi-group-table.pipe.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/common/utils/storage-entity-2-sasi-group-table.pipe.ts ***!
+  \************************************************************************/
+/*! exports provided: StorageEntity2SasiGroupTablePipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntity2SasiGroupTablePipe", function() { return StorageEntity2SasiGroupTablePipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./storage-entity-detail-2-sasi-table.pipe */ "./src/app/common/utils/storage-entity-detail-2-sasi-table.pipe.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+var StorageEntity2SasiGroupTablePipe = /** @class */ (function () {
+    function StorageEntity2SasiGroupTablePipe(rowPipe) {
+        this.rowPipe = rowPipe;
+    }
+    StorageEntity2SasiGroupTablePipe.prototype.transform = function (systems, context) {
+        var _this = this;
+        return systems.map(function (storageEntity) {
+            var row = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiGroupRow"]();
+            var groupRow = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"]();
+            var data = storageEntity.storageEntity;
+            groupRow.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](data.name, { id: data.name, iFrameLink: context, value: data.name });
+            row.groupRow = groupRow;
+            row.rows = _this.rowPipe.transform(data.children);
+            return row;
+        });
+    };
+    StorageEntity2SasiGroupTablePipe.ctorParameters = function () { return [
+        { type: _storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_2__["StorageEntityDetail2SasiTablePipe"] }
+    ]; };
+    StorageEntity2SasiGroupTablePipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
+            name: 'storageEntity2SasiGroupTable'
+        }),
+        __metadata("design:paramtypes", [_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_2__["StorageEntityDetail2SasiTablePipe"]])
+    ], StorageEntity2SasiGroupTablePipe);
+    return StorageEntity2SasiGroupTablePipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/utils/storage-entity-detail-2-sasi-table.pipe.ts":
+/*!*************************************************************************!*\
+  !*** ./src/app/common/utils/storage-entity-detail-2-sasi-table.pipe.ts ***!
+  \*************************************************************************/
+/*! exports provided: StorageEntityDetail2SasiTablePipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityDetail2SasiTablePipe", function() { return StorageEntityDetail2SasiTablePipe; });
+/* harmony import */ var _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+var StorageEntityDetail2SasiTablePipe = /** @class */ (function () {
+    function StorageEntityDetail2SasiTablePipe() {
+    }
+    StorageEntityDetail2SasiTablePipe.prototype.transform = function (systems, context) {
+        return systems.map(function (system) {
+            var row = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiRow"]();
+            row.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](system.name, { value: system.name });
+            row.cells['id'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](system.id, { value: system.id });
+            if (system.detail !== undefined) {
+                var detail = system.detail;
+                row.cells['arrayModel'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.arrayModel, { value: detail.arrayModel });
+                row.cells['managementIp'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.managementIp, { value: detail.managementIp });
+                row.cells['dkc'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.dkc, { value: detail.dkc });
+                row.cells['rack'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.rack, { value: detail.rack });
+                row.cells['room'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.room, { value: detail.room });
+                row.cells['prefixReferenceId'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.prefixReferenceId, { value: detail.prefixReferenceId });
+                row.cells['serialNumber'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](system.serialNumber, { value: detail.serialNumber });
+            }
+            return row;
+        });
+    };
+    StorageEntityDetail2SasiTablePipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+            name: 'StorageEntityDetail2SasiTablePipe'
+        })
+    ], StorageEntityDetail2SasiTablePipe);
+    return StorageEntityDetail2SasiTablePipe;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/utils/system-pool-2-sasi-group-table.pipe.ts":
 /*!*********************************************************************!*\
   !*** ./src/app/common/utils/system-pool-2-sasi-group-table.pipe.ts ***!
@@ -4494,8 +4766,11 @@ var UrlCreator = /** @class */ (function () {
         return '/iframe/' + btoa(url);
     };
     UrlCreator.url = function (systemId, linkPart) {
-        var systemPrefix = systemId.toString().length === 1 ? '0' + systemId : systemId;
-        return this.hrefEncode(_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].iframeBaseUrl + systemPrefix + linkPart);
+        if (systemId !== undefined) {
+            var systemPrefix = systemId.toString().length === 1 ? '0' + systemId : systemId;
+            return this.hrefEncode(_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].iframeBaseUrl + systemPrefix + linkPart);
+        }
+        return '';
     };
     return UrlCreator;
 }());
@@ -5689,6 +5964,7 @@ var SideMenuComponent = /** @class */ (function () {
             { id: 8, linkPart: 'capacityAnalysis', name: 'Capacity Analysis' }
         ];
         this.globalStatisticsLinks = [];
+        this.storageConfigurationLinks = [];
     }
     SideMenuComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -5702,6 +5978,7 @@ var SideMenuComponent = /** @class */ (function () {
         if (dataCenters.length > 0) {
             this.defaultDataCenter = dataCenters[0].storageEntity.id;
             this.setGlobalStatisticsLinks();
+            this.setSystemConfigurationLinks();
         }
     };
     SideMenuComponent.prototype.setGlobalStatisticsLinks = function () {
@@ -5713,6 +5990,11 @@ var SideMenuComponent = /** @class */ (function () {
             { id: 5, linkPart: "/global-statistics/adapters", name: 'CHA&Port Imbalances' },
             { id: 6, linkPart: "/global-statistics/host-group-capacity", name: 'VMware Capacity' },
             { id: 7, linkPart: "/global-statistics/latency", name: 'Latency Analysis' },
+        ];
+    };
+    SideMenuComponent.prototype.setSystemConfigurationLinks = function () {
+        this.storageConfigurationLinks = [
+            { id: 1, linkPart: "/storage-config/locations", name: 'Systems by locations' },
         ];
     };
     SideMenuComponent.prototype.search = function () {
@@ -10944,14 +11226,32 @@ var MetricService = /** @class */ (function () {
         return this.http.get(url);
     };
     MetricService.prototype.getLatencyData = function (poolIdsIn, datesIn, operationTypes, blockSizes, latencies) {
-        var request = { operations: operationTypes, dates: datesIn, poolIds: poolIdsIn, latencies: latencies, blockSizes: blockSizes };
+        var request = {
+            operations: operationTypes,
+            dates: datesIn,
+            poolIds: poolIdsIn,
+            latencies: latencies,
+            blockSizes: blockSizes
+        };
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/latency/data');
         var headersParams = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' });
         return this.http.post(url, request, { headers: headersParams });
     };
+    MetricService.prototype.getSystemsDetail = function () {
+        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v2/storage-entities');
+        return this.http.get(url);
+    };
     MetricService.prototype.getLatencyMetadata = function () {
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v1/latency/metadata');
         return this.http.get(url);
+    };
+    MetricService.prototype.createStorageEntity = function (dto) {
+        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v2/storage-entities');
+        return this.http.post(url, dto);
+    };
+    MetricService.prototype.updateStorageEntity = function (id, dto) {
+        var url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl + '/v2/storage-entities/' + id;
+        return this.http.put(url, dto);
     };
     MetricService.prototype.buildUrl = function (baseUrl, basePath, period) {
         var periodParam = '';
@@ -11034,6 +11334,571 @@ var PeriodService = /** @class */ (function () {
         })
     ], PeriodService);
     return PeriodService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.css":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.css ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9zZS10ZXh0LWZvcm1hdHRlci9zZS10ZXh0LWZvcm1hdHRlci5jb21wb25lbnQuY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts":
+/*!****************************************************************************************!*\
+  !*** ./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts ***!
+  \****************************************************************************************/
+/*! exports provided: SeTextFormatterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SeTextFormatterComponent", function() { return SeTextFormatterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+var SeTextFormatterComponent = /** @class */ (function () {
+    function SeTextFormatterComponent() {
+    }
+    SeTextFormatterComponent.prototype.ngOnInit = function () {
+    };
+    SeTextFormatterComponent.prototype.getValue = function () {
+        if (this.column === undefined) {
+            return this.data['value'];
+        }
+        return this.data.value;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], SeTextFormatterComponent.prototype, "label", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__["SystemMetric"])
+    ], SeTextFormatterComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
+    ], SeTextFormatterComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
+    ], SeTextFormatterComponent.prototype, "rowData", void 0);
+    SeTextFormatterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-se-text-formatter',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./se-text-formatter.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./se-text-formatter.component.css */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [])
+    ], SeTextFormatterComponent);
+    return SeTextFormatterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.css":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.css ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9zZXJpYWwtbnVtYmVyLWZvcm1hdHRlci9zZXJpYWwtbnVtYmVyLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.ts":
+/*!****************************************************************************************************!*\
+  !*** ./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.ts ***!
+  \****************************************************************************************************/
+/*! exports provided: SerialNumberFormatterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SerialNumberFormatterComponent", function() { return SerialNumberFormatterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+var SerialNumberFormatterComponent = /** @class */ (function () {
+    function SerialNumberFormatterComponent() {
+    }
+    SerialNumberFormatterComponent.prototype.ngOnInit = function () {
+    };
+    SerialNumberFormatterComponent.prototype.getValue = function () {
+        if (this.rowData.cells['serialNumber'] !== undefined || this.rowData.cells['prefixReferenceId'] !== undefined) {
+            return [this.rowData.cells['prefixReferenceId'].value, this.rowData.cells['serialNumber'].value].join(' ');
+        }
+        return null;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], SerialNumberFormatterComponent.prototype, "label", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__["SystemMetric"])
+    ], SerialNumberFormatterComponent.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumn"])
+    ], SerialNumberFormatterComponent.prototype, "column", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiRow"])
+    ], SerialNumberFormatterComponent.prototype, "rowData", void 0);
+    SerialNumberFormatterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-serial-number-formatter',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./serial-number-formatter.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./serial-number-formatter.component.css */ "./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [])
+    ], SerialNumberFormatterComponent);
+    return SerialNumberFormatterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/storage-configuration-routing.module.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/storage-configuration/storage-configuration-routing.module.ts ***!
+  \*******************************************************************************/
+/*! exports provided: StorageConfigurationRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageConfigurationRoutingModule", function() { return StorageConfigurationRoutingModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _storage_location_storage_location_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./storage-location/storage-location.component */ "./src/app/storage-configuration/storage-location/storage-location.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+var routes = [
+    {
+        path: 'locations',
+        component: _storage_location_storage_location_component__WEBPACK_IMPORTED_MODULE_2__["StorageLocationComponent"],
+        data: {
+            breadcrumb: 'Locations'
+        }
+    }
+];
+var StorageConfigurationRoutingModule = /** @class */ (function () {
+    function StorageConfigurationRoutingModule() {
+    }
+    StorageConfigurationRoutingModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
+        })
+    ], StorageConfigurationRoutingModule);
+    return StorageConfigurationRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/storage-configuration.module.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/storage-configuration/storage-configuration.module.ts ***!
+  \***********************************************************************/
+/*! exports provided: StorageConfigurationModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageConfigurationModule", function() { return StorageConfigurationModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _storage_location_storage_location_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./storage-location/storage-location.component */ "./src/app/storage-configuration/storage-location/storage-location.component.ts");
+/* harmony import */ var _storage_configuration_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage-configuration-routing.module */ "./src/app/storage-configuration/storage-configuration-routing.module.ts");
+/* harmony import */ var _common_sa_common_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/sa-common.module */ "./src/app/common/sa-common.module.ts");
+/* harmony import */ var _global_statistics_global_statistics_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../global-statistics/global-statistics.module */ "./src/app/global-statistics/global-statistics.module.ts");
+/* harmony import */ var ng2_tooltip_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ng2-tooltip-directive */ "./node_modules/ng2-tooltip-directive/fesm5/ng2-tooltip-directive.js");
+/* harmony import */ var _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
+/* harmony import */ var _serial_number_formatter_serial_number_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./serial-number-formatter/serial-number-formatter.component */ "./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
+/* harmony import */ var _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ng-select/ng-select */ "./node_modules/@ng-select/ng-select/fesm5/ng-select-ng-select.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+var StorageConfigurationModule = /** @class */ (function () {
+    function StorageConfigurationModule() {
+    }
+    StorageConfigurationModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            declarations: [
+                _storage_location_storage_location_component__WEBPACK_IMPORTED_MODULE_2__["StorageLocationComponent"],
+                _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SeTextFormatterComponent"],
+                _serial_number_formatter_serial_number_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SerialNumberFormatterComponent"],
+                _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_10__["StorageEntityFormComponent"]
+            ],
+            entryComponents: [
+                _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SeTextFormatterComponent"],
+                _serial_number_formatter_serial_number_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SerialNumberFormatterComponent"]
+            ],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_11__["NgSelectModule"],
+                _common_sa_common_module__WEBPACK_IMPORTED_MODULE_4__["SaCommonModule"],
+                _global_statistics_global_statistics_module__WEBPACK_IMPORTED_MODULE_5__["GlobalStatisticsModule"],
+                _storage_configuration_routing_module__WEBPACK_IMPORTED_MODULE_3__["StorageConfigurationRoutingModule"],
+                ng2_tooltip_directive__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
+            ]
+        })
+    ], StorageConfigurationModule);
+    return StorageConfigurationModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.css":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.css ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9zdG9yYWdlLWVudGl0eS1mb3JtL3N0b3JhZ2UtZW50aXR5LWZvcm0uY29tcG9uZW50LmNzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts":
+/*!********************************************************************************************!*\
+  !*** ./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts ***!
+  \********************************************************************************************/
+/*! exports provided: StorageEntityVo, StorageEntityFormComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityVo", function() { return StorageEntityVo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityFormComponent", function() { return StorageEntityFormComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _common_models_dtos_storage_entity_request_dto__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/models/dtos/storage-entity-request.dto */ "./src/app/common/models/dtos/storage-entity-request.dto.ts");
+/* harmony import */ var _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/models/dtos/storage-entity-detail-request.dto */ "./src/app/common/models/dtos/storage-entity-detail-request.dto.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+
+
+var StorageEntityVo = /** @class */ (function () {
+    function StorageEntityVo() {
+    }
+    return StorageEntityVo;
+}());
+
+var StorageEntityFormComponent = /** @class */ (function () {
+    function StorageEntityFormComponent(metricService) {
+        this.metricService = metricService;
+        this.displayed = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.data = new StorageEntityVo();
+    }
+    StorageEntityFormComponent.prototype.ngOnInit = function () {
+        this.data.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].SYSTEM;
+        // subscribe or new StorageEntityVo
+    };
+    StorageEntityFormComponent.prototype.closeForm = function () {
+        this.displayForm = false;
+        this.displayed.emit(this.displayForm);
+    };
+    StorageEntityFormComponent.prototype.saveChanges = function () {
+        var _this = this;
+        var dto = new _common_models_dtos_storage_entity_request_dto__WEBPACK_IMPORTED_MODULE_3__["StorageEntityRequestDto"]();
+        dto.name = this.data.name;
+        dto.parentId = this.data.parentId.value;
+        dto.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"][this.data.type];
+        dto.serialNumber = this.data.serialNumber;
+        var detailDto = new _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityDetailRequestDto"]();
+        detailDto.arrayModel = this.data.arrayModel;
+        detailDto.dkc = this.data.dkc;
+        detailDto.managementIp = this.data.managementIp;
+        detailDto.prefixReferenceId = this.data.prefixReferenceId;
+        detailDto.rack = this.data.rack;
+        detailDto.room = this.data.room;
+        detailDto.name = this.data.name;
+        detailDto.serialNumber = this.data.serialNumber;
+        this.metricService.createStorageEntity(dto).subscribe(function (response) {
+            if (response.storageEntity.id != null) {
+                _this.metricService.updateStorageEntity(response.storageEntity.id, detailDto).subscribe(function (responseDetail) {
+                    _this.closeForm();
+                });
+            }
+        }, function (error) {
+            console.error('Cannot store the entity: ' + error);
+        });
+    };
+    StorageEntityFormComponent.ctorParameters = function () { return [
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"] }
+    ]; };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], StorageEntityFormComponent.prototype, "dataCenterList", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], StorageEntityFormComponent.prototype, "displayForm", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], StorageEntityFormComponent.prototype, "displayed", void 0);
+    StorageEntityFormComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-storage-entity-form',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./storage-entity-form.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./storage-entity-form.component.css */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"]])
+    ], StorageEntityFormComponent);
+    return StorageEntityFormComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/storage-location/storage-location.component.css":
+/*!***************************************************************************************!*\
+  !*** ./src/app/storage-configuration/storage-location/storage-location.component.css ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .metric-value {\n  font-size: 1.1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtbG9jYXRpb24vc3RvcmFnZS1sb2NhdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0FBQ25CIiwiZmlsZSI6InNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtbG9jYXRpb24vc3RvcmFnZS1sb2NhdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cbiJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/storage-location/storage-location.component.ts":
+/*!**************************************************************************************!*\
+  !*** ./src/app/storage-configuration/storage-location/storage-location.component.ts ***!
+  \**************************************************************************************/
+/*! exports provided: StorageLocationComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageLocationComponent", function() { return StorageLocationComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../global-statistics/formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
+/* harmony import */ var _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
+/* harmony import */ var _serial_number_formatter_serial_number_formatter_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../serial-number-formatter/serial-number-formatter.component */ "./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+
+
+
+
+var StorageLocationComponent = /** @class */ (function () {
+    function StorageLocationComponent(metricService) {
+        this.metricService = metricService;
+        this.data = [];
+        this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiTableOptions"]();
+        this.displayForm = false;
+        this.datacenterList = [];
+    }
+    StorageLocationComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('name')
+            .withAltLabel('Datacenter / System')
+            .withLabel('System')
+            .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('arrayModel')
+            .withLabel('Array Model')
+            .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('prefixReferenceId')
+            .withLabel('Physical Serial Number')
+            .withComponent(_serial_number_formatter_serial_number_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SerialNumberFormatterComponent"])
+            .withAltSortEnable(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('dkc')
+            .withLabel('Virtual DKCs')
+            .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('managementIp')
+            .withLabel('Management IP')
+            .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('room')
+            .withLabel('Room')
+            .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('rack')
+            .withLabel('Rack')
+            .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .build());
+        this.options.colControlFormatter = _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_3__["AlertFormatterComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_4__["RowGroupTableComponent"];
+        this.options.grIndexComponentFormatter = _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"];
+        this.options.isDataGrouped = true;
+        this.options.highlightRow = true;
+        this.options.highlightColumn = false;
+        // this.options.aggregateValuesService = new SumValueServiceImpl();
+        // this.options.sortService = new GroupSortAggregateValueImpl();
+        this.metricService.getSystemsDetail().subscribe(function (data) {
+            _this.data = data;
+            _this.datacenterList = _this.data.map(function (datacenter) {
+                return {
+                    value: datacenter.storageEntity.id, label: datacenter.storageEntity.name
+                };
+            });
+            console.log(data);
+        });
+    };
+    StorageLocationComponent.prototype.getValue = function (system, property) {
+        if (system.detail !== undefined) {
+            return system.detail[property];
+        }
+        return null;
+    };
+    StorageLocationComponent.prototype.openForm = function () {
+        this.displayForm = true;
+    };
+    StorageLocationComponent.prototype.changeFormState = function (displayed) {
+        this.displayForm = displayed;
+    };
+    StorageLocationComponent.ctorParameters = function () { return [
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] }
+    ]; };
+    StorageLocationComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-storage-location',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./storage-location.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-location/storage-location.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./storage-location.component.css */ "./src/app/storage-configuration/storage-location/storage-location.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"]])
+    ], StorageLocationComponent);
+    return StorageLocationComponent;
 }());
 
 
