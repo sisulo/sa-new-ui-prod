@@ -607,7 +607,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">×</span></button>\n        <h4 class=\"modal-title\">Add / Edit System</h4>\n      </div>\n      <div class=\"modal-body\">\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         bindValue=\"value\" formControlName=\"datacenter\">\n              </ng-select>\n              <span *ngIf=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\" class=\"help-block\">Datacenter must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\" [class.has-error]=\"name.invalid && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n              <span *ngIf=\"name.invalid && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n            </div>\n\n            <div class=\"col-md-12 form-group\">\n              <div class=\"\">\n                <label for=\"serial\">Serial Number: </label>\n              </div>\n              <div class=\"col-md-3\">\n                <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n              </div>\n              <div class=\"col-md-3\">\n                <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                       name=\"serialNumber\"/>\n              </div>\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"model\">Model: </label>\n              <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"dkc\">Dkc: </label>\n              <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"room\">Room: </label>\n              <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"rack\">Rack: </label>\n              <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"managementIp\">Management IP: </label>\n              <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save changes\n          </button>\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">×</span></button>\n        <h4 class=\"modal-title\">Add / Edit System</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         bindValue=\"value\" formControlName=\"datacenter\">\n              </ng-select>\n              <span *ngIf=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\"\n                    class=\"help-block\">Datacenter must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"name.invalid && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n              <span *ngIf=\"name.invalid && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n            </div>\n\n            <div class=\"col-md-12 form-group\">\n              <div class=\"\">\n                <label for=\"serial\">Serial Number: </label>\n              </div>\n              <div class=\"col-md-3\">\n                <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n              </div>\n              <div class=\"col-md-3\">\n                <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                       name=\"serialNumber\"/>\n              </div>\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"model\">Model: </label>\n              <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"dkc\">Dkc: </label>\n              <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"room\">Room: </label>\n              <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"rack\">Rack: </label>\n              <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"managementIp\">Management IP: </label>\n              <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save changes\n          </button>\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
 
 /***/ }),
 
@@ -3202,6 +3202,9 @@ var SasiTableComponent = /** @class */ (function () {
                         else {
                             this.collapsedRows = this.collapsedRows; // this must be reset because save on the collapsedRows doesn't work
                         }
+                        if (this.options.sortColumnName !== undefined) {
+                            this.data = this.options.sortService.sort(this.data, this.getColumns().find(function (column) { return column.index === _this.options.sortColumnName; }), this.options.sortType, this.altSort ? this.options.altSortColumnName : null, (function (row, column1) { return row.getCellValue(column1); }));
+                        }
                         this.style = this.domSanitizer.bypassSecurityTrustStyle('grid-template-columns: ' + this.getColControlSize() + ' ' + this.getAlertColumnSize() +
                             ' ' + this.getNameColumnSize() + ' repeat(' + this.getGridColumnCount() + ', 1fr);');
                         return [2 /*return*/];
@@ -3426,10 +3429,12 @@ var SimpleSortImpl = /** @class */ (function () {
         return dataReturned;
     };
     SimpleSortImpl.prototype.compare = function (valueA, valueB) {
-        if (valueA > valueB) {
+        var a = valueA || '';
+        var b = valueB || '';
+        if (a > b) {
             return 1;
         }
-        else if (valueA < valueB) {
+        else if (a < b) {
             return -1;
         }
         return 0;
@@ -8798,6 +8803,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.valueColumnWidth = '36.5';
         this.options.aggregateValuesService = new _utils_sum_value_service_impl__WEBPACK_IMPORTED_MODULE_10__["SumValueServiceImpl"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortAggregateValueImpl"]();
+        this.options.sortColumnName = 'name';
     }
     AdaptersComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -9871,6 +9877,7 @@ var DpSlaComponent = /** @class */ (function () {
         this.options.valueColumnWidth = '35.75';
         this.options.aggregateValuesService = new _utils_sum_value_service_impl__WEBPACK_IMPORTED_MODULE_12__["SumValueServiceImpl"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortAggregateValueImpl"]();
+        this.options.sortColumnName = 'name';
     }
     DpSlaComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -10090,6 +10097,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.selectableRows = true;
         this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_10__["SasiWeightedArithmeticMeanUtils"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__["GroupSortImpl"]();
+        this.options.sortColumnName = 'name';
         this.options.columnAlign = 'right';
     }
     // Todo common with logical stats
@@ -10458,6 +10466,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.selectableRows = true;
         this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_9__["SasiWeightedArithmeticMeanUtils"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_10__["GroupSortImpl"]();
+        this.options.sortColumnName = 'name';
         this.options.columnAlign = 'right';
         this.options.headerGroups = [
             {
@@ -10691,6 +10700,8 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.valueColumnWidth = '13.78';
         this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_12__["SimpleSortImpl"]();
         this.options.altSortColumnName = 'peak';
+        this.options.sortColumnName = 'name';
+        this.options.sortType = _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiSortType"].ASC;
     }
     PerformanceStatisticsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -10967,6 +10978,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.selectableRows = true;
         this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_12__["SasiWeightedArithmeticMeanUtils"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortImpl"]();
+        this.options.sortColumnName = 'name';
         this.options.columnAlign = 'right';
         this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["Threshold"]('text-green', 80, 84.9)));
         this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["Threshold"]('text-alert-yellow', 85, 88)));
@@ -11399,7 +11411,7 @@ var FormBusService = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".open-form {\n  min-height:15px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3NlLXRleHQtZm9ybWF0dGVyL3NlLXRleHQtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3NlLXRleHQtZm9ybWF0dGVyL3NlLXRleHQtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3Blbi1mb3JtIHtcbiAgbWluLWhlaWdodDoxNXB4O1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".open-form {\n  min-height:15px;\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3NlLXRleHQtZm9ybWF0dGVyL3NlLXRleHQtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0VBQ2YsZUFBZTtBQUNqQiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9zZS10ZXh0LWZvcm1hdHRlci9zZS10ZXh0LWZvcm1hdHRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm9wZW4tZm9ybSB7XG4gIG1pbi1oZWlnaHQ6MTVweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuIl19 */");
 
 /***/ }),
 
@@ -11720,7 +11732,7 @@ var StorageConfigurationModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9zdG9yYWdlLWVudGl0eS1mb3JtL3N0b3JhZ2UtZW50aXR5LWZvcm0uY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = (".http-error-box {\n  background: rgba(246, 165, 163, 0.55);\n  border: 2px solid rgba(255,12,0,0.75);\n  min-height: 40px;\n  color: rgba(94,0,3,0.75);\n  padding-top: 8px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtZW50aXR5LWZvcm0vc3RvcmFnZS1lbnRpdHktZm9ybS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UscUNBQXFDO0VBQ3JDLHFDQUFxQztFQUNyQyxnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLGdCQUFnQjtBQUNsQiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9zdG9yYWdlLWVudGl0eS1mb3JtL3N0b3JhZ2UtZW50aXR5LWZvcm0uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5odHRwLWVycm9yLWJveCB7XG4gIGJhY2tncm91bmQ6IHJnYmEoMjQ2LCAxNjUsIDE2MywgMC41NSk7XG4gIGJvcmRlcjogMnB4IHNvbGlkIHJnYmEoMjU1LDEyLDAsMC43NSk7XG4gIG1pbi1oZWlnaHQ6IDQwcHg7XG4gIGNvbG9yOiByZ2JhKDk0LDAsMywwLjc1KTtcbiAgcGFkZGluZy10b3A6IDhweDtcbn1cbiJdfQ== */");
 
 /***/ }),
 
@@ -11773,6 +11785,8 @@ var StorageEntityFormComponent = /** @class */ (function () {
         this.formBusService = formBusService;
         this.dataSaved = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.submitted = false;
+        this.httpErrorDisplayed = false;
+        this.httpError = null;
         this.data = new StorageEntityVo();
     }
     StorageEntityFormComponent.prototype.ngOnInit = function () {
@@ -11854,9 +11868,16 @@ var StorageEntityFormComponent = /** @class */ (function () {
             if (response.storageEntity.id != null) {
                 _this.metricService.updateStorageEntity(response.storageEntity.id, detailDto).subscribe(function () { return _this.success(); });
             }
-        }, function (error) {
-            console.error(error);
-            console.error('Cannot store the entity: ' + error);
+        }, 
+        // TODO error code as ENUM
+        function (response) {
+            if (response.error.code === 1002) {
+                _this.httpErrorDisplayed = true;
+                _this.httpError = 'System already exists under the datacenter.';
+                setTimeout(function () { return _this.httpErrorDisplayed = false; }, 10000);
+            }
+            console.error(response.error);
+            console.error('Cannot store the entity: ');
         });
     };
     StorageEntityFormComponent.prototype.success = function () {
@@ -11927,6 +11948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _serial_number_formatter_serial_number_formatter_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../serial-number-formatter/serial-number-formatter.component */ "./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.ts");
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
+/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11939,6 +11961,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -12009,7 +12032,8 @@ var StorageLocationComponent = /** @class */ (function () {
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
         // this.options.aggregateValuesService = new SumValueServiceImpl();
-        // this.options.sortService = new GroupSortAggregateValueImpl();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_9__["GroupSortImpl"]();
+        this.options.sortColumnName = 'name';
         this.loadData();
     };
     StorageLocationComponent.prototype.getValue = function (system, property) {
