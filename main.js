@@ -594,7 +594,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data != undefined\" class=\"metric-value\">\n  <span >{{getValue()}}</span>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"open-form col-md-12\" (click)=\"openForm()\">\n  <div *ngIf=\"data != null && data != undefined\" class=\"metric-value\">\n    <span>{{getValue()}}</span>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -607,7 +607,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">×</span></button>\n        <h4 class=\"modal-title\">Add / Edit System</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         bindValue=\"value\" formControlName=\"datacenter\">\n              </ng-select>\n              <span *ngIf=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\"\n                    class=\"help-block\">Datacenter must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"name.invalid && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n              <span *ngIf=\"name.invalid && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n            </div>\n\n            <div class=\"col-md-12 form-group\">\n              <div class=\"\">\n                <label for=\"serial\">Serial Number: </label>\n              </div>\n              <div class=\"col-md-3\">\n                <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n              </div>\n              <div class=\"col-md-3\">\n                <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                       name=\"serialNumber\"/>\n              </div>\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"model\">Model: </label>\n              <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"dkc\">Dkc: </label>\n              <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"room\">Room: </label>\n              <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"rack\">Rack: </label>\n              <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n            </div>\n            <div class=\"col-md-12 form-group\">\n              <label for=\"managementIp\">Management IP: </label>\n              <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save changes\n          </button>\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">×</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit System</h4>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.DATA_CENTER\">Add / Edit Datacenter</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATA_CENTER\"\n                 [class.has-error]=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         bindValue=\"value\" formControlName=\"datacenter\">\n              </ng-select>\n              <span *ngIf=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\"\n                    class=\"help-block\">Datacenter must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"name.invalid && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\" *ngIf=\"data.type === staticType.SYSTEM\">System Name: </label>\n              <label for=\"name\" *ngIf=\"data.type === staticType.DATA_CENTER\">Datacenter Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n              <span *ngIf=\"name.invalid && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n            </div>\n            <div *ngIf=\"data.type !== staticType.DATA_CENTER\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATA_CENTER\">\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"model\">Array Model: </label>\n                <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save changes\n          </button>\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
 
 /***/ }),
 
@@ -620,7 +620,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm()\">\n            Add system\n          </button>\n        </div>\n      </div>\n    </div>\n    <app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                             (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n  </div>\n\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATA_CENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n    <app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                             (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -4534,7 +4534,7 @@ var StorageEntity2SasiGroupTablePipe = /** @class */ (function () {
             var row = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiGroupRow"]();
             var groupRow = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"]();
             var data = storageEntity.storageEntity;
-            groupRow.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](data.name, { id: data.name, iFrameLink: context, value: data.name });
+            groupRow.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](data.name, { id: data.name, iFrameLink: context, value: data.name, dbId: data.id });
             row.groupRow = groupRow;
             row.rows = _this.rowPipe.transform(data.children, data);
             return row;
@@ -6492,7 +6492,7 @@ var GlobalPhysicalCapacityStatisticsComponent = /** @class */ (function (_super)
         _this.labels[_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].AVAILABLE_CAPACITY] = 'Available Capacity';
         _this.labels[_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].LOGICAL_USED_PERC] = 'Logical Used';
         _this.labels[_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PHYSICAL_USED_PERC] = 'Physical Used';
-        _this.labels[_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].TOTAL_SAVING_EFFECT] = 'Saving Effect';
+        _this.labels[_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].TOTAL_SAVING_EFFECT] = 'Total Savings';
         _this.labels[_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1D] = 'Daily Change';
         _this.labels[_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1W] = 'Weekly Change';
         _this.labels[_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].CAPACITY_CHANGE_1M] = 'Monthly Change';
@@ -10897,7 +10897,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TOTAL_SAVING_EFFECT)
-            .withLabel('Saving Effect')
+            .withLabel('Total Savings')
             .withColumnTooltipText('Total saving effect of Deduplication (SW feature) + Compression (FMD\'s). Summmary calculation is performed on pools with total saving effect >1)')
             .withComponent(_formatters_simple_formatter_simple_formatter_component__WEBPACK_IMPORTED_MODULE_8__["SimpleFormatterComponent"])
             .withAltSortEnable(false)
@@ -11382,7 +11382,6 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 var FormBusService = /** @class */ (function () {
     function FormBusService() {
-        // Observable string sources
         this.storageEntityForm = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         this.storageEntityFormStream = this.storageEntityForm.asObservable();
     }
@@ -11430,6 +11429,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
+/* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11442,6 +11442,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -11460,17 +11461,28 @@ var SeTextFormatterComponent = /** @class */ (function () {
         return this.data.value;
     };
     SeTextFormatterComponent.prototype.openForm = function () {
+        console.log(this.rowData);
+        console.log(this.column);
+        console.log(this.data);
         var formData = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_4__["StorageEntityVo"]();
-        formData.serialNumber = this.getCellValue('serialNumber');
-        formData.parentId = this.getCellValue('parentId');
-        formData.prefixReferenceId = this.getCellValue('prefixReferenceId');
-        formData.name = this.getCellValue('name');
-        formData.id = this.getCellValue('id');
-        formData.dkc = this.getCellValue('dkc');
-        formData.room = this.getCellValue('room');
-        formData.rack = this.getCellValue('rack');
-        formData.arrayModel = this.getCellValue('arrayModel');
-        formData.managementIp = this.getCellValue('managementIp');
+        if (this.column === undefined) {
+            formData.id = this.data['dbId'];
+            formData.name = this.data['value'].toString();
+            formData.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__["StorageEntityType"].DATA_CENTER;
+        }
+        else {
+            formData.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__["StorageEntityType"].SYSTEM;
+            formData.serialNumber = this.getCellValue('serialNumber');
+            formData.parentId = this.getCellValue('parentId');
+            formData.prefixReferenceId = this.getCellValue('prefixReferenceId');
+            formData.name = this.getCellValue('name');
+            formData.id = this.getCellValue('id');
+            formData.dkc = this.getCellValue('dkc');
+            formData.room = this.getCellValue('room');
+            formData.rack = this.getCellValue('rack');
+            formData.arrayModel = this.getCellValue('arrayModel');
+            formData.managementIp = this.getCellValue('managementIp');
+        }
         this.formBus.sendFormData(formData);
     };
     SeTextFormatterComponent.prototype.getCellValue = function (valueName) {
@@ -11522,7 +11534,7 @@ var SeTextFormatterComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9zZXJpYWwtbnVtYmVyLWZvcm1hdHRlci9zZXJpYWwtbnVtYmVyLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".open-form {\n  min-height:15px;\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3NlcmlhbC1udW1iZXItZm9ybWF0dGVyL3NlcmlhbC1udW1iZXItZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0VBQ2YsZUFBZTtBQUNqQiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9zZXJpYWwtbnVtYmVyLWZvcm1hdHRlci9zZXJpYWwtbnVtYmVyLWZvcm1hdHRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm9wZW4tZm9ybSB7XG4gIG1pbi1oZWlnaHQ6MTVweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuIl19 */");
 
 /***/ }),
 
@@ -11539,6 +11551,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
+/* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
+/* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11554,10 +11569,29 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
+
+
 var SerialNumberFormatterComponent = /** @class */ (function () {
-    function SerialNumberFormatterComponent() {
+    function SerialNumberFormatterComponent(formBus) {
+        this.formBus = formBus;
     }
     SerialNumberFormatterComponent.prototype.ngOnInit = function () {
+    };
+    SerialNumberFormatterComponent.prototype.openForm = function () {
+        var formData = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_4__["StorageEntityVo"]();
+        formData.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__["StorageEntityType"].SYSTEM;
+        formData.serialNumber = this.getCellValue('serialNumber');
+        formData.parentId = this.getCellValue('parentId');
+        formData.prefixReferenceId = this.getCellValue('prefixReferenceId');
+        formData.name = this.getCellValue('name');
+        formData.id = this.getCellValue('id');
+        formData.dkc = this.getCellValue('dkc');
+        formData.room = this.getCellValue('room');
+        formData.rack = this.getCellValue('rack');
+        formData.arrayModel = this.getCellValue('arrayModel');
+        formData.managementIp = this.getCellValue('managementIp');
+        this.formBus.sendFormData(formData);
     };
     SerialNumberFormatterComponent.prototype.getValue = function () {
         if (this.rowData.cells['serialNumber'] !== undefined || this.rowData.cells['prefixReferenceId'] !== undefined) {
@@ -11565,6 +11599,15 @@ var SerialNumberFormatterComponent = /** @class */ (function () {
         }
         return null;
     };
+    SerialNumberFormatterComponent.prototype.getCellValue = function (valueName) {
+        if (this.rowData.cells[valueName] !== undefined) {
+            return this.rowData.cells[valueName].value;
+        }
+        return null;
+    };
+    SerialNumberFormatterComponent.ctorParameters = function () { return [
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_3__["FormBusService"] }
+    ]; };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -11587,7 +11630,7 @@ var SerialNumberFormatterComponent = /** @class */ (function () {
             template: __importDefault(__webpack_require__(/*! raw-loader!./serial-number-formatter.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.html")).default,
             styles: [__importDefault(__webpack_require__(/*! ./serial-number-formatter.component.css */ "./src/app/storage-configuration/serial-number-formatter/serial-number-formatter.component.css")).default]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_form_bus_service__WEBPACK_IMPORTED_MODULE_3__["FormBusService"]])
     ], SerialNumberFormatterComponent);
     return SerialNumberFormatterComponent;
 }());
@@ -11788,29 +11831,36 @@ var StorageEntityFormComponent = /** @class */ (function () {
         this.httpErrorDisplayed = false;
         this.httpError = null;
         this.data = new StorageEntityVo();
+        this.staticType = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"];
     }
     StorageEntityFormComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.formBusService.storageEntityFormStream.subscribe(function (data) {
             _this.data = data;
             _this.displayForm = true;
-            _this.data.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].SYSTEM;
             _this.initFormControls();
         });
         this.initFormControls();
     };
     StorageEntityFormComponent.prototype.initFormControls = function () {
-        this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
-            'datacenter': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
-            'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
-            'prefixReferenceId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.prefixReferenceId),
-            'serialNumber': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.serialNumber),
-            'arrayModel': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.arrayModel),
-            'dkc': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.dkc),
-            'room': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.room),
-            'rack': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.rack),
-            'managementIp': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.managementIp),
-        });
+        if (this.data.type !== _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DATA_CENTER) {
+            this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                'datacenter': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                'prefixReferenceId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.prefixReferenceId),
+                'serialNumber': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.serialNumber),
+                'arrayModel': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.arrayModel),
+                'dkc': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.dkc),
+                'room': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.room),
+                'rack': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.rack),
+                'managementIp': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.managementIp),
+            });
+        }
+        else {
+            this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+            });
+        }
     };
     StorageEntityFormComponent.prototype.closeForm = function () {
         this.displayForm = false;
@@ -11848,25 +11898,32 @@ var StorageEntityFormComponent = /** @class */ (function () {
     StorageEntityFormComponent.prototype.transformDataToDto = function () {
         var dto = new _common_models_dtos_storage_entity_request_dto__WEBPACK_IMPORTED_MODULE_3__["StorageEntityRequestDto"]();
         dto.name = this.form.value.name;
-        dto.parentId = this.form.value.datacenter;
         dto.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"][this.data.type];
-        dto.serialNumber = this.form.value.serialNumber;
         var detailDto = new _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityDetailRequestDto"]();
-        detailDto.arrayModel = this.form.value.arrayModel;
-        detailDto.dkc = this.form.value.dkc;
-        detailDto.managementIp = this.form.value.managementIp;
-        detailDto.prefixReferenceId = this.form.value.prefixReferenceId;
-        detailDto.rack = this.form.value.rack;
-        detailDto.room = this.form.value.room;
         detailDto.name = this.form.value.name;
-        detailDto.serialNumber = this.form.value.serialNumber;
+        if (this.data.type !== _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DATA_CENTER) {
+            dto.parentId = this.form.value.datacenter;
+            dto.serialNumber = this.form.value.serialNumber;
+            detailDto = new _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityDetailRequestDto"]();
+            detailDto.arrayModel = this.form.value.arrayModel;
+            detailDto.dkc = this.form.value.dkc;
+            detailDto.managementIp = this.form.value.managementIp;
+            detailDto.prefixReferenceId = this.form.value.prefixReferenceId;
+            detailDto.rack = this.form.value.rack;
+            detailDto.room = this.form.value.room;
+            detailDto.name = this.form.value.name;
+            detailDto.serialNumber = this.form.value.serialNumber;
+        }
         return { dto: dto, detailDto: detailDto };
     };
     StorageEntityFormComponent.prototype.saveAsNew = function (dto, detailDto) {
         var _this = this;
         this.metricService.createStorageEntity(dto).subscribe(function (response) {
-            if (response.storageEntity.id != null) {
+            if (response.storageEntity.id != null && _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"][response.storageEntity.type] !== _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DATA_CENTER) {
                 _this.metricService.updateStorageEntity(response.storageEntity.id, detailDto).subscribe(function () { return _this.success(); });
+            }
+            else {
+                _this.success();
             }
         }, 
         // TODO error code as ENUM
@@ -11949,6 +12006,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
+/* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11971,14 +12029,15 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var StorageLocationComponent = /** @class */ (function () {
     function StorageLocationComponent(metricService, formBus) {
         this.metricService = metricService;
         this.formBus = formBus;
         this.data = [];
         this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiTableOptions"]();
-        this.displayForm = false;
         this.datacenterList = [];
+        this.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"];
     }
     StorageLocationComponent.prototype.ngOnInit = function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
@@ -12042,8 +12101,10 @@ var StorageLocationComponent = /** @class */ (function () {
         }
         return null;
     };
-    StorageLocationComponent.prototype.openForm = function () {
-        this.formBus.sendFormData(new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityVo"]());
+    StorageLocationComponent.prototype.openForm = function (type) {
+        var data = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityVo"]();
+        data.type = type;
+        this.formBus.sendFormData(data);
     };
     StorageLocationComponent.prototype.loadData = function (force) {
         var _this = this;
