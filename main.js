@@ -3202,6 +3202,7 @@ var SasiTableComponent = /** @class */ (function () {
                         else {
                             this.collapsedRows = this.collapsedRows; // this must be reset because save on the collapsedRows doesn't work
                         }
+                        this.sortData(this.data);
                         this.style = this.domSanitizer.bypassSecurityTrustStyle('grid-template-columns: ' + this.getColControlSize() + ' ' + this.getAlertColumnSize() +
                             ' ' + this.getNameColumnSize() + ' repeat(' + this.getGridColumnCount() + ', 1fr);');
                         return [2 /*return*/];
