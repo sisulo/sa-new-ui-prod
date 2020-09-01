@@ -87,7 +87,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"sasi-table-item sasi-table-controls\"\n     *ngIf=\"options.selectableRows\"\n     [@slideInOut]=\"isCollapsed\">\n  <i\n    [ngClass]=\"isSelectedRow(data.getCell('name').value) ? 'fa-check-square' : 'fa-square'\" class=\"far fa-fw\"\n    (click)=\"selectRow(data.getCell('name').value)\"></i>\n</div>\n<div *ngIf=\"options.colControlFormatter != null\"\n     class=\"sasi-table-item sasi-table-alerts\"\n     [@slideInOut]=\"isCollapsed\">\n  <app-cell-table [componentFormatter]=\"options.colControlFormatter\" [data]=\"data\" [label]=\"''\"\n                  [options]=\"options\"\n  ></app-cell-table>\n</div>\n\n<app-column *ngFor=\"let column of options.columns; let colIndex=index\"\n            [data]=\"data\"\n            [options]=\"options\"\n            [column]=\"column\"\n            [colIndex]=\"colIndex\"\n            [isCollapsed]=\"isCollapsed\"\n>\n</app-column>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"sasi-table-item sasi-table-controls\"\n     *ngIf=\"options.selectableRows\"\n     [@slideInOut]=\"isCollapsed\">\n  <i\n    [ngClass]=\"isSelectedRow(data.getCell('name').value) ? 'fa-check-square' : 'fa-square'\" class=\"far fa-fw\"\n    (click)=\"selectRow(data.getCell('name').value)\"></i>\n</div>\n<div *ngIf=\"options.colControlFormatter != null\"\n     class=\"sasi-table-item sasi-table-alerts\"\n     [@slideInOut]=\"isCollapsed\">\n  <app-cell-table [componentFormatter]=\"options.colControlFormatter\" [data]=\"data\" [label]=\"''\"\n                  [options]=\"options\"\n  ></app-cell-table>\n</div>\n\n<app-column *ngFor=\"let column of options.getVisibleColumns(); let colIndex=index\"\n            [data]=\"data\"\n            [options]=\"options\"\n            [column]=\"column\"\n            [colIndex]=\"colIndex\"\n            [isCollapsed]=\"isCollapsed\"\n>\n</app-column>\n");
 
 /***/ }),
 
@@ -607,7 +607,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit System</h4>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.DATACENTER\">Add / Edit Datacenter</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                 [class.has-error]=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         bindValue=\"value\" formControlName=\"datacenter\">\n              </ng-select>\n              <span *ngIf=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\"\n                    class=\"help-block\">Datacenter must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"name.invalid && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\" *ngIf=\"data.type === staticType.SYSTEM\">System Name: </label>\n              <label for=\"name\" *ngIf=\"data.type === staticType.DATACENTER\">Datacenter Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n              <span *ngIf=\"name.invalid && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n            </div>\n            <div *ngIf=\"data.type !== staticType.DATACENTER\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\">\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"model\">Array Model: </label>\n                <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n                <span *ngIf=\"rack.invalid && rack.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save changes\n          </button>\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit System</h4>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.DATACENTER\">Add / Edit Datacenter</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                 [class.has-error]=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         bindValue=\"value\" formControlName=\"datacenter\">\n              </ng-select>\n              <span *ngIf=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\"\n                    class=\"help-block\">Datacenter must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"name.invalid && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\" *ngIf=\"data.type === staticType.SYSTEM\">System Name: </label>\n              <label for=\"name\" *ngIf=\"data.type === staticType.DATACENTER\">Datacenter Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n              <span *ngIf=\"name.invalid && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n            </div>\n            <div *ngIf=\"data.type !== staticType.DATACENTER\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\">\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"model\">Array Model: </label>\n                <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n                <span *ngIf=\"rack.invalid && rack.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save changes\n          </button>\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
 
 /***/ }),
 
@@ -2062,16 +2062,16 @@ var GroupSortAggregateValueImpl = /** @class */ (function (_super) {
     function GroupSortAggregateValueImpl() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    GroupSortAggregateValueImpl.prototype.sort = function (data, column, sortType, sortByRawValue) {
+    GroupSortAggregateValueImpl.prototype.sort = function (data, columns, sortType, sortByRawValue) {
         var _this = this;
-        data.forEach(function (groupRow) { return groupRow.rows = _super.prototype.sort.call(_this, groupRow.rows, column, sortType, sortByRawValue, function (row, columnIndex) {
+        data.forEach(function (groupRow) { return groupRow.rows = _super.prototype.sort.call(_this, groupRow.rows, columns, sortType, sortByRawValue, function (row, columnIndex) {
             if (row !== undefined) {
                 return row.getCellValue(columnIndex);
             }
             return null;
         }); });
-        if (column.index === 'name') {
-            return _super.prototype.sort.call(this, data, column, sortType, sortByRawValue, function (row, columnIndex) {
+        if (columns.find(function (column) { return column.index === 'name'; }) || columns.find(function (column) { return column.index === 'sortId'; })) {
+            return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex) {
                 if (row !== undefined) {
                     return row.groupRow.getCellValue(columnIndex);
                 }
@@ -2079,7 +2079,7 @@ var GroupSortAggregateValueImpl = /** @class */ (function (_super) {
             });
         }
         else {
-            return _super.prototype.sort.call(this, data, column, sortType, sortByRawValue, function (row, columnIndex) {
+            return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex) {
                 if (row !== undefined && row.rows[0] !== undefined) {
                     return row.aggregatedValues.getValue(columnIndex.index).value;
                 }
@@ -2124,16 +2124,16 @@ var GroupSortImpl = /** @class */ (function (_super) {
     function GroupSortImpl() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    GroupSortImpl.prototype.sort = function (data, column, sortType, sortByRawValue) {
+    GroupSortImpl.prototype.sort = function (data, columns, sortType, sortByRawValue) {
         var _this = this;
-        data.forEach(function (groupRow) { return groupRow.rows = _super.prototype.sort.call(_this, groupRow.rows, column, sortType, sortByRawValue, function (row, columnIndex) {
+        data.forEach(function (groupRow) { return groupRow.rows = _super.prototype.sort.call(_this, groupRow.rows, columns, sortType, sortByRawValue, function (row, columnIndex) {
             if (row !== undefined) {
                 return row.getCellValue(columnIndex);
             }
             return null;
         }); });
-        if (column.index === 'name') {
-            return _super.prototype.sort.call(this, data, column, sortType, sortByRawValue, function (row, columnIndex) {
+        if (columns.find(function (column) { return column.index === 'name'; }) || columns.find(function (column) { return column.index === 'sortId'; })) {
+            return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex) {
                 if (row !== undefined) {
                     return row.groupRow.getCellValue(columnIndex);
                 }
@@ -2141,7 +2141,7 @@ var GroupSortImpl = /** @class */ (function (_super) {
             });
         }
         else {
-            return _super.prototype.sort.call(this, data, column, sortType, sortByRawValue, function (row, columnIndex) {
+            return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex) {
                 if (row !== undefined && row.rows[0] !== undefined) {
                     return row.rows[0].getCellValue(columnIndex);
                 }
@@ -2765,6 +2765,7 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.altBorder = false;
         this.altBorderLeft = false;
         this.columnWidth = null;
+        this.hidden = false;
     }
     SasiColumnBuilder.getInstance = function () {
         return new SasiColumnBuilder();
@@ -2818,7 +2819,7 @@ var SasiColumnBuilder = /** @class */ (function () {
         return this;
     };
     SasiColumnBuilder.prototype.build = function () {
-        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.altBorderLeft, this.columnWidth, this.columnTooltipText, this.shortLabel === undefined ? this.label : this.shortLabel);
+        return new SasiColumn(this.index, this.label, this.component, this.aggComponent === undefined ? this.component : this.aggComponent, this.altSortEnable, this.isAggregated, this.tooltipText === null ? this.label : this.tooltipText, this.infinity, this.altLabel, this.altBorder, this.altBorderLeft, this.columnWidth, this.columnTooltipText, this.shortLabel === undefined ? this.label : this.shortLabel, this.hidden);
     };
     SasiColumnBuilder.prototype.withInfinity = function (isInfinity) {
         this.infinity = isInfinity;
@@ -2828,11 +2829,15 @@ var SasiColumnBuilder = /** @class */ (function () {
         this.shortLabel = shortLabel;
         return this;
     };
+    SasiColumnBuilder.prototype.withHidden = function (hidden) {
+        this.hidden = hidden;
+        return this;
+    };
     return SasiColumnBuilder;
 }());
 
 var SasiColumn = /** @class */ (function () {
-    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, altBorderLeft, columnWidth, columnTooltipText, shortLabel) {
+    function SasiColumn(index, label, component, aggComponent, altSortEnable, isAggragated, tooltipText, isInfinity, altLabel, altBorder, altBorderLeft, columnWidth, columnTooltipText, shortLabel, hidden) {
         this.index = index;
         this.label = label;
         this.component = component;
@@ -2847,6 +2852,7 @@ var SasiColumn = /** @class */ (function () {
         this.columnWidth = columnWidth;
         this.columnTooltipText = columnTooltipText;
         this.shortLabel = shortLabel;
+        this.hidden = hidden;
     }
     return SasiColumn;
 }());
@@ -2927,7 +2933,10 @@ var SasiTableOptions = /** @class */ (function () {
         return this.columns.filter(function (column) { return column.isAggregated; });
     };
     SasiTableOptions.prototype.getDataColumns = function () {
-        return this.columns.filter(function (column) { return column.index !== 'name'; });
+        return this.columns.filter(function (column) { return column.index !== 'name' && column.hidden !== true; });
+    };
+    SasiTableOptions.prototype.getVisibleColumns = function () {
+        return this.columns.filter(function (column) { return column.hidden !== true; });
     };
     return SasiTableOptions;
 }());
@@ -2998,7 +3007,10 @@ var SasiTableComponent = /** @class */ (function () {
                 return this.columns.filter(function (column) { return column.isAggregated; });
             },
             getDataColumns: function () {
-                return this.columns.filter(function (column) { return column.index !== 'name'; });
+                return this.columns.filter(function (column) { return column.index !== 'name' && column.hidden !== true; });
+            },
+            getVisibleColumns: function () {
+                return this.columns.filter(function (column) { return column.hidden !== true; });
             }
         };
         this.altSort = false;
@@ -3044,13 +3056,16 @@ var SasiTableComponent = /** @class */ (function () {
         this.sortData(changes.data.currentValue);
     };
     SasiTableComponent.prototype.sortData = function (changes) {
-        var _this = this;
-        if (this.options !== undefined && this.options.sortColumnName !== undefined) {
-            this.data = this.options.sortService.sort(changes, this.getColumns().find(function (column) { return column.index === _this.options.sortColumnName; }), this.options.sortType, this.altSort ? this.options.altSortColumnName : null, (function (row, column1) { return row.getCellValue(column1); }));
+        if (this.options !== undefined && this.options.sortColumnNames !== undefined) {
+            this.data = this.options.sortService.sort(changes, this.getSortColumns(), this.options.sortType, this.altSort ? this.options.altSortColumnName : null, (function (row, column1) { return row.getCellValue(column1); }));
         }
     };
+    SasiTableComponent.prototype.getSortColumns = function () {
+        var _this = this;
+        return this.options.sortColumnNames.map(function (sortColumn) { return _this.options.columns.find(function (column) { return column.index === sortColumn; }); });
+    };
     SasiTableComponent.prototype.getGridColumnCount = function () {
-        return this.options.columns.length - 1;
+        return this.options.getDataColumns().length;
     };
     SasiTableComponent.prototype.getNameColumnSize = function () {
         return this.options.nameColumnSize;
@@ -3081,7 +3096,7 @@ var SasiTableComponent = /** @class */ (function () {
     /* SORTING FEATURES */
     SasiTableComponent.prototype.getSortIconClass = function (column, isAltSort) {
         var sortIconClass = this.options.sortDefaultIcon;
-        if (this.options.sortColumnName === column) {
+        if (this.options.sortColumnNames.includes(column)) {
             if (this.options.sortType === SasiSortType.ASC) {
                 sortIconClass = this.options.sortAscIcon;
             }
@@ -3095,7 +3110,7 @@ var SasiTableComponent = /** @class */ (function () {
         return this.options.sortDefaultIcon;
     };
     SasiTableComponent.prototype.setSort = function (column, isAltSort) {
-        if (this.options.sortColumnName === column.index) {
+        if (this.options.sortColumnNames.includes(column.index)) {
             if (this.options.sortType === SasiSortType.ASC) {
                 this.options.sortType = SasiSortType.DESC;
             }
@@ -3105,10 +3120,10 @@ var SasiTableComponent = /** @class */ (function () {
         }
         else {
             this.options.sortType = SasiSortType.DESC;
-            this.options.sortColumnName = column.index;
+            this.options.sortColumnNames = [column.index];
         }
         this.altSort = isAltSort;
-        this.data = this.options.sortService.sort(this.data, column, this.options.sortType, this.altSort ? this.options.altSortColumnName : null, (function (row, column1) { return row.getCellValue(column1); }));
+        this.data = this.options.sortService.sort(this.data, [column], this.options.sortType, this.altSort ? this.options.altSortColumnName : null, (function (row, column1) { return row.getCellValue(column1); }));
     };
     SasiTableComponent.prototype.collapseAll = function () {
         var _this = this;
@@ -3178,7 +3193,7 @@ var SasiTableComponent = /** @class */ (function () {
         // if (this.options.headerGroups.length > 0) {
         //   return this.options.headerGroups;
         // }
-        return this.options.columns;
+        return this.options.columns.filter(function (column) { return column.hidden !== true; });
     };
     SasiTableComponent.prototype.getHeaderGridStyle = function (i) {
         var offsetPosition = 1;
@@ -3236,23 +3251,29 @@ __webpack_require__.r(__webpack_exports__);
 var SimpleSortImpl = /** @class */ (function () {
     function SimpleSortImpl() {
     }
-    SimpleSortImpl.prototype.sort = function (data, column, sortType, sortByRawValue, getValue) {
+    SimpleSortImpl.prototype.sort = function (data, columns, sortType, sortByRawValue, getValue) {
         var _this = this;
         var dataReturned = data.sort(function (rowA, rowB) {
             if (sortType === _sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiSortType"].ASC) {
                 if (sortByRawValue !== null) {
-                    return _this.compare(rowA.getCellRawData(column)[sortByRawValue], rowB.getCellRawData(column)[sortByRawValue]);
+                    return _this.compare(rowA.getCellRawData(columns[0])[sortByRawValue], rowB.getCellRawData(columns[0])[sortByRawValue]);
                 }
                 else {
-                    return _this.compare(getValue(rowA, column), getValue(rowB, column));
+                    var compareColumn = columns.find(function (column) {
+                        return _this.compare(getValue(rowA, column), getValue(rowB, column)) !== 0;
+                    });
+                    return _this.compare(getValue(rowA, compareColumn), getValue(rowB, compareColumn));
                 }
             }
             else {
                 if (sortByRawValue !== null) {
-                    return _this.compare(rowB.getCellRawData(column)[sortByRawValue], rowA.getCellRawData(column)[sortByRawValue]);
+                    return _this.compare(rowB.getCellRawData(columns[0])[sortByRawValue], rowA.getCellRawData(columns[0])[sortByRawValue]);
                 }
                 else {
-                    return _this.compare(getValue(rowB, column), getValue(rowA, column));
+                    var compareColumn = columns.find(function (column) {
+                        return _this.compare(getValue(rowB, column), getValue(rowA, column)) !== 0;
+                    });
+                    return _this.compare(getValue(rowB, compareColumn), getValue(rowA, compareColumn));
                 }
             }
         });
@@ -4316,6 +4337,7 @@ var StorageEntityDetail2SasiTablePipe = /** @class */ (function () {
                 row.cells['room'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.room, { value: detail.room });
                 row.cells['prefixReferenceId'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.prefixReferenceId, { value: detail.prefixReferenceId });
                 row.cells['serialNumber'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](system.serialNumber, { value: detail.serialNumber });
+                row.cells['sortId'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.sortId, { value: detail.sortId });
             }
             return row;
         });
@@ -4370,6 +4392,9 @@ var SystemPool2SasiGroupTablePipe = /** @class */ (function () {
             var row = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiGroupRow"]();
             var groupRow = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"]();
             groupRow.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](system.name, { id: system.name, iFrameLink: context, value: system.name });
+            if (system.detail !== undefined) {
+                groupRow.cells['sortId'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](system.detail.sortId, { id: system.detail.sortId, iFrameLink: context, value: system.detail.sortId });
+            }
             row.groupRow = groupRow;
             row.rows = _this.rowPipe.transform(system.children, context, system.name);
             return row;
@@ -7911,7 +7936,9 @@ var MetricHandlerUtils = /** @class */ (function () {
     function MetricHandlerUtils() {
     }
     MetricHandlerUtils.success = function (data) {
-        return data.reduce(function (previousValue, currentValue) { return __spreadArrays(previousValue, currentValue.children); }, []);
+        var d = data.reduce(function (previousValue, currentValue) { return __spreadArrays(previousValue, currentValue.children); }, []);
+        console.log(d);
+        return d;
     };
     MetricHandlerUtils.error = function (error) {
         console.log(error);
@@ -8323,6 +8350,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _formatters_adapter_disbalance_formatter_adapter_disbalance_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component */ "./src/app/global-statistics/formatters/adapter-disbalance-formatter/adapter-disbalance-formatter.component.ts");
 /* harmony import */ var _formatters_empty_formatter_empty_formatter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../formatters/empty-formatter/empty-formatter.component */ "./src/app/global-statistics/formatters/empty-formatter/empty-formatter.component.ts");
 /* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
+/* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8335,6 +8363,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -8394,6 +8423,13 @@ var AdaptersComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex('sortId')
+            .withLabel('Sort ID')
+            .withComponent(_storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_17__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .withHidden(true)
+            .build());
         this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_8__["AlertFormatterComponent"];
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_9__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_7__["RouteLinkFormatterComponent"];
@@ -8404,7 +8440,7 @@ var AdaptersComponent = /** @class */ (function () {
         this.options.valueColumnWidth = '36.5';
         this.options.aggregateValuesService = new _utils_sum_value_service_impl__WEBPACK_IMPORTED_MODULE_10__["SumValueServiceImpl"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortAggregateValueImpl"]();
-        this.options.sortColumnName = 'name';
+        this.options.sortColumnNames = ['sortId', 'name'];
     }
     AdaptersComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -9353,6 +9389,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_sum_value_service_impl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/sum-value-service.impl */ "./src/app/global-statistics/utils/sum-value-service.impl.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-aggregate-value.impl */ "./src/app/common/components/sasi-table/group-sort-aggregate-value.impl.ts");
 /* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
+/* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9365,6 +9402,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -9417,6 +9455,13 @@ var DpSlaComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .withIsAggregated(true)
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex('sortId')
+            .withLabel('Sort ID')
+            .withComponent(_storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_15__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .withHidden(true)
+            .build());
         this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_8__["AlertFormatterComponent"];
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_9__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_7__["RouteLinkFormatterComponent"];
@@ -9427,7 +9472,7 @@ var DpSlaComponent = /** @class */ (function () {
         this.options.valueColumnWidth = '35.75';
         this.options.aggregateValuesService = new _utils_sum_value_service_impl__WEBPACK_IMPORTED_MODULE_12__["SumValueServiceImpl"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortAggregateValueImpl"]();
-        this.options.sortColumnName = 'name';
+        this.options.sortColumnNames = ['sortId', 'name'];
     }
     DpSlaComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -9519,6 +9564,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/animations.js");
 /* harmony import */ var _formatters_tier_formatter_tier_formatter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../formatters/tier-formatter/tier-formatter.component */ "./src/app/global-statistics/formatters/tier-formatter/tier-formatter.component.ts");
 /* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
+/* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9531,6 +9577,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -9637,6 +9684,13 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
             .withTooltipText('One Month Change')
             .withInfinity(false)
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('sortId')
+            .withLabel('Sort ID')
+            .withComponent(_storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_15__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .withHidden(true)
+            .build());
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_8__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_9__["RouteLinkFormatterComponent"];
         this.options.isDataGrouped = true;
@@ -9647,7 +9701,7 @@ var HostGroupsCapacityComponent = /** @class */ (function () {
         this.options.selectableRows = true;
         this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_10__["SasiWeightedArithmeticMeanUtils"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_11__["GroupSortImpl"]();
-        this.options.sortColumnName = 'name';
+        this.options.sortColumnNames = ['sortId', 'name'];
         this.options.columnAlign = 'right';
     }
     // Todo common with logical stats
@@ -9746,6 +9800,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 /* harmony import */ var ngx_store_9__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-store-9 */ "./node_modules/ngx-store-9/esm2015/ngx-store.js");
 /* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
+/* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9758,6 +9813,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -10006,6 +10062,13 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
             .withTooltipText('Total Saving Effect')
             .withShortLabel('Total')
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('sortId')
+            .withLabel('Sort ID')
+            .withComponent(_storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_13__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .withHidden(true)
+            .build());
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_7__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__["RouteLinkFormatterComponent"];
         this.options.isDataGrouped = true;
@@ -10016,7 +10079,7 @@ var LogicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.selectableRows = true;
         this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_9__["SasiWeightedArithmeticMeanUtils"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_10__["GroupSortImpl"]();
-        this.options.sortColumnName = 'name';
+        this.options.sortColumnNames = ['sortId', 'name'];
         this.options.columnAlign = 'right';
         this.options.headerGroups = [
             {
@@ -10153,6 +10216,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
 /* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
 /* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
+/* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10165,6 +10229,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -10244,13 +10309,20 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
             .withAltSortEnable(true)
             .withIsAggregated(false)
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex('sortId')
+            .withLabel('Sort ID')
+            .withComponent(_storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_14__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .withHidden(true)
+            .build());
         this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_9__["AlertFormatterComponent"];
         this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_11__["RowTableComponent"];
         this.options.labelColumnWidth = '13.78';
         this.options.valueColumnWidth = '13.78';
         this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_12__["SimpleSortImpl"]();
         this.options.altSortColumnName = 'peak';
-        this.options.sortColumnName = 'name';
+        this.options.sortColumnNames = ['sortId', 'name'];
         this.options.sortType = _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiSortType"].ASC;
     }
     PerformanceStatisticsComponent.prototype.ngOnInit = function () {
@@ -10346,6 +10418,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 /* harmony import */ var ngx_store_9__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-store-9 */ "./node_modules/ngx-store-9/esm2015/ngx-store.js");
 /* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
+/* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10358,6 +10431,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -10517,6 +10591,13 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
             .withInfinity(false)
             .withTooltipText('One Month Change')
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
+            .withIndex('sortId')
+            .withLabel('Sort ID')
+            .withComponent(_storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_16__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .withHidden(true)
+            .build());
         this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_9__["AlertFormatterComponent"];
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_10__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_7__["RouteLinkFormatterComponent"];
@@ -10528,7 +10609,7 @@ var PhysicalCapacityStatisticsComponent = /** @class */ (function () {
         this.options.selectableRows = true;
         this.options.aggregateValuesService = new _utils_sasi_weighted_arithmetic_mean_utils__WEBPACK_IMPORTED_MODULE_12__["SasiWeightedArithmeticMeanUtils"]();
         this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_13__["GroupSortImpl"]();
-        this.options.sortColumnName = 'name';
+        this.options.sortColumnNames = ['sortId', 'name'];
         this.options.columnAlign = 'right';
         this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["Threshold"]('text-green', 80, 84.9)));
         this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PHYSICAL_USED_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_11__["Threshold"]('text-alert-yellow', 85, 88)));
@@ -11021,6 +11102,7 @@ var SeTextFormatterComponent = /** @class */ (function () {
             formData.rack = this.getCellValue('rack');
             formData.arrayModel = this.getCellValue('arrayModel');
             formData.managementIp = this.getCellValue('managementIp');
+            formData.sortId = this.getCellValue('sortId');
         }
         this.formBus.sendFormData(formData);
     };
@@ -11367,6 +11449,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
                 'room': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.room, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(32)]),
                 'rack': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.rack, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(32)]),
                 'managementIp': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.managementIp),
+                'sortId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.sortId),
             });
         }
         else {
@@ -11441,6 +11524,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
             detailDto.room = this.form.value.room;
             detailDto.name = this.form.value.name;
             detailDto.serialNumber = this.form.value.serialNumber;
+            detailDto.sortId = this.form.value.sortId;
         }
         return { dto: dto, detailDto: detailDto };
     };
@@ -11605,6 +11689,12 @@ var StorageLocationComponent = /** @class */ (function () {
             .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
             .withAltSortEnable(false)
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('sortId')
+            .withLabel('Sort ID')
+            .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .build());
         this.options.colControlFormatter = _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_3__["AlertFormatterComponent"];
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_4__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"];
@@ -11613,7 +11703,7 @@ var StorageLocationComponent = /** @class */ (function () {
         this.options.highlightColumn = false;
         // this.options.aggregateValuesService = new SumValueServiceImpl();
         this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_9__["GroupSortImpl"]();
-        this.options.sortColumnName = 'name';
+        this.options.sortColumnNames = ['sortId', 'name'];
         this.loadData();
     };
     StorageLocationComponent.prototype.getValue = function (system, property) {
