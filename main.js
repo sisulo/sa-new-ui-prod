@@ -3262,6 +3262,9 @@ var SimpleSortImpl = /** @class */ (function () {
                     var compareColumn = columns.find(function (column) {
                         return _this.compare(getValue(rowA, column), getValue(rowB, column)) !== 0;
                     });
+                    if (compareColumn === undefined) {
+                        return 0;
+                    }
                     return _this.compare(getValue(rowA, compareColumn), getValue(rowB, compareColumn));
                 }
             }
@@ -3273,6 +3276,9 @@ var SimpleSortImpl = /** @class */ (function () {
                     var compareColumn = columns.find(function (column) {
                         return _this.compare(getValue(rowB, column), getValue(rowA, column)) !== 0;
                     });
+                    if (compareColumn === undefined) {
+                        return 0;
+                    }
                     return _this.compare(getValue(rowB, compareColumn), getValue(rowA, compareColumn));
                 }
             }
