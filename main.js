@@ -3253,7 +3253,7 @@ var SimpleSortImpl = /** @class */ (function () {
     }
     SimpleSortImpl.prototype.sort = function (data, columns, sortType, sortByRawValue, getValue) {
         var _this = this;
-        var dataReturned = data.sort(function (rowA, rowB) {
+        return data.sort(function (rowA, rowB) {
             if (sortType === _sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiSortType"].ASC) {
                 if (sortByRawValue !== null) {
                     return _this.compare(rowA.getCellRawData(columns[0])[sortByRawValue], rowB.getCellRawData(columns[0])[sortByRawValue]);
@@ -3283,7 +3283,6 @@ var SimpleSortImpl = /** @class */ (function () {
                 }
             }
         });
-        return dataReturned;
     };
     SimpleSortImpl.prototype.compare = function (valueA, valueB) {
         var a = valueA || '';
@@ -4182,7 +4181,6 @@ var IframeUrlCreatorPipe = /** @class */ (function () {
         if (this.mapSystemToDirectory[id] !== undefined) {
             return this.mapSystemToDirectory[id];
         }
-        // throw new Error(`ID: ${id} not found in mapping`);
     };
     IframeUrlCreatorPipe.prototype.normalizeAnchor = function (value) {
         if (value != null) {
@@ -4242,6 +4240,56 @@ var SafeHtmlPipe = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DomSanitizer"]])
     ], SafeHtmlPipe);
     return SafeHtmlPipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/utils/sort-storage-entity.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/common/utils/sort-storage-entity.ts ***!
+  \*****************************************************/
+/*! exports provided: SortStorageEntity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SortStorageEntity", function() { return SortStorageEntity; });
+/* harmony import */ var _global_statistics_views_block_size_latency_filter_list_data_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../global-statistics/views/block-size-latency/filter-list-data.utils */ "./src/app/global-statistics/views/block-size-latency/filter-list-data.utils.ts");
+
+var SortStorageEntity = /** @class */ (function () {
+    function SortStorageEntity() {
+    }
+    SortStorageEntity.sort = function (data, sortType) {
+        if (sortType === void 0) { sortType = _global_statistics_views_block_size_latency_filter_list_data_utils__WEBPACK_IMPORTED_MODULE_0__["SortType"].ASC; }
+        data.forEach(function (datacenter) {
+            datacenter.storageEntity.children =
+                SortStorageEntity.simpleSort(datacenter.storageEntity.children, function (value) { return value.detail.sortId; }, function (value) { return value.name; });
+        });
+        return this.simpleSort(data, function (value) { return value.storageEntity.children[0].detail.sortId; }, function (value) { return value.storageEntity.children[0].name; });
+    };
+    SortStorageEntity.simpleSort = function (systems, getValue, getName) {
+        return systems.sort(function (systemA, systemB) {
+            var sortValue = SortStorageEntity.compare(getValue(systemA), getValue(systemB));
+            if (sortValue === 0) {
+                return SortStorageEntity.compare(getName(systemA), getName(systemB));
+            }
+            return sortValue;
+        });
+    };
+    SortStorageEntity.compare = function (valueA, valueB) {
+        var a = valueA || '';
+        var b = valueB || '';
+        if (a > b) {
+            return 1;
+        }
+        else if (a < b) {
+            return -1;
+        }
+        return 0;
+    };
+    return SortStorageEntity;
 }());
 
 
@@ -4468,6 +4516,13 @@ var SystemPool2SasiTablePipe = /** @class */ (function () {
                 metric.value = _this.countPortImbalances(row.subRows);
                 metric.type = _models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PORT_IMBALANCE_EVENTS;
                 row.cells[_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].PORT_IMBALANCE_EVENTS] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.value, metric);
+            }
+            if (system.detail !== undefined) {
+                row.cells['sortId'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](system.detail.sortId, {
+                    id: system.detail.sortId,
+                    iFrameLink: context,
+                    value: system.detail.sortId
+                });
             }
             if (system.externals !== undefined) {
                 row.externals = system.externals;
@@ -5670,6 +5725,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_menu_tree_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/menu-tree.vo */ "./src/app/common/models/menu-tree.vo.ts");
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
 /* harmony import */ var _common_models_menu_item_vo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/models/menu-item.vo */ "./src/app/common/models/menu-item.vo.ts");
+/* harmony import */ var _common_utils_sort_storage_entity__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/utils/sort-storage-entity */ "./src/app/common/utils/sort-storage-entity.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5682,6 +5738,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -5759,8 +5816,11 @@ var SideMenuComponent = /** @class */ (function () {
     };
     SideMenuComponent.prototype.convertMenu = function (data) {
         var menu = [];
-        for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
-            var dataCenter = data_1[_i];
+        console.log(data);
+        var sortedData = _common_utils_sort_storage_entity__WEBPACK_IMPORTED_MODULE_4__["SortStorageEntity"].sort(data);
+        console.log(sortedData);
+        for (var _i = 0, sortedData_1 = sortedData; _i < sortedData_1.length; _i++) {
+            var dataCenter = sortedData_1[_i];
             var items = [];
             for (var _a = 0, _b = dataCenter.storageEntity.children; _a < _b.length; _a++) {
                 var system = _b[_a];
