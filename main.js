@@ -2121,8 +2121,9 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 var GroupSortImpl = /** @class */ (function (_super) {
     __extends(GroupSortImpl, _super);
-    function GroupSortImpl() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function GroupSortImpl(groupSortingWithSubRow) {
+        if (groupSortingWithSubRow === void 0) { groupSortingWithSubRow = false; }
+        return _super.call(this, groupSortingWithSubRow) || this;
     }
     GroupSortImpl.prototype.sort = function (data, columns, sortType, sortByRawValue) {
         var _this = this;
@@ -2132,22 +2133,12 @@ var GroupSortImpl = /** @class */ (function (_super) {
             }
             return null;
         }); });
-        if (columns.find(function (column) { return column.index === 'name'; }) || columns.find(function (column) { return column.index === 'sortId'; })) {
-            return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex) {
-                if (row !== undefined) {
-                    return row.groupRow.getCellValue(columnIndex);
-                }
-                return null;
-            });
-        }
-        else {
-            return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex) {
-                if (row !== undefined && row.rows[0] !== undefined) {
-                    return row.rows[0].getCellValue(columnIndex);
-                }
-                return null;
-            });
-        }
+        return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex) {
+            if (row !== undefined && row.rows[0] !== undefined) {
+                return row.rows[0].getCellValue(columnIndex);
+            }
+            return null;
+        });
     };
     return GroupSortImpl;
 }(_simple_sort_impl__WEBPACK_IMPORTED_MODULE_0__["SimpleSortImpl"]));
@@ -3249,40 +3240,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sasi_table_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 
 var SimpleSortImpl = /** @class */ (function () {
-    function SimpleSortImpl() {
+    function SimpleSortImpl(groupSortingWithSubRow) {
+        if (groupSortingWithSubRow === void 0) { groupSortingWithSubRow = false; }
+        this.groupSortingWithSubRow = false;
+        this.groupSortingWithSubRow = groupSortingWithSubRow;
     }
     SimpleSortImpl.prototype.sort = function (data, columns, sortType, sortByRawValue, getValue) {
         var _this = this;
         return data.sort(function (rowA, rowB) {
             if (sortType === _sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiSortType"].ASC) {
-                if (sortByRawValue !== null) {
-                    return _this.compare(rowA.getCellRawData(columns[0])[sortByRawValue], rowB.getCellRawData(columns[0])[sortByRawValue]);
-                }
-                else {
-                    var compareColumn = columns.find(function (column) {
-                        return _this.compare(getValue(rowA, column), getValue(rowB, column)) !== 0;
-                    });
-                    if (compareColumn === undefined) {
-                        return 0;
-                    }
-                    return _this.compare(getValue(rowA, compareColumn), getValue(rowB, compareColumn));
-                }
+                return _this.compareRow(sortByRawValue, rowA, columns, rowB, getValue);
             }
             else {
-                if (sortByRawValue !== null) {
-                    return _this.compare(rowB.getCellRawData(columns[0])[sortByRawValue], rowA.getCellRawData(columns[0])[sortByRawValue]);
-                }
-                else {
-                    var compareColumn = columns.find(function (column) {
-                        return _this.compare(getValue(rowB, column), getValue(rowA, column)) !== 0;
-                    });
-                    if (compareColumn === undefined) {
-                        return 0;
-                    }
-                    return _this.compare(getValue(rowB, compareColumn), getValue(rowA, compareColumn));
-                }
+                return _this.compareRow(sortByRawValue, rowB, columns, rowA, getValue);
             }
         });
+    };
+    SimpleSortImpl.prototype.compareRow = function (sortByRawValue, rowA, columns, rowB, getValue) {
+        var _this = this;
+        if (sortByRawValue !== null) {
+            return this.compare(rowA.getCellRawData(columns[0])[sortByRawValue], rowB.getCellRawData(columns[0])[sortByRawValue]);
+        }
+        else {
+            var compareColumn = columns.find(function (column) {
+                return _this.compareCells(rowA, rowB, column, getValue) !== 0;
+            });
+            if (compareColumn === undefined) {
+                return 0;
+            }
+            return this.compareCells(rowA, rowB, compareColumn, getValue);
+        }
+    };
+    SimpleSortImpl.prototype.compareCells = function (rowA, rowB, column, getValue) {
+        if (['name', 'sortId'].includes(column.index) && rowA.groupRow !== undefined && this.groupSortingWithSubRow) {
+            getValue = function (row, columnIndex) {
+                if (row !== undefined) {
+                    return row.groupRow.getCellValue(columnIndex);
+                }
+                return null;
+            };
+        }
+        return this.compare(getValue(rowA, column), getValue(rowB, column));
     };
     SimpleSortImpl.prototype.compare = function (valueA, valueB) {
         var a = valueA || '';
@@ -11768,7 +11766,7 @@ var StorageLocationComponent = /** @class */ (function () {
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
         // this.options.aggregateValuesService = new SumValueServiceImpl();
-        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_9__["GroupSortImpl"]();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_9__["GroupSortImpl"](true);
         this.options.sortColumnNames = ['sortId', 'name'];
         this.loadData();
     };
