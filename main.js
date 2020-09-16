@@ -3272,7 +3272,7 @@ var SimpleSortImpl = /** @class */ (function () {
         }
     };
     SimpleSortImpl.prototype.compareCells = function (rowA, rowB, column, getValue) {
-        if (['name', 'sortId'].includes(column.index) && rowA.groupRow !== undefined && this.groupSortingWithSubRow) {
+        if (['name', 'sortId'].includes(column.index) && rowA.groupRow !== undefined && !this.groupSortingWithSubRow) {
             getValue = function (row, columnIndex) {
                 if (row !== undefined) {
                     return row.groupRow.getCellValue(columnIndex);
