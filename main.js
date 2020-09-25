@@ -607,7 +607,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit System</h4>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.DATACENTER\">Add / Edit Datacenter</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                 [class.has-error]=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         bindValue=\"value\" formControlName=\"datacenter\">\n              </ng-select>\n              <span *ngIf=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\"\n                    class=\"help-block\">Datacenter must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"name.invalid && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\" *ngIf=\"data.type === staticType.SYSTEM\">System Name: </label>\n              <label for=\"name\" *ngIf=\"data.type === staticType.DATACENTER\">Datacenter Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n              <span *ngIf=\"name.invalid && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n            </div>\n            <div *ngIf=\"data.type !== staticType.DATACENTER\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\">\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"model\">Array Model: </label>\n                <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n                <span *ngIf=\"rack.invalid && rack.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save changes\n          </button>\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit System</h4>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.DATACENTER\">Add / Edit Datacenter</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                 [class.has-error]=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\">\n              <label for=\"datacenter\">Datacenter:</label>\n              <ng-select id=\"datacenter\" [items]=\"dataCenterList\"\n                         bindValue=\"value\" formControlName=\"datacenter\">\n              </ng-select>\n              <span *ngIf=\"dataCenter.invalid && (dataCenter.dirty || dataCenter.touched || submitted)\"\n                    class=\"help-block\">Datacenter must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"name.invalid && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\" *ngIf=\"data.type === staticType.SYSTEM\">System Name: </label>\n              <label for=\"name\" *ngIf=\"data.type === staticType.DATACENTER\">Datacenter Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n              <span *ngIf=\"name.invalid && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n            </div>\n            <div *ngIf=\"data.type !== staticType.DATACENTER\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"model\">Array Model: </label>\n                <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save changes\n          </button>\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n\n");
 
 /***/ }),
 
@@ -620,7 +620,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n  </div>\n\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n    <app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                             (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n  </div>\n\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n    <app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                             [systemList]=\"systemList\"\n                             (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -11444,13 +11444,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************************************************************!*\
   !*** ./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts ***!
   \********************************************************************************************/
-/*! exports provided: StorageEntityVo, StorageEntityFormComponent */
+/*! exports provided: StorageEntityVo, StorageEntityFormComponent, duplicatedSerialNumber */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityVo", function() { return StorageEntityVo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityFormComponent", function() { return StorageEntityFormComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "duplicatedSerialNumber", function() { return duplicatedSerialNumber; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
@@ -11491,6 +11492,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
         this.submitted = false;
         this.httpErrorDisplayed = false;
         this.httpError = null;
+        this.forceAsNew = false;
         this.data = new StorageEntityVo();
         this.staticType = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"];
     }
@@ -11506,6 +11508,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
     StorageEntityFormComponent.prototype.initFormControls = function () {
         if (this.data.type !== _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DATACENTER) {
             this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.id),
                 'datacenter': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
                 'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
                 'prefixReferenceId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.prefixReferenceId),
@@ -11516,7 +11519,8 @@ var StorageEntityFormComponent = /** @class */ (function () {
                 'rack': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.rack, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(32)]),
                 'managementIp': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.managementIp),
                 'sortId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.sortId),
-            });
+                'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
+            }, [duplicatedSerialNumber(this.systemList)]);
         }
         else {
             this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
@@ -11541,6 +11545,13 @@ var StorageEntityFormComponent = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(StorageEntityFormComponent.prototype, "serial", {
+        get: function () {
+            return this.form.get('serialNumber');
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(StorageEntityFormComponent.prototype, "room", {
         get: function () {
             return this.form.get('room');
@@ -11550,20 +11561,28 @@ var StorageEntityFormComponent = /** @class */ (function () {
     });
     Object.defineProperty(StorageEntityFormComponent.prototype, "rack", {
         get: function () {
-            console.log(this.form.get('rack').errors);
             return this.form.get('rack');
         },
         enumerable: false,
         configurable: true
     });
     StorageEntityFormComponent.prototype.saveChanges = function (forceAsNew) {
+        var _this = this;
         if (forceAsNew === void 0) { forceAsNew = false; }
         var _a = this.transformDataToDto(), dto = _a.dto, detailDto = _a.detailDto;
         if (this.data.id !== undefined && !forceAsNew) {
             this.updateDetails(detailDto);
         }
         else {
-            this.saveAsNew(dto, detailDto);
+            this.form.get('forceAsNew').setValue(true);
+            this.submitted = true;
+            if (this.form.valid) {
+                this.saveAsNew(dto, detailDto);
+            }
+            setTimeout(function () {
+                _this.form.get('forceAsNew').setValue(false);
+                _this.submitted = false;
+            }, 2000);
         }
     };
     StorageEntityFormComponent.prototype.updateDetails = function (detailDto) {
@@ -11608,7 +11627,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
         function (response) {
             if (response.error.code === 1002) {
                 _this.httpErrorDisplayed = true;
-                _this.httpError = 'System already exists under the datacenter.';
+                _this.httpError = 'System already exists under the same or different datacenter.';
                 setTimeout(function () { return _this.httpErrorDisplayed = false; }, 10000);
             }
             console.error(response.error);
@@ -11626,6 +11645,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
     StorageEntityFormComponent.propDecorators = {
         dataCenterList: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         displayForm: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        systemList: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         dataSaved: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
     };
     StorageEntityFormComponent = __decorate([
@@ -11640,6 +11660,23 @@ var StorageEntityFormComponent = /** @class */ (function () {
     return StorageEntityFormComponent;
 }());
 
+function duplicatedSerialNumber(systemList) {
+    return function (control) {
+        var serialNumber = control.get('serialNumber').value;
+        var id = control.get('id').value;
+        var prefix = control.get('prefixReferenceId').value;
+        var forceAsNew = control.get('forceAsNew').value;
+        var foundSystem = systemList.find(function (system) {
+            if (forceAsNew) {
+                return system.serial === serialNumber && system.prefix === prefix;
+            }
+            else {
+                return system.serial === serialNumber && system.prefix === prefix && system.id !== id;
+            }
+        });
+        return foundSystem ? { duplicatedSerialNumber: { value: control.value } } : null;
+    };
+}
 
 
 /***/ }),
@@ -11661,11 +11698,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************************************!*\
   !*** ./src/app/storage-configuration/storage-location/storage-location.component.ts ***!
   \**************************************************************************************/
-/*! exports provided: StorageLocationComponent */
+/*! exports provided: SystemData, StorageLocationComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SystemData", function() { return SystemData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageLocationComponent", function() { return StorageLocationComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
@@ -11701,6 +11739,12 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+var SystemData = /** @class */ (function () {
+    function SystemData() {
+    }
+    return SystemData;
+}());
+
 var StorageLocationComponent = /** @class */ (function () {
     function StorageLocationComponent(metricService, formBus) {
         this.metricService = metricService;
@@ -11708,6 +11752,7 @@ var StorageLocationComponent = /** @class */ (function () {
         this.data = [];
         this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiTableOptions"]();
         this.datacenterList = [];
+        this.systemList = [];
         this.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"];
     }
     StorageLocationComponent.prototype.ngOnInit = function () {
@@ -11789,6 +11834,16 @@ var StorageLocationComponent = /** @class */ (function () {
         if (force) {
             this.metricService.getSystemsDetail().subscribe(function (data) {
                 _this.data = data;
+                _this.data.forEach(function (datacenter) {
+                    datacenter.storageEntity.children.forEach(function (system) {
+                        _this.systemList.push({
+                            systemName: system.name,
+                            id: system.id,
+                            serial: system.serialNumber,
+                            prefix: system.detail.prefixReferenceId
+                        });
+                    });
+                });
                 _this.datacenterList = _this.data.map(function (datacenter) {
                     return {
                         value: datacenter.storageEntity.id, label: datacenter.storageEntity.name
