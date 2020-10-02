@@ -11637,7 +11637,6 @@ var StorageEntityFormComponent = /** @class */ (function () {
         configurable: true
     });
     StorageEntityFormComponent.prototype.saveChanges = function (forceAsNew) {
-        var _this = this;
         if (forceAsNew === void 0) { forceAsNew = false; }
         var _a = this.transformDataToDto(), dto = _a.dto, detailDto = _a.detailDto;
         if (this.data.id !== undefined && !forceAsNew) {
@@ -11649,10 +11648,6 @@ var StorageEntityFormComponent = /** @class */ (function () {
             if (this.form.valid) {
                 this.saveAsNew(dto, detailDto);
             }
-            setTimeout(function () {
-                _this.form.get('forceAsNew').setValue(false);
-                _this.submitted = false;
-            }, 2000);
         }
     };
     StorageEntityFormComponent.prototype.updateDetails = function (detailDto) {
@@ -11706,7 +11701,6 @@ var StorageEntityFormComponent = /** @class */ (function () {
             if (response.error.code === 1002) {
                 _this.httpErrorDisplayed = true;
                 _this.httpError = 'System already exists under the same or different datacenter.';
-                setTimeout(function () { return _this.httpErrorDisplayed = false; }, 10000);
             }
             console.error(response.error);
             console.error('Cannot store the entity: ');
