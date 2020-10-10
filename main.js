@@ -8186,6 +8186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_datacenter_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/models/datacenter.vo */ "./src/app/common/models/datacenter.vo.ts");
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../metric.service */ "./src/app/metric.service.ts");
 /* harmony import */ var _bus_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bus.service */ "./src/app/global-statistics/bus.service.ts");
+/* harmony import */ var _common_utils_sort_storage_entity__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/utils/sort-storage-entity */ "./src/app/common/utils/sort-storage-entity.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8205,6 +8206,7 @@ var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
+
 
 
 
@@ -8233,12 +8235,13 @@ var GlobalStatisticsComponent = /** @class */ (function () {
     GlobalStatisticsComponent.prototype.getDataCenters = function (currentTab) {
         var _this = this;
         this.metricService.getDataCenters().subscribe(function (data) {
+            var sortedData = _common_utils_sort_storage_entity__WEBPACK_IMPORTED_MODULE_4__["SortStorageEntity"].sort(data);
             _this.dataCenters = [];
             var defaultDatacenter = new _common_models_datacenter_vo__WEBPACK_IMPORTED_MODULE_1__["Datacenter"]();
             defaultDatacenter.label = 'All';
             defaultDatacenter.id = -1;
             _this.dataCenters.push(defaultDatacenter);
-            _this.dataCenters = __spreadArrays(_this.dataCenters, data.map(_common_models_datacenter_vo__WEBPACK_IMPORTED_MODULE_1__["Datacenter"].of));
+            _this.dataCenters = __spreadArrays(_this.dataCenters, sortedData.map(_common_models_datacenter_vo__WEBPACK_IMPORTED_MODULE_1__["Datacenter"].of));
             _this.currentTab = currentTab;
         });
     };
