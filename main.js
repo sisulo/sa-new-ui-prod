@@ -594,7 +594,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"box box-info box-solid\">\n    <div class=\"box-body\">\n      Utilization Over 55% more than 10 minutes\n    </div>\n  </div>\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n    </div>\n    <div class=\"row col-md-12\">\n      <app-sasi-table class=\"table-right\" [data]=\"data | parityGroup2SasiGroupTable: 'dpSla'\"\n                      [tableOptions]=\"options\"></app-sasi-table>\n    </div>\n  </div>\n</div>\n<div class=\"tab-pane\" *ngIf=\"data.length == 0\">\n  <div class=\"box box-danger box-solid\">\n    <div class=\"box-body\">\n      No data available\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"tab-pane\" *ngIf=\"data.length > 0\">\n  <div class=\"box box-info box-solid\">\n    <div class=\"box-body\">\n      Utilization Over 55% more than 5 minutes.\n    </div>\n  </div>\n  <div class=\"container-fluid\">\n    <div class=\"row col-md-12\">\n    </div>\n    <div class=\"row col-md-12\">\n      <app-sasi-table class=\"table-right\" [data]=\"data | parityGroup2SasiGroupTable: 'dpSla'\"\n                      [tableOptions]=\"options\"></app-sasi-table>\n    </div>\n  </div>\n</div>\n<div class=\"tab-pane\" *ngIf=\"data.length == 0\">\n  <div class=\"box box-danger box-solid\">\n    <div class=\"box-body\">\n      No data available\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -2179,14 +2179,20 @@ var GroupSortImpl = /** @class */ (function (_super) {
     }
     GroupSortImpl.prototype.sort = function (data, columns, sortType, sortByRawValue) {
         var _this = this;
-        data.forEach(function (groupRow) { return groupRow.rows = _super.prototype.sort.call(_this, groupRow.rows, columns, sortType, sortByRawValue, function (row, columnIndex) {
+        data.forEach(function (groupRow) { return groupRow.rows = _super.prototype.sort.call(_this, groupRow.rows, columns, sortType, sortByRawValue, function (row, columnIndex, altSort) {
             if (row !== undefined) {
+                if (altSort !== undefined && altSort != null) {
+                    return row.getCellRawData(columnIndex)[altSort];
+                }
                 return row.getCellValue(columnIndex);
             }
             return null;
         }); });
-        return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex) {
+        return _super.prototype.sort.call(this, data, columns, sortType, sortByRawValue, function (row, columnIndex, altSort) {
             if (row !== undefined && row.rows[0] !== undefined) {
+                if (altSort !== undefined && altSort !== null) {
+                    return row.rows[0].getCellRawData(columnIndex)[altSort];
+                }
                 return row.rows[0].getCellValue(columnIndex);
             }
             return null;
@@ -3170,7 +3176,12 @@ var SasiTableComponent = /** @class */ (function () {
             this.options.sortColumnNames = [column.index];
         }
         this.altSort = isAltSort;
-        this.data = this.options.sortService.sort(this.data, [column], this.options.sortType, this.altSort ? this.options.altSortColumnName : null, (function (row, column1) { return row.getCellValue(column1); }));
+        this.data = this.options.sortService.sort(this.data, [column], this.options.sortType, this.altSort ? this.options.altSortColumnName : null, function (row, column1, altSort) {
+            if (altSort !== undefined && altSort !== null) {
+                return row.getCellRawData(column1)[altSort];
+            }
+            return row.getCellValue(column1);
+        });
     };
     SasiTableComponent.prototype.collapseAll = function () {
         var _this = this;
@@ -3312,20 +3323,19 @@ var SimpleSortImpl = /** @class */ (function () {
     };
     SimpleSortImpl.prototype.compareRow = function (sortByRawValue, rowA, columns, rowB, getValue) {
         var _this = this;
-        if (sortByRawValue !== null) {
-            return this.compare(rowA.getCellRawData(columns[0])[sortByRawValue], rowB.getCellRawData(columns[0])[sortByRawValue]);
+        // if (sortByRawValue !== null) {
+        //   return this.compareCells(rowA, rowB, columns[0], sortByRawValue, getValue);
+        // } else {
+        var compareColumn = columns.find(function (column) {
+            return _this.compareCells(rowA, rowB, column, sortByRawValue, getValue) !== 0;
+        });
+        if (compareColumn === undefined) {
+            return 0;
         }
-        else {
-            var compareColumn = columns.find(function (column) {
-                return _this.compareCells(rowA, rowB, column, getValue) !== 0;
-            });
-            if (compareColumn === undefined) {
-                return 0;
-            }
-            return this.compareCells(rowA, rowB, compareColumn, getValue);
-        }
+        return this.compareCells(rowA, rowB, compareColumn, sortByRawValue, getValue);
+        // }
     };
-    SimpleSortImpl.prototype.compareCells = function (rowA, rowB, column, getValue) {
+    SimpleSortImpl.prototype.compareCells = function (rowA, rowB, column, sortByRawValue, getValue) {
         if (['name', 'sortId'].includes(column.index) && rowA.groupRow !== undefined && !this.groupSortingWithSubRow) {
             getValue = function (row, columnIndex) {
                 if (row !== undefined) {
@@ -3334,7 +3344,7 @@ var SimpleSortImpl = /** @class */ (function () {
                 return null;
             };
         }
-        return this.compare(getValue(rowA, column), getValue(rowB, column));
+        return this.compare(getValue(rowA, column, sortByRawValue), getValue(rowB, column, sortByRawValue));
     };
     SimpleSortImpl.prototype.compare = function (valueA, valueB) {
         var a = valueA || '';
@@ -4413,7 +4423,7 @@ var ParityGroup2SasiTablePipe = /** @class */ (function () {
                     row.cells['poolName'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](poolName, { id: linkId, iFrameLink: context, value: poolName });
                     row.cells['name'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](parityGroup.name, { id: linkId, iFrameLink: context, value: parityGroup.name });
                     row.cells[_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].HDD] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.value, metric);
-                    row.cells[_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].DURATION] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.startTime, metric);
+                    row.cells[_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_2__["SystemMetricType"].DURATION] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.endTime - metric.startTime, metric);
                     row.cells['date'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.startTime, metric);
                     row.cells['timeInterval'] = new _components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiCell"](metric.startTime, metric);
                     rows.push(row);
@@ -10780,12 +10790,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
 /* harmony import */ var _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
 /* harmony import */ var _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-group-table/row-group-table.component */ "./src/app/common/components/sasi-table/row-group-table/row-group-table.component.ts");
-/* harmony import */ var _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-aggregate-value.impl */ "./src/app/common/components/sasi-table/group-sort-aggregate-value.impl.ts");
-/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
-/* harmony import */ var _formatters_timestamp_to_date_timestamp_to_date_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../formatters/timestamp-to-date/timestamp-to-date.component */ "./src/app/global-statistics/formatters/timestamp-to-date/timestamp-to-date.component.ts");
-/* harmony import */ var _formatters_time_interval_formatter_time_interval_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../formatters/time-interval-formatter/time-interval-formatter.component */ "./src/app/global-statistics/formatters/time-interval-formatter/time-interval-formatter.component.ts");
-/* harmony import */ var _formatters_duration_formatter_duration_formatter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../formatters/duration-formatter/duration-formatter.component */ "./src/app/global-statistics/formatters/duration-formatter/duration-formatter.component.ts");
-/* harmony import */ var _formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../formatters/unit-formatter/unit-formatter.component */ "./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.ts");
+/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
+/* harmony import */ var _formatters_timestamp_to_date_timestamp_to_date_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../formatters/timestamp-to-date/timestamp-to-date.component */ "./src/app/global-statistics/formatters/timestamp-to-date/timestamp-to-date.component.ts");
+/* harmony import */ var _formatters_time_interval_formatter_time_interval_formatter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../formatters/time-interval-formatter/time-interval-formatter.component */ "./src/app/global-statistics/formatters/time-interval-formatter/time-interval-formatter.component.ts");
+/* harmony import */ var _formatters_duration_formatter_duration_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../formatters/duration-formatter/duration-formatter.component */ "./src/app/global-statistics/formatters/duration-formatter/duration-formatter.component.ts");
+/* harmony import */ var _formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../formatters/unit-formatter/unit-formatter.component */ "./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10844,7 +10854,7 @@ var ParityGroupEventsComponent = /** @class */ (function () {
             .withIndex('date')
             .withLabel('Date')
             .withColumnTooltipText('Date of event when threshold was breached')
-            .withComponent(_formatters_timestamp_to_date_timestamp_to_date_component__WEBPACK_IMPORTED_MODULE_13__["TimestampToDateComponent"])
+            .withComponent(_formatters_timestamp_to_date_timestamp_to_date_component__WEBPACK_IMPORTED_MODULE_12__["TimestampToDateComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
@@ -10852,15 +10862,15 @@ var ParityGroupEventsComponent = /** @class */ (function () {
             .withIndex('timeInterval')
             .withLabel('Time')
             .withColumnTooltipText('Time interval when treshold was breached')
-            .withComponent(_formatters_time_interval_formatter_time_interval_formatter_component__WEBPACK_IMPORTED_MODULE_14__["TimeIntervalFormatterComponent"])
+            .withComponent(_formatters_time_interval_formatter_time_interval_formatter_component__WEBPACK_IMPORTED_MODULE_13__["TimeIntervalFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_7__["SystemMetricType"].HDD)
             .withLabel('Utilization')
-            .withColumnTooltipText('Highest peak of the Parity Group utilization within event time interval')
-            .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_16__["UnitFormatterComponent"])
+            .withColumnTooltipText('Average/Peak value of the Parity Group utilization within event time interval')
+            .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_15__["UnitFormatterComponent"])
             .withAltSortEnable(true)
             .withIsAggregated(false)
             .build());
@@ -10868,7 +10878,7 @@ var ParityGroupEventsComponent = /** @class */ (function () {
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_7__["SystemMetricType"].DURATION)
             .withLabel('Duration')
             .withColumnTooltipText('Duration of the event')
-            .withComponent(_formatters_duration_formatter_duration_formatter_component__WEBPACK_IMPORTED_MODULE_15__["DurationFormatterComponent"])
+            .withComponent(_formatters_duration_formatter_duration_formatter_component__WEBPACK_IMPORTED_MODULE_14__["DurationFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
@@ -10888,7 +10898,8 @@ var ParityGroupEventsComponent = /** @class */ (function () {
         this.options.labelColumnWidth = '25';
         this.options.valueColumnWidth = '35.75';
         // this.options.aggregateValuesService = new SumValueServiceImpl();
-        this.options.sortService = new _common_components_sasi_table_group_sort_aggregate_value_impl__WEBPACK_IMPORTED_MODULE_11__["GroupSortAggregateValueImpl"]();
+        this.options.sortService = new _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_16__["GroupSortImpl"]();
+        this.options.altSortColumnName = 'peak';
         this.options.sortColumnNames = ['sortId', 'name'];
     }
     ParityGroupEventsComponent.prototype.ngOnInit = function () {
@@ -10914,7 +10925,7 @@ var ParityGroupEventsComponent = /** @class */ (function () {
     ParityGroupEventsComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.currentDataCenterId = id;
-        this.metricService.getParityGroupEvents(id, this.currentPeriod).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__["MetricHandlerUtils"].error(error); });
+        this.metricService.getParityGroupEvents(id, this.currentPeriod).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_11__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_11__["MetricHandlerUtils"].error(error); });
         return this.data;
     };
     ParityGroupEventsComponent.ctorParameters = function () { return [
