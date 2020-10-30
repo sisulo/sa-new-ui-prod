@@ -646,7 +646,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"box\" *ngIf=\"systemsList.length > 0\">\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <label for=\"system\">System:</label>\n          <ng-select id=\"system\"\n                     bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                     (change)=\"loadData(true)\"\n                     [(ngModel)]=\"selectedSystem\">\n          </ng-select>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">DKC</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Controllers</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Channel Boards</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-6\">\n          <app-channel-board-list [data]=\"channelBoardList\"\n                                  [displayAddButton]=\"controllerList.length > 0\"\n                                  [parentsData]=\"controllerList\"></app-channel-board-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Ports</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-9\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList > 0\"\n                         [parentsData]=\"channelBoardList\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem !== undefined\" [dataCenterList]=\"[]\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n<!--<app-storage-entity-form [dataCenterList]=\"[]\"-->\n<!--                         [systemList]=\"[]\"-->\n<!--                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>-->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"box\" *ngIf=\"systemsList.length > 0\">\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <label for=\"system\">System:</label>\n          <ng-select id=\"system\"\n                     bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                     (change)=\"loadData(true)\"\n                     [(ngModel)]=\"selectedSystem\">\n          </ng-select>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">DKC</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Controllers</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Channel Boards</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-6\">\n          <app-channel-board-list [data]=\"channelBoardList\"\n                                  [displayAddButton]=\"controllerList.length > 0\"\n                                  [parentsData]=\"controllerList\"></app-channel-board-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Ports</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-9\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n<!--<app-storage-entity-form [dataCenterList]=\"[]\"-->\n<!--                         [systemList]=\"[]\"-->\n<!--                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>-->\n");
 
 /***/ }),
 
@@ -3125,7 +3125,6 @@ var SasiTableComponent = /** @class */ (function () {
                         }
                         this.style = this.domSanitizer.bypassSecurityTrustStyle('grid-template-columns: ' + this.getColControlSize() + ' ' + this.getAlertColumnSize() +
                             ' ' + this.getNameColumnSize() + ' repeat(' + this.getGridColumnCount() + ', 1fr);');
-                        console.log('Style: ' + this.style);
                         this.sortData(this.data);
                         return [2 /*return*/];
                 }
@@ -7641,7 +7640,7 @@ var TimestampToDateComponent = /** @class */ (function () {
     };
     TimestampToDateComponent.prototype.getValue = function () {
         var startTime = new Date(this.data.startTime);
-        return [startTime.getUTCDate(), startTime.getUTCMonth(), startTime.getUTCFullYear()].join('.');
+        return [startTime.getUTCDate(), startTime.getUTCMonth() + 1, startTime.getUTCFullYear()].join('.');
     };
     TimestampToDateComponent.ctorParameters = function () { return []; };
     TimestampToDateComponent.propDecorators = {
@@ -12188,16 +12187,18 @@ var PortConnectivityComponent = /** @class */ (function () {
     PortConnectivityComponent.prototype.loadData = function (force) {
         var _this = this;
         if (force === void 0) { force = true; }
-        this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].DKC, this.selectedSystem)
-            .subscribe(function (data) { return _this.dkcList = data; });
         this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].SYSTEM, null)
             .subscribe(function (data) { return _this.systemsList = data; });
-        this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CONTROLLER, this.selectedSystem)
-            .subscribe(function (data) { return _this.controllerList = data; });
-        this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CHANNEL_BOARD, this.selectedSystem)
-            .subscribe(function (data) { return _this.channelBoardList = data; });
-        this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].PORT, this.selectedSystem)
-            .subscribe(function (data) { return _this.portList = data; });
+        if (this.selectedSystem != null) {
+            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].DKC, this.selectedSystem)
+                .subscribe(function (data) { return _this.dkcList = data; });
+            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CONTROLLER, this.selectedSystem)
+                .subscribe(function (data) { return _this.controllerList = data; });
+            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CHANNEL_BOARD, this.selectedSystem)
+                .subscribe(function (data) { return _this.channelBoardList = data; });
+            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].PORT, this.selectedSystem)
+                .subscribe(function (data) { return _this.portList = data; });
+        }
     };
     PortConnectivityComponent.prototype.fetchStorageEntities = function (type, systemId) {
         var _this = this;
@@ -12970,9 +12971,10 @@ var StorageEntityVo = /** @class */ (function () {
 }());
 
 var StorageEntityFormComponent = /** @class */ (function () {
-    function StorageEntityFormComponent(metricService, formBusService) {
+    function StorageEntityFormComponent(metricService, formBusService, chd) {
         this.metricService = metricService;
         this.formBusService = formBusService;
+        this.chd = chd;
         this.dataSaved = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.submitted = false;
         this.httpErrorDisplayed = false;
@@ -12985,6 +12987,25 @@ var StorageEntityFormComponent = /** @class */ (function () {
     }
     StorageEntityFormComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.formBusService.storageEntityFormStream.subscribe(function (data) {
+            _this.data = data;
+            if (data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC) {
+                _this.data.parentId = _this.selectedParent;
+            }
+            _this.initFormControls();
+            _this.form.markAsUntouched();
+            _this.submitted = false;
+            _this.httpErrorDisplayed = false;
+            _this.displayForm = true;
+        });
+        this.initFormControls();
+    };
+    StorageEntityFormComponent.prototype.ngOnChanges = function (changes) {
+        console.log(changes);
+        console.log(this.dkcList);
+        this.initStaticData();
+    };
+    StorageEntityFormComponent.prototype.initStaticData = function () {
         this.staticData[_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC] = {
             storageEntityLabel: 'DKC',
             parentNameLabel: 'System',
@@ -12998,12 +13019,12 @@ var StorageEntityFormComponent = /** @class */ (function () {
         this.staticData[_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].CHANNEL_BOARD] = {
             storageEntityLabel: 'Channel Board',
             parentNameLabel: 'Controller',
-            parents: this.dkcList
+            parents: this.controllerList
         };
         this.staticData[_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].PORT] = {
             storageEntityLabel: 'Port',
             parentNameLabel: 'Channel Board',
-            parents: this.dkcList
+            parents: this.channelBoardList
         };
         this.staticData[_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].SYSTEM] = {
             storageEntityLabel: 'System',
@@ -13015,18 +13036,6 @@ var StorageEntityFormComponent = /** @class */ (function () {
             parentNameLabel: '',
             parents: []
         };
-        this.formBusService.storageEntityFormStream.subscribe(function (data) {
-            _this.data = data;
-            if (data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC) {
-                _this.data.parentId = _this.selectedParent;
-            }
-            _this.initFormControls();
-            _this.form.markAsUntouched();
-            _this.submitted = false;
-            _this.httpErrorDisplayed = false;
-            _this.displayForm = true;
-        });
-        this.initFormControls();
     };
     StorageEntityFormComponent.prototype.initFormControls = function () {
         if (this.data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].SYSTEM) {
@@ -13264,7 +13273,8 @@ var StorageEntityFormComponent = /** @class */ (function () {
     };
     StorageEntityFormComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"] },
-        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_5__["FormBusService"] }
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_5__["FormBusService"] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }
     ]; };
     StorageEntityFormComponent.propDecorators = {
         dataCenterList: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
@@ -13284,7 +13294,8 @@ var StorageEntityFormComponent = /** @class */ (function () {
             styles: [__importDefault(__webpack_require__(/*! ./storage-entity-form.component.css */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.css")).default]
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"],
-            _form_bus_service__WEBPACK_IMPORTED_MODULE_5__["FormBusService"]])
+            _form_bus_service__WEBPACK_IMPORTED_MODULE_5__["FormBusService"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
     ], StorageEntityFormComponent);
     return StorageEntityFormComponent;
 }());
