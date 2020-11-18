@@ -637,6 +637,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/import-csv-data/import-csv-data.component.html":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/import-csv-data/import-csv-data.component.html ***!
+  \****************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<label class=\"btn btn-default custom-file-upload\" *ngIf=\"fileName === null\">\n  <input class=\"form-control mb-5\" type=\"file\" class=\"upload\" (change)=\"changeListener($event.target.files)\">\n  Choose file\n</label>\n<div *ngIf=\"fileName !== null\">\n  Imported file: {{fileName}}\n  <button class=\"btn btn-default\" (click)=\"updateData()\">Import</button>\n  <button class=\"btn btn-danger\" (click)=\"reset()\">Cancel</button>\n</div>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/port-connectivity/port-connectivity.component.html":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/port-connectivity/port-connectivity.component.html ***!
@@ -646,7 +659,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-sm-4 col-md-4 col-lg-4\">\n      <div class=\"box\" *ngIf=\"systemsList.length > 0\">\n        <div class=\"box-body\">\n          <label for=\"system\">System:</label>\n          <ng-select id=\"system\"\n                     bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                     (change)=\"openSelectedSystem()\"\n                     [(ngModel)]=\"selectedSystem\"\n                     placeholder=\"Search...\">\n          </ng-select>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-5 col-md-3 col-lg-3\" >\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">DKC</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-7 col-md-6 col-lg-6\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Controllers</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n\n      <div class=\"col-sm-12 col-md-9 col-lg-9\">\n        <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n          <div class=\"box-header\">\n            <h3 class=\"box-title\">Channel Boards</h3>\n          </div>\n          <div class=\"box-body\">\n            <div class=\"container-fluid\">\n              <div class=\"row\">\n                <div class=\"col-md-12\">\n                  <app-channel-board-list [data]=\"channelBoardList\"\n                                          [displayAddButton]=\"controllerList.length > 0\"\n                                          [parentsData]=\"controllerList\"></app-channel-board-list>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Ports</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [portList]=\"portList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n<!--<app-storage-entity-form [dataCenterList]=\"[]\"-->\n<!--                         [systemList]=\"[]\"-->\n<!--                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>-->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-sm-4 col-md-4 col-lg-4\">\n      <div class=\"box\" *ngIf=\"systemsList.length > 0\">\n        <div class=\"box-body\">\n          <label for=\"system\">System:</label>\n          <div class=\"row\">\n            <div class=\"col-md-8\">\n              <ng-select class=\"left\" id=\"system\"\n                         bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                         (change)=\"openSelectedSystem()\"\n                         [(ngModel)]=\"selectedSystem\"\n                         placeholder=\"Search...\">\n              </ng-select>\n            </div>\n            <div class=\"col-md-4\">\n              <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedSystem !== undefined\" (click)=\"openForm()\">\n                Duplicate system\n              </button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-5 col-md-3 col-lg-3\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">DKC</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-7 col-md-6 col-lg-6\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Controllers</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n\n      <div class=\"col-sm-12 col-md-9 col-lg-9\">\n        <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n          <div class=\"box-header\">\n            <h3 class=\"box-title\">Channel Boards</h3>\n          </div>\n          <div class=\"box-body\">\n            <div class=\"container-fluid\">\n              <div class=\"row\">\n                <div class=\"col-md-12\">\n                  <app-channel-board-list [data]=\"channelBoardList\"\n                                          [displayAddButton]=\"controllerList.length > 0\"\n                                          [parentsData]=\"controllerList\"></app-channel-board-list>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Ports</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"></app-port-list>\n          <app-import-csv-data keyColumn=\"name\" [data]=\"portList\" (importFinished)=\"loadData(true)\"></app-import-csv-data>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [systemList]=\"systemsList\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [portList]=\"portList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n<!--<app-storage-entity-form [dataCenterList]=\"[]\"-->\n<!--                         [systemList]=\"[]\"-->\n<!--                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>-->\n");
 
 /***/ }),
 
@@ -698,7 +711,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit {{getStaticData(data.type).storageEntityLabel}}</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                 [class.has-error]=\"parent.invalid && (parent.dirty || parent.touched || submitted)\">\n              <label for=\"parent\">{{getStaticData(data.type).parentNameLabel}}:</label>\n              <ng-select id=\"parent\" [items]=\"getStaticData(data.type).parents\"\n                         bindValue=\"id\" bindLabel=\"name\" formControlName=\"parent\">\n              </ng-select>\n              <span *ngIf=\"parent.invalid && (parent.dirty || parent.touched || submitted)\"\n\n                    class=\"help-block\">{{getStaticData(data.type).parentNameLabel}} must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"(name.invalid && (name.dirty || name.touched || submitted)) || form.invalid && name.errors.duplicatedPortName !== null && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">{{getStaticData(data.type).storageEntityLabel}} Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\" id=\"name\">\n              <span *ngIf=\"name.invalid && name.errors.required !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n              <span *ngIf=\"name.invalid && name.errors.duplicatedPortName !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Duplicated port name</span>\n            </div>\n            <div *ngIf=\"data.type === staticType.SYSTEM\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"model\">Array Model: </label>\n                <input id=\"model\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n            <div *ngIf=\"speed !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"speed.invalid && (speed.dirty || speed.touched || submitted)\">\n                <label for=\"speed\">Speed [Gbps]: </label>\n                <input id=\"speed\" class=\"form-control\" type=\"text\" formControlName=\"speed\">\n                <span *ngIf=\"speed.invalid && speed.errors.pattern !== null\" class=\"help-block\">Speed must be a number</span>\n              </div>\n            </div>\n            <div *ngIf=\"note !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"note.invalid && (note.dirty || note.touched || submitted)\">\n                <label for=\"note\">Description: </label>\n                <input id=\"note\" class=\"form-control\" type=\"text\" formControlName=\"note\">\n                <span *ngIf=\"note.invalid && note.errors.maxlength !== null\" class=\"help-block\">Description too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"cables !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"cables.invalid && (cables.dirty || cables.touched || submitted)\">\n                <label for=\"cables\">Cables: </label>\n                <input id=\"cables\" class=\"form-control\" type=\"text\" formControlName=\"cables\">\n                <span *ngIf=\"cables.invalid && cables.errors.maxlength !== null\" class=\"help-block\">Cables too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"switch !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"switch.invalid && (switch.dirty || switch.touched || submitted)\">\n                <label for=\"switch\">Switch: </label>\n                <input id=\"switch\" class=\"form-control\" type=\"text\" formControlName=\"switch\">\n                <span *ngIf=\"switch.invalid && switch.errors.maxlength !== null\" class=\"help-block\">Switch too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"slot !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"slot.invalid && (slot.dirty || slot.touched || submitted)\">\n                <label for=\"slot\">Slot/Port: </label>\n                <input id=\"slot\" class=\"form-control\" type=\"text\" formControlName=\"slot\">\n                <span *ngIf=\"slot.invalid && slot.errors.maxlength !== null\" class=\"help-block\">Slot too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"wwn !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"wwn.invalid && (wwn.dirty || wwn.touched || submitted)\">\n                <label for=\"wwn\">WWN: </label>\n                <input id=\"wwn\" class=\"form-control\" type=\"text\" formControlName=\"wwn\">\n                <span *ngIf=\"wwn.invalid && wwn.errors.maxlength !== null\" class=\"help-block\">WWN too long</span>\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button [class.disabled]=\"data.id === undefined\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow()\">Deactivate\n        </button>\n        <div class=\"btn-group\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save\n          </button>\n\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n<div *ngIf=\"confirmWindowDisplay\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      </div>\n      <div class=\"modal-body\">\n        Are you sure to deactivate {{data.name}} ?\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-danger\"\n                (click)=\"deactivate()\">Confirm\n        </button>\n        <button type=\"button\" class=\"btn btn-default pull-left\"\n                (click)=\"closeConfirmationWindow()\">Cancel\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit {{getStaticData(data.type).storageEntityLabel}}</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER && !data.duplicateOperation\"\n                 [class.has-error]=\"parent.invalid && (parent.dirty || parent.touched || submitted)\">\n              <label for=\"parent\">{{getStaticData(data.type).parentNameLabel}}:</label>\n              <ng-select id=\"parent\" [items]=\"getStaticData(data.type).parents\"\n                         bindValue=\"id\" bindLabel=\"name\" formControlName=\"parent\">\n              </ng-select>\n              <span *ngIf=\"parent.invalid && (parent.dirty || parent.touched || submitted)\"\n\n                    class=\"help-block\">{{getStaticData(data.type).parentNameLabel}} must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"(name.invalid && (name.dirty || name.touched || submitted)) || form.invalid && name.errors !== null && name.errors.duplicatedPortName !== null && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">{{getStaticData(data.type).storageEntityLabel}} Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\" id=\"name\">\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.required !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.duplicatedPortName !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Duplicated port name</span>\n            </div>\n            <div *ngIf=\"data.type === staticType.SYSTEM\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div *ngIf=\"arrayModel !== null\" class=\"col-md-12 form-group\">\n                <label for=\"arrayModel\">Array Model: </label>\n                <input id=\"arrayModel\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div *ngIf=\"dkc !== null\" class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div *ngIf=\"room !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div *ngIf=\"rack !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div *ngIf=\"managementIp !== null\" class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div *ngIf=\"sortId !== null\" class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n            <div *ngIf=\"speed !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"speed.invalid && (speed.dirty || speed.touched || submitted)\">\n                <label for=\"speed\">Speed [Gbps]: </label>\n                <input id=\"speed\" class=\"form-control\" type=\"text\" formControlName=\"speed\">\n                <span *ngIf=\"speed.invalid && speed.errors.pattern !== null\" class=\"help-block\">Speed must be a number</span>\n              </div>\n            </div>\n            <div *ngIf=\"note !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"note.invalid && (note.dirty || note.touched || submitted)\">\n                <label for=\"note\">Description: </label>\n                <input id=\"note\" class=\"form-control\" type=\"text\" formControlName=\"note\">\n                <span *ngIf=\"note.invalid && note.errors.maxlength !== null\" class=\"help-block\">Description too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"cables !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"cables.invalid && (cables.dirty || cables.touched || submitted)\">\n                <label for=\"cables\">Cables: </label>\n                <input id=\"cables\" class=\"form-control\" type=\"text\" formControlName=\"cables\">\n                <span *ngIf=\"cables.invalid && cables.errors.maxlength !== null\" class=\"help-block\">Cables too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"switch !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"switch.invalid && (switch.dirty || switch.touched || submitted)\">\n                <label for=\"switch\">Switch: </label>\n                <input id=\"switch\" class=\"form-control\" type=\"text\" formControlName=\"switch\">\n                <span *ngIf=\"switch.invalid && switch.errors.maxlength !== null\" class=\"help-block\">Switch too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"slot !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"slot.invalid && (slot.dirty || slot.touched || submitted)\">\n                <label for=\"slot\">Slot/Port: </label>\n                <input id=\"slot\" class=\"form-control\" type=\"text\" formControlName=\"slot\">\n                <span *ngIf=\"slot.invalid && slot.errors.maxlength !== null\" class=\"help-block\">Slot too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"wwn !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"wwn.invalid && (wwn.dirty || wwn.touched || submitted)\">\n                <label for=\"wwn\">WWN: </label>\n                <input id=\"wwn\" class=\"form-control\" type=\"text\" formControlName=\"wwn\">\n                <span *ngIf=\"wwn.invalid && wwn.errors.maxlength !== null\" class=\"help-block\">WWN too long</span>\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button *ngIf=\"data.duplicateOperation\" [class.disabled]=\"data.id === undefined || form.invalid\" type=\"button\" class=\"btn btn-primary\"\n          (click)=\"form.valid ? duplicate(): submitted = true\">\n          Duplicate\n        </button>\n        <button *ngIf=\"!data.duplicateOperation\" [class.disabled]=\"data.id === undefined\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow()\">Deactivate\n        </button>\n        <div class=\"btn-group\" *ngIf=\"!data.duplicateOperation\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save\n          </button>\n\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n<div *ngIf=\"confirmWindowDisplay\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      </div>\n      <div class=\"modal-body\">\n        Are you sure to deactivate {{data.name}} ?\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-danger\"\n                (click)=\"deactivate()\">Confirm\n        </button>\n        <button type=\"button\" class=\"btn btn-default pull-left\"\n                (click)=\"closeConfirmationWindow()\">Cancel\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -711,7 +724,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n  </div>\n\n\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                         [systemList]=\"systemList\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                         [systemList]=\"systemList\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
 
 /***/ }),
 
@@ -3559,6 +3572,26 @@ var ChangeStatusRequestDto = /** @class */ (function () {
         this.status = status;
     }
     return ChangeStatusRequestDto;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/models/dtos/duplicate-storage-entity.dto.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/common/models/dtos/duplicate-storage-entity.dto.ts ***!
+  \********************************************************************/
+/*! exports provided: DuplicateStorageEntityDto */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DuplicateStorageEntityDto", function() { return DuplicateStorageEntityDto; });
+var DuplicateStorageEntityDto = /** @class */ (function () {
+    function DuplicateStorageEntityDto() {
+    }
+    return DuplicateStorageEntityDto;
 }());
 
 
@@ -11655,6 +11688,10 @@ var MetricService = /** @class */ (function () {
     MetricService.prototype.calculateDate = function (date, minusDays) {
         return date.getTime() - (minusDays * 24 * 60 * 60 * 1000);
     };
+    MetricService.prototype.duplicateStorageEntity = function (request, id) {
+        var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, "/v2/storage-entities/" + id + "/duplicate");
+        return this.http.post(url, request);
+    };
     var MetricService_1;
     MetricService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
@@ -12124,7 +12161,6 @@ var FormBusService = /** @class */ (function () {
         this.storageEntityFormStream = this.storageEntityForm.asObservable();
     }
     FormBusService.prototype.sendFormData = function (data) {
-        console.log(data);
         this.storageEntityForm.next(data);
     };
     FormBusService.ctorParameters = function () { return []; };
@@ -12135,6 +12171,134 @@ var FormBusService = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], FormBusService);
     return FormBusService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/import-csv-data/import-csv-data.component.css":
+/*!*************************************************************************************!*\
+  !*** ./src/app/storage-configuration/import-csv-data/import-csv-data.component.css ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("input[type=\"file\"] {\n  display: none;\n}\n.custom-file-upload {\n  border: 1px solid #ccc;\n  display: inline-block;\n  padding: 6px 12px;\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL2ltcG9ydC1jc3YtZGF0YS9pbXBvcnQtY3N2LWRhdGEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7QUFDZjtBQUNBO0VBQ0Usc0JBQXNCO0VBQ3RCLHFCQUFxQjtFQUNyQixpQkFBaUI7RUFDakIsZUFBZTtBQUNqQiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9pbXBvcnQtY3N2LWRhdGEvaW1wb3J0LWNzdi1kYXRhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dFt0eXBlPVwiZmlsZVwiXSB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG4uY3VzdG9tLWZpbGUtdXBsb2FkIHtcbiAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBwYWRkaW5nOiA2cHggMTJweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuIl19 */");
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/import-csv-data/import-csv-data.component.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/storage-configuration/import-csv-data/import-csv-data.component.ts ***!
+  \************************************************************************************/
+/*! exports provided: ImportCsvDataComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImportCsvDataComponent", function() { return ImportCsvDataComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/models/dtos/storage-entity-detail-request.dto */ "./src/app/common/models/dtos/storage-entity-detail-request.dto.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+var ImportCsvDataComponent = /** @class */ (function () {
+    function ImportCsvDataComponent(metricService) {
+        this.metricService = metricService;
+        this.header = [];
+        this.fileName = null;
+        this.dataVo = [];
+        this.dataCount = 0;
+        this.importFinished = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    ImportCsvDataComponent.prototype.ngOnInit = function () {
+    };
+    ImportCsvDataComponent.prototype.changeListener = function (files) {
+        var _this = this;
+        console.log(files);
+        if (files === undefined || files.length === 0) {
+            return;
+        }
+        var file = files.item(0);
+        console.log(file.name);
+        console.log(file.size);
+        console.log(file.type);
+        this.fileName = file.name;
+        // File reader method
+        var reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = function (e) {
+            var csv = reader.result;
+            var allTextLines = csv.split(/\r|\n|\r/);
+            // Table Headings
+            _this.header = allTextLines[0].split(',');
+            var csvData = allTextLines.slice(1, allTextLines.length).map(function (line) { return line.split(','); });
+            _this.dataVo = csvData.map(function (line) {
+                var vo = [];
+                _this.header.forEach(function (column, index) {
+                    vo[column] = line[index];
+                });
+                return vo;
+            });
+        };
+    };
+    ImportCsvDataComponent.prototype.reset = function () {
+        this.fileName = null;
+        this.dataCount = 0;
+    };
+    ImportCsvDataComponent.prototype.updateData = function () {
+        var _this = this;
+        this.dataVo.map(function (vo) {
+            var foundData = _this.data.find(function (owner) { return owner[_this.keyColumn] === vo[_this.keyColumn]; });
+            if (foundData === undefined) {
+                throw new Error(vo[_this.keyColumn] + ' not found');
+            }
+            var dto = new _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityDetailRequestDto"]();
+            _this.header.forEach(function (column) {
+                dto[column] = vo[column];
+            });
+            return _this.metricService.updateStorageEntity(foundData.id, dto).subscribe(function (data) {
+                _this.dataCount++;
+                if (_this.dataVo.length === _this.dataCount) {
+                    _this.importFinished.emit();
+                    _this.reset();
+                }
+            });
+        });
+    };
+    ImportCsvDataComponent.ctorParameters = function () { return [
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] }
+    ]; };
+    ImportCsvDataComponent.propDecorators = {
+        keyColumn: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        data: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        importFinished: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
+    };
+    ImportCsvDataComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-import-csv-data',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./import-csv-data.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/import-csv-data/import-csv-data.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./import-csv-data.component.css */ "./src/app/storage-configuration/import-csv-data/import-csv-data.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"]])
+    ], ImportCsvDataComponent);
+    return ImportCsvDataComponent;
 }());
 
 
@@ -12170,6 +12334,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/extract-storage-entity.utils */ "./src/app/storage-configuration/utils/extract-storage-entity.utils.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
+/* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12188,11 +12354,14 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
+
 var PortConnectivityComponent = /** @class */ (function () {
-    function PortConnectivityComponent(metricService, route, router) {
+    function PortConnectivityComponent(metricService, route, router, formBusService) {
         this.metricService = metricService;
         this.route = route;
         this.router = router;
+        this.formBusService = formBusService;
         this.systemsList = [];
         this.dkcList = [];
         this.controllerList = [];
@@ -12203,13 +12372,22 @@ var PortConnectivityComponent = /** @class */ (function () {
     PortConnectivityComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this.route.queryParams.subscribe(function (params) {
-            console.log(params);
             if (params['id'] !== undefined) {
                 _this.selectedSystem = parseInt(params['id'], 10);
                 _this.loadData();
             }
         });
         this.loadData();
+    };
+    PortConnectivityComponent.prototype.openForm = function () {
+        var _this = this;
+        var data = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_7__["StorageEntityVo"]();
+        var system = this.systemsList.find(function (item) { return item.id === _this.selectedSystem; });
+        data.id = system.id;
+        data.parentId = system.parentId;
+        data.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"][system.type];
+        data.duplicateOperation = true;
+        this.formBusService.sendFormData(data);
     };
     PortConnectivityComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
@@ -12267,7 +12445,8 @@ var PortConnectivityComponent = /** @class */ (function () {
     PortConnectivityComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_6__["FormBusService"] }
     ]; };
     PortConnectivityComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -12277,7 +12456,8 @@ var PortConnectivityComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+            _form_bus_service__WEBPACK_IMPORTED_MODULE_6__["FormBusService"]])
     ], PortConnectivityComponent);
     return PortConnectivityComponent;
 }());
@@ -12877,12 +13057,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _storage_entity_2_sasi_table_storage_entity_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./storage-entity-2-sasi-table/storage-entity-2-sasi-group-table.pipe */ "./src/app/storage-configuration/storage-entity-2-sasi-table/storage-entity-2-sasi-group-table.pipe.ts");
 /* harmony import */ var _storage_entity_2_sasi_table_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./storage-entity-2-sasi-table/storage-entity-detail-2-sasi-table.pipe */ "./src/app/storage-configuration/storage-entity-2-sasi-table/storage-entity-detail-2-sasi-table.pipe.ts");
 /* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
+/* harmony import */ var _import_csv_data_import_csv_data_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./import-csv-data/import-csv-data.component */ "./src/app/storage-configuration/import-csv-data/import-csv-data.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -12920,7 +13102,8 @@ var StorageConfigurationModule = /** @class */ (function () {
                 _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_15__["ChannelBoardListComponent"],
                 _port_list_port_list_component__WEBPACK_IMPORTED_MODULE_16__["PortListComponent"],
                 _storage_entity_2_sasi_table_storage_entity_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_17__["StorageEntity2SasiGroupTablePipe"],
-                _storage_entity_2_sasi_table_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_18__["StorageEntityDetail2SasiTablePipe"]
+                _storage_entity_2_sasi_table_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_18__["StorageEntityDetail2SasiTablePipe"],
+                _import_csv_data_import_csv_data_component__WEBPACK_IMPORTED_MODULE_20__["ImportCsvDataComponent"]
             ],
             entryComponents: [
                 _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SeTextFormatterComponent"],
@@ -13128,6 +13311,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 /* harmony import */ var _common_models_dtos_change_status_request_dto__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/models/dtos/change-status-request.dto */ "./src/app/common/models/dtos/change-status-request.dto.ts");
 /* harmony import */ var _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/models/dtos/enums/component.status */ "./src/app/common/models/dtos/enums/component.status.ts");
+/* harmony import */ var _common_models_dtos_duplicate_storage_entity_dto__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../common/models/dtos/duplicate-storage-entity.dto */ "./src/app/common/models/dtos/duplicate-storage-entity.dto.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13149,17 +13334,20 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
+
 var StorageEntityVo = /** @class */ (function () {
     function StorageEntityVo() {
+        this.duplicateOperation = false;
     }
     return StorageEntityVo;
 }());
 
 var StorageEntityFormComponent = /** @class */ (function () {
-    function StorageEntityFormComponent(metricService, formBusService, chd) {
+    function StorageEntityFormComponent(metricService, formBusService, router) {
         this.metricService = metricService;
         this.formBusService = formBusService;
-        this.chd = chd;
+        this.router = router;
         this.dataSaved = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.submitted = false;
         this.httpErrorDisplayed = false;
@@ -13222,20 +13410,32 @@ var StorageEntityFormComponent = /** @class */ (function () {
     };
     StorageEntityFormComponent.prototype.initFormControls = function () {
         if (this.data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].SYSTEM) {
-            this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
-                'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.id),
-                'parent': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
-                'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
-                'prefixReferenceId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.prefixReferenceId),
-                'serialNumber': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.serialNumber),
-                'arrayModel': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.arrayModel),
-                'dkc': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.dkc),
-                'room': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.room, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(32)]),
-                'rack': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.rack, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(32)]),
-                'managementIp': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.managementIp),
-                'sortId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.sortId),
-                'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
-            }, [duplicatedSerialNumber(this.systemList)]);
+            if (this.data.duplicateOperation) {
+                this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                    'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.id),
+                    'parent': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                    'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                    'prefixReferenceId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.prefixReferenceId),
+                    'serialNumber': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.serialNumber),
+                    'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](true),
+                }, [duplicatedSerialNumber(this.systemList)]);
+            }
+            else {
+                this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                    'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.id),
+                    'parent': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                    'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                    'prefixReferenceId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.prefixReferenceId),
+                    'serialNumber': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.serialNumber),
+                    'arrayModel': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.arrayModel),
+                    'dkc': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.dkc),
+                    'room': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.room, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(32)]),
+                    'rack': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.rack, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(32)]),
+                    'managementIp': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.managementIp),
+                    'sortId': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.sortId),
+                    'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
+                }, [duplicatedSerialNumber(this.systemList)]);
+            }
         }
         else if (this.data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DATACENTER) {
             this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
@@ -13308,6 +13508,34 @@ var StorageEntityFormComponent = /** @class */ (function () {
     Object.defineProperty(StorageEntityFormComponent.prototype, "rack", {
         get: function () {
             return this.form.get('rack');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(StorageEntityFormComponent.prototype, "arrayModel", {
+        get: function () {
+            return this.form.get('arrayModel');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(StorageEntityFormComponent.prototype, "dkc", {
+        get: function () {
+            return this.form.get('dkc');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(StorageEntityFormComponent.prototype, "managementIp", {
+        get: function () {
+            return this.form.get('managementIp');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(StorageEntityFormComponent.prototype, "sortId", {
+        get: function () {
+            return this.form.get('sortId');
         },
         enumerable: false,
         configurable: true
@@ -13430,8 +13658,12 @@ var StorageEntityFormComponent = /** @class */ (function () {
             console.error('Cannot store the entity: ');
         });
     };
-    StorageEntityFormComponent.prototype.success = function () {
+    StorageEntityFormComponent.prototype.success = function (idSystem) {
+        if (idSystem === void 0) { idSystem = null; }
         this.closeForm();
+        if (idSystem !== null) {
+            this.router.navigate(['/storage-config/port-connectivity'], { queryParams: { id: idSystem } });
+        }
         this.dataSaved.emit(true);
     };
     StorageEntityFormComponent.prototype.deactivate = function () {
@@ -13454,10 +13686,23 @@ var StorageEntityFormComponent = /** @class */ (function () {
     StorageEntityFormComponent.prototype.getStaticData = function (type) {
         return this.staticData[type];
     };
+    StorageEntityFormComponent.prototype.duplicate = function () {
+        var _this = this;
+        var request = new _common_models_dtos_duplicate_storage_entity_dto__WEBPACK_IMPORTED_MODULE_9__["DuplicateStorageEntityDto"]();
+        request.types = [
+            _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"][_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC],
+            _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"][_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].CONTROLLER],
+            _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"][_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].CHANNEL_BOARD],
+            _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"][_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].PORT]
+        ];
+        request.name = this.form.value.name;
+        request.serialNumber = this.form.value.serialNumber;
+        this.metricService.duplicateStorageEntity(request, this.data.id).subscribe(function (response) { return _this.success(response.storageEntity.id); });
+    };
     StorageEntityFormComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"] },
         { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_5__["FormBusService"] },
-        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_10__["Router"] }
     ]; };
     StorageEntityFormComponent.propDecorators = {
         dataCenterList: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
@@ -13479,7 +13724,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"],
             _form_bus_service__WEBPACK_IMPORTED_MODULE_5__["FormBusService"],
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_10__["Router"]])
     ], StorageEntityFormComponent);
     return StorageEntityFormComponent;
 }());
@@ -13490,14 +13735,16 @@ function duplicatedSerialNumber(systemList) {
         var id = control.get('id').value;
         var prefix = control.get('prefixReferenceId').value;
         var forceAsNew = control.get('forceAsNew').value;
+        console.log(systemList);
         var foundSystem = systemList.find(function (system) {
             if (forceAsNew) {
-                return system.serial === serialNumber && system.prefix === prefix;
+                return system.detail !== undefined && system.serialNumber === serialNumber && system.detail.prefixReferenceId === prefix;
             }
             else {
-                return system.serial === serialNumber && system.prefix === prefix && system.id !== id;
+                return system.detail !== undefined && system.serialNumber === serialNumber && system.detail.prefixReferenceId === prefix && system.id !== id;
             }
         });
+        console.log(foundSystem);
         return foundSystem ? { duplicatedSerialNumber: { value: control.value } } : null;
     };
 }
@@ -13547,6 +13794,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 /* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
+/* harmony import */ var _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/extract-storage-entity.utils */ "./src/app/storage-configuration/utils/extract-storage-entity.utils.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13559,6 +13807,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -13664,17 +13913,8 @@ var StorageLocationComponent = /** @class */ (function () {
         if (force) {
             this.metricService.getSystemsDetail().subscribe(function (data) {
                 _this.data = data;
-                _this.data.forEach(function (datacenter) {
-                    datacenter.storageEntity.children.forEach(function (system) {
-                        _this.systemList.push({
-                            systemName: system.name,
-                            id: system.id,
-                            serial: system.serialNumber,
-                            prefix: system.detail.prefixReferenceId
-                        });
-                    });
-                });
-                _this.datacenterList = _this.data.map(function (datacenter) { return datacenter.storageEntity; });
+                _this.systemList = _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_11__["ExtractStorageEntityUtils"].extractByType(data, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"].SYSTEM);
+                _this.datacenterList = _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_11__["ExtractStorageEntityUtils"].extractByType(data, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"].DATACENTER);
             });
         }
     };
