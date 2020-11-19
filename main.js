@@ -12249,7 +12249,7 @@ var ImportCsvDataComponent = /** @class */ (function () {
         reader.readAsText(file);
         reader.onload = function (e) {
             var csv = reader.result;
-            var allTextLines = csv.split(/\r|\n|\r/);
+            var allTextLines = csv.split(/\r\n|\n|\r/);
             // Table Headings
             _this.header = allTextLines[0].split(',');
             var csvData = allTextLines.slice(1, allTextLines.length).map(function (line) { return line.split(','); });
