@@ -646,7 +646,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<label class=\"btn btn-default custom-file-upload\" *ngIf=\"fileName === null\">\n  <input class=\"form-control mb-5\" type=\"file\" class=\"upload\" (change)=\"changeListener($event.target.files)\">\n  Import File\n</label>\n<div *ngIf=\"fileName !== null\">\n  <h4>Import</h4>\n  <div class=\"col-md-2 file-name\">\n    {{fileName}}\n  </div>\n  <div class=\"col-md-1 status\">\n    <div>\n      <span tooltip=\"Rows found in the table\" class=\"text-success\"><i class=\"fa fa-check-circle\"></i></span> {{foundCount}}\n    </div>\n    <div>\n      <span tooltip=\"Rows not found by key in table and cannot be imported\" class=\"text-danger\"><i\n        class=\"fa fa-times-circle\"></i></span>\n      {{notFoundCount}}\n    </div>\n  </div>\n  <div class=\"col-md-12\">\n    <button class=\"btn btn-default\" (click)=\"updateData()\">Import</button>\n    <button class=\"btn btn-danger\" (click)=\"reset()\">Cancel</button>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<label class=\"btn btn-default custom-file-upload\" *ngIf=\"fileName === null\">\n  <input class=\"form-control mb-5\" type=\"file\" class=\"upload\" (change)=\"changeListener($event.target.files)\">\n  Import File\n</label>\n<div *ngIf=\"fileName !== null\">\n  <h4>Import</h4>\n  <div class=\"col-md-2 file-name\">\n    {{fileName}}\n  </div>\n  <div class=\"col-md-1 status\">\n    <div>\n      <span tooltip=\"Rows found in the table\" class=\"text-success\"><i class=\"fa fa-check-circle\"></i></span> {{validData.length}}\n    </div>\n    <div>\n      <span tooltip=\"Rows not found by key in table and cannot be imported\" class=\"text-danger\"><i\n        class=\"fa fa-times-circle\"></i></span>\n      {{dataVo.length - validData.length}}\n    </div>\n  </div>\n  <div class=\"col-md-12\">\n    <button class=\"btn btn-default\" (click)=\"updateData()\">Import</button>\n    <button class=\"btn btn-danger\" (click)=\"reset()\">Cancel</button>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -12231,7 +12231,7 @@ var ImportCsvDataComponent = /** @class */ (function () {
         this.successfullyUpdated = 0;
         this.failUpdated = 0;
         this.notFoundCount = 0;
-        this.foundCount = 0;
+        this.validData = [];
         this.importFinished = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     ImportCsvDataComponent.prototype.ngOnInit = function () {
@@ -12260,8 +12260,7 @@ var ImportCsvDataComponent = /** @class */ (function () {
                 });
                 return vo;
             });
-            _this.foundCount = _this.dataVo.filter(function (vo) { return _this.data.find(function (owner) { return owner[_this.keyColumn] === vo[_this.keyColumn]; }) !== undefined; }).length;
-            _this.notFoundCount = _this.dataVo.filter(function (vo) { return _this.data.find(function (owner) { return owner[_this.keyColumn] === vo[_this.keyColumn]; }) === undefined; }).length;
+            _this.validData = _this.dataVo.filter(function (vo) { return _this.data.find(function (owner) { return owner[_this.keyColumn] === vo[_this.keyColumn]; }) !== undefined; });
         };
     };
     ImportCsvDataComponent.prototype.reset = function () {
@@ -12271,24 +12270,27 @@ var ImportCsvDataComponent = /** @class */ (function () {
     };
     ImportCsvDataComponent.prototype.updateData = function () {
         var _this = this;
-        this.dataVo.map(function (vo) {
+        this.validData.forEach(function (vo) {
             var foundData = _this.data.find(function (owner) { return owner[_this.keyColumn] === vo[_this.keyColumn]; });
             if (foundData === undefined) {
                 console.error(vo[_this.keyColumn] + ' not found');
+                return;
             }
-            var dto = new _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityDetailRequestDto"]();
-            _this.header.forEach(function (column) {
-                dto[column] = vo[column];
-            });
-            return _this.metricService.updateStorageEntity(foundData.id, dto).subscribe(function (data) {
-                _this.successfullyUpdated++;
-                if (_this.dataVo.length === _this.successfullyUpdated) {
-                    _this.importFinished.emit();
-                    _this.reset();
-                }
-            }, function (err) {
-                _this.failUpdated++;
-            });
+            else {
+                var dto_1 = new _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityDetailRequestDto"]();
+                _this.header.forEach(function (column) {
+                    dto_1[column] = vo[column];
+                });
+                _this.metricService.updateStorageEntity(foundData.id, dto_1).subscribe(function (data) {
+                    _this.successfullyUpdated++;
+                    if (_this.validData.length === _this.successfullyUpdated) {
+                        _this.importFinished.emit();
+                        _this.reset();
+                    }
+                }, function (err) {
+                    _this.failUpdated++;
+                });
+            }
         });
     };
     ImportCsvDataComponent.ctorParameters = function () { return [
