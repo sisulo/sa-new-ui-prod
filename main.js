@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"sasi-table-container\"\n     [style]=\"style\">\n  <div class=\"sasi-table-header\">\n    <!--    <div class=\"sasi-table-item sasi-table-controls\"-->\n    <!--    style=\"grid-column-start: 1\"></div>-->\n    <!--    <div class=\"sasi-table-item sasi-table-alerts\"></div>-->\n    <div *ngFor=\"let headerGroup of options.headerGroups; let i = index;\"\n         class=\"sasi-table-item sasi-table-data sasi-table-header-group\"\n         [style]=\"getHeaderGridStyle(i)\">\n      {{headerGroup.name}}\n    </div>\n    <!-- Labels -->\n    <div class=\"sasi-table-item sasi-table-controls\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\"\n         class=\"sasi-table-item sasi-table-alerts\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <!--\n      Non-Group header\n    -->\n\n    <div [tooltip]=\"getColumnTooltipText(columnOption.index)\"\n         *ngFor=\"let columnOption of getColumns()\"\n         class=\"sasi-table-item sasi-table-data\">\n\n      <span>\n        <span (click)=\"setSort(columnOption, false)\"\n              class=\"link sasi-header-label\">{{getColumnLabel(columnOption.index)}}</span>\n        <span class=\"sasi-header-icon\">\n          <i [ngClass]=\"getSortIconClass(columnOption.index, false)\"\n             class=\"text-muted sorting sort-icon-right\"></i>\n        </span>\n      </span>\n\n      <span *ngIf=\"columnOption.altSortEnable === true\"\n            (click)=\"setSort(columnOption, true)\"\n            class=\"link sasi-header-icon\">\n        <i class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span>\n        <i class='sorting sort-icon-right'\n           [ngClass]=\"getSortIconClass(columnOption.index, true)\"></i>\n      </span>\n    </div>\n  </div>\n  <app-row-dynamic-table *ngFor=\"let row of data\"\n                         [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                         [class.striped-row]=\"!options.isDataGrouped\"\n                         [class.not-data-grouped]=\"!options.isDataGrouped\"\n                         [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                         [options]=\"options\">\n  </app-row-dynamic-table>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"sasi-table-container\"\n     [style]=\"style\">\n  <div class=\"sasi-table-header\">\n    <!--    <div class=\"sasi-table-item sasi-table-controls\"-->\n    <!--    style=\"grid-column-start: 1\"></div>-->\n    <!--    <div class=\"sasi-table-item sasi-table-alerts\"></div>-->\n    <div *ngFor=\"let headerGroup of options.headerGroups; let i = index;\"\n         class=\"sasi-table-item sasi-table-data sasi-table-header-group\"\n         [style]=\"getHeaderGridStyle(i)\">\n      {{headerGroup.name}}\n    </div>\n    <!-- Labels -->\n    <div *ngIf=\"options.selectableRows || options.isDataGrouped\" class=\"sasi-table-item sasi-table-controls\">\n      <i *ngIf=\"options.isDataGrouped\" class=\"fa expand-collapse\"\n         [@iconRotate]=\"isCollapseAll()\"\n         [ngClass]=\"'fa-angle-down'\"\n         (click)=\"collapseAll()\"\n         [tooltip]=\"isCollapseAll() ? 'Expand All':'Collapse All'\"></i>\n      <i *ngIf=\"options.selectableRows && isSelectedAll()\" class=\"far fa-check-square\" (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && isPartiallySelected() && !isSelectedAll()\" class=\"far fa-fw fa-minus-square\"\n         (click)=\"selectAll()\"></i>\n      <i *ngIf=\"options.selectableRows && (!isPartiallySelected()) && (!isSelectedAll())\" class=\"far fa-fw fa-square\"\n         (click)=\"selectAll()\"></i>\n    </div>\n    <div *ngIf=\"options.isDataGrouped && options.cellDecoratorRules.length > 0\"\n         class=\"sasi-table-item sasi-table-alerts\">\n      <i tooltip=\"Alerts\" class=\"fa fa-exclamation-triangle text-orange\"></i>\n    </div>\n    <!--\n      Non-Group header\n    -->\n\n    <div [tooltip]=\"getColumnTooltipText(columnOption.index)\"\n         *ngFor=\"let columnOption of getColumns()\"\n         class=\"sasi-table-item sasi-table-data\">\n\n      <span>\n        <span (click)=\"setSort(columnOption, false)\"\n              class=\"link sasi-header-label\">{{getColumnLabel(columnOption.index)}}</span>\n        <span class=\"sasi-header-icon\">\n          <i [ngClass]=\"getSortIconClass(columnOption.index, false)\"\n             class=\"text-muted sorting sort-icon-right\"></i>\n        </span>\n      </span>\n\n      <span *ngIf=\"columnOption.altSortEnable === true\"\n            (click)=\"setSort(columnOption, true)\"\n            class=\"link sasi-header-icon\">\n        <i class=\"fa fa-angle-up text-red sort-icon-left\"></i>\n        <span class=\"peak-label\">Peak</span>\n        <i class='sorting sort-icon-right'\n           [ngClass]=\"getSortIconClass(columnOption.index, true)\"></i>\n      </span>\n    </div>\n  </div>\n  <app-row-dynamic-table *ngFor=\"let row of data\"\n                         [class.highlight-row]=\"options.highlightRow && !options.isDataGrouped\"\n                         [class.striped-row]=\"!options.isDataGrouped\"\n                         [class.not-data-grouped]=\"!options.isDataGrouped\"\n                         [componentFormatter]=\"options.rowComponentFormatter\" [data]=\"row\"\n                         [options]=\"options\">\n  </app-row-dynamic-table>\n</div>\n");
 
 /***/ }),
 
@@ -633,7 +633,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <app-sasi-table [data]=\"data | StorageEntityDetail2SasiTablePipe: null: parentsData\"\n                        [tableOptions]=\"options\"></app-sasi-table>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"tab-pane col-md-6 col-lg-6\" *ngIf=\"data.length == 0\">\n  <div class=\"box box-danger box-solid\">\n    <div class=\"box-body\">\n      No data available.\n    </div>\n  </div>\n</div>\n<div class=\"box-body\" *ngIf=\"displayAddButton\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type)\">\n          Add\n        </button>\n        <app-import-csv-data *ngIf=\"importEnabled\" keyColumn=\"name\" [data]=\"data\"\n                             (importFinished)=\"importFinished.emit()\"></app-import-csv-data>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <app-sasi-table [data]=\"data | StorageEntityDetail2SasiTablePipe: null: parentsData\"\n                        [tableOptions]=\"options\"></app-sasi-table>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"tab-pane col-md-6 col-lg-6\" *ngIf=\"data.length == 0\">\n  <div class=\"box box-danger box-solid\">\n    <div class=\"box-body\">\n      No data available.\n    </div>\n  </div>\n</div>\n<div class=\"box-body\" *ngIf=\"displayAddButton\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type)\">\n          Add\n        </button>\n        <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedRows.length > 0\" (click)=\"openForm(type)\">\n          Edit selected\n        </button>\n        <app-import-csv-data *ngIf=\"importEnabled\" keyColumn=\"name\" [data]=\"data\"\n                             (importFinished)=\"importFinished.emit()\"></app-import-csv-data>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -659,7 +659,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-sm-4 col-md-4 col-lg-4\">\n      <div class=\"box\" *ngIf=\"systemsList.length > 0\">\n        <div class=\"box-body\">\n          <label for=\"system\">System:</label>\n          <div class=\"row\">\n            <div class=\"col-md-8\">\n              <ng-select class=\"left\" id=\"system\"\n                         bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                         (change)=\"openSelectedSystem()\"\n                         [(ngModel)]=\"selectedSystem\"\n                         placeholder=\"Search...\">\n              </ng-select>\n            </div>\n            <div class=\"col-md-4\">\n              <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedSystem !== undefined\" (click)=\"openForm()\">\n                Duplicate system\n              </button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-5 col-md-3 col-lg-3\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">DKC</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-7 col-md-6 col-lg-6\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Controllers</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n\n    <div class=\"col-sm-12 col-md-9 col-lg-9\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Channel Boards</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"container-fluid\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <app-channel-board-list [data]=\"channelBoardList\"\n                                        [displayAddButton]=\"controllerList.length > 0\"\n                                        [parentsData]=\"controllerList\"></app-channel-board-list>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Ports</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"\n                         [importEnabled]=\"true\"\n                         (importFinished)=\"loadData(true)\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [systemList]=\"systemsList\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [portList]=\"portList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-sm-4 col-md-4 col-lg-4\">\n      <div class=\"box\" *ngIf=\"systemsList.length > 0\">\n        <div class=\"box-body\">\n          <label for=\"system\">System:</label>\n          <div class=\"row\">\n            <div class=\"col-md-8\">\n              <ng-select class=\"left\" id=\"system\"\n                         bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                         (change)=\"openSelectedSystem()\"\n                         [(ngModel)]=\"selectedSystem\"\n                         placeholder=\"Search...\">\n              </ng-select>\n            </div>\n            <div class=\"col-md-4\">\n              <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedSystem !== undefined\" (click)=\"openForm()\">\n                Duplicate system\n              </button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-5 col-md-3 col-lg-3\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">DKC</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-7 col-md-6 col-lg-6\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Controllers</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n\n    <div class=\"col-sm-12 col-md-9 col-lg-9\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Channel Boards</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"container-fluid\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <app-channel-board-list [data]=\"channelBoardList\"\n                                        [displayAddButton]=\"controllerList.length > 0\"\n                                        [parentsData]=\"controllerList\"\n                                        [importEnabled]=\"true\"\n                                        (importFinished)=\"loadData(true)\"></app-channel-board-list>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Ports</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"\n                         [importEnabled]=\"true\"\n                         (importFinished)=\"loadData(true)\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [systemList]=\"systemsList\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [portList]=\"portList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
 
 /***/ }),
 
@@ -711,7 +711,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit {{getStaticData(data.type).storageEntityLabel}}</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER && !data.duplicateOperation\"\n                 [class.has-error]=\"parent.invalid && (parent.dirty || parent.touched || submitted)\">\n              <label for=\"parent\">{{getStaticData(data.type).parentNameLabel}}:</label>\n              <ng-select id=\"parent\" [items]=\"getStaticData(data.type).parents\"\n                         bindValue=\"id\" bindLabel=\"name\" formControlName=\"parent\">\n              </ng-select>\n              <span *ngIf=\"parent.invalid && (parent.dirty || parent.touched || submitted)\"\n\n                    class=\"help-block\">{{getStaticData(data.type).parentNameLabel}} must be chosen</span>\n            </div>\n            <div class=\"col-md-12 form-group\"\n                 [class.has-error]=\"(name.invalid && (name.dirty || name.touched || submitted)) || form.invalid && name.errors !== null && name.errors.duplicatedPortName !== null && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">{{getStaticData(data.type).storageEntityLabel}} Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\" id=\"name\">\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.required !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.duplicatedPortName !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Duplicated port name</span>\n            </div>\n            <div *ngIf=\"data.type === staticType.SYSTEM\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div *ngIf=\"arrayModel !== null\" class=\"col-md-12 form-group\">\n                <label for=\"arrayModel\">Array Model: </label>\n                <input id=\"arrayModel\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div *ngIf=\"dkc !== null\" class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div *ngIf=\"room !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div *ngIf=\"rack !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div *ngIf=\"managementIp !== null\" class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div *ngIf=\"sortId !== null\" class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n            <div *ngIf=\"speed !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"speed.invalid && (speed.dirty || speed.touched || submitted)\">\n                <label for=\"speed\">Speed [Gbps]: </label>\n                <input id=\"speed\" class=\"form-control\" type=\"text\" formControlName=\"speed\">\n                <span *ngIf=\"speed.invalid && speed.errors.pattern !== null\" class=\"help-block\">Speed must be a number</span>\n              </div>\n            </div>\n            <div *ngIf=\"note !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"note.invalid && (note.dirty || note.touched || submitted)\">\n                <label for=\"note\">Description: </label>\n                <input id=\"note\" class=\"form-control\" type=\"text\" formControlName=\"note\">\n                <span *ngIf=\"note.invalid && note.errors.maxlength !== null\" class=\"help-block\">Description too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"cables !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"cables.invalid && (cables.dirty || cables.touched || submitted)\">\n                <label for=\"cables\">Cables: </label>\n                <input id=\"cables\" class=\"form-control\" type=\"text\" formControlName=\"cables\">\n                <span *ngIf=\"cables.invalid && cables.errors.maxlength !== null\" class=\"help-block\">Cables too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"switch !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"switch.invalid && (switch.dirty || switch.touched || submitted)\">\n                <label for=\"switch\">Switch: </label>\n                <input id=\"switch\" class=\"form-control\" type=\"text\" formControlName=\"switch\">\n                <span *ngIf=\"switch.invalid && switch.errors.maxlength !== null\" class=\"help-block\">Switch too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"slot !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"slot.invalid && (slot.dirty || slot.touched || submitted)\">\n                <label for=\"slot\">Slot/Port: </label>\n                <input id=\"slot\" class=\"form-control\" type=\"text\" formControlName=\"slot\">\n                <span *ngIf=\"slot.invalid && slot.errors.maxlength !== null\" class=\"help-block\">Slot too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"wwn !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"wwn.invalid && (wwn.dirty || wwn.touched || submitted)\">\n                <label for=\"wwn\">WWN: </label>\n                <input id=\"wwn\" class=\"form-control\" type=\"text\" formControlName=\"wwn\">\n                <span *ngIf=\"wwn.invalid && wwn.errors.maxlength !== null\" class=\"help-block\">WWN too long</span>\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button *ngIf=\"data.duplicateOperation\" [class.disabled]=\"data.id === undefined || form.invalid\" type=\"button\" class=\"btn btn-primary\"\n          (click)=\"form.valid ? duplicate(): submitted = true\">\n          Duplicate\n        </button>\n        <button *ngIf=\"!data.duplicateOperation\" [class.disabled]=\"data.id === undefined\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow()\">Deactivate\n        </button>\n        <div class=\"btn-group\" *ngIf=\"!data.duplicateOperation\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save\n          </button>\n\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n<div *ngIf=\"confirmWindowDisplay\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      </div>\n      <div class=\"modal-body\">\n        Are you sure to deactivate {{data.name}} ?\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-danger\"\n                (click)=\"deactivate()\">Confirm\n        </button>\n        <button type=\"button\" class=\"btn btn-default pull-left\"\n                (click)=\"closeConfirmationWindow()\">Cancel\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit {{getStaticData(data.type).storageEntityLabel}}</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"parent !== null && data.type !== staticType.DATACENTER && !data.duplicateOperation\"\n                 [class.has-error]=\"parent.invalid && (parent.dirty || parent.touched || submitted)\">\n              <label for=\"parent\">{{getStaticData(data.type).parentNameLabel}}:</label>\n              <ng-select id=\"parent\" [items]=\"getStaticData(data.type).parents\"\n                         bindValue=\"id\" bindLabel=\"name\" formControlName=\"parent\">\n              </ng-select>\n              <span *ngIf=\"parent.invalid && (parent.dirty || parent.touched || submitted)\"\n\n                    class=\"help-block\">{{getStaticData(data.type).parentNameLabel}} must be chosen</span>\n            </div>\n            <div *ngIf=\"name !== null\" class=\"col-md-12 form-group\"\n                 [class.has-error]=\"(name.invalid && (name.dirty || name.touched || submitted)) || form.invalid && name.errors !== null && name.errors.duplicatedPortName !== null && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">{{getStaticData(data.type).storageEntityLabel}} Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\" id=\"name\">\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.required !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.duplicatedPortName !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Duplicated port name</span>\n            </div>\n            <div *ngIf=\"data.type === staticType.SYSTEM\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div *ngIf=\"arrayModel !== null\" class=\"col-md-12 form-group\">\n                <label for=\"arrayModel\">Array Model: </label>\n                <input id=\"arrayModel\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div *ngIf=\"dkc !== null\" class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div *ngIf=\"room !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div *ngIf=\"rack !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div *ngIf=\"managementIp !== null\" class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div *ngIf=\"sortId !== null\" class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n            <div *ngIf=\"speed !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"speed.invalid && (speed.dirty || speed.touched || submitted)\">\n                <label for=\"speed\">Speed [Gbps]: </label>\n                <input id=\"speed\" class=\"form-control\" type=\"text\" formControlName=\"speed\">\n                <span *ngIf=\"speed.invalid && speed.errors.pattern !== null\" class=\"help-block\">Speed must be a number</span>\n              </div>\n            </div>\n            <div *ngIf=\"note !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"note.invalid && (note.dirty || note.touched || submitted)\">\n                <label for=\"note\">Description: </label>\n                <input id=\"note\" class=\"form-control\" type=\"text\" formControlName=\"note\">\n                <span *ngIf=\"note.invalid && note.errors.maxlength !== null\" class=\"help-block\">Description too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"cables !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"cables.invalid && (cables.dirty || cables.touched || submitted)\">\n                <label for=\"cables\">Cables: </label>\n                <input id=\"cables\" class=\"form-control\" type=\"text\" formControlName=\"cables\">\n                <span *ngIf=\"cables.invalid && cables.errors.maxlength !== null\" class=\"help-block\">Cables too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"switch !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"switch.invalid && (switch.dirty || switch.touched || submitted)\">\n                <label for=\"switch\">Switch: </label>\n                <input id=\"switch\" class=\"form-control\" type=\"text\" formControlName=\"switch\">\n                <span *ngIf=\"switch.invalid && switch.errors.maxlength !== null\" class=\"help-block\">Switch too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"slot !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"slot.invalid && (slot.dirty || slot.touched || submitted)\">\n                <label for=\"slot\">Slot/Port: </label>\n                <input id=\"slot\" class=\"form-control\" type=\"text\" formControlName=\"slot\">\n                <span *ngIf=\"slot.invalid && slot.errors.maxlength !== null\" class=\"help-block\">Slot too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"wwn !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"wwn.invalid && (wwn.dirty || wwn.touched || submitted)\">\n                <label for=\"wwn\">WWN: </label>\n                <input id=\"wwn\" class=\"form-control\" type=\"text\" formControlName=\"wwn\">\n                <span *ngIf=\"wwn.invalid && wwn.errors.maxlength !== null\" class=\"help-block\">WWN too long</span>\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button *ngIf=\"data.duplicateOperation\" [class.disabled]=\"data.id === undefined || form.invalid\" type=\"button\" class=\"btn btn-primary\"\n          (click)=\"form.valid ? duplicate(): submitted = true\">\n          Duplicate\n        </button>\n        <button *ngIf=\"!data.duplicateOperation\" [class.disabled]=\"data.id === undefined\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow()\">Deactivate\n        </button>\n        <div class=\"btn-group\" *ngIf=\"!data.duplicateOperation\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save\n          </button>\n\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n<div *ngIf=\"confirmWindowDisplay\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      </div>\n      <div class=\"modal-body\">\n        Are you sure to deactivate {{data.name}} ?\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-danger\"\n                (click)=\"deactivate()\">Confirm\n        </button>\n        <button type=\"button\" class=\"btn btn-default pull-left\"\n                (click)=\"closeConfirmationWindow()\">Cancel\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -2325,12 +2325,17 @@ var OnSelectService = /** @class */ (function () {
     function OnSelectService() {
         // Observable string sources
         this.selectAll = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.selectedRows = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         // Observable string streams
         this.selectAll$ = this.selectAll.asObservable();
+        this.selectRows$ = this.selectedRows.asObservable();
     }
     // Service message commands
     OnSelectService.prototype.announceSelectAll = function (value) {
         this.selectAll.next(value);
+    };
+    OnSelectService.prototype.announceSelect = function (rows) {
+        this.selectedRows.next(rows);
     };
     OnSelectService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -2625,7 +2630,7 @@ var RowGroupTableComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .sasi-table-item {\n  display: flex;\n  align-items: stretch;\n  /*justify-content: center;*/\n}\n:host /deep/ .sasi-table-cell {\n  align-self: center;\n}\n/**\n  TODO this is duplicated in row-group-table. Each grid item should be as separete component and content should be dynamically rendered\n */\n.highlightColumn {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9yb3ctdGFibGUvcm93LXRhYmxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isb0JBQW9CO0VBQ3BCLDJCQUEyQjtBQUM3QjtBQUNBO0VBQ0Usa0JBQWtCO0FBQ3BCO0FBQ0E7O0VBRUU7QUFDRjtFQUNFLG9DQUFvQztFQUNwQyxjQUFjO0FBQ2hCIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9yb3ctdGFibGUvcm93LXRhYmxlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCAvZGVlcC8gLnNhc2ktdGFibGUtaXRlbSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xuICAvKmp1c3RpZnktY29udGVudDogY2VudGVyOyovXG59XG46aG9zdCAvZGVlcC8gLnNhc2ktdGFibGUtY2VsbCB7XG4gIGFsaWduLXNlbGY6IGNlbnRlcjtcbn1cbi8qKlxuICBUT0RPIHRoaXMgaXMgZHVwbGljYXRlZCBpbiByb3ctZ3JvdXAtdGFibGUuIEVhY2ggZ3JpZCBpdGVtIHNob3VsZCBiZSBhcyBzZXBhcmV0ZSBjb21wb25lbnQgYW5kIGNvbnRlbnQgc2hvdWxkIGJlIGR5bmFtaWNhbGx5IHJlbmRlcmVkXG4gKi9cbi5oaWdobGlnaHRDb2x1bW4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjRkMWVlICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjM0E3MzhDO1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .sasi-table-item {\n  display: flex;\n  align-items: stretch;\n  /*justify-content: center;*/\n}\n:host /deep/ .sasi-table-cell {\n  align-self: center;\n}\n:host /deep/ .sasi-table-controls,\n:host /deep/ .sasi-table-alerts\n{\n  display: flex;\n  align-items: stretch;\n  justify-content: center;\n}\n:host /deep/ .sasi-table-controls i,\n:host /deep/ .sasi-table-alerts i{\n  font-size: 1.1rem;\n  align-self: center;\n}\n/**\n  TODO this is duplicated in row-group-table. Each grid item should be as separete component and content should be dynamically rendered\n */\n.highlightColumn {\n  background-color: #b4d1ee !important;\n  color: #3A738C;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uL2NvbXBvbmVudHMvc2FzaS10YWJsZS9yb3ctdGFibGUvcm93LXRhYmxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2Isb0JBQW9CO0VBQ3BCLDJCQUEyQjtBQUM3QjtBQUNBO0VBQ0Usa0JBQWtCO0FBQ3BCO0FBQ0E7OztFQUdFLGFBQWE7RUFDYixvQkFBb0I7RUFDcEIsdUJBQXVCO0FBQ3pCO0FBQ0E7O0VBRUUsaUJBQWlCO0VBQ2pCLGtCQUFrQjtBQUNwQjtBQUNBOztFQUVFO0FBQ0Y7RUFDRSxvQ0FBb0M7RUFDcEMsY0FBYztBQUNoQiIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi9jb21wb25lbnRzL3Nhc2ktdGFibGUvcm93LXRhYmxlL3Jvdy10YWJsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5zYXNpLXRhYmxlLWl0ZW0ge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogc3RyZXRjaDtcbiAgLypqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsqL1xufVxuOmhvc3QgL2RlZXAvIC5zYXNpLXRhYmxlLWNlbGwge1xuICBhbGlnbi1zZWxmOiBjZW50ZXI7XG59XG46aG9zdCAvZGVlcC8gLnNhc2ktdGFibGUtY29udHJvbHMsXG46aG9zdCAvZGVlcC8gLnNhc2ktdGFibGUtYWxlcnRzXG57XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cbjpob3N0IC9kZWVwLyAuc2FzaS10YWJsZS1jb250cm9scyBpLFxuOmhvc3QgL2RlZXAvIC5zYXNpLXRhYmxlLWFsZXJ0cyBpe1xuICBmb250LXNpemU6IDEuMXJlbTtcbiAgYWxpZ24tc2VsZjogY2VudGVyO1xufVxuLyoqXG4gIFRPRE8gdGhpcyBpcyBkdXBsaWNhdGVkIGluIHJvdy1ncm91cC10YWJsZS4gRWFjaCBncmlkIGl0ZW0gc2hvdWxkIGJlIGFzIHNlcGFyZXRlIGNvbXBvbmVudCBhbmQgY29udGVudCBzaG91bGQgYmUgZHluYW1pY2FsbHkgcmVuZGVyZWRcbiAqL1xuLmhpZ2hsaWdodENvbHVtbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNiNGQxZWUgIWltcG9ydGFudDtcbiAgY29sb3I6ICMzQTczOEM7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -2679,7 +2684,12 @@ var RowTableComponent = /** @class */ (function () {
     RowTableComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.subscription = this.onSelectService.selectAll$.subscribe(function (value) { return _this.selectRow(_this.data.getCell('name').value, value); });
-        this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
+        if (this.options.storeSelectedRows) {
+            this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
+        }
+        else {
+            this.localStorageService.set(this.options.storageNamePrefix + '_selected', []);
+        }
         if (this.selectedRows === null) {
             this.selectedRows = [];
         }
@@ -2702,6 +2712,7 @@ var RowTableComponent = /** @class */ (function () {
         }
         // @ts-ignore
         this.localStorageService.set(this.options.storageNamePrefix + '_selected', this.selectedRows);
+        this.onSelectService.announceSelect(this.selectedRows);
         this.selectEmit.emit(this.selectedRows);
     };
     RowTableComponent.prototype.findIndex = function (name) {
@@ -3082,6 +3093,7 @@ var SasiTableComponent = /** @class */ (function () {
             labelColumnWidth: '',
             isDataGrouped: false,
             selectableRows: false,
+            storeSelectedRows: true,
             colControlFormatter: null,
             cellDecoratorRules: [],
             rowComponentFormatter: null,
@@ -3176,7 +3188,7 @@ var SasiTableComponent = /** @class */ (function () {
         return this.options.nameColumnSize;
     };
     SasiTableComponent.prototype.getColControlSize = function () {
-        return this.options.controlColumnSize;
+        return (this.options.colControlFormatter != null || this.options.selectableRows) ? this.options.controlColumnSize : '';
     };
     SasiTableComponent.prototype.getAlertColumnSize = function () {
         return this.options.isDataGrouped && this.options.cellDecoratorRules.length > 0 ? this.options.alertColumnSize : '';
@@ -10929,12 +10941,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 /* harmony import */ var _formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../formatters/unit-formatter/unit-formatter.component */ "./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.ts");
 /* harmony import */ var _common_components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../common/components/route-link-formatter/route-link-formatter.component */ "./src/app/common/components/route-link-formatter/route-link-formatter.component.ts");
-/* harmony import */ var _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
-/* harmony import */ var _alert_rule__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../alert-rule */ "./src/app/global-statistics/alert-rule.ts");
-/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
-/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
-/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
-/* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
+/* harmony import */ var _alert_rule__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../alert-rule */ "./src/app/global-statistics/alert-rule.ts");
+/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
+/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
+/* harmony import */ var _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/metric-handler.utils */ "./src/app/global-statistics/utils/metric-handler.utils.ts");
+/* harmony import */ var _storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../storage-configuration/se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10947,7 +10958,6 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-
 
 
 
@@ -11030,15 +11040,14 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex('sortId')
             .withLabel('Sort ID')
-            .withComponent(_storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_14__["SeTextFormatterComponent"])
+            .withComponent(_storage_configuration_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_13__["SeTextFormatterComponent"])
             .withAltSortEnable(false)
             .withHidden(true)
             .build());
-        this.options.colControlFormatter = _formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_9__["AlertFormatterComponent"];
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_11__["RowTableComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_10__["RowTableComponent"];
         this.options.labelColumnWidth = '13.78';
         this.options.valueColumnWidth = '13.78';
-        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_12__["SimpleSortImpl"]();
+        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_11__["SimpleSortImpl"]();
         this.options.altSortColumnName = 'peak';
         this.options.sortColumnNames = ['sortId', 'name'];
         this.options.sortType = _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiSortType"].ASC;
@@ -11059,8 +11068,8 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         });
         this.periodService.announceEnablePeriod(true);
         this.periodService.announcePeriod(this.currentPeriod);
-        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CPU, new _alert_rule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 80, 10000)));
-        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_10__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_10__["Threshold"]('text-orange', 30, 10000)));
+        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_9__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CPU, new _alert_rule__WEBPACK_IMPORTED_MODULE_9__["Threshold"]('text-orange', 80, 10000)));
+        this.options.cellDecoratorRules.push(new _alert_rule__WEBPACK_IMPORTED_MODULE_9__["AlertRule"](_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC, new _alert_rule__WEBPACK_IMPORTED_MODULE_9__["Threshold"]('text-orange', 30, 10000)));
     };
     PerformanceStatisticsComponent.prototype.ngOnDestroy = function () {
         this.periodService.announceEnablePeriod(false);
@@ -11068,7 +11077,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
     PerformanceStatisticsComponent.prototype.getTableData = function (id) {
         var _this = this;
         this.currentDataCenterId = id;
-        this.metricService.getPerformanceStatistics(id, this.currentPeriod).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_13__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_13__["MetricHandlerUtils"].error(error); });
+        this.metricService.getPerformanceStatistics(id, this.currentPeriod).subscribe(function (data) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__["MetricHandlerUtils"].success(data); }, function (error) { return _this.data = _utils_metric_handler_utils__WEBPACK_IMPORTED_MODULE_12__["MetricHandlerUtils"].error(error); });
         return this.data;
     };
     PerformanceStatisticsComponent.ctorParameters = function () { return [
@@ -11787,11 +11796,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
-/* harmony import */ var _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../global-statistics/formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
-/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
-/* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
-/* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
+/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
+/* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
+/* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../common/components/sasi-table/on-select.service */ "./src/app/common/components/sasi-table/on-select.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11829,7 +11838,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 var StorageEntityList = /** @class */ (function () {
-    function StorageEntityList(metricService, formBus, type) {
+    function StorageEntityList(metricService, formBus, type, onSelectService) {
         this.data = [];
         this.displayAddButton = false;
         this.parentsData = [];
@@ -11838,9 +11847,11 @@ var StorageEntityList = /** @class */ (function () {
         this.options = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiTableOptions"]();
         this.datacenterList = [];
         this.systemList = [];
+        this.selectedRows = [];
         this.metricService = metricService;
         this.formBus = formBus;
         this.type = type;
+        this.onSelectService = onSelectService;
     }
     StorageEntityList.prototype.getValue = function (system, property) {
         if (system.detail !== undefined) {
@@ -11849,9 +11860,9 @@ var StorageEntityList = /** @class */ (function () {
         return null;
     };
     StorageEntityList.prototype.openForm = function (type) {
-        var data = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_9__["StorageEntityVo"]();
+        var data = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityVo"]();
         data.type = type;
-        this.formBus.sendFormData(data);
+        this.formBus.sendFormData({ data: data, selectedData: this.selectedRows });
     };
     StorageEntityList.propDecorators = {
         data: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
@@ -11865,13 +11876,18 @@ var StorageEntityList = /** @class */ (function () {
 
 var ChannelBoardListComponent = /** @class */ (function (_super) {
     __extends(ChannelBoardListComponent, _super);
-    function ChannelBoardListComponent(metricService, formBus) {
-        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].CHANNEL_BOARD) || this;
+    function ChannelBoardListComponent(metricService, formBus, onSelectService) {
+        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].CHANNEL_BOARD, onSelectService) || this;
         _this.metricService = metricService;
         _this.formBus = formBus;
+        _this.onSelectService = onSelectService;
         return _this;
     }
     ChannelBoardListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.onSelectService.selectRows$.subscribe(function (data) {
+            _this.selectedRows = _this.data.filter(function (owner) { return data.some(function (selectedRow) { return selectedRow.rowName === owner.name; }); });
+        });
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex('parentName')
             .withLabel('Controller')
@@ -11889,7 +11905,7 @@ var ChannelBoardListComponent = /** @class */ (function (_super) {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex('speed')
             .withLabel('Speed')
-            .withComponent(_speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SpeedFormatterComponent"])
+            .withComponent(_speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SpeedFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
@@ -11900,18 +11916,21 @@ var ChannelBoardListComponent = /** @class */ (function (_super) {
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
-        this.options.colControlFormatter = _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_6__["AlertFormatterComponent"];
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_7__["RowTableComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__["RowTableComponent"];
         // this.options.grIndexComponentFormatter = SpeedFormatterComponent;
         this.options.isDataGrouped = false;
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
-        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_8__["SimpleSortImpl"]();
+        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__["SimpleSortImpl"]();
+        this.options.selectableRows = true;
+        this.options.storeSelectedRows = false;
+        this.options.storageNamePrefix = 'cbList';
         this.options.sortColumnNames = ['name'];
     };
     ChannelBoardListComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"] },
-        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"] }
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"] },
+        { type: _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__["OnSelectService"] }
     ]; };
     ChannelBoardListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -11920,7 +11939,8 @@ var ChannelBoardListComponent = /** @class */ (function (_super) {
             styles: [__importDefault(__webpack_require__(/*! ./channel-board-list.component.css */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.css")).default]
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"],
-            _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"]])
+            _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"],
+            _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__["OnSelectService"]])
     ], ChannelBoardListComponent);
     return ChannelBoardListComponent;
 }(StorageEntityList));
@@ -11945,10 +11965,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
-/* harmony import */ var _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../global-statistics/formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
-/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
-/* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
+/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
+/* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11983,11 +12002,10 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-
 var ControllerListComponent = /** @class */ (function (_super) {
     __extends(ControllerListComponent, _super);
     function ControllerListComponent(metricService, formBus) {
-        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CONTROLLER) || this;
+        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CONTROLLER, null) || this;
         _this.metricService = metricService;
         _this.formBus = formBus;
         return _this;
@@ -12007,13 +12025,14 @@ var ControllerListComponent = /** @class */ (function (_super) {
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
-        this.options.colControlFormatter = _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_6__["AlertFormatterComponent"];
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_7__["RowTableComponent"];
+        // this.options.colControlFormatter = AlertFormatterComponent;
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__["RowTableComponent"];
+        this.options.storageNamePrefix = 'portConnectivity';
         // this.options.grIndexComponentFormatter = SpeedFormatterComponent;
         this.options.isDataGrouped = false;
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
-        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_8__["SimpleSortImpl"]();
+        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__["SimpleSortImpl"]();
         this.options.sortColumnNames = ['name'];
     };
     ControllerListComponent.ctorParameters = function () { return [
@@ -12030,7 +12049,7 @@ var ControllerListComponent = /** @class */ (function (_super) {
             _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"]])
     ], ControllerListComponent);
     return ControllerListComponent;
-}(_channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_9__["StorageEntityList"]));
+}(_channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityList"]));
 
 
 
@@ -12052,10 +12071,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
-/* harmony import */ var _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../global-statistics/formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
-/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
-/* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
+/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
+/* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12090,11 +12108,10 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-
 var DkcListComponent = /** @class */ (function (_super) {
     __extends(DkcListComponent, _super);
     function DkcListComponent(metricService, formBus) {
-        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC) || this;
+        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC, null) || this;
         _this.metricService = metricService;
         _this.formBus = formBus;
         return _this;
@@ -12107,12 +12124,11 @@ var DkcListComponent = /** @class */ (function (_super) {
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
-        this.options.colControlFormatter = _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_6__["AlertFormatterComponent"];
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_7__["RowTableComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__["RowTableComponent"];
         this.options.isDataGrouped = false;
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
-        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_8__["SimpleSortImpl"]();
+        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__["SimpleSortImpl"]();
         this.options.nameColumnSize = '';
         this.options.sortColumnNames = ['name'];
     };
@@ -12130,7 +12146,7 @@ var DkcListComponent = /** @class */ (function (_super) {
             _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"]])
     ], DkcListComponent);
     return DkcListComponent;
-}(_channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_9__["StorageEntityList"]));
+}(_channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityList"]));
 
 
 
@@ -12162,7 +12178,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var FormBusService = /** @class */ (function () {
     function FormBusService() {
         this.storageEntityForm = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.storageEntityFormStream = this.storageEntityForm.asObservable();
+        this.storageEntityFormStream$ = this.storageEntityForm.asObservable();
     }
     FormBusService.prototype.sendFormData = function (data) {
         this.storageEntityForm.next(data);
@@ -12347,6 +12363,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
+/* harmony import */ var _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/components/sasi-table/on-select.service */ "./src/app/common/components/sasi-table/on-select.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12367,12 +12384,14 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var PortConnectivityComponent = /** @class */ (function () {
-    function PortConnectivityComponent(metricService, route, router, formBusService) {
+    function PortConnectivityComponent(metricService, route, router, formBusService, selectedSasiRows) {
         this.metricService = metricService;
         this.route = route;
         this.router = router;
         this.formBusService = formBusService;
+        this.selectedSasiRows = selectedSasiRows;
         this.systemsList = [];
         this.dkcList = [];
         this.controllerList = [];
@@ -12388,6 +12407,9 @@ var PortConnectivityComponent = /** @class */ (function () {
                 _this.loadData();
             }
         });
+        this.selectedSasiRows.selectRows$.subscribe(function (rows) {
+            console.log(rows);
+        });
         this.loadData();
     };
     PortConnectivityComponent.prototype.openForm = function () {
@@ -12398,7 +12420,7 @@ var PortConnectivityComponent = /** @class */ (function () {
         data.parentId = system.parentId;
         data.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"][system.type];
         data.duplicateOperation = true;
-        this.formBusService.sendFormData(data);
+        this.formBusService.sendFormData({ data: data, selectedData: [] });
     };
     PortConnectivityComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
@@ -12420,6 +12442,7 @@ var PortConnectivityComponent = /** @class */ (function () {
                 .subscribe(function (data) { return _this.channelBoardList = data; });
             this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].PORT, this.selectedSystem)
                 .subscribe(function (data) { return _this.portList = data; });
+            this.selectedSasiRows.announceSelect([]);
         }
     };
     PortConnectivityComponent.prototype.fetchStorageEntities = function (type, systemId) {
@@ -12457,7 +12480,8 @@ var PortConnectivityComponent = /** @class */ (function () {
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
-        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_6__["FormBusService"] }
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_6__["FormBusService"] },
+        { type: _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_8__["OnSelectService"] }
     ]; };
     PortConnectivityComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -12468,7 +12492,8 @@ var PortConnectivityComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
-            _form_bus_service__WEBPACK_IMPORTED_MODULE_6__["FormBusService"]])
+            _form_bus_service__WEBPACK_IMPORTED_MODULE_6__["FormBusService"],
+            _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_8__["OnSelectService"]])
     ], PortConnectivityComponent);
     return PortConnectivityComponent;
 }());
@@ -12493,11 +12518,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../se-text-formatter/se-text-formatter.component */ "./src/app/storage-configuration/se-text-formatter/se-text-formatter.component.ts");
-/* harmony import */ var _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../global-statistics/formatters/alert-formatter/alert-formatter.component */ "./src/app/global-statistics/formatters/alert-formatter/alert-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
-/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
-/* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
-/* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
+/* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
+/* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
+/* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
+/* harmony import */ var _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../common/components/sasi-table/on-select.service */ "./src/app/common/components/sasi-table/on-select.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12536,13 +12561,18 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 var PortListComponent = /** @class */ (function (_super) {
     __extends(PortListComponent, _super);
-    function PortListComponent(metricService, formBus) {
-        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].PORT) || this;
+    function PortListComponent(metricService, formBus, onSelectService) {
+        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].PORT, onSelectService) || this;
         _this.metricService = metricService;
         _this.formBus = formBus;
+        _this.onSelectService = onSelectService;
         return _this;
     }
     PortListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.onSelectService.selectRows$.subscribe(function (data) {
+            _this.selectedRows = _this.data.filter(function (owner) { return data.some(function (selectedRow) { return selectedRow.rowName === owner.name; }); });
+        });
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex('parentName')
             .withLabel('Channel Board')
@@ -12562,7 +12592,7 @@ var PortListComponent = /** @class */ (function (_super) {
             .withIndex('speed')
             .withAltLabel('Speed')
             .withLabel('Speed')
-            .withComponent(_speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_10__["SpeedFormatterComponent"])
+            .withComponent(_speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_9__["SpeedFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
@@ -12606,18 +12636,21 @@ var PortListComponent = /** @class */ (function (_super) {
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
-        this.options.colControlFormatter = _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_6__["AlertFormatterComponent"];
-        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_7__["RowTableComponent"];
+        this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__["RowTableComponent"];
         // this.options.grIndexComponentFormatter = SpeedFormatterComponent;
         this.options.isDataGrouped = false;
+        this.options.selectableRows = true;
+        this.options.storeSelectedRows = false;
+        this.options.storageNamePrefix = 'portList';
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
-        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_8__["SimpleSortImpl"]();
+        this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__["SimpleSortImpl"]();
         this.options.sortColumnNames = ['name'];
     };
     PortListComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"] },
-        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"] }
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"] },
+        { type: _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__["OnSelectService"] }
     ]; };
     PortListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -12626,10 +12659,11 @@ var PortListComponent = /** @class */ (function (_super) {
             styles: [__importDefault(__webpack_require__(/*! ../channel-board-list/channel-board-list.component.css */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.css")).default]
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"],
-            _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"]])
+            _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"],
+            _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__["OnSelectService"]])
     ], PortListComponent);
     return PortListComponent;
-}(_channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_9__["StorageEntityList"]));
+}(_channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityList"]));
 
 
 
@@ -12724,7 +12758,7 @@ var SeTextFormatterComponent = /** @class */ (function () {
             formData.slot = this.getCellValue('slot');
             formData.wwn = this.getCellValue('wwn');
         }
-        this.formBus.sendFormData(formData);
+        this.formBus.sendFormData({ data: formData, selectedData: [] });
     };
     SeTextFormatterComponent.prototype.getCellValue = function (valueName) {
         if (this.rowData.cells[valueName] !== undefined) {
@@ -12823,7 +12857,7 @@ var SerialNumberFormatterComponent = /** @class */ (function () {
         formData.rack = this.getCellValue('rack');
         formData.arrayModel = this.getCellValue('arrayModel');
         formData.managementIp = this.getCellValue('managementIp');
-        this.formBus.sendFormData(formData);
+        this.formBus.sendFormData({ data: formData, selectedData: [] });
     };
     SerialNumberFormatterComponent.prototype.getValue = function () {
         if (this.rowData.cells['serialNumber'] !== undefined || this.rowData.cells['prefixReferenceId'] !== undefined) {
@@ -12950,7 +12984,7 @@ var SpeedFormatterComponent = /** @class */ (function () {
             formData.slot = this.getCellValue('slot');
             formData.wwn = this.getCellValue('wwn');
         }
-        this.formBus.sendFormData(formData);
+        this.formBus.sendFormData({ data: formData, selectedData: [] });
     };
     SpeedFormatterComponent.prototype.getCellValue = function (valueName) {
         if (this.rowData.cells[valueName] !== undefined) {
@@ -13368,12 +13402,14 @@ var StorageEntityFormComponent = /** @class */ (function () {
         this.data = new StorageEntityVo();
         this.staticType = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"];
         this.staticData = [];
+        this.selectedRows = [];
     }
     StorageEntityFormComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.formBusService.storageEntityFormStream.subscribe(function (data) {
-            _this.data = data;
-            if (data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC) {
+        this.formBusService.storageEntityFormStream$.subscribe(function (stream) {
+            _this.data = stream.data;
+            _this.selectedRows = stream.selectedData;
+            if (_this.data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC) {
                 _this.data.parentId = _this.selectedParent;
             }
             _this.initFormControls();
@@ -13463,26 +13499,48 @@ var StorageEntityFormComponent = /** @class */ (function () {
             });
         }
         else if (this.data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].CHANNEL_BOARD) {
-            this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
-                'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
-                'parent': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
-                'speed': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.speed, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern('[0-9]+')]),
-                'note': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.note, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(255)]),
-                'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
-            });
+            if (this.selectedRows.length > 0) {
+                this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                    'speed': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.speed, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern('[0-9]+')]),
+                    'note': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.note, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(255)]),
+                    'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
+                });
+            }
+            else {
+                this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                    'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                    'parent': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                    'speed': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.speed, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern('[0-9]+')]),
+                    'note': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.note, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(255)]),
+                    'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
+                });
+            }
         }
         else if (this.data.type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].PORT) {
-            this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
-                'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, duplicatedPort(this.portList)]),
-                'parent': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
-                'speed': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.speed, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern('[0-9]+')]),
-                'note': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.note, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(255)]),
-                'cables': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.cables, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(50)]),
-                'wwn': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.wwn, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(100)]),
-                'slot': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.slot, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(30)]),
-                'switch': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.switch, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(30)]),
-                'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
-            });
+            if (this.selectedRows.length > 0) {
+                this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                    'speed': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.speed, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern('[0-9]+')]),
+                    'note': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.note, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(255)]),
+                    'cables': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.cables, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(50)]),
+                    'wwn': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.wwn, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(100)]),
+                    'slot': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.slot, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(30)]),
+                    'switch': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.switch, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(30)]),
+                    'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
+                });
+            }
+            else {
+                this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                    'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, duplicatedPort(this.portList)]),
+                    'parent': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
+                    'speed': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.speed, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern('[0-9]+')]),
+                    'note': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.note, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(255)]),
+                    'cables': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.cables, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(50)]),
+                    'wwn': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.wwn, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(100)]),
+                    'slot': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.slot, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(30)]),
+                    'switch': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.switch, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(30)]),
+                    'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
+                });
+            }
         }
     };
     StorageEntityFormComponent.prototype.closeForm = function () {
@@ -13594,9 +13652,16 @@ var StorageEntityFormComponent = /** @class */ (function () {
         configurable: true
     });
     StorageEntityFormComponent.prototype.saveChanges = function (forceAsNew) {
+        var _this = this;
         if (forceAsNew === void 0) { forceAsNew = false; }
         var _a = this.transformDataToDto(), dto = _a.dto, detailDto = _a.detailDto;
-        if (this.data.id !== undefined && !forceAsNew) {
+        if (this.selectedRows.length > 0) {
+            this.selectedRows.forEach(function (owner) {
+                _this.data.id = owner.id;
+                _this.updateDetails(detailDto);
+            });
+        }
+        else if (this.data.id !== undefined && !forceAsNew) {
             this.updateDetails(detailDto);
         }
         else {
@@ -13610,9 +13675,14 @@ var StorageEntityFormComponent = /** @class */ (function () {
     StorageEntityFormComponent.prototype.updateDetails = function (detailDto) {
         var _this = this;
         this.metricService.updateStorageEntity(this.data.id, detailDto).subscribe(function () {
-            var datacenterId = _this.form.get('parent').value;
-            if (_this.data.id != null && _this.data.parentId !== datacenterId) {
-                _this.metricService.moveStorageEntity(_this.data.id, datacenterId).subscribe(function () { return _this.success(); });
+            if (_this.form.get('parent') !== null) {
+                var datacenterId = _this.form.get('parent').value;
+                if (_this.data.id != null && _this.data.parentId !== datacenterId) {
+                    _this.metricService.moveStorageEntity(_this.data.id, datacenterId).subscribe(function () { return _this.success(); });
+                }
+                else {
+                    _this.success();
+                }
             }
             else {
                 _this.success();
@@ -13623,6 +13693,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
     };
     StorageEntityFormComponent.prototype.transformDataToDto = function () {
         var dto = new _common_models_dtos_storage_entity_request_dto__WEBPACK_IMPORTED_MODULE_3__["StorageEntityRequestDto"]();
+        console.log(this.form.value);
         dto.name = this.form.value.name;
         dto.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"][this.data.type];
         var detailDto = new _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityDetailRequestDto"]();
@@ -13631,23 +13702,26 @@ var StorageEntityFormComponent = /** @class */ (function () {
             dto.parentId = this.form.value.parent;
             dto.serialNumber = this.form.value.serialNumber;
             detailDto = new _common_models_dtos_storage_entity_detail_request_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityDetailRequestDto"]();
-            detailDto.arrayModel = this.form.value.arrayModel;
-            detailDto.dkc = this.form.value.dkc;
-            detailDto.managementIp = this.form.value.managementIp;
-            detailDto.prefixReferenceId = this.form.value.prefixReferenceId;
-            detailDto.rack = this.form.value.rack;
-            detailDto.room = this.form.value.room;
-            detailDto.name = this.form.value.name;
-            detailDto.serialNumber = this.form.value.serialNumber;
-            detailDto.sortId = this.form.value.sortId;
-            detailDto.note = this.form.value.note;
-            detailDto.speed = this.form.value.speed;
-            detailDto.cables = this.form.value.cables;
-            detailDto.switch = this.form.value.switch;
-            detailDto.slot = this.form.value.slot;
-            detailDto.wwn = this.form.value.wwn;
+            detailDto.arrayModel = this.valueOrUndefined(this.form.value.arrayModel);
+            detailDto.dkc = this.valueOrUndefined(this.form.value.dkc);
+            detailDto.managementIp = this.valueOrUndefined(this.form.value.managementIp);
+            detailDto.prefixReferenceId = this.valueOrUndefined(this.form.value.prefixReferenceId);
+            detailDto.rack = this.valueOrUndefined(this.form.value.rack);
+            detailDto.room = this.valueOrUndefined(this.form.value.room);
+            detailDto.name = this.valueOrUndefined(this.form.value.name);
+            detailDto.serialNumber = this.valueOrUndefined(this.form.value.serialNumber);
+            detailDto.sortId = this.valueOrUndefined(this.form.value.sortId);
+            detailDto.note = this.valueOrUndefined(this.form.value.note);
+            detailDto.speed = this.valueOrUndefined(this.form.value.speed);
+            detailDto.cables = this.valueOrUndefined(this.form.value.cables);
+            detailDto.switch = this.valueOrUndefined(this.form.value.switch);
+            detailDto.slot = this.valueOrUndefined(this.form.value.slot);
+            detailDto.wwn = this.valueOrUndefined(this.form.value.wwn);
         }
         return { dto: dto, detailDto: detailDto };
+    };
+    StorageEntityFormComponent.prototype.valueOrUndefined = function (value) {
+        return (this.selectedRows.length > 0 && value === null) ? undefined : value;
     };
     StorageEntityFormComponent.prototype.saveAsNew = function (dto, detailDto) {
         var _this = this;
@@ -13681,11 +13755,15 @@ var StorageEntityFormComponent = /** @class */ (function () {
         var _this = this;
         this.confirmWindowDisplay = false;
         if (this.data.id !== undefined) {
-            console.log(this.data.status);
             var newStatus = this.data.status === _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].ACTIVE ? _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].INACTIVE : _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].ACTIVE;
-            console.log(newStatus);
             var dto = new _common_models_dtos_change_status_request_dto__WEBPACK_IMPORTED_MODULE_7__["ChangeStatusRequestDto"](_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"][newStatus]);
             this.metricService.updateStatus(this.data.id, dto).subscribe(function () { return _this.success(); });
+        }
+        if (this.selectedRows.length > 0) {
+            var dto_1 = new _common_models_dtos_change_status_request_dto__WEBPACK_IMPORTED_MODULE_7__["ChangeStatusRequestDto"](_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"][_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].INACTIVE]);
+            this.selectedRows.forEach(function (owner) {
+                _this.metricService.updateStatus(owner.id, dto_1).subscribe(function () { return _this.success(); });
+            });
         }
     };
     StorageEntityFormComponent.prototype.confirmDisplayWindow = function () {
@@ -13916,7 +13994,7 @@ var StorageLocationComponent = /** @class */ (function () {
     StorageLocationComponent.prototype.openForm = function (type) {
         var data = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityVo"]();
         data.type = type;
-        this.formBus.sendFormData(data);
+        this.formBus.sendFormData({ data: data, selectedData: [] });
     };
     StorageLocationComponent.prototype.loadData = function (force) {
         var _this = this;
