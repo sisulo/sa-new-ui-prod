@@ -633,7 +633,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <app-sasi-table [data]=\"data | StorageEntityDetail2SasiTablePipe: null: parentsData\"\n                        [tableOptions]=\"options\"></app-sasi-table>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"tab-pane col-md-6 col-lg-6\" *ngIf=\"data.length == 0\">\n  <div class=\"box box-danger box-solid\">\n    <div class=\"box-body\">\n      No data available.\n    </div>\n  </div>\n</div>\n<div class=\"box-body\" *ngIf=\"displayAddButton\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type)\">\n          Add\n        </button>\n        <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedRows.length > 0\" (click)=\"openForm(type)\">\n          Edit selected\n        </button>\n        <app-import-csv-data *ngIf=\"importEnabled\" keyColumn=\"name\" [data]=\"data\"\n                             (importFinished)=\"importFinished.emit()\"></app-import-csv-data>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data.length > 0\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <app-sasi-table [data]=\"data | StorageEntityDetail2SasiTablePipe: null: parentsData\"\n                        [tableOptions]=\"options\" (selectedRowsChanged)=\"setSelectedRows($event)\"></app-sasi-table>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"tab-pane col-md-6 col-lg-6\" *ngIf=\"data.length == 0\">\n  <div class=\"box box-danger box-solid\">\n    <div class=\"box-body\">\n      No data available.\n    </div>\n  </div>\n</div>\n<div class=\"box-body\" *ngIf=\"displayAddButton\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type)\">\n          Add\n        </button>\n        <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedRows.length > 0\" (click)=\"openForm(type)\">\n          Edit selected\n        </button>\n        <app-import-csv-data *ngIf=\"importEnabled\" keyColumn=\"name\" [data]=\"data\"\n                             (importFinished)=\"importFinished.emit()\"></app-import-csv-data>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -711,7 +711,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit {{getStaticData(data.type).storageEntityLabel}}</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"parent !== null && data.type !== staticType.DATACENTER && !data.duplicateOperation\"\n                 [class.has-error]=\"parent.invalid && (parent.dirty || parent.touched || submitted)\">\n              <label for=\"parent\">{{getStaticData(data.type).parentNameLabel}}:</label>\n              <ng-select id=\"parent\" [items]=\"getStaticData(data.type).parents\"\n                         bindValue=\"id\" bindLabel=\"name\" formControlName=\"parent\">\n              </ng-select>\n              <span *ngIf=\"parent.invalid && (parent.dirty || parent.touched || submitted)\"\n\n                    class=\"help-block\">{{getStaticData(data.type).parentNameLabel}} must be chosen</span>\n            </div>\n            <div *ngIf=\"name !== null\" class=\"col-md-12 form-group\"\n                 [class.has-error]=\"(name.invalid && (name.dirty || name.touched || submitted)) || form.invalid && name.errors !== null && name.errors.duplicatedPortName !== null && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">{{getStaticData(data.type).storageEntityLabel}} Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\" id=\"name\">\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.required !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.duplicatedPortName !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Duplicated port name</span>\n            </div>\n            <div *ngIf=\"data.type === staticType.SYSTEM\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div *ngIf=\"arrayModel !== null\" class=\"col-md-12 form-group\">\n                <label for=\"arrayModel\">Array Model: </label>\n                <input id=\"arrayModel\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div *ngIf=\"dkc !== null\" class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div *ngIf=\"room !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div *ngIf=\"rack !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div *ngIf=\"managementIp !== null\" class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div *ngIf=\"sortId !== null\" class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n            <div *ngIf=\"speed !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"speed.invalid && (speed.dirty || speed.touched || submitted)\">\n                <label for=\"speed\">Speed [Gbps]: </label>\n                <input id=\"speed\" class=\"form-control\" type=\"text\" formControlName=\"speed\">\n                <span *ngIf=\"speed.invalid && speed.errors.pattern !== null\" class=\"help-block\">Speed must be a number</span>\n              </div>\n            </div>\n            <div *ngIf=\"note !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"note.invalid && (note.dirty || note.touched || submitted)\">\n                <label for=\"note\">Description: </label>\n                <input id=\"note\" class=\"form-control\" type=\"text\" formControlName=\"note\">\n                <span *ngIf=\"note.invalid && note.errors.maxlength !== null\" class=\"help-block\">Description too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"cables !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"cables.invalid && (cables.dirty || cables.touched || submitted)\">\n                <label for=\"cables\">Cables: </label>\n                <input id=\"cables\" class=\"form-control\" type=\"text\" formControlName=\"cables\">\n                <span *ngIf=\"cables.invalid && cables.errors.maxlength !== null\" class=\"help-block\">Cables too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"switch !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"switch.invalid && (switch.dirty || switch.touched || submitted)\">\n                <label for=\"switch\">Switch: </label>\n                <input id=\"switch\" class=\"form-control\" type=\"text\" formControlName=\"switch\">\n                <span *ngIf=\"switch.invalid && switch.errors.maxlength !== null\" class=\"help-block\">Switch too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"slot !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"slot.invalid && (slot.dirty || slot.touched || submitted)\">\n                <label for=\"slot\">Slot/Port: </label>\n                <input id=\"slot\" class=\"form-control\" type=\"text\" formControlName=\"slot\">\n                <span *ngIf=\"slot.invalid && slot.errors.maxlength !== null\" class=\"help-block\">Slot too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"wwn !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"wwn.invalid && (wwn.dirty || wwn.touched || submitted)\">\n                <label for=\"wwn\">WWN: </label>\n                <input id=\"wwn\" class=\"form-control\" type=\"text\" formControlName=\"wwn\">\n                <span *ngIf=\"wwn.invalid && wwn.errors.maxlength !== null\" class=\"help-block\">WWN too long</span>\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button *ngIf=\"data.duplicateOperation\" [class.disabled]=\"data.id === undefined || form.invalid\" type=\"button\" class=\"btn btn-primary\"\n          (click)=\"form.valid ? duplicate(): submitted = true\">\n          Duplicate\n        </button>\n        <button *ngIf=\"!data.duplicateOperation\" [class.disabled]=\"data.id === undefined\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow()\">Deactivate\n        </button>\n        <div class=\"btn-group\" *ngIf=\"!data.duplicateOperation\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save\n          </button>\n\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n<div *ngIf=\"confirmWindowDisplay\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      </div>\n      <div class=\"modal-body\">\n        Are you sure to deactivate {{data.name}} ?\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-danger\"\n                (click)=\"deactivate()\">Confirm\n        </button>\n        <button type=\"button\" class=\"btn btn-default pull-left\"\n                (click)=\"closeConfirmationWindow()\">Cancel\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit {{getStaticData(data.type).storageEntityLabel}}</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"parent !== null && data.type !== staticType.DATACENTER && !data.duplicateOperation\"\n                 [class.has-error]=\"parent.invalid && (parent.dirty || parent.touched || submitted)\">\n              <label for=\"parent\">{{getStaticData(data.type).parentNameLabel}}:</label>\n              <ng-select id=\"parent\" [items]=\"getStaticData(data.type).parents\"\n                         bindValue=\"id\" bindLabel=\"name\" formControlName=\"parent\">\n              </ng-select>\n              <span *ngIf=\"parent.invalid && (parent.dirty || parent.touched || submitted)\"\n\n                    class=\"help-block\">{{getStaticData(data.type).parentNameLabel}} must be chosen</span>\n            </div>\n            <div *ngIf=\"name !== null\" class=\"col-md-12 form-group\"\n                 [class.has-error]=\"(name.invalid && (name.dirty || name.touched || submitted)) || form.invalid && name.errors !== null && name.errors.duplicatedPortName !== null && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">{{getStaticData(data.type).storageEntityLabel}} Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\" id=\"name\">\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.required !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.duplicatedPortName !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Duplicated port name</span>\n            </div>\n            <div *ngIf=\"data.type === staticType.SYSTEM\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div *ngIf=\"arrayModel !== null\" class=\"col-md-12 form-group\">\n                <label for=\"arrayModel\">Array Model: </label>\n                <input id=\"arrayModel\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div *ngIf=\"dkc !== null\" class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div *ngIf=\"room !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div *ngIf=\"rack !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div *ngIf=\"managementIp !== null\" class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div *ngIf=\"sortId !== null\" class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n            <div *ngIf=\"speed !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"speed.invalid && (speed.dirty || speed.touched || submitted)\">\n                <label for=\"speed\">Speed [Gbps]: </label>\n                <input id=\"speed\" class=\"form-control\" type=\"text\" formControlName=\"speed\">\n                <span *ngIf=\"speed.invalid && speed.errors.pattern !== null\" class=\"help-block\">Speed must be a number</span>\n              </div>\n            </div>\n            <div *ngIf=\"note !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"note.invalid && (note.dirty || note.touched || submitted)\">\n                <label for=\"note\">Description: </label>\n                <input id=\"note\" class=\"form-control\" type=\"text\" formControlName=\"note\">\n                <span *ngIf=\"note.invalid && note.errors.maxlength !== null\" class=\"help-block\">Description too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"cables !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"cables.invalid && (cables.dirty || cables.touched || submitted)\">\n                <label for=\"cables\">Cables: </label>\n                <input id=\"cables\" class=\"form-control\" type=\"text\" formControlName=\"cables\">\n                <span *ngIf=\"cables.invalid && cables.errors.maxlength !== null\" class=\"help-block\">Cables too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"switch !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"switch.invalid && (switch.dirty || switch.touched || submitted)\">\n                <label for=\"switch\">Switch: </label>\n                <input id=\"switch\" class=\"form-control\" type=\"text\" formControlName=\"switch\">\n                <span *ngIf=\"switch.invalid && switch.errors.maxlength !== null\" class=\"help-block\">Switch too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"slot !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"slot.invalid && (slot.dirty || slot.touched || submitted)\">\n                <label for=\"slot\">Slot/Port: </label>\n                <input id=\"slot\" class=\"form-control\" type=\"text\" formControlName=\"slot\">\n                <span *ngIf=\"slot.invalid && slot.errors.maxlength !== null\" class=\"help-block\">Slot too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"wwn !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"wwn.invalid && (wwn.dirty || wwn.touched || submitted)\">\n                <label for=\"wwn\">WWN: </label>\n                <input id=\"wwn\" class=\"form-control\" type=\"text\" formControlName=\"wwn\">\n                <span *ngIf=\"wwn.invalid && wwn.errors.maxlength !== null\" class=\"help-block\">WWN too long</span>\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button *ngIf=\"data.duplicateOperation\" [class.disabled]=\"data.id === undefined || form.invalid\" type=\"button\" class=\"btn btn-primary\"\n          (click)=\"form.valid ? duplicate(): submitted = true\">\n          Duplicate\n        </button>\n        <button *ngIf=\"!data.duplicateOperation && (data.id !== undefined || selectedRows.length > 0)\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow()\">Deactivate\n        </button>\n        <div class=\"btn-group\" *ngIf=\"!data.duplicateOperation\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save\n          </button>\n\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n<div *ngIf=\"confirmWindowDisplay\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      </div>\n      <div class=\"modal-body\">\n        Are you sure to deactivate {{data.name}} including <span class=\"text-danger\">ALL</span> its related entities?\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-danger\"\n                (click)=\"deactivate()\">Confirm\n        </button>\n        <button type=\"button\" class=\"btn btn-default pull-left\"\n                (click)=\"closeConfirmationWindow()\">Cancel\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -2683,7 +2683,11 @@ var RowTableComponent = /** @class */ (function () {
     };
     RowTableComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.subscription = this.onSelectService.selectAll$.subscribe(function (value) { return _this.selectRow(_this.data.getCell('name').value, value); });
+        this.subscription = this.onSelectService.selectAll$.subscribe(function (value) {
+            if (value.prefix === _this.options.storageNamePrefix) {
+                _this.selectRow(_this.data.getCell('name').value, value.operation);
+            }
+        });
         if (this.options.storeSelectedRows) {
             this.selectedRows = this.localStorageService.get(this.options.storageNamePrefix + '_selected');
         }
@@ -3081,6 +3085,7 @@ var SasiTableComponent = /** @class */ (function () {
         this.domSanitizer = domSanitizer;
         this.data = [];
         this.tableOptions = new SasiTableOptions();
+        this.selectedRowsChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.defaultOptions = {
             sortDescIcon: 'glyphicon glyphicon-sort-by-attributes-alt',
             sortAscIcon: 'glyphicon glyphicon-sort-by-attributes',
@@ -3140,7 +3145,10 @@ var SasiTableComponent = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         this.options = Object.assign(this.defaultOptions, this.tableOptions);
-                        this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) { return _this.selectedRows = data.newValue; });
+                        this.localStorageService.observe(this.options.storageNamePrefix + '_selected').subscribe(function (data) {
+                            _this.selectedRows = data.newValue || [];
+                            _this.selectedRowsChanged.emit(_this.selectedRows);
+                        });
                         this.localStorageService.observe(this.options.storageNamePrefix + '_collapsed').subscribe(function (data) {
                             _this.collapsedRows = data.newValue;
                         });
@@ -3273,7 +3281,10 @@ var SasiTableComponent = /** @class */ (function () {
     SasiTableComponent.prototype.isSelectedAll = function () {
         var _this = this;
         if (!this.options.isDataGrouped) {
-            return false;
+            if (this.selectedRows === undefined) {
+                return false;
+            }
+            return this.data.every(function (row) { return _this.selectedRows.find(function (selectedRow) { return row.getCell('name').value === selectedRow.rowName; }); });
         }
         // @ts-ignore
         var d = this.data;
@@ -3302,10 +3313,10 @@ var SasiTableComponent = /** @class */ (function () {
         // // @ts-ignore
         // const d = <SasiGroupRow[]>this.data;
         if (!this.isSelectedAll()) {
-            this.onSelectService.announceSelectAll(true);
+            this.onSelectService.announceSelectAll({ operation: true, prefix: this.options.storageNamePrefix });
         }
         else {
-            this.onSelectService.announceSelectAll(false);
+            this.onSelectService.announceSelectAll({ operation: false, prefix: this.options.storageNamePrefix });
         }
     };
     SasiTableComponent.prototype.getColumns = function () {
@@ -3332,7 +3343,8 @@ var SasiTableComponent = /** @class */ (function () {
     ]; };
     SasiTableComponent.propDecorators = {
         data: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-        tableOptions: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+        tableOptions: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        selectedRowsChanged: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
     };
     SasiTableComponent = SasiTableComponent_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -11800,7 +11812,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
 /* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
 /* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../common/components/sasi-table/on-select.service */ "./src/app/common/components/sasi-table/on-select.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11836,9 +11847,8 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-
 var StorageEntityList = /** @class */ (function () {
-    function StorageEntityList(metricService, formBus, type, onSelectService) {
+    function StorageEntityList(metricService, formBus, type) {
         this.data = [];
         this.displayAddButton = false;
         this.parentsData = [];
@@ -11851,7 +11861,6 @@ var StorageEntityList = /** @class */ (function () {
         this.metricService = metricService;
         this.formBus = formBus;
         this.type = type;
-        this.onSelectService = onSelectService;
     }
     StorageEntityList.prototype.getValue = function (system, property) {
         if (system.detail !== undefined) {
@@ -11863,6 +11872,11 @@ var StorageEntityList = /** @class */ (function () {
         var data = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityVo"]();
         data.type = type;
         this.formBus.sendFormData({ data: data, selectedData: this.selectedRows });
+    };
+    StorageEntityList.prototype.setSelectedRows = function (rows) {
+        if (this.options.selectableRows) {
+            this.selectedRows = this.data.filter(function (owner) { return rows.some(function (selectedRow) { return selectedRow.rowName === owner.name; }); });
+        }
     };
     StorageEntityList.propDecorators = {
         data: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
@@ -11876,18 +11890,13 @@ var StorageEntityList = /** @class */ (function () {
 
 var ChannelBoardListComponent = /** @class */ (function (_super) {
     __extends(ChannelBoardListComponent, _super);
-    function ChannelBoardListComponent(metricService, formBus, onSelectService) {
-        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].CHANNEL_BOARD, onSelectService) || this;
+    function ChannelBoardListComponent(metricService, formBus) {
+        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].CHANNEL_BOARD) || this;
         _this.metricService = metricService;
         _this.formBus = formBus;
-        _this.onSelectService = onSelectService;
         return _this;
     }
     ChannelBoardListComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.onSelectService.selectRows$.subscribe(function (data) {
-            _this.selectedRows = _this.data.filter(function (owner) { return data.some(function (selectedRow) { return selectedRow.rowName === owner.name; }); });
-        });
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex('parentName')
             .withLabel('Controller')
@@ -11929,8 +11938,7 @@ var ChannelBoardListComponent = /** @class */ (function (_super) {
     };
     ChannelBoardListComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"] },
-        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"] },
-        { type: _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__["OnSelectService"] }
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"] }
     ]; };
     ChannelBoardListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -11939,8 +11947,7 @@ var ChannelBoardListComponent = /** @class */ (function (_super) {
             styles: [__importDefault(__webpack_require__(/*! ./channel-board-list.component.css */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.css")).default]
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"],
-            _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"],
-            _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__["OnSelectService"]])
+            _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"]])
     ], ChannelBoardListComponent);
     return ChannelBoardListComponent;
 }(StorageEntityList));
@@ -12005,7 +12012,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 var ControllerListComponent = /** @class */ (function (_super) {
     __extends(ControllerListComponent, _super);
     function ControllerListComponent(metricService, formBus) {
-        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CONTROLLER, null) || this;
+        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CONTROLLER) || this;
         _this.metricService = metricService;
         _this.formBus = formBus;
         return _this;
@@ -12111,7 +12118,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 var DkcListComponent = /** @class */ (function (_super) {
     __extends(DkcListComponent, _super);
     function DkcListComponent(metricService, formBus) {
-        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC, null) || this;
+        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].DKC) || this;
         _this.metricService = metricService;
         _this.formBus = formBus;
         return _this;
@@ -12522,7 +12529,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
 /* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
 /* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
-/* harmony import */ var _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../common/components/sasi-table/on-select.service */ "./src/app/common/components/sasi-table/on-select.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12558,21 +12564,15 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-
 var PortListComponent = /** @class */ (function (_super) {
     __extends(PortListComponent, _super);
-    function PortListComponent(metricService, formBus, onSelectService) {
-        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].PORT, onSelectService) || this;
+    function PortListComponent(metricService, formBus) {
+        var _this = _super.call(this, metricService, formBus, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_1__["StorageEntityType"].PORT) || this;
         _this.metricService = metricService;
         _this.formBus = formBus;
-        _this.onSelectService = onSelectService;
         return _this;
     }
     PortListComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.onSelectService.selectRows$.subscribe(function (data) {
-            _this.selectedRows = _this.data.filter(function (owner) { return data.some(function (selectedRow) { return selectedRow.rowName === owner.name; }); });
-        });
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex('parentName')
             .withLabel('Channel Board')
@@ -12649,8 +12649,7 @@ var PortListComponent = /** @class */ (function (_super) {
     };
     PortListComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"] },
-        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"] },
-        { type: _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__["OnSelectService"] }
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"] }
     ]; };
     PortListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -12659,8 +12658,7 @@ var PortListComponent = /** @class */ (function (_super) {
             styles: [__importDefault(__webpack_require__(/*! ../channel-board-list/channel-board-list.component.css */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.css")).default]
         }),
         __metadata("design:paramtypes", [_metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"],
-            _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"],
-            _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_10__["OnSelectService"]])
+            _form_bus_service__WEBPACK_IMPORTED_MODULE_4__["FormBusService"]])
     ], PortListComponent);
     return PortListComponent;
 }(_channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__["StorageEntityList"]));
