@@ -2667,9 +2667,10 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 var RowTableComponent = /** @class */ (function () {
-    function RowTableComponent(localStorageService, onSelectService) {
+    function RowTableComponent(localStorageService, onSelectService, changesRef) {
         this.localStorageService = localStorageService;
         this.onSelectService = onSelectService;
+        this.changesRef = changesRef;
         this.columnHighlightEnable = false;
         this.isCollapsed = false;
         this.selectEmit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
@@ -2686,6 +2687,7 @@ var RowTableComponent = /** @class */ (function () {
         this.subscription = this.onSelectService.selectAll$.subscribe(function (value) {
             if (value.prefix === _this.options.storageNamePrefix) {
                 _this.selectRow(_this.data.getCell('name').value, value.operation);
+                _this.changesRef.detectChanges();
             }
         });
         if (this.options.storeSelectedRows) {
@@ -2728,7 +2730,8 @@ var RowTableComponent = /** @class */ (function () {
     };
     RowTableComponent.ctorParameters = function () { return [
         { type: ngx_store_9__WEBPACK_IMPORTED_MODULE_2__["LocalStorageService"] },
-        { type: _on_select_service__WEBPACK_IMPORTED_MODULE_4__["OnSelectService"] }
+        { type: _on_select_service__WEBPACK_IMPORTED_MODULE_4__["OnSelectService"] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }
     ]; };
     RowTableComponent.propDecorators = {
         data: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
@@ -2747,7 +2750,8 @@ var RowTableComponent = /** @class */ (function () {
             styles: [__importDefault(__webpack_require__(/*! ./row-table.component.css */ "./src/app/common/components/sasi-table/row-table/row-table.component.css")).default]
         }),
         __metadata("design:paramtypes", [ngx_store_9__WEBPACK_IMPORTED_MODULE_2__["LocalStorageService"],
-            _on_select_service__WEBPACK_IMPORTED_MODULE_4__["OnSelectService"]])
+            _on_select_service__WEBPACK_IMPORTED_MODULE_4__["OnSelectService"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
     ], RowTableComponent);
     return RowTableComponent;
 }());
@@ -12840,6 +12844,8 @@ var SerialNumberFormatterComponent = /** @class */ (function () {
         this.formBus = formBus;
     }
     SerialNumberFormatterComponent.prototype.ngOnInit = function () {
+        console.log(this.data);
+        console.log(this.rowData);
     };
     SerialNumberFormatterComponent.prototype.openForm = function () {
         var formData = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_4__["StorageEntityVo"]();
@@ -12858,10 +12864,15 @@ var SerialNumberFormatterComponent = /** @class */ (function () {
         this.formBus.sendFormData({ data: formData, selectedData: [] });
     };
     SerialNumberFormatterComponent.prototype.getValue = function () {
-        if (this.rowData.cells['serialNumber'] !== undefined || this.rowData.cells['prefixReferenceId'] !== undefined) {
-            return [this.rowData.cells['prefixReferenceId'].value, this.rowData.cells['serialNumber'].value].join(' ');
+        var serialNumber = '';
+        var prefix = '';
+        if (this.rowData.cells['serialNumber'] !== undefined && this.rowData.cells['serialNumber'].value != null) {
+            serialNumber = this.rowData.cells['serialNumber'].value;
         }
-        return null;
+        if (this.rowData.cells['prefixReferenceId'] !== undefined && this.rowData.cells['prefixReferenceId'].value != null) {
+            prefix = this.rowData.cells['prefixReferenceId'].value;
+        }
+        return prefix + ' ' + serialNumber;
     };
     SerialNumberFormatterComponent.prototype.getCellValue = function (valueName) {
         if (this.rowData.cells[valueName] !== undefined) {
@@ -13277,6 +13288,7 @@ var StorageEntityDetail2SasiTablePipe = /** @class */ (function () {
             row.cells['parentId'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](parentId, { value: parentId });
             row.cells['parentName'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](parentName, { value: parentName });
             row.cells['status'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_3__["ComponentStatus"][system.status], { value: _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_3__["ComponentStatus"][system.status] });
+            row.cells['serialNumber'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](system.serialNumber, { value: system.serialNumber });
             if (system.detail !== undefined) {
                 var detail = system.detail;
                 row.cells['arrayModel'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.arrayModel, { value: detail.arrayModel });
@@ -13285,7 +13297,6 @@ var StorageEntityDetail2SasiTablePipe = /** @class */ (function () {
                 row.cells['rack'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.rack, { value: detail.rack });
                 row.cells['room'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.room, { value: detail.room });
                 row.cells['prefixReferenceId'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.prefixReferenceId, { value: detail.prefixReferenceId });
-                row.cells['serialNumber'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](system.serialNumber, { value: detail.serialNumber });
                 row.cells['sortId'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.sortId, { value: detail.sortId });
                 row.cells['speed'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.speed, { value: detail.speed });
                 row.cells['note'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.note, { value: detail.note });
@@ -13528,7 +13539,8 @@ var StorageEntityFormComponent = /** @class */ (function () {
             }
             else {
                 this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
-                    'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, duplicatedPort(this.portList)]),
+                    'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.id),
+                    'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
                     'parent': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.parentId, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required]),
                     'speed': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.speed, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern('[0-9]+')]),
                     'note': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.note, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(255)]),
@@ -13537,7 +13549,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
                     'slot': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.slot, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(30)]),
                     'switch': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.data.switch, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(30)]),
                     'forceAsNew': new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](this.forceAsNew),
-                });
+                }, [duplicatedPort(this.portList)]);
             }
         }
     };
@@ -13784,6 +13796,7 @@ var StorageEntityFormComponent = /** @class */ (function () {
         ];
         request.name = this.form.value.name;
         request.serialNumber = this.form.value.serialNumber;
+        request.prefixReferenceId = this.form.value.prefixReferenceId;
         this.metricService.duplicateStorageEntity(request, this.data.id).subscribe(function (response) { return _this.success(response.storageEntity.id); });
     };
     StorageEntityFormComponent.ctorParameters = function () { return [
@@ -13838,7 +13851,16 @@ function duplicatedSerialNumber(systemList) {
 function duplicatedPort(portList) {
     return function (control) {
         var portName = control.value;
-        var foundSystem = portList.find(function (port) { return port.name === portName; });
+        var id = control.get('id').value;
+        var forceAsNew = control.get('forceAsNew').value;
+        var foundSystem = portList.find(function (port) {
+            if (forceAsNew) {
+                return port.name === portName;
+            }
+            else {
+                return port.name === portName && port.id !== id;
+            }
+        });
         return foundSystem ? { duplicatedPortName: { value: control.value } } : null;
     };
 }
@@ -13938,7 +13960,7 @@ var StorageLocationComponent = /** @class */ (function () {
             .withAltSortEnable(false)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
-            .withIndex('prefixReferenceId')
+            .withIndex('serialNumber')
             .withLabel('Physical Serial Number')
             .withComponent(_serial_number_formatter_serial_number_formatter_component__WEBPACK_IMPORTED_MODULE_6__["SerialNumberFormatterComponent"])
             .withAltSortEnable(false)
