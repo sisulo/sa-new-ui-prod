@@ -11514,6 +11514,7 @@ var MetricService = /** @class */ (function () {
         this.http = http;
         this.dataCenterObservable = null;
         this.currentDate = new Date();
+        this.DAY_IN_MILISECONDS = 24 * 60 * 60 * 1000;
         this.getDataCenters();
     }
     MetricService_1 = MetricService;
@@ -11710,8 +11711,8 @@ var MetricService = /** @class */ (function () {
         }
         return this.calculateDate(date, days);
     };
-    MetricService.prototype.calculateDate = function (date, minusDays) {
-        return date.getTime() - (minusDays * 24 * 60 * 60 * 1000);
+    MetricService.prototype.calculateDate = function (date, days) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime() - (days * this.DAY_IN_MILISECONDS);
     };
     MetricService.prototype.duplicateStorageEntity = function (request, id) {
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, "/v2/storage-entities/" + id + "/duplicate");
