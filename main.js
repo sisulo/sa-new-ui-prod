@@ -10822,6 +10822,14 @@ var ParityGroupEventsComponent = /** @class */ (function () {
             .withIsAggregated(false)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_7__["SystemMetricType"].HDD)
+            .withLabel('Utilization')
+            .withColumnTooltipText('Average/Peak value of the Parity Group utilization within event time interval')
+            .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_15__["UnitFormatterComponent"])
+            .withAltSortEnable(true)
+            .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex('date')
             .withLabel('Date')
             .withColumnTooltipText('Date of event when threshold was breached')
@@ -10835,14 +10843,6 @@ var ParityGroupEventsComponent = /** @class */ (function () {
             .withColumnTooltipText('Time interval when treshold was breached')
             .withComponent(_formatters_time_interval_formatter_time_interval_formatter_component__WEBPACK_IMPORTED_MODULE_13__["TimeIntervalFormatterComponent"])
             .withAltSortEnable(false)
-            .withIsAggregated(false)
-            .build());
-        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
-            .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_7__["SystemMetricType"].HDD)
-            .withLabel('Utilization')
-            .withColumnTooltipText('Average/Peak value of the Parity Group utilization within event time interval')
-            .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_15__["UnitFormatterComponent"])
-            .withAltSortEnable(true)
             .withIsAggregated(false)
             .build());
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
