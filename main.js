@@ -117,6 +117,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/confirm-window/confirm-window.component.html":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/common/confirm-window/confirm-window.component.html ***!
+  \***********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"open\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      </div>\n      <div class=\"modal-body\">\n        {{message}}\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-danger\"\n                (click)=\"changed.emit(true)\">Confirm\n        </button>\n        <button type=\"button\" class=\"btn btn-default pull-left\"\n                (click)=\"changed.emit(false)\">Cancel\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/breadcrumb/breadcrumb.component.html":
 /*!*******************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/breadcrumb/breadcrumb.component.html ***!
@@ -659,7 +672,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-sm-4 col-md-4 col-lg-4\">\n      <div class=\"box\" *ngIf=\"systemsList.length > 0\">\n        <div class=\"box-body\">\n          <label for=\"system\">System:</label>\n          <div class=\"row\">\n            <div class=\"col-md-8\">\n              <ng-select class=\"left\" id=\"system\"\n                         bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                         (change)=\"openSelectedSystem()\"\n                         [(ngModel)]=\"selectedSystem\"\n                         placeholder=\"Search...\">\n              </ng-select>\n            </div>\n            <div class=\"col-md-4\">\n              <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedSystem !== undefined\" (click)=\"openForm()\">\n                Duplicate system\n              </button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-5 col-md-3 col-lg-3\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">DKC</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-7 col-md-6 col-lg-6\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Controllers</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n\n    <div class=\"col-sm-12 col-md-9 col-lg-9\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Channel Boards</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"container-fluid\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <app-channel-board-list [data]=\"channelBoardList\"\n                                        [displayAddButton]=\"controllerList.length > 0\"\n                                        [parentsData]=\"controllerList\"\n                                        [importEnabled]=\"true\"\n                                        (importFinished)=\"loadData(true)\"></app-channel-board-list>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Ports</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"\n                         [importEnabled]=\"true\"\n                         (importFinished)=\"loadData(true)\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [systemList]=\"systemsList\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [portList]=\"portList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-sm-7 col-md-7 col-lg-7\">\n      <div class=\"box\" *ngIf=\"systemsList.length > 0\">\n        <div class=\"box-body\">\n          <label for=\"system\">System:</label>\n          <div class=\"row\">\n            <div class=\"col-md-7\">\n              <ng-select class=\"left\" id=\"system\"\n                         bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                         (change)=\"openSelectedSystem()\"\n                         [(ngModel)]=\"selectedSystem\"\n                         placeholder=\"Search...\">\n              </ng-select>\n            </div>\n            <div class=\"col-md-2\">\n              <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedSystem !== undefined\" (click)=\"openForm()\">\n                Duplicate system\n              </button>\n            </div>\n          </div>\n          <div class=\"row\" *ngIf=\"selectedSystem !== undefined\">\n            <div class=\"col-md-3\">\n              Display inactive<app-toggle-button (changed)=\"toggleStatus()\"></app-toggle-button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-5 col-md-3 col-lg-3\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">DKC</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-7 col-md-6 col-lg-6\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Controllers</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n\n    <div class=\"col-sm-12 col-md-9 col-lg-9\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Channel Boards</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"container-fluid\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <app-channel-board-list [data]=\"channelBoardList\"\n                                        [displayAddButton]=\"controllerList.length > 0\"\n                                        [parentsData]=\"controllerList\"\n                                        [importEnabled]=\"true\"\n                                        (importFinished)=\"loadData(true)\"></app-channel-board-list>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Ports</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"\n                         [importEnabled]=\"true\"\n                         (importFinished)=\"loadData(true)\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [systemList]=\"systemsList\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [portList]=\"portList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
 
 /***/ }),
 
@@ -711,7 +724,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit {{getStaticData(data.type).storageEntityLabel}}</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"parent !== null && data.type !== staticType.DATACENTER && !data.duplicateOperation\"\n                 [class.has-error]=\"parent.invalid && (parent.dirty || parent.touched || submitted)\">\n              <label for=\"parent\">{{getStaticData(data.type).parentNameLabel}}:</label>\n              <ng-select id=\"parent\" [items]=\"getStaticData(data.type).parents\"\n                         bindValue=\"id\" bindLabel=\"name\" formControlName=\"parent\">\n              </ng-select>\n              <span *ngIf=\"parent.invalid && (parent.dirty || parent.touched || submitted)\"\n\n                    class=\"help-block\">{{getStaticData(data.type).parentNameLabel}} must be chosen</span>\n            </div>\n            <div *ngIf=\"name !== null\" class=\"col-md-12 form-group\"\n                 [class.has-error]=\"(name.invalid && (name.dirty || name.touched || submitted)) || (form.invalid && form.errors !== null && form.errors.duplicatedPortName !== null) && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">{{getStaticData(data.type).storageEntityLabel}} Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\" id=\"name\">\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.required !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n              <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedPortName !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Duplicated port name</span>\n            </div>\n            <div *ngIf=\"data.type === staticType.SYSTEM\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div *ngIf=\"arrayModel !== null\" class=\"col-md-12 form-group\">\n                <label for=\"arrayModel\">Array Model: </label>\n                <input id=\"arrayModel\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div *ngIf=\"dkc !== null\" class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div *ngIf=\"room !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div *ngIf=\"rack !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div *ngIf=\"managementIp !== null\" class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div *ngIf=\"sortId !== null\" class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n            <div *ngIf=\"speed !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"speed.invalid && (speed.dirty || speed.touched || submitted)\">\n                <label for=\"speed\">Speed [Gbps]: </label>\n                <input id=\"speed\" class=\"form-control\" type=\"text\" formControlName=\"speed\">\n                <span *ngIf=\"speed.invalid && speed.errors.pattern !== null\" class=\"help-block\">Speed must be a number</span>\n              </div>\n            </div>\n            <div *ngIf=\"note !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"note.invalid && (note.dirty || note.touched || submitted)\">\n                <label for=\"note\">Description: </label>\n                <input id=\"note\" class=\"form-control\" type=\"text\" formControlName=\"note\">\n                <span *ngIf=\"note.invalid && note.errors.maxlength !== null\" class=\"help-block\">Description too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"cables !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"cables.invalid && (cables.dirty || cables.touched || submitted)\">\n                <label for=\"cables\">Cables: </label>\n                <input id=\"cables\" class=\"form-control\" type=\"text\" formControlName=\"cables\">\n                <span *ngIf=\"cables.invalid && cables.errors.maxlength !== null\" class=\"help-block\">Cables too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"switch !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"switch.invalid && (switch.dirty || switch.touched || submitted)\">\n                <label for=\"switch\">Switch: </label>\n                <input id=\"switch\" class=\"form-control\" type=\"text\" formControlName=\"switch\">\n                <span *ngIf=\"switch.invalid && switch.errors.maxlength !== null\" class=\"help-block\">Switch too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"slot !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"slot.invalid && (slot.dirty || slot.touched || submitted)\">\n                <label for=\"slot\">Slot/Port: </label>\n                <input id=\"slot\" class=\"form-control\" type=\"text\" formControlName=\"slot\">\n                <span *ngIf=\"slot.invalid && slot.errors.maxlength !== null\" class=\"help-block\">Slot too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"wwn !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"wwn.invalid && (wwn.dirty || wwn.touched || submitted)\">\n                <label for=\"wwn\">WWN: </label>\n                <input id=\"wwn\" class=\"form-control\" type=\"text\" formControlName=\"wwn\">\n                <span *ngIf=\"wwn.invalid && wwn.errors.maxlength !== null\" class=\"help-block\">WWN too long</span>\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button *ngIf=\"data.duplicateOperation\" [class.disabled]=\"data.id === undefined || form.invalid\" type=\"button\" class=\"btn btn-primary\"\n          (click)=\"form.valid ? duplicate(): submitted = true\">\n          Duplicate\n        </button>\n        <button *ngIf=\"!data.duplicateOperation && (data.id !== undefined || selectedRows.length > 0)\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow()\">Deactivate\n        </button>\n        <div class=\"btn-group\" *ngIf=\"!data.duplicateOperation\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save\n          </button>\n\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n<div *ngIf=\"confirmWindowDisplay\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      </div>\n      <div class=\"modal-body\">\n        Are you sure to deactivate {{data.name}} including <span class=\"text-danger\">ALL</span> its related entities?\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-danger\"\n                (click)=\"deactivate()\">Confirm\n        </button>\n        <button type=\"button\" class=\"btn btn-default pull-left\"\n                (click)=\"closeConfirmationWindow()\">Cancel\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"displayForm\" class=\"modal fade in\" id=\"modal-default\" style=\"display: block; padding-right: 15px;\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\" (click)=\"closeForm()\">&#735;</span></button>\n        <h4 class=\"modal-title\" *ngIf=\"data.type === staticType.SYSTEM\">Add / Edit {{getStaticData(data.type).storageEntityLabel}}</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div *ngIf=\"httpErrorDisplayed\" class=\"col-md-12 http-error-box\">\n          {{httpError}}\n        </div>\n        <form role=\"form\" [formGroup]=\"form\">\n          <div class=\"box-body\">\n            <div class=\"col-md-12 form-group\" *ngIf=\"parent !== null && data.type !== staticType.DATACENTER && !data.duplicateOperation\"\n                 [class.has-error]=\"parent.invalid && (parent.dirty || parent.touched || submitted)\">\n              <label for=\"parent\">{{getStaticData(data.type).parentNameLabel}}:</label>\n              <ng-select id=\"parent\" [items]=\"getStaticData(data.type).parents\"\n                         bindValue=\"id\" bindLabel=\"name\" formControlName=\"parent\">\n              </ng-select>\n              <span *ngIf=\"parent.invalid && (parent.dirty || parent.touched || submitted)\"\n\n                    class=\"help-block\">{{getStaticData(data.type).parentNameLabel}} must be chosen</span>\n            </div>\n            <div *ngIf=\"name !== null\" class=\"col-md-12 form-group\"\n                 [class.has-error]=\"(name.invalid && (name.dirty || name.touched || submitted)) || (form.invalid && form.errors !== null && form.errors.duplicatedPortName !== null) && (name.dirty || name.touched || submitted)\">\n              <label for=\"name\">{{getStaticData(data.type).storageEntityLabel}} Name: </label>\n              <input type=\"text\" class=\"form-control\" formControlName=\"name\" id=\"name\">\n              <span *ngIf=\"name.invalid && name.errors !== null && name.errors.required !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Name must be set</span>\n              <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedPortName !== undefined && (name.dirty || name.touched || submitted)\" class=\"help-block\">Duplicated port name</span>\n            </div>\n            <div *ngIf=\"data.type === staticType.SYSTEM\">\n\n              <div class=\"col-md-12 form-group\" *ngIf=\"data.type !== staticType.DATACENTER\"\n                   [class.has-error]=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null && (serial.dirty || serial.touched || submitted)\"\n              >\n                <div class=\"\">\n                  <label for=\"serial\">Physical Serial Number: </label>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"prefix\" class=\"form-control\" type=\"text\" formControlName=\"prefixReferenceId\"/>\n                </div>\n                <div class=\"col-md-3\">\n                  <input id=\"serial\" class=\"form-control\" type=\"text\" formControlName=\"serialNumber\"\n                         name=\"serialNumber\"/>\n                </div>\n                <div class=\"col-md-12\">\n                  <span *ngIf=\"form.invalid && form.errors !== null && form.errors.duplicatedSerialNumber !== null\" class=\"help-block\">Same serial number is already used</span>\n                </div>\n              </div>\n              <div *ngIf=\"arrayModel !== null\" class=\"col-md-12 form-group\">\n                <label for=\"arrayModel\">Array Model: </label>\n                <input id=\"arrayModel\" class=\"form-control\" type=\"text\" formControlName=\"arrayModel\">\n              </div>\n              <div *ngIf=\"dkc !== null\" class=\"col-md-12 form-group\">\n                <label for=\"dkc\">Virtual DKCs: </label>\n                <input id=\"dkc\" class=\"form-control\" type=\"text\" formControlName=\"dkc\">\n              </div>\n              <div *ngIf=\"room !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"room.invalid && (room.dirty || room.touched || submitted)\">\n                <label for=\"room\">Room: </label>\n                <input id=\"room\" class=\"form-control\" type=\"text\" formControlName=\"room\">\n                <span *ngIf=\"room.invalid && room.errors.maxlength !== null\" class=\"help-block\">Length must be less than 32 characters</span>\n              </div>\n              <div *ngIf=\"rack !== null\" class=\"col-md-12 form-group\"\n                   [class.has-error]=\"rack.invalid && (rack.dirty || rack.touched || submitted)\">\n                <label for=\"rack\">Rack: </label>\n                <input id=\"rack\" class=\"form-control\" type=\"text\" formControlName=\"rack\">\n              </div>\n              <div *ngIf=\"managementIp !== null\" class=\"col-md-12 form-group\">\n                <label for=\"managementIp\">Management IP: </label>\n                <input id=\"managementIp\" class=\"form-control\" type=\"text\" formControlName=\"managementIp\">\n              </div>\n              <div *ngIf=\"sortId !== null\" class=\"col-md-12 form-group\">\n                <label for=\"sortId\">Sort ID: </label>\n                <input id=\"sortId\" class=\"form-control\" type=\"text\" formControlName=\"sortId\">\n              </div>\n            </div>\n            <div *ngIf=\"speed !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"speed.invalid && (speed.dirty || speed.touched || submitted)\">\n                <label for=\"speed\">Speed [Gbps]: </label>\n                <input id=\"speed\" class=\"form-control\" type=\"text\" formControlName=\"speed\">\n                <span *ngIf=\"speed.invalid && speed.errors.pattern !== null\" class=\"help-block\">Speed must be a number</span>\n              </div>\n            </div>\n            <div *ngIf=\"note !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"note.invalid && (note.dirty || note.touched || submitted)\">\n                <label for=\"note\">Description: </label>\n                <input id=\"note\" class=\"form-control\" type=\"text\" formControlName=\"note\">\n                <span *ngIf=\"note.invalid && note.errors.maxlength !== null\" class=\"help-block\">Description too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"cables !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"cables.invalid && (cables.dirty || cables.touched || submitted)\">\n                <label for=\"cables\">Cables: </label>\n                <input id=\"cables\" class=\"form-control\" type=\"text\" formControlName=\"cables\">\n                <span *ngIf=\"cables.invalid && cables.errors.maxlength !== null\" class=\"help-block\">Cables too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"switch !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"switch.invalid && (switch.dirty || switch.touched || submitted)\">\n                <label for=\"switch\">Switch: </label>\n                <input id=\"switch\" class=\"form-control\" type=\"text\" formControlName=\"switch\">\n                <span *ngIf=\"switch.invalid && switch.errors.maxlength !== null\" class=\"help-block\">Switch too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"slot !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"slot.invalid && (slot.dirty || slot.touched || submitted)\">\n                <label for=\"slot\">Slot/Port: </label>\n                <input id=\"slot\" class=\"form-control\" type=\"text\" formControlName=\"slot\">\n                <span *ngIf=\"slot.invalid && slot.errors.maxlength !== null\" class=\"help-block\">Slot too long</span>\n              </div>\n            </div>\n            <div *ngIf=\"wwn !== null\">\n              <div class=\"col-md-12 form-group\"\n                   [class.has-error]=\"wwn.invalid && (wwn.dirty || wwn.touched || submitted)\">\n                <label for=\"wwn\">WWN: </label>\n                <input id=\"wwn\" class=\"form-control\" type=\"text\" formControlName=\"wwn\">\n                <span *ngIf=\"wwn.invalid && wwn.errors.maxlength !== null\" class=\"help-block\">WWN too long</span>\n              </div>\n            </div>\n          </div>\n          <!--           /.box-body -->\n        </form>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default pull-left\" (click)=\"closeForm()\">Close</button>\n        <button *ngIf=\"data.duplicateOperation\" [class.disabled]=\"data.id === undefined || form.invalid\" type=\"button\" class=\"btn btn-primary\"\n          (click)=\"form.valid ? duplicate(): submitted = true\">\n          Duplicate\n        </button>\n        <button *ngIf=\"!data.duplicateOperation && (data.id !== undefined || selectedRows.length > 0)\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow(\n                {message: 'Are you sure to change status \\'' + data.name + '\\', including ALL its related entities?', action: deactivate}\n                )\">{{getStatusButtonLabel()}}\n        </button>\n        <button *ngIf=\"!data.duplicateOperation && (data.id !== undefined || selectedRows.length > 0)\" type=\"button\" class=\"btn btn-danger\"\n                (click)=\"confirmDisplayWindow(\n                {message: 'Are you sure to delete \\'' + data.name + '\\', including ALL its related entities and data?', action: delete}\n                )\">Delete\n        </button>\n        <div class=\"btn-group\" *ngIf=\"!data.duplicateOperation\">\n          <button [class.disabled]=\"form.invalid\" type=\"button\" class=\"btn btn-primary\"\n                  (click)=\"form.valid ? saveChanges() : submitted = true\">Save\n          </button>\n\n          <button type=\"button\" [class.disabled]=\"form.invalid\" class=\"btn btn-primary dropdown-toggle\"\n                  data-toggle=\"dropdown\" aria-expanded=\"true\">\n            <span class=\"caret\"></span>\n            <span class=\"sr-only\">Toggle Dropdown</span>\n          </button>\n          <ul class=\"dropdown-menu\" role=\"menu\">\n            <li><a (click)=\"form.valid ? saveChanges(true) : submitted = true\">Save as new</a></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    <!-- /.modal-content -->\n  </div>\n  <!-- /.modal-dialog -->\n</div>\n<app-confirm-window [message]=\"confirmWindowMessage\" [open]=\"confirmWindowDisplay\" (changed)=\"confirmWindowAction($event)\"></app-confirm-window>\n<!--<div *ngIf=\"confirmWindowDisplay\" class=\"modal fade in\" id=\"modal-confirm\" style=\"display: block; padding-right: 15px;\">-->\n<!--  <div class=\"modal-dialog\">-->\n<!--    <div class=\"modal-content\">-->\n<!--      <div class=\"modal-header\">-->\n<!--      </div>-->\n<!--      <div class=\"modal-body\">-->\n<!--        Are you sure to change status of {{data.name}}, including <span class=\"text-danger\">ALL</span> its related entities?-->\n<!--      </div>-->\n<!--      <div class=\"modal-footer\">-->\n<!--        <button type=\"button\" class=\"btn btn-danger\"-->\n<!--                (click)=\"deactivate()\">Confirm-->\n<!--        </button>-->\n<!--        <button type=\"button\" class=\"btn btn-default pull-left\"-->\n<!--                (click)=\"closeConfirmationWindow()\">Cancel-->\n<!--        </button>-->\n<!--      </div>-->\n<!--    </div>-->\n<!--  </div>-->\n<!--</div>-->\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.html":
+/*!****************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.html ***!
+  \****************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"open-form col-md-12\" (click)=\"openForm()\">\n  <div *ngIf=\"data != null && data != undefined\" class=\"metric-value\">\n    <span *ngIf=\"isActive()\" class=\"text-green\"><i class=\"fa fa-check-circle\"></i></span>\n    <span *ngIf=\"!isActive()\" class=\"text-danger\"><i class=\"fa fa-times-circle\"></i></span>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -724,7 +750,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                         [systemList]=\"systemList\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Options</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          Display inactive<app-toggle-button (changed)=\"toggleStatus()\"></app-toggle-button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                         [systemList]=\"systemList\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
 
 /***/ }),
 
@@ -3559,6 +3585,111 @@ var SmallBoxComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/common/components/toggle-button/toggle-button.component.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/common/components/toggle-button/toggle-button.component.ts ***!
+  \****************************************************************************/
+/*! exports provided: ToggleButtonComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToggleButtonComponent", function() { return ToggleButtonComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var ToggleButtonComponent = /** @class */ (function () {
+    function ToggleButtonComponent() {
+        this.changed = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    ToggleButtonComponent.propDecorators = {
+        changed: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
+    };
+    ToggleButtonComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-toggle-button',
+            template: "\n    <label class=\"switch\">\n      <input type=\"checkbox\" (change)=\"changed.emit($event.target.checked)\"/>\n      <span class=\"slider\"></span>\n    </label>\n  ",
+            styles: ["\n    /* Basic Rules */\n    .switch input {\n      display:none;\n    }\n    .switch {\n      display:inline-block;\n      width:50px;\n      height:20px;\n      margin:8px;\n      transform:translateY(50%);\n      position:relative;\n    }\n    /* Style Wired */\n    .slider {\n      position:absolute;\n      top:0;\n      bottom:0;\n      left:0;\n      right:0;\n      border-radius:30px;\n      box-shadow:0 0 0 2px #777, 0 0 4px #777;\n      cursor:pointer;\n      border:4px solid transparent;\n      overflow:hidden;\n      transition:.4s;\n    }\n    .slider:before {\n      position:absolute;\n      content:\"\";\n      width:100%;\n      height:100%;\n      background:#777;\n      border-radius:30px;\n      transform:translateX(-30px);\n      /*transition:.4s;*/\n    }\n\n    input:checked + .slider:before {\n      transform:translateX(30px);\n      background:limeGreen;\n    }\n    input:checked + .slider {\n      box-shadow:0 0 0 2px limeGreen,0 0 2px limeGreen;\n    }\n\n    /* Style Flat */\n    .switch.flat .slider {\n      box-shadow:none;\n    }\n    .switch.flat .slider:before {\n      background:#FFF;\n    }\n    .switch.flat input:checked + .slider:before {\n      background:white;\n    }\n    .switch.flat input:checked + .slider {\n      background:limeGreen;\n    }\n  "]
+        })
+    ], ToggleButtonComponent);
+    return ToggleButtonComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/confirm-window/confirm-window.component.css":
+/*!********************************************************************!*\
+  !*** ./src/app/common/confirm-window/confirm-window.component.css ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbW1vbi9jb25maXJtLXdpbmRvdy9jb25maXJtLXdpbmRvdy5jb21wb25lbnQuY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/common/confirm-window/confirm-window.component.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/common/confirm-window/confirm-window.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: ConfirmWindowComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmWindowComponent", function() { return ConfirmWindowComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+var ConfirmWindowComponent = /** @class */ (function () {
+    function ConfirmWindowComponent() {
+        this.message = 'Are you sure?';
+        this.open = true;
+        this.changed = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    ConfirmWindowComponent.prototype.ngOnInit = function () {
+    };
+    ConfirmWindowComponent.ctorParameters = function () { return []; };
+    ConfirmWindowComponent.propDecorators = {
+        message: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        open: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        changed: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
+    };
+    ConfirmWindowComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-confirm-window',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./confirm-window.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common/confirm-window/confirm-window.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./confirm-window.component.css */ "./src/app/common/confirm-window/confirm-window.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ConfirmWindowComponent);
+    return ConfirmWindowComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/common/models/datacenter.vo.ts":
 /*!************************************************!*\
   !*** ./src/app/common/models/datacenter.vo.ts ***!
@@ -4046,12 +4177,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./storage-convert.pipe */ "./src/app/common/storage-convert.pipe.ts");
 /* harmony import */ var _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/info-box/alert-info-box.component */ "./src/app/common/components/info-box/alert-info-box.component.ts");
 /* harmony import */ var _components_sasi_table_column_column_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/sasi-table/column/column.component */ "./src/app/common/components/sasi-table/column/column.component.ts");
+/* harmony import */ var _components_toggle_button_toggle_button_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/toggle-button/toggle-button.component */ "./src/app/common/components/toggle-button/toggle-button.component.ts");
+/* harmony import */ var _confirm_window_confirm_window_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./confirm-window/confirm-window.component */ "./src/app/common/confirm-window/confirm-window.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -4101,7 +4236,9 @@ var SaCommonModule = /** @class */ (function () {
                 _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_20__["RouteLinkFormatterComponent"],
                 _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_21__["StorageConvertPipe"],
                 _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_22__["AlertInfoBoxComponent"],
-                _components_sasi_table_column_column_component__WEBPACK_IMPORTED_MODULE_23__["ColumnComponent"]
+                _components_sasi_table_column_column_component__WEBPACK_IMPORTED_MODULE_23__["ColumnComponent"],
+                _components_toggle_button_toggle_button_component__WEBPACK_IMPORTED_MODULE_24__["ToggleButtonComponent"],
+                _confirm_window_confirm_window_component__WEBPACK_IMPORTED_MODULE_25__["ConfirmWindowComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
@@ -4122,6 +4259,8 @@ var SaCommonModule = /** @class */ (function () {
                 _components_route_link_formatter_route_link_formatter_component__WEBPACK_IMPORTED_MODULE_20__["RouteLinkFormatterComponent"],
                 _storage_convert_pipe__WEBPACK_IMPORTED_MODULE_21__["StorageConvertPipe"],
                 _components_info_box_alert_info_box_component__WEBPACK_IMPORTED_MODULE_22__["AlertInfoBoxComponent"],
+                _components_toggle_button_toggle_button_component__WEBPACK_IMPORTED_MODULE_24__["ToggleButtonComponent"],
+                _confirm_window_confirm_window_component__WEBPACK_IMPORTED_MODULE_25__["ConfirmWindowComponent"],
             ],
             entryComponents: [
                 _components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_10__["RowTableComponent"],
@@ -11489,6 +11628,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 /* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
+/* harmony import */ var _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./common/models/dtos/enums/component.status */ "./src/app/common/models/dtos/enums/component.status.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11498,6 +11638,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -11626,11 +11767,12 @@ var MetricService = /** @class */ (function () {
         var headersParams = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' });
         return this.http.post(url, request, { headers: headersParams });
     };
-    MetricService.prototype.getSystemsDetail = function (entityType, id) {
+    MetricService.prototype.getStorageEntityDetail = function (entityType, id, paramStatus) {
         if (entityType === void 0) { entityType = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityType"].SYSTEM; }
         if (id === void 0) { id = null; }
+        if (paramStatus === void 0) { paramStatus = [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_5__["ComponentStatus"].ACTIVE]; }
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, '/v2/storage-entities');
-        var callParams = { type: entityType };
+        var callParams = { type: _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityType"][entityType], status: paramStatus.map(function (statusItem) { return _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_5__["ComponentStatus"][statusItem]; }) };
         if (id !== null) {
             callParams.systemId = id.toString();
         }
@@ -11717,6 +11859,10 @@ var MetricService = /** @class */ (function () {
     MetricService.prototype.duplicateStorageEntity = function (request, id) {
         var url = this.buildUrl(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl, "/v2/storage-entities/" + id + "/duplicate");
         return this.http.post(url, request);
+    };
+    MetricService.prototype.delete = function (id) {
+        var url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].metricsBaseUrl + ("/v2/storage-entities/" + id);
+        return this.http.delete(url);
     };
     var MetricService_1;
     MetricService.ctorParameters = function () { return [
@@ -11817,6 +11963,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
 /* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
 /* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
+/* harmony import */ var _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../storage-entity-status/storage-entity-status.component */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11842,6 +11989,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -11930,6 +12078,12 @@ var ChannelBoardListComponent = /** @class */ (function (_super) {
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('status')
+            .withLabel('Active')
+            .withComponent(_storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_10__["StorageEntityStatusComponent"])
+            .withAltSortEnable(false)
+            .build());
         this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__["RowTableComponent"];
         // this.options.grIndexComponentFormatter = SpeedFormatterComponent;
         this.options.isDataGrouped = false;
@@ -11980,6 +12134,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
 /* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
 /* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
+/* harmony import */ var _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../storage-entity-status/storage-entity-status.component */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12014,6 +12169,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var ControllerListComponent = /** @class */ (function (_super) {
     __extends(ControllerListComponent, _super);
     function ControllerListComponent(metricService, formBus) {
@@ -12036,6 +12192,12 @@ var ControllerListComponent = /** @class */ (function (_super) {
             .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiColumnBuilder"].getInstance()
+            .withIndex('status')
+            .withLabel('Active')
+            .withComponent(_storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_9__["StorageEntityStatusComponent"])
+            .withAltSortEnable(false)
             .build());
         // this.options.colControlFormatter = AlertFormatterComponent;
         this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__["RowTableComponent"];
@@ -12086,6 +12248,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/components/sasi-table/row-table/row-table.component */ "./src/app/common/components/sasi-table/row-table/row-table.component.ts");
 /* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
 /* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
+/* harmony import */ var _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../storage-entity-status/storage-entity-status.component */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12120,6 +12283,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var DkcListComponent = /** @class */ (function (_super) {
     __extends(DkcListComponent, _super);
     function DkcListComponent(metricService, formBus) {
@@ -12136,12 +12300,17 @@ var DkcListComponent = /** @class */ (function (_super) {
             .withAltSortEnable(false)
             .withIsAggregated(false)
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('status')
+            .withLabel('Active')
+            .withComponent(_storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_9__["StorageEntityStatusComponent"])
+            .withAltSortEnable(false)
+            .build());
         this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__["RowTableComponent"];
         this.options.isDataGrouped = false;
         this.options.highlightRow = true;
         this.options.highlightColumn = false;
         this.options.sortService = new _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__["SimpleSortImpl"]();
-        this.options.nameColumnSize = '';
         this.options.sortColumnNames = ['name'];
     };
     DkcListComponent.ctorParameters = function () { return [
@@ -12353,7 +12522,7 @@ var ImportCsvDataComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9wb3J0LWNvbm5lY3Rpdml0eS9wb3J0LWNvbm5lY3Rpdml0eS5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".btn.filter-btn {\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3BvcnQtY29ubmVjdGl2aXR5L3BvcnQtY29ubmVjdGl2aXR5LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3BvcnQtY29ubmVjdGl2aXR5L3BvcnQtY29ubmVjdGl2aXR5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYnRuLmZpbHRlci1idG4ge1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -12376,6 +12545,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
 /* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
 /* harmony import */ var _common_components_sasi_table_on_select_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../common/components/sasi-table/on-select.service */ "./src/app/common/components/sasi-table/on-select.service.ts");
+/* harmony import */ var _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../common/models/dtos/enums/component.status */ "./src/app/common/models/dtos/enums/component.status.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12388,6 +12558,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -12410,6 +12581,7 @@ var PortConnectivityComponent = /** @class */ (function () {
         this.channelBoardList = [];
         this.portList = [];
         this.typeEnum = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"];
+        this.statusStorageEntities = [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_9__["ComponentStatus"].ACTIVE];
     }
     PortConnectivityComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -12443,24 +12615,24 @@ var PortConnectivityComponent = /** @class */ (function () {
     PortConnectivityComponent.prototype.loadData = function (force) {
         var _this = this;
         if (force === void 0) { force = true; }
-        this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].SYSTEM, null)
+        this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].SYSTEM, null, [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_9__["ComponentStatus"].ACTIVE])
             .subscribe(function (data) { return _this.systemsList = data.sort(function (a, b) { return _this.compare(a, b); }); });
         if (this.selectedSystem != null) {
-            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].DKC, this.selectedSystem)
+            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].DKC, this.selectedSystem, this.statusStorageEntities)
                 .subscribe(function (data) { return _this.dkcList = data; });
-            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CONTROLLER, this.selectedSystem)
+            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CONTROLLER, this.selectedSystem, this.statusStorageEntities)
                 .subscribe(function (data) { return _this.controllerList = data; });
-            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CHANNEL_BOARD, this.selectedSystem)
+            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].CHANNEL_BOARD, this.selectedSystem, this.statusStorageEntities)
                 .subscribe(function (data) { return _this.channelBoardList = data; });
-            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].PORT, this.selectedSystem)
+            this.fetchStorageEntities(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"].PORT, this.selectedSystem, this.statusStorageEntities)
                 .subscribe(function (data) { return _this.portList = data; });
             this.selectedSasiRows.announceSelect([]);
         }
     };
-    PortConnectivityComponent.prototype.fetchStorageEntities = function (type, systemId) {
+    PortConnectivityComponent.prototype.fetchStorageEntities = function (type, systemId, status) {
         var _this = this;
         return new rxjs__WEBPACK_IMPORTED_MODULE_4__["Observable"](function (subscriber) {
-            return _this.metricService.getSystemsDetail(type, systemId)
+            return _this.metricService.getStorageEntityDetail(type, systemId, status)
                 .subscribe(function (data) {
                 if (data.length > 0) {
                     subscriber.next(_utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_3__["ExtractStorageEntityUtils"].extractByType(data, type));
@@ -12487,6 +12659,13 @@ var PortConnectivityComponent = /** @class */ (function () {
     };
     PortConnectivityComponent.prototype.getValue = function (a) {
         return a.detail != null ? a.detail.sortId : null;
+    };
+    PortConnectivityComponent.prototype.toggleStatus = function () {
+        this.statusStorageEntities = this.isActiveStorageEntities() ? [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_9__["ComponentStatus"].ACTIVE] : [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_9__["ComponentStatus"].ACTIVE, _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_9__["ComponentStatus"].INACTIVE];
+        this.loadData();
+    };
+    PortConnectivityComponent.prototype.isActiveStorageEntities = function () {
+        return this.statusStorageEntities.some(function (status) { return status === _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_9__["ComponentStatus"].INACTIVE; });
     };
     PortConnectivityComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] },
@@ -12534,6 +12713,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_simple_sort_impl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/components/sasi-table/simple-sort-impl */ "./src/app/common/components/sasi-table/simple-sort-impl.ts");
 /* harmony import */ var _channel_board_list_channel_board_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../channel-board-list/channel-board-list.component */ "./src/app/storage-configuration/channel-board-list/channel-board-list.component.ts");
 /* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
+/* harmony import */ var _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../storage-entity-status/storage-entity-status.component */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12559,6 +12739,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -12640,6 +12821,12 @@ var PortListComponent = /** @class */ (function (_super) {
             .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
             .withAltSortEnable(false)
             .withIsAggregated(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('status')
+            .withLabel('Active')
+            .withComponent(_storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_10__["StorageEntityStatusComponent"])
+            .withAltSortEnable(false)
             .build());
         this.options.rowComponentFormatter = _common_components_sasi_table_row_table_row_table_component__WEBPACK_IMPORTED_MODULE_6__["RowTableComponent"];
         // this.options.grIndexComponentFormatter = SpeedFormatterComponent;
@@ -12845,8 +13032,6 @@ var SerialNumberFormatterComponent = /** @class */ (function () {
         this.formBus = formBus;
     }
     SerialNumberFormatterComponent.prototype.ngOnInit = function () {
-        console.log(this.data);
-        console.log(this.rowData);
     };
     SerialNumberFormatterComponent.prototype.openForm = function () {
         var formData = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_4__["StorageEntityVo"]();
@@ -13113,12 +13298,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _storage_entity_2_sasi_table_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./storage-entity-2-sasi-table/storage-entity-detail-2-sasi-table.pipe */ "./src/app/storage-configuration/storage-entity-2-sasi-table/storage-entity-detail-2-sasi-table.pipe.ts");
 /* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
 /* harmony import */ var _import_csv_data_import_csv_data_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./import-csv-data/import-csv-data.component */ "./src/app/storage-configuration/import-csv-data/import-csv-data.component.ts");
+/* harmony import */ var _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./storage-entity-status/storage-entity-status.component */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -13158,7 +13345,8 @@ var StorageConfigurationModule = /** @class */ (function () {
                 _port_list_port_list_component__WEBPACK_IMPORTED_MODULE_16__["PortListComponent"],
                 _storage_entity_2_sasi_table_storage_entity_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_17__["StorageEntity2SasiGroupTablePipe"],
                 _storage_entity_2_sasi_table_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_18__["StorageEntityDetail2SasiTablePipe"],
-                _import_csv_data_import_csv_data_component__WEBPACK_IMPORTED_MODULE_20__["ImportCsvDataComponent"]
+                _import_csv_data_import_csv_data_component__WEBPACK_IMPORTED_MODULE_20__["ImportCsvDataComponent"],
+                _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_21__["StorageEntityStatusComponent"]
             ],
             entryComponents: [
                 _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SeTextFormatterComponent"],
@@ -13276,7 +13464,6 @@ var StorageEntityDetail2SasiTablePipe = /** @class */ (function () {
     function StorageEntityDetail2SasiTablePipe() {
     }
     StorageEntityDetail2SasiTablePipe.prototype.transform = function (systems, parent, parentsData) {
-        var _this = this;
         if (parentsData === void 0) { parentsData = []; }
         return systems.map(function (system) {
             var row = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiRow"]();
@@ -13285,7 +13472,7 @@ var StorageEntityDetail2SasiTablePipe = /** @class */ (function () {
             var type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_2__["StorageEntityType"][system.type];
             row.cells['type'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](type, { value: type });
             var parentId = parent !== null ? parent.id : system.parentId;
-            var parentName = parent != null ? parent.name : _this.getParentName(parentId, parentsData);
+            var parentName = parent != null ? parent.name : system.parent.name;
             row.cells['parentId'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](parentId, { value: parentId });
             row.cells['parentName'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](parentName, { value: parentName });
             row.cells['status'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_3__["ComponentStatus"][system.status], { value: _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_3__["ComponentStatus"][system.status] });
@@ -13762,26 +13949,42 @@ var StorageEntityFormComponent = /** @class */ (function () {
         }
         this.dataSaved.emit(true);
     };
-    StorageEntityFormComponent.prototype.deactivate = function () {
+    StorageEntityFormComponent.prototype.deactivate = function (confirmed) {
         var _this = this;
         this.confirmWindowDisplay = false;
-        if (this.data.id !== undefined) {
+        if (this.data.id !== undefined && confirmed) {
             var newStatus = this.data.status === _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].ACTIVE ? _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].INACTIVE : _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].ACTIVE;
             var dto = new _common_models_dtos_change_status_request_dto__WEBPACK_IMPORTED_MODULE_7__["ChangeStatusRequestDto"](_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"][newStatus]);
             this.metricService.updateStatus(this.data.id, dto).subscribe(function () { return _this.success(); });
         }
-        if (this.selectedRows.length > 0) {
+        if (this.selectedRows.length > 0 && confirmed) {
             var dto_1 = new _common_models_dtos_change_status_request_dto__WEBPACK_IMPORTED_MODULE_7__["ChangeStatusRequestDto"](_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"][_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].INACTIVE]);
             this.selectedRows.forEach(function (owner) {
                 _this.metricService.updateStatus(owner.id, dto_1).subscribe(function () { return _this.success(); });
             });
         }
     };
-    StorageEntityFormComponent.prototype.confirmDisplayWindow = function () {
+    StorageEntityFormComponent.prototype.delete = function (confirmed) {
+        var _this = this;
+        this.confirmWindowDisplay = false;
+        if (this.data.id !== undefined && confirmed) {
+            this.metricService.delete(this.data.id).subscribe(function () { return _this.success(); });
+        }
+        if (this.selectedRows.length > 0 && confirmed) {
+            this.selectedRows.forEach(function (owner) {
+                _this.metricService.delete(owner.id).subscribe(function () { return _this.success(); });
+            });
+        }
+    };
+    StorageEntityFormComponent.prototype.confirmDisplayWindow = function (windowData) {
+        this.confirmWindowMessage = windowData.message;
+        this.confirmWindowAction = windowData.action;
         this.confirmWindowDisplay = true;
     };
     StorageEntityFormComponent.prototype.closeConfirmationWindow = function () {
         this.confirmWindowDisplay = false;
+        this.confirmWindowMessage = '';
+        this.confirmWindowAction = null;
     };
     StorageEntityFormComponent.prototype.getStaticData = function (type) {
         return this.staticData[type];
@@ -13799,6 +14002,9 @@ var StorageEntityFormComponent = /** @class */ (function () {
         request.serialNumber = this.form.value.serialNumber;
         request.prefixReferenceId = this.form.value.prefixReferenceId;
         this.metricService.duplicateStorageEntity(request, this.data.id).subscribe(function (response) { return _this.success(response.storageEntity.id); });
+    };
+    StorageEntityFormComponent.prototype.getStatusButtonLabel = function () {
+        return this.data.status === _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_8__["ComponentStatus"].INACTIVE ? 'Activate' : 'Deactivate';
     };
     StorageEntityFormComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_2__["MetricService"] },
@@ -13836,7 +14042,6 @@ function duplicatedSerialNumber(systemList) {
         var id = control.get('id').value;
         var prefix = control.get('prefixReferenceId').value;
         var forceAsNew = control.get('forceAsNew').value;
-        console.log(systemList);
         var foundSystem = systemList.find(function (system) {
             if (forceAsNew) {
                 return system.detail !== undefined && system.serialNumber === serialNumber && system.detail.prefixReferenceId === prefix;
@@ -13861,10 +14066,111 @@ function duplicatedPort(portList) {
                 return port.name === portName && port.id !== id;
             }
         });
-        console.log(foundSystem);
         return foundSystem ? { duplicatedPortName: { value: portName } } : null;
     };
 }
+
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.css":
+/*!*************************************************************************************************!*\
+  !*** ./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.css ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".open-form {\n  min-height:15px;\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtZW50aXR5LXN0YXR1cy9zdG9yYWdlLWVudGl0eS1zdGF0dXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7RUFDZixlQUFlO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtZW50aXR5LXN0YXR1cy9zdG9yYWdlLWVudGl0eS1zdGF0dXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5vcGVuLWZvcm0ge1xuICBtaW4taGVpZ2h0OjE1cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cbiJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts":
+/*!************************************************************************************************!*\
+  !*** ./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts ***!
+  \************************************************************************************************/
+/*! exports provided: StorageEntityStatusComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageEntityStatusComponent", function() { return StorageEntityStatusComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
+/* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _form_bus_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../form-bus.service */ "./src/app/storage-configuration/form-bus.service.ts");
+/* harmony import */ var _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../storage-entity-form/storage-entity-form.component */ "./src/app/storage-configuration/storage-entity-form/storage-entity-form.component.ts");
+/* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+
+
+
+var StorageEntityStatusComponent = /** @class */ (function () {
+    function StorageEntityStatusComponent(formBus) {
+        this.formBus = formBus;
+    }
+    StorageEntityStatusComponent.prototype.ngOnInit = function () {
+    };
+    StorageEntityStatusComponent.prototype.openForm = function () {
+        var formData = new _storage_entity_form_storage_entity_form_component__WEBPACK_IMPORTED_MODULE_4__["StorageEntityVo"]();
+        formData.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__["StorageEntityType"].SYSTEM;
+        formData.status = this.getCellValue('status');
+        formData.serialNumber = this.getCellValue('serialNumber');
+        formData.parentId = this.getCellValue('parentId');
+        formData.prefixReferenceId = this.getCellValue('prefixReferenceId');
+        formData.name = this.getCellValue('name');
+        formData.id = this.getCellValue('id');
+        formData.dkc = this.getCellValue('dkc');
+        formData.room = this.getCellValue('room');
+        formData.rack = this.getCellValue('rack');
+        formData.arrayModel = this.getCellValue('arrayModel');
+        formData.managementIp = this.getCellValue('managementIp');
+        this.formBus.sendFormData({ data: formData, selectedData: [] });
+    };
+    StorageEntityStatusComponent.prototype.isActive = function () {
+        return this.getCellValue('status') === 1;
+    };
+    StorageEntityStatusComponent.prototype.getCellValue = function (valueName) {
+        if (this.rowData.cells[valueName] !== undefined) {
+            return this.rowData.cells[valueName].value;
+        }
+        return null;
+    };
+    StorageEntityStatusComponent.ctorParameters = function () { return [
+        { type: _form_bus_service__WEBPACK_IMPORTED_MODULE_3__["FormBusService"] }
+    ]; };
+    StorageEntityStatusComponent.propDecorators = {
+        label: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        data: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        column: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        rowData: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+    };
+    StorageEntityStatusComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-storage-entity-status',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./storage-entity-status.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./storage-entity-status.component.css */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [_form_bus_service__WEBPACK_IMPORTED_MODULE_3__["FormBusService"]])
+    ], StorageEntityStatusComponent);
+    return StorageEntityStatusComponent;
+}());
+
 
 
 /***/ }),
@@ -13878,7 +14184,7 @@ function duplicatedPort(portList) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .metric-value {\n  font-size: 1.1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtbG9jYXRpb24vc3RvcmFnZS1sb2NhdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0FBQ25CIiwiZmlsZSI6InNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtbG9jYXRpb24vc3RvcmFnZS1sb2NhdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (":host /deep/ .metric-value {\n  font-size: 1.1rem;\n}\n.btn.filter-btn {\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtbG9jYXRpb24vc3RvcmFnZS1sb2NhdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0FBQ25CO0FBQ0E7RUFDRSxlQUFlO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvc3RvcmFnZS1jb25maWd1cmF0aW9uL3N0b3JhZ2UtbG9jYXRpb24vc3RvcmFnZS1sb2NhdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3QgL2RlZXAvIC5tZXRyaWMtdmFsdWUge1xuICBmb250LXNpemU6IDEuMXJlbTtcbn1cbi5idG4uZmlsdGVyLWJ0biB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cbiJdfQ== */");
 
 /***/ }),
 
@@ -13905,6 +14211,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_components_sasi_table_group_sort_impl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../common/components/sasi-table/group-sort-impl */ "./src/app/common/components/sasi-table/group-sort-impl.ts");
 /* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
 /* harmony import */ var _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/extract-storage-entity.utils */ "./src/app/storage-configuration/utils/extract-storage-entity.utils.ts");
+/* harmony import */ var _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../common/models/dtos/enums/component.status */ "./src/app/common/models/dtos/enums/component.status.ts");
+/* harmony import */ var _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../storage-entity-status/storage-entity-status.component */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13917,6 +14225,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
+
 
 
 
@@ -13944,6 +14254,7 @@ var StorageLocationComponent = /** @class */ (function () {
         this.datacenterList = [];
         this.systemList = [];
         this.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"];
+        this.storageEntityStatuses = [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_12__["ComponentStatus"].ACTIVE];
     }
     StorageLocationComponent.prototype.ngOnInit = function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
@@ -13996,6 +14307,12 @@ var StorageLocationComponent = /** @class */ (function () {
             .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
             .withAltSortEnable(false)
             .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('status')
+            .withLabel('Active')
+            .withComponent(_storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_13__["StorageEntityStatusComponent"])
+            .withAltSortEnable(false)
+            .build());
         this.options.colControlFormatter = _global_statistics_formatters_alert_formatter_alert_formatter_component__WEBPACK_IMPORTED_MODULE_3__["AlertFormatterComponent"];
         this.options.rowComponentFormatter = _common_components_sasi_table_row_group_table_row_group_table_component__WEBPACK_IMPORTED_MODULE_4__["RowGroupTableComponent"];
         this.options.grIndexComponentFormatter = _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"];
@@ -14017,16 +14334,28 @@ var StorageLocationComponent = /** @class */ (function () {
         data.type = type;
         this.formBus.sendFormData({ data: data, selectedData: [] });
     };
+    StorageLocationComponent.prototype.toggleStatus = function () {
+        if (this.isActiveOnlyStorageEntities()) {
+            this.storageEntityStatuses = [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_12__["ComponentStatus"].ACTIVE, _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_12__["ComponentStatus"].INACTIVE];
+        }
+        else {
+            this.storageEntityStatuses = [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_12__["ComponentStatus"].ACTIVE];
+        }
+        this.loadData(true);
+    };
     StorageLocationComponent.prototype.loadData = function (force) {
         var _this = this;
         if (force === void 0) { force = true; }
         if (force) {
-            this.metricService.getSystemsDetail().subscribe(function (data) {
+            this.metricService.getStorageEntityDetail(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"].SYSTEM, null, this.storageEntityStatuses).subscribe(function (data) {
                 _this.data = data;
                 _this.systemList = _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_11__["ExtractStorageEntityUtils"].extractByType(data, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"].SYSTEM);
                 _this.datacenterList = _this.data.map(function (datacenter) { return datacenter.storageEntity; });
             });
         }
+    };
+    StorageLocationComponent.prototype.isActiveOnlyStorageEntities = function () {
+        return this.storageEntityStatuses.every(function (item) { return item === _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_12__["ComponentStatus"].ACTIVE; });
     };
     StorageLocationComponent.ctorParameters = function () { return [
         { type: _metric_service__WEBPACK_IMPORTED_MODULE_1__["MetricService"] },
@@ -14065,18 +14394,19 @@ var ExtractStorageEntityUtils = /** @class */ (function () {
     }
     ExtractStorageEntityUtils.extractByType = function (data, type) {
         var storageEntities = [];
-        data.forEach(function (dc) { return storageEntities.push.apply(storageEntities, ExtractStorageEntityUtils.extractStorageEntity(dc.storageEntity.children, type)); });
+        data.forEach(function (dc) { return storageEntities.push.apply(storageEntities, ExtractStorageEntityUtils.extractStorageEntity(dc.storageEntity.children, type, dc.storageEntity)); });
         return storageEntities;
     };
-    ExtractStorageEntityUtils.extractStorageEntity = function (owners, type) {
+    ExtractStorageEntityUtils.extractStorageEntity = function (owners, type, parent) {
         if (owners !== undefined && owners.length > 0) {
             if (owners[0].type === _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_0__["StorageEntityType"][type]) {
+                owners.forEach(function (ow) { return ow.parent = parent; });
                 return owners;
             }
             else {
                 var result = [];
                 return owners.reduce(function (acc, current) {
-                    acc.push.apply(acc, ExtractStorageEntityUtils.extractStorageEntity(current.children, type));
+                    acc.push.apply(acc, ExtractStorageEntityUtils.extractStorageEntity(current.children, type, current));
                     return acc;
                 }, result);
             }
