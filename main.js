@@ -282,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"formatter-wrapper\">\n  <div class=\"component-name col-xs-12 col-sm-12 col-md-12\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-12 col-sm-12 col-md-12\">\n    <div class=\"progress-value\">{{resolveRelativeDisbalance() + ' %'}}</div>\n    <div class=\"progress-bar progress-bar-danger\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"absolute-value-badge col-xs-12 col-sm-12 col-md-12\">\n    <span class=\"badge bg-red\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"formatter-wrapper\">\n  <div class=\"component-name col-xs-12 col-sm-12 col-md-12\">\n    <span class=\"badge bg-black\">{{getName()}}</span>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"progress progress-sm col-xs-12 col-sm-12 col-md-12\">\n    <div class=\"progress-value\" tooltip=\"{{getTooltipMessage()}}\" [class.text-danger]=\"!isTodayDate()\">{{resolveRelativeDisbalance() + ' %'}}</div>\n    <div class=\"progress-bar progress-bar-warning\" [ngStyle]=\"{width:resolveRelativeDisbalance() + '%'}\"></div>\n  </div>\n  <div *ngIf=\"data != null && data.value > 0 && isVisible()\" class=\"absolute-value-badge col-xs-12 col-sm-12 col-md-12\">\n    <span class=\"badge bg-yellow\">{{resolveAbsoluteDisbalance() + 'MBps'}}</span>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -308,7 +308,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span tooltip=\"{{column.tooltipText}}\" hide-delay=\"0\">{{getValue() | seconds2FullTime}}</span>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span tooltip=\"{{column.tooltipText}}\" hide-delay=\"0\" [class.text-danger]=\"!isTodayDate()\">{{getValue() | seconds2FullTime}}</span>\n</div>\n");
 
 /***/ }),
 
@@ -347,7 +347,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngFor=\"let row of subData\">\n  <div class=\"row\">\n    <app-adapter-disbalance-formatter [data]=\"row.getCell(imbalanceEvents)\" [rowData]=\"row\"\n                                      [isPortMetric]=\"true\"></app-adapter-disbalance-formatter>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngFor=\"let row of subData\">\n  <div class=\"row\">\n    <app-adapter-disbalance-formatter [data]=\"row.getCell(imbalanceEvents).rawData\" [rowData]=\"row\"\n                                      [isPortMetric]=\"true\"></app-adapter-disbalance-formatter>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -360,7 +360,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span *ngIf=\"isAlert()\" tooltip=\"{{getAlertMessage()}}\" hide-delay=\"0\"> <i class=\"fa fa-exclamation-triangle\"\n                                                                             ngClass=\"{{getViolatedRuleClass()}}\"></i> {{data.value % 1 === 0 ? data.value : data.value.toFixed(1) | formatThousands}} </span>\n  <span *ngIf=\"!isAlert()\" tooltip=\"{{getTooltipMessage()}}\" hide-delay=\"0\"\n        [innerHTML]=\"getValue() | formatThousands | safeHtml\"></span>\n  <span class=\"metric-unit\">{{data.unit}}</span>\n\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span *ngIf=\"isAlert()\" tooltip=\"{{getAlertMessage()}}\" hide-delay=\"0\" [class.text-danger]=\"!isTodayDate()\"> <i class=\"fa fa-exclamation-triangle\"\n                                                                             ngClass=\"{{getViolatedRuleClass()}}\"></i> {{data.value % 1 === 0 ? data.value : data.value.toFixed(1) | formatThousands}} </span>\n  <span *ngIf=\"!isAlert()\" tooltip=\"{{getTooltipMessage()}}\" hide-delay=\"0\"\n        [innerHTML]=\"getValue() | formatThousands | safeHtml\"\n  [class.text-danger]=\"!isTodayDate()\"></span>\n  <span class=\"metric-unit\">{{data.unit}}</span>\n\n</div>\n");
 
 /***/ }),
 
@@ -399,7 +399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<span *ngIf=\"data != null\">\n  <span class=\"metric-value\" tooltip=\"{{getTooltipMessage()}}\">{{data.value | seconds2FullTime}}</span>\n  <!--<span class=\"metric-unit\">{{data.unit}}</span>-->\n</span>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<span *ngIf=\"data != null\">\n  <span class=\"metric-value\" tooltip=\"{{getTooltipMessage()}}\" [class.text-danger]=\"!isTodayDate()\">{{data.value | seconds2FullTime}}</span>\n  <!--<span class=\"metric-unit\">{{data.unit}}</span>-->\n</span>\n");
 
 /***/ }),
 
@@ -412,7 +412,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span tooltip=\"{{column.tooltipText}}\" hide-delay=\"0\">{{getValue()}}</span>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span tooltip=\"{{column.tooltipText}}\" hide-delay=\"0\" [class.text-danger]=\"!isTodayDate()\">{{getValue()}}</span>\n</div>\n");
 
 /***/ }),
 
@@ -425,7 +425,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span tooltip=\"{{column.tooltipText}}\" hide-delay=\"0\">{{getValue()}}</span>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null && data.value != null\" class=\"metric-value\">\n  <span tooltip=\"{{column.tooltipText}}\" hide-delay=\"0\" [class.text-danger]=\"!isTodayDate()\">{{getValue()}}</span>\n</div>\n");
 
 /***/ }),
 
@@ -438,7 +438,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null\" class=\"metric-value\">\n  <span *ngIf=\"isAlert()\" tooltip=\"{{getAlertMessage()}}\" hide-delay=\"0\"\n        ngClass=\"{{getViolatedRuleClass()}}\">{{getValue() | formatThousands}} <span\n    class=\"metric-unit\">{{data.unit}}</span></span>\n  <span *ngIf=\"!isAlert()\" tooltip=\"{{label}} average\" hide-delay=\"0\">{{getValue() | formatThousands}} <span\n    class=\"metric-unit\">{{data.unit}}</span></span>\n</div>\n<div *ngIf=\"data != null\" class=\"peak\">\n  <span tooltip=\"{{label}} peak\" hide-delay=\"0\"><span class=\"text-muted\"><i\n    class=\"fa fa-angle-up text-red\"></i>{{data.peak | formatThousands}} <span\n    class=\"metric-unit\">{{data.unit}}</span></span>\n  </span>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"data != null\" class=\"metric-value\">\n  <span *ngIf=\"isAlert()\" tooltip=\"{{getAlertMessage()}}\" hide-delay=\"0\" [class.text-danger]=\"!isTodayDate()\"\n        ngClass=\"{{getViolatedRuleClass()}}\">{{getValue() | formatThousands}} <span\n    class=\"metric-unit\">{{data.unit}}</span></span>\n  <span *ngIf=\"!isAlert()\" tooltip=\"{{getTooltipMessage()}}\" hide-delay=\"0\" [class.text-danger]=\"!isTodayDate()\">{{getValue() | formatThousands}} </span><span\n  class=\"metric-unit\">{{data.unit}}</span>\n</div>\n<div *ngIf=\"data != null\" class=\"peak\">\n  <span tooltip=\"{{label}} peak\" hide-delay=\"0\"><span class=\"text-muted\"><i\n    class=\"fa fa-angle-up text-red\"></i>{{data.peak | formatThousands}} <span\n    class=\"metric-unit\">{{data.unit}}</span></span>\n  </span>\n</div>\n");
 
 /***/ }),
 
@@ -750,7 +750,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Options</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          Display inactive<app-toggle-button (changed)=\"toggleStatus()\"></app-toggle-button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc'\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                         [systemList]=\"systemList\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Options</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          Display inactive<app-toggle-button (changed)=\"toggleStatus()\"></app-toggle-button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc': lastDataUpdate\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                         [systemList]=\"systemList\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
 
 /***/ }),
 
@@ -6941,6 +6941,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 /* harmony import */ var _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric-type.enum */ "./src/app/common/models/metrics/system-metric-type.enum.ts");
+/* harmony import */ var _unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../unit-formatter/unit-formatter.component */ "./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6957,15 +6971,21 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-var AdapterDisbalanceFormatterComponent = /** @class */ (function () {
+
+var AdapterDisbalanceFormatterComponent = /** @class */ (function (_super) {
+    __extends(AdapterDisbalanceFormatterComponent, _super);
     function AdapterDisbalanceFormatterComponent() {
-        this.isPortMetric = false;
-        this.absolutType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT;
-        this.percType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_PERC;
-        this.eventsType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS;
+        var _this = _super.call(this) || this;
+        _this.isPortMetric = false;
+        _this.absolutType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_ABSOLUT;
+        _this.percType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_PERC;
+        _this.eventsType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].IMBALANCE_EVENTS;
+        return _this;
     }
     AdapterDisbalanceFormatterComponent.prototype.ngOnInit = function () {
+        _super.prototype.ngOnInit.call(this);
         if (this.isPortMetric) {
+            console.log(this.data);
             this.absolutType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_ABSOLUT;
             this.percType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_PERC;
             this.eventsType = _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].PORT_IMBALANCE_EVENTS;
@@ -7011,7 +7031,7 @@ var AdapterDisbalanceFormatterComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], AdapterDisbalanceFormatterComponent);
     return AdapterDisbalanceFormatterComponent;
-}());
+}(_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_4__["UnitFormatterComponent"]));
 
 
 
@@ -7129,6 +7149,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../unit-formatter/unit-formatter.component */ "./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7144,11 +7178,12 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-var DurationFormatterComponent = /** @class */ (function () {
+
+var DurationFormatterComponent = /** @class */ (function (_super) {
+    __extends(DurationFormatterComponent, _super);
     function DurationFormatterComponent() {
+        return _super.call(this) || this;
     }
-    DurationFormatterComponent.prototype.ngOnInit = function () {
-    };
     DurationFormatterComponent.prototype.getValue = function () {
         return (this.data.endTime - this.data.startTime) / 1000;
     };
@@ -7167,7 +7202,7 @@ var DurationFormatterComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], DurationFormatterComponent);
     return DurationFormatterComponent;
-}());
+}(_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_3__["UnitFormatterComponent"]));
 
 
 
@@ -7466,9 +7501,10 @@ var SimpleFormatterComponent = /** @class */ (function (_super) {
     function SimpleFormatterComponent() {
         return _super.call(this) || this;
     }
-    SimpleFormatterComponent.prototype.ngOnInit = function () {
-    };
     SimpleFormatterComponent.prototype.getTooltipMessage = function () {
+        if (!this.isTodayDate()) {
+            return this.daysFromToday + " days old data";
+        }
         if (this.column !== undefined) {
             return this.column.tooltipText;
         }
@@ -7680,6 +7716,20 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimeFormatterComponent", function() { return TimeFormatterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../unit-formatter/unit-formatter.component */ "./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7693,16 +7743,12 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
-var TimeFormatterComponent = /** @class */ (function () {
+
+var TimeFormatterComponent = /** @class */ (function (_super) {
+    __extends(TimeFormatterComponent, _super);
     function TimeFormatterComponent() {
+        return _super.call(this) || this;
     }
-    TimeFormatterComponent.prototype.ngOnInit = function () {
-    };
-    TimeFormatterComponent.prototype.getTooltipMessage = function () {
-        if (this.column !== undefined) {
-            return this.column.tooltipText;
-        }
-    };
     TimeFormatterComponent.ctorParameters = function () { return []; };
     TimeFormatterComponent.propDecorators = {
         data: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
@@ -7719,7 +7765,7 @@ var TimeFormatterComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], TimeFormatterComponent);
     return TimeFormatterComponent;
-}());
+}(_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_1__["UnitFormatterComponent"]));
 
 
 
@@ -7751,6 +7797,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
+/* harmony import */ var _unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../unit-formatter/unit-formatter.component */ "./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7766,11 +7826,12 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-var TimeIntervalFormatterComponent = /** @class */ (function () {
+
+var TimeIntervalFormatterComponent = /** @class */ (function (_super) {
+    __extends(TimeIntervalFormatterComponent, _super);
     function TimeIntervalFormatterComponent() {
+        return _super.call(this) || this;
     }
-    TimeIntervalFormatterComponent.prototype.ngOnInit = function () {
-    };
     TimeIntervalFormatterComponent.prototype.getValue = function () {
         return this.getTime(new Date(this.data.startTime)) + ' - ' + this.getTime(new Date(this.data.endTime));
     };
@@ -7799,7 +7860,7 @@ var TimeIntervalFormatterComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], TimeIntervalFormatterComponent);
     return TimeIntervalFormatterComponent;
-}());
+}(_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_3__["UnitFormatterComponent"]));
 
 
 
@@ -7831,6 +7892,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../common/components/sasi-table/sasi-table.component */ "./src/app/common/components/sasi-table/sasi-table.component.ts");
 /* harmony import */ var _common_models_metrics_system_metric_vo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/models/metrics/system-metric.vo */ "./src/app/common/models/metrics/system-metric.vo.ts");
+/* harmony import */ var _unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../unit-formatter/unit-formatter.component */ "./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7846,11 +7921,12 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-var TimestampToDateComponent = /** @class */ (function () {
+
+var TimestampToDateComponent = /** @class */ (function (_super) {
+    __extends(TimestampToDateComponent, _super);
     function TimestampToDateComponent() {
+        return _super.call(this) || this;
     }
-    TimestampToDateComponent.prototype.ngOnInit = function () {
-    };
     TimestampToDateComponent.prototype.getValue = function () {
         var startTime = new Date(this.data.startTime);
         return [startTime.getUTCDate(), startTime.getUTCMonth() + 1, startTime.getUTCFullYear()].join('.');
@@ -7870,7 +7946,7 @@ var TimestampToDateComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], TimestampToDateComponent);
     return TimestampToDateComponent;
-}());
+}(_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_3__["UnitFormatterComponent"]));
 
 
 
@@ -7885,7 +7961,7 @@ var TimestampToDateComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".peak {\n  display: block;\n  font-size: 12px;\n  font-style: italic;\n}\n\n.peak i, .metric-value i {\n  margin-right: 5px;\n}\n\n.peak i {\n  padding: 0px;\n  /*border-top-width: 1px;*/\n  /*border-top-style: solid;*/\n  font-size: 12px;\n}\n\n.metric-value {\n  display: block;\n  font-weight: 600;\n  font-size: 14px;\n  /*border-bottom: 2px #00c0ef solid;*/\n  margin-bottom: 2px;\n}\n\n.text-alert {\n  /*color: #900020;*/\n  color: #db8b0b;\n}\n\n.metric-value .metric-unit {\n  font-size: 10px;\n}\n\n.peak .metric-unit {\n  font-size: 9px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy91bml0LWZvcm1hdHRlci91bml0LWZvcm1hdHRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBYztFQUNkLGVBQWU7RUFDZixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0VBQ3pCLDJCQUEyQjtFQUMzQixlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2Ysb0NBQW9DO0VBQ3BDLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9mb3JtYXR0ZXJzL3VuaXQtZm9ybWF0dGVyL3VuaXQtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGVhayB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBmb250LXNpemU6IDEycHg7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cblxuLnBlYWsgaSwgLm1ldHJpYy12YWx1ZSBpIHtcbiAgbWFyZ2luLXJpZ2h0OiA1cHg7XG59XG5cbi5wZWFrIGkge1xuICBwYWRkaW5nOiAwcHg7XG4gIC8qYm9yZGVyLXRvcC13aWR0aDogMXB4OyovXG4gIC8qYm9yZGVyLXRvcC1zdHlsZTogc29saWQ7Ki9cbiAgZm9udC1zaXplOiAxMnB4O1xufVxuXG4ubWV0cmljLXZhbHVlIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgLypib3JkZXItYm90dG9tOiAycHggIzAwYzBlZiBzb2xpZDsqL1xuICBtYXJnaW4tYm90dG9tOiAycHg7XG59XG5cbi50ZXh0LWFsZXJ0IHtcbiAgLypjb2xvcjogIzkwMDAyMDsqL1xuICBjb2xvcjogI2RiOGIwYjtcbn1cblxuLm1ldHJpYy12YWx1ZSAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi5wZWFrIC5tZXRyaWMtdW5pdCB7XG4gIGZvbnQtc2l6ZTogOXB4O1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".peak {\n  display: block;\n  font-size: 12px;\n  font-style: italic;\n}\n\n.peak i, .metric-value i {\n  margin-right: 5px;\n}\n\n.peak i {\n  padding: 0px;\n  /*border-top-width: 1px;*/\n  /*border-top-style: solid;*/\n  font-size: 12px;\n}\n\n.metric-value {\n  display: block;\n  font-weight: 600;\n  font-size: 14px;\n  /*border-bottom: 2px #00c0ef solid;*/\n  margin-bottom: 2px;\n}\n\n.text-alert {\n  /*color: #900020;*/\n  color: #db8b0b;\n}\n\n.metric-unit {\n  font-size: 10px;\n  font-weight: 600;\n}\n\n.peak .metric-unit {\n  font-size: 9px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2xvYmFsLXN0YXRpc3RpY3MvZm9ybWF0dGVycy91bml0LWZvcm1hdHRlci91bml0LWZvcm1hdHRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBYztFQUNkLGVBQWU7RUFDZixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0VBQ3pCLDJCQUEyQjtFQUMzQixlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2Ysb0NBQW9DO0VBQ3BDLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9nbG9iYWwtc3RhdGlzdGljcy9mb3JtYXR0ZXJzL3VuaXQtZm9ybWF0dGVyL3VuaXQtZm9ybWF0dGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGVhayB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBmb250LXNpemU6IDEycHg7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cblxuLnBlYWsgaSwgLm1ldHJpYy12YWx1ZSBpIHtcbiAgbWFyZ2luLXJpZ2h0OiA1cHg7XG59XG5cbi5wZWFrIGkge1xuICBwYWRkaW5nOiAwcHg7XG4gIC8qYm9yZGVyLXRvcC13aWR0aDogMXB4OyovXG4gIC8qYm9yZGVyLXRvcC1zdHlsZTogc29saWQ7Ki9cbiAgZm9udC1zaXplOiAxMnB4O1xufVxuXG4ubWV0cmljLXZhbHVlIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgLypib3JkZXItYm90dG9tOiAycHggIzAwYzBlZiBzb2xpZDsqL1xuICBtYXJnaW4tYm90dG9tOiAycHg7XG59XG5cbi50ZXh0LWFsZXJ0IHtcbiAgLypjb2xvcjogIzkwMDAyMDsqL1xuICBjb2xvcjogI2RiOGIwYjtcbn1cblxuLm1ldHJpYy11bml0IHtcbiAgZm9udC1zaXplOiAxMHB4O1xuICBmb250LXdlaWdodDogNjAwO1xufVxuXG4ucGVhayAubWV0cmljLXVuaXQge1xuICBmb250LXNpemU6IDlweDtcbn1cbiJdfQ== */");
 
 /***/ }),
 
@@ -7922,8 +7998,22 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 var UnitFormatterComponent = /** @class */ (function () {
     function UnitFormatterComponent() {
         this.label = '';
+        this.todayDate = true;
+        this.daysFromToday = '0';
     }
     UnitFormatterComponent.prototype.ngOnInit = function () {
+        if (this.data.date !== undefined && this.data.date !== null) {
+            var today = new Date();
+            var metricDate = new Date(this.data.date);
+            this.todayDate =
+                metricDate.getFullYear() === today.getFullYear()
+                    && metricDate.getUTCMonth() === today.getUTCMonth()
+                    && metricDate.getDate() === today.getDate();
+            this.daysFromToday = ((today.getTime() - metricDate.getTime()) / 86400000).toFixed(0);
+            // console.log(today.toDateString() + ' ' + metricDate.toDateString() + ' ' + this.todayDate);
+            console.log(metricDate.getFullYear() + '-' + metricDate.getUTCMonth() + '-' + metricDate.getDate() + ' ' + today.getFullYear() + '-' + today.getUTCMonth() + '-' + today.getDate() + ' result: ' + this.todayDate + ', daysFromToday: ' + this.daysFromToday);
+        }
+        // console.log(this.data);
     };
     UnitFormatterComponent.prototype.isAlert = function () {
         var _this = this;
@@ -7935,7 +8025,8 @@ var UnitFormatterComponent = /** @class */ (function () {
     };
     UnitFormatterComponent.prototype.getAlertMessage = function () {
         var ruleDefinition = this.getViolatedRule();
-        return this.label + ' is over ' + ruleDefinition.threshold.min + this.data.unit + ' ';
+        var oldDataMessage = (!this.isTodayDate()) ? "(" + this.daysFromToday + " days old data)" : '';
+        return this.label + ' is over ' + ruleDefinition.threshold.min + this.data.unit + ' ' + oldDataMessage;
     };
     UnitFormatterComponent.prototype.findRulesByType = function (type) {
         return this.options.cellDecoratorRules.filter(function (rule) { return rule.type === type; });
@@ -7957,11 +8048,23 @@ var UnitFormatterComponent = /** @class */ (function () {
     UnitFormatterComponent.prototype.getValue = function () {
         return this.data.value % 1 === 0 ? this.data.value : this.data.value.toFixed(1);
     };
+    UnitFormatterComponent.prototype.isTodayDate = function () {
+        return this.todayDate;
+    };
+    UnitFormatterComponent.prototype.getTooltipMessage = function () {
+        if (!this.isTodayDate()) {
+            return this.daysFromToday + " days old data";
+        }
+        if (this.column !== undefined) {
+            return this.column.tooltipText;
+        }
+    };
     UnitFormatterComponent.ctorParameters = function () { return []; };
     UnitFormatterComponent.propDecorators = {
         label: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         data: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-        options: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+        options: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+        column: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
     };
     UnitFormatterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -11147,6 +11250,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WORKLOAD)
             .withLabel('Workload')
+            .withTooltipText('Workload Average')
             .withColumnTooltipText('Average/(Peak) value of transactions per second (IOPS) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
@@ -11155,6 +11259,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].TRANSFER)
             .withLabel('Transfer')
+            .withTooltipText('Transfer Average')
             .withColumnTooltipText('Average/(Peak) value of transferred data blocks per second (MB/s) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
@@ -11163,6 +11268,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].RESPONSE)
             .withLabel('Response')
+            .withTooltipText('Response Average')
             .withColumnTooltipText('Average/(Peak) value of latency on all LDEVs (both - read and write) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
@@ -11171,6 +11277,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].CPU)
             .withLabel('CPU')
+            .withTooltipText('CPU Average')
             .withColumnTooltipText('Average/(Peak) value of utilization on all system processors (MPBs) for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
@@ -11179,6 +11286,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].HDD)
             .withLabel('HDD')
+            .withTooltipText('HDD Average')
             .withColumnTooltipText('Average/(Peak) value of utilization on all hard disk drives / FMDs / SSD used in DP Pools for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
@@ -11187,6 +11295,7 @@ var PerformanceStatisticsComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_6__["SasiColumnBuilder"].getInstance()
             .withIndex(_common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_3__["SystemMetricType"].WRITE_PENDING_PERC)
             .withLabel('Write Pending')
+            .withTooltipText('Write Pending Average')
             .withColumnTooltipText('Average/(Peak) value of Cache Write Pending rate on all cache modules for selected time period (Last Day / Last Week / Last Month)')
             .withComponent(_formatters_unit_formatter_unit_formatter_component__WEBPACK_IMPORTED_MODULE_7__["UnitFormatterComponent"])
             .withAltSortEnable(true)
@@ -13402,8 +13511,9 @@ var StorageEntity2SasiGroupTablePipe = /** @class */ (function () {
     function StorageEntity2SasiGroupTablePipe(rowPipe) {
         this.rowPipe = rowPipe;
     }
-    StorageEntity2SasiGroupTablePipe.prototype.transform = function (systems, context) {
+    StorageEntity2SasiGroupTablePipe.prototype.transform = function (systems, context, lastDataUpdated) {
         var _this = this;
+        if (lastDataUpdated === void 0) { lastDataUpdated = []; }
         return systems.map(function (storageEntity) {
             var row = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiGroupRow"]();
             var groupRow = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_1__["SasiRow"]();
@@ -13416,7 +13526,7 @@ var StorageEntity2SasiGroupTablePipe = /** @class */ (function () {
                 status: _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_3__["ComponentStatus"][data.status]
             });
             row.groupRow = groupRow;
-            row.rows = _this.rowPipe.transform(data.children, data);
+            row.rows = _this.rowPipe.transform(data.children, data, [], lastDataUpdated);
             return row;
         });
     };
@@ -13463,8 +13573,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var StorageEntityDetail2SasiTablePipe = /** @class */ (function () {
     function StorageEntityDetail2SasiTablePipe() {
     }
-    StorageEntityDetail2SasiTablePipe.prototype.transform = function (systems, parent, parentsData) {
+    StorageEntityDetail2SasiTablePipe.prototype.transform = function (systems, parent, parentsData, lastDataUpdate) {
         if (parentsData === void 0) { parentsData = []; }
+        if (lastDataUpdate === void 0) { lastDataUpdate = []; }
         return systems.map(function (system) {
             var row = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiRow"]();
             row.cells['name'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](system.name, { value: system.name });
@@ -13477,6 +13588,7 @@ var StorageEntityDetail2SasiTablePipe = /** @class */ (function () {
             row.cells['parentName'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](parentName, { value: parentName });
             row.cells['status'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_3__["ComponentStatus"][system.status], { value: _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_3__["ComponentStatus"][system.status] });
             row.cells['serialNumber'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](system.serialNumber, { value: system.serialNumber });
+            row.cells['lastDataUpdate'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](lastDataUpdate[system.id], { value: lastDataUpdate[system.id] });
             if (system.detail !== undefined) {
                 var detail = system.detail;
                 row.cells['arrayModel'] = new _common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_0__["SasiCell"](detail.arrayModel, { value: detail.arrayModel });
@@ -14247,6 +14359,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/extract-storage-entity.utils */ "./src/app/storage-configuration/utils/extract-storage-entity.utils.ts");
 /* harmony import */ var _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../common/models/dtos/enums/component.status */ "./src/app/common/models/dtos/enums/component.status.ts");
 /* harmony import */ var _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../storage-entity-status/storage-entity-status.component */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts");
+/* harmony import */ var _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../common/models/metrics/system-metric-type.enum */ "./src/app/common/models/metrics/system-metric-type.enum.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -14259,6 +14372,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -14289,6 +14403,7 @@ var StorageLocationComponent = /** @class */ (function () {
         this.systemList = [];
         this.type = _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"];
         this.storageEntityStatuses = [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_12__["ComponentStatus"].ACTIVE];
+        this.lastDataUpdate = [];
     }
     StorageLocationComponent.prototype.ngOnInit = function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
@@ -14332,6 +14447,12 @@ var StorageLocationComponent = /** @class */ (function () {
         this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
             .withIndex('rack')
             .withLabel('Rack')
+            .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
+            .withAltSortEnable(false)
+            .build());
+        this.options.columns.push(_common_components_sasi_table_sasi_table_component__WEBPACK_IMPORTED_MODULE_2__["SasiColumnBuilder"].getInstance()
+            .withIndex('lastDataUpdate')
+            .withLabel('Last Updated')
             .withComponent(_se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_5__["SeTextFormatterComponent"])
             .withAltSortEnable(false)
             .build());
@@ -14382,9 +14503,14 @@ var StorageLocationComponent = /** @class */ (function () {
         if (force === void 0) { force = true; }
         if (force) {
             this.metricService.getStorageEntityDetail(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"].SYSTEM, null, this.storageEntityStatuses).subscribe(function (data) {
-                _this.data = data;
-                _this.systemList = _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_11__["ExtractStorageEntityUtils"].extractByType(data, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"].SYSTEM);
-                _this.datacenterList = _this.data.map(function (datacenter) { return datacenter.storageEntity; });
+                _this.metricService.getPerformanceStatistics(-1, _metric_service__WEBPACK_IMPORTED_MODULE_1__["PeriodType"].DAY).subscribe(function (capacityData) {
+                    capacityData.forEach(function (dc) { return dc.children.forEach(function (system) {
+                        _this.lastDataUpdate[system.id] = system.metrics.filter(function (metric) { return metric.type === _common_models_metrics_system_metric_type_enum__WEBPACK_IMPORTED_MODULE_14__["SystemMetricType"].WORKLOAD; })[0].date;
+                    }); });
+                    _this.data = data;
+                    _this.systemList = _utils_extract_storage_entity_utils__WEBPACK_IMPORTED_MODULE_11__["ExtractStorageEntityUtils"].extractByType(data, _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_10__["StorageEntityType"].SYSTEM);
+                    _this.datacenterList = _this.data.map(function (datacenter) { return datacenter.storageEntity; });
+                });
             });
         }
     };
