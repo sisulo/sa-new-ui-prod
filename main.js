@@ -8002,7 +8002,7 @@ var UnitFormatterComponent = /** @class */ (function () {
         this.daysFromToday = '0';
     }
     UnitFormatterComponent.prototype.ngOnInit = function () {
-        if (this.data.date !== undefined && this.data.date !== null) {
+        if (this.data !== null && this.data.date !== undefined && this.data.date !== null) {
             var today = new Date();
             var metricDate = new Date(this.data.date);
             this.todayDate =
@@ -8010,10 +8010,7 @@ var UnitFormatterComponent = /** @class */ (function () {
                     && metricDate.getUTCMonth() === today.getUTCMonth()
                     && metricDate.getDate() === today.getDate();
             this.daysFromToday = ((today.getTime() - metricDate.getTime()) / 86400000).toFixed(0);
-            // console.log(today.toDateString() + ' ' + metricDate.toDateString() + ' ' + this.todayDate);
-            console.log(metricDate.getFullYear() + '-' + metricDate.getUTCMonth() + '-' + metricDate.getDate() + ' ' + today.getFullYear() + '-' + today.getUTCMonth() + '-' + today.getDate() + ' result: ' + this.todayDate + ', daysFromToday: ' + this.daysFromToday);
         }
-        // console.log(this.data);
     };
     UnitFormatterComponent.prototype.isAlert = function () {
         var _this = this;
