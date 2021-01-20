@@ -8001,15 +8001,13 @@ var UnitFormatterComponent = /** @class */ (function () {
         this.todayDate = true;
         this.daysFromToday = '0';
     }
+    UnitFormatterComponent_1 = UnitFormatterComponent;
     UnitFormatterComponent.prototype.ngOnInit = function () {
         if (this.data !== null && this.data.date !== undefined && this.data.date !== null) {
             var today = new Date();
             var metricDate = new Date(this.data.date);
-            this.todayDate =
-                metricDate.getFullYear() === today.getFullYear()
-                    && metricDate.getUTCMonth() === today.getUTCMonth()
-                    && metricDate.getDate() === today.getDate();
-            this.daysFromToday = ((today.getTime() - metricDate.getTime()) / 86400000).toFixed(0);
+            this.daysFromToday = ((today.getTime() - metricDate.getTime()) / UnitFormatterComponent_1.ONE_DAY_IN_MS).toFixed(0);
+            this.todayDate = parseInt(this.daysFromToday, 10) <= 2;
         }
     };
     UnitFormatterComponent.prototype.isAlert = function () {
@@ -8056,6 +8054,8 @@ var UnitFormatterComponent = /** @class */ (function () {
             return this.column.tooltipText;
         }
     };
+    var UnitFormatterComponent_1;
+    UnitFormatterComponent.ONE_DAY_IN_MS = 86400000;
     UnitFormatterComponent.ctorParameters = function () { return []; };
     UnitFormatterComponent.propDecorators = {
         label: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
@@ -8063,7 +8063,7 @@ var UnitFormatterComponent = /** @class */ (function () {
         options: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         column: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
     };
-    UnitFormatterComponent = __decorate([
+    UnitFormatterComponent = UnitFormatterComponent_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-unit-formatter',
             template: __importDefault(__webpack_require__(/*! raw-loader!./unit-formatter.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.html")).default,
