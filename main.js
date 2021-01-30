@@ -13413,12 +13413,23 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
             if (params['id'] != undefined) {
                 _this.selectedSystem = params['id'];
                 _this.metricService.getStorageEntityDetail(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityType"].PORT, _this.selectedSystem, [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_5__["ComponentStatus"].ACTIVE]).subscribe(function (data) {
-                    console.log(data);
                     _this.data = _this.transform(data[0].storageEntity);
-                    console.log(_this.data);
+                    _this.snapSettings = {
+                        constraints: 0
+                    };
                     _this.layout = {
                         type: 'OrganizationalChart',
                         horizontalAlignment: 'Stretch',
+                        margin: {
+                            top: 20
+                        },
+                        getLayoutInfo: function (node, tree) {
+                            if (!tree.hasSubTree) {
+                                tree.orientation = 'Vertical';
+                                tree.type = 'Right';
+                            }
+                        }
+                        // verticalSpacing: 100
                     };
                     _this.dataSourceSettings = {
                         id: 'id',
@@ -13430,6 +13441,14 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
         });
     };
     PortConnectivityDiagramComponent.prototype.nodeDefaults = function (node) {
+        // node.height = 50;
+        // node.borderColor = 'white';
+        // node.backgroundColor = '#6BA5D7';
+        // node.borderWidth = 1;
+        // node.style = {
+        //   fill: 'transparent',
+        //   strokeWidth: 2
+        // };
         var bgColor = 'black';
         var strokeColor = 'black';
         var shape = 'Rectangle';
@@ -13443,8 +13462,26 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
         if (PortConnectivityDiagramComponent_1.shape[data.type] != null) {
             shape = PortConnectivityDiagramComponent_1.shape[data.type];
         }
-        // node.width = 70;
-        // node.height = 30;
+        node.expandIcon = {
+            height: 15,
+            width: 15,
+            shape: 'Plus',
+            fill: bgColor,
+            borderColor: strokeColor,
+            offset: {
+                x: .5,
+                y: .85
+            }
+        };
+        node.collapseIcon.offset = {
+            x: .5,
+            y: .85
+        };
+        node.collapseIcon.height = 15;
+        node.collapseIcon.width = 15;
+        node.collapseIcon.shape = 'Minus';
+        node.collapseIcon.fill = bgColor;
+        node.collapseIcon.borderColor = strokeColor;
         node.annotations = [
             { content: node.data.name, style: { color: 'black' } }
         ];
