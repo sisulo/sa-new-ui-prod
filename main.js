@@ -663,6 +663,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.html":
+/*!************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.html ***!
+  \************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ejs-diagram *ngIf=\"data.length > 0\" #diagram id=\"diagram\" width=\"100%\" height=\"1000px\" [layout]=\"layout\" [dataSourceSettings]=\"dataSourceSettings\" [getNodeDefaults]=\"nodeDefaults\" [getConnectorDefaults]=\"connectorDefaults\">\n</ejs-diagram>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/port-connectivity/port-connectivity.component.html":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/port-connectivity/port-connectivity.component.html ***!
@@ -672,7 +685,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-sm-7 col-md-7 col-lg-7\">\n      <div class=\"box\" *ngIf=\"systemsList.length > 0\">\n        <div class=\"box-body\">\n          <label for=\"system\">System:</label>\n          <div class=\"row\">\n            <div class=\"col-md-7\">\n              <ng-select class=\"left\" id=\"system\"\n                         bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                         (change)=\"openSelectedSystem()\"\n                         [(ngModel)]=\"selectedSystem\"\n                         placeholder=\"Search...\">\n              </ng-select>\n            </div>\n            <div class=\"col-md-2\">\n              <button type=\"button\" class=\"btn btn-default\" *ngIf=\"selectedSystem !== undefined\" (click)=\"openForm()\">\n                Duplicate system\n              </button>\n            </div>\n          </div>\n          <div class=\"row\" *ngIf=\"selectedSystem !== undefined\">\n            <div class=\"col-md-3\">\n              Display inactive<app-toggle-button (changed)=\"toggleStatus()\"></app-toggle-button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-5 col-md-3 col-lg-3\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">DKC</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-7 col-md-6 col-lg-6\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Controllers</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n\n    <div class=\"col-sm-12 col-md-9 col-lg-9\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Channel Boards</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"container-fluid\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <app-channel-board-list [data]=\"channelBoardList\"\n                                        [displayAddButton]=\"controllerList.length > 0\"\n                                        [parentsData]=\"controllerList\"\n                                        [importEnabled]=\"true\"\n                                        (importFinished)=\"loadData(true)\"></app-channel-board-list>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Ports</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"\n                         [importEnabled]=\"true\"\n                         (importFinished)=\"loadData(true)\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [systemList]=\"systemsList\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [portList]=\"portList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h3>\n  Port connections\n</h3>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-sm-7 col-md-7 col-lg-7\">\n      <div class=\"box\" *ngIf=\"systemsList.length > 0\">\n        <div class=\"box-body\">\n          <label for=\"system\">System:</label>\n          <div class=\"row\">\n            <div class=\"col-md-7\">\n              <ng-select class=\"left\" id=\"system\"\n                         bindValue=\"id\" bindLabel=\"name\" [items]=\"systemsList\"\n                         (change)=\"openSelectedSystem()\"\n                         [(ngModel)]=\"selectedSystem\"\n                         placeholder=\"Search...\">\n              </ng-select>\n            </div>\n            <div class=\"col-sm-12 col-md-5\">\n              <div class=\"col-sm-12 col-md-12\">\n                <button type=\"button\" class=\"btn btn-default\" tooltip=\"Duplicate system\" *ngIf=\"selectedSystem !== undefined\" (click)=\"openForm()\">\n                  <i class=\"fas fa-clone\"></i>\n                </button>\n                <a type=\"button\" class=\"btn btn-default\" tooltip=\"Visualize\" *ngIf=\"selectedSystem !== undefined\" [routerLink]=\"['/storage-config/port-connectivity-diagram', selectedSystem]\">\n                  <i class=\"fas fa-project-diagram\"></i>\n                </a>\n              </div>\n            </div>\n          </div>\n          <div class=\"row\" *ngIf=\"selectedSystem !== undefined\">\n            <div class=\"col-md-3\">\n              Display inactive<app-toggle-button (changed)=\"toggleStatus()\"></app-toggle-button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-5 col-md-3 col-lg-3\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">DKC</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-dkc-list [data]=\"dkcList\"\n                        [displayAddButton]=\"getSystemListCurrent(selectedSystem).length > 0\"\n                        [parentsData]=\"systemsList\"></app-dkc-list>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-sm-7 col-md-6 col-lg-6\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Controllers</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-controller-list [data]=\"controllerList\"\n                               [displayAddButton]=\"dkcList.length > 0\"\n                               [parentsData]=\"dkcList\"></app-controller-list>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n\n    <div class=\"col-sm-12 col-md-9 col-lg-9\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Channel Boards</h3>\n        </div>\n        <div class=\"box-body\">\n          <div class=\"container-fluid\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <app-channel-board-list [data]=\"channelBoardList\"\n                                        [displayAddButton]=\"controllerList.length > 0\"\n                                        [parentsData]=\"controllerList\"\n                                        [importEnabled]=\"true\"\n                                        (importFinished)=\"loadData(true)\"></app-channel-board-list>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n      <div class=\"box\" *ngIf=\"selectedSystem !== undefined\">\n        <div class=\"box-header\">\n          <h3 class=\"box-title\">Ports</h3>\n        </div>\n        <div class=\"box-body\">\n          <app-port-list [data]=\"portList\"\n                         [displayAddButton]=\"channelBoardList.length > 0\"\n                         [parentsData]=\"channelBoardList\"\n                         [importEnabled]=\"true\"\n                         (importFinished)=\"loadData(true)\"></app-port-list>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-storage-entity-form *ngIf=\"this.selectedSystem != null\" [dataCenterList]=\"[]\"\n                         [systemList]=\"systemsList\"\n                         [parentSystemList]=\"getSystemListCurrent(this.selectedSystem)\"\n                         [dkcList]=\"dkcList\"\n                         [channelBoardList]=\"channelBoardList\"\n                         [controllerList]=\"controllerList\"\n                         [portList]=\"portList\"\n                         [selectedParent]=\"selectedSystem\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n\n");
 
 /***/ }),
 
@@ -751,6 +764,722 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"box\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Options</h3>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          Display inactive<app-toggle-button (changed)=\"toggleStatus()\"></app-toggle-button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"box\" *ngIf=\"data.length > 0\">\n  <div class=\"box-header\">\n    <h3 class=\"box-title\">Storage Locations</h3>\n\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <app-sasi-table [data]=\"data | storageEntity2SasiGroupTable: 'dc': lastDataUpdate\" [tableOptions]=\"options\"></app-sasi-table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"box-body\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.SYSTEM)\">\n            Add system\n          </button>\n          <button type=\"button\" class=\"btn btn-default\" (click)=\"openForm(type.DATACENTER)\">\n            Add datacenter\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-storage-entity-form [dataCenterList]=\"datacenterList\"\n                         [systemList]=\"systemList\"\n                         (dataSaved)=\"loadData($event)\"></app-storage-entity-form>\n");
+
+/***/ }),
+
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var runtime = function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []); // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+    return generator;
+  }
+
+  exports.wrap = wrap; // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+
+  function tryCatch(fn, obj, arg) {
+    try {
+      return {
+        type: "normal",
+        arg: fn.call(obj, arg)
+      };
+    } catch (err) {
+      return {
+        type: "throw",
+        arg: err
+      };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed"; // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+
+  var ContinueSentinel = {}; // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+
+  function Generator() {}
+
+  function GeneratorFunction() {}
+
+  function GeneratorFunctionPrototype() {} // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+
+
+  var IteratorPrototype = {};
+
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+
+  if (NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] = GeneratorFunction.displayName = "GeneratorFunction"; // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function (method) {
+      prototype[method] = function (arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function (genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor ? ctor === GeneratorFunction || // For the native GeneratorFunction constructor, the best we can
+    // do is to check its .name property.
+    (ctor.displayName || ctor.name) === "GeneratorFunction" : false;
+  };
+
+  exports.mark = function (genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  }; // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+
+
+  exports.awrap = function (arg) {
+    return {
+      __await: arg
+    };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+
+        if (value && typeof value === "object" && hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function (value) {
+            invoke("next", value, resolve, reject);
+          }, function (err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function (unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function (error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function (resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise = // If enqueue has been called before, then we want to wait until
+      // all previous Promises have been resolved before calling invoke,
+      // so that results are always delivered in the correct order. If
+      // enqueue has not been called before, then it is important to
+      // call invoke immediately, without waiting on a callback to fire,
+      // so that the async generator function has the opportunity to do
+      // any necessary setup in a predictable way. This predictability
+      // is why the Promise constructor synchronously invokes its
+      // executor callback, and why async functions synchronously
+      // execute code before the first await. Since we implement simple
+      // async functions in terms of async generators, it is especially
+      // important to get this right, even though it requires care.
+      previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, // Avoid propagating failures to Promises returned by later
+      // invocations of the iterator.
+      callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+    } // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+
+
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+
+  exports.AsyncIterator = AsyncIterator; // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+
+  exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
+    return exports.isGeneratorFunction(outerFn) ? iter // If outerFn is a generator, return the full iterator.
+    : iter.next().then(function (result) {
+      return result.done ? result.value : iter.next();
+    });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        } // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+
+
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+        var record = tryCatch(innerFn, self, context);
+
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done ? GenStateCompleted : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+        } else if (record.type === "throw") {
+          state = GenStateCompleted; // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  } // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+
+
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError("The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (!info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value; // Resume execution at the desired location (see delegateYield).
+
+      context.next = delegate.nextLoc; // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    } // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+
+
+    context.delegate = null;
+    return ContinueSentinel;
+  } // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+
+
+  defineIteratorMethods(Gp);
+  Gp[toStringTagSymbol] = "Generator"; // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+
+  Gp[iteratorSymbol] = function () {
+    return this;
+  };
+
+  Gp.toString = function () {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = {
+      tryLoc: locs[0]
+    };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{
+      tryLoc: "root"
+    }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function (object) {
+    var keys = [];
+
+    for (var key in object) {
+      keys.push(key);
+    }
+
+    keys.reverse(); // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      } // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+
+
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1,
+            next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+          return next;
+        };
+
+        return next.next = next;
+      }
+    } // Return an iterator with no values.
+
+
+    return {
+      next: doneResult
+    };
+  }
+
+  exports.values = values;
+
+  function doneResult() {
+    return {
+      value: undefined,
+      done: true
+    };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+    reset: function reset(skipTempReset) {
+      this.prev = 0;
+      this.next = 0; // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+      this.method = "next";
+      this.arg = undefined;
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" && hasOwn.call(this, name) && !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+    stop: function stop() {
+      this.done = true;
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+    dispatchException: function dispatchException(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !!caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+    abrupt: function abrupt(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry && (type === "break" || type === "continue") && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+    complete: function complete(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" || record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+    finish: function finish(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+    "catch": function _catch(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+
+          return thrown;
+        }
+      } // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+
+
+      throw new Error("illegal catch attempt");
+    },
+    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  }; // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+
+  return exports;
+}( // If this script is executing as a CommonJS module, use module.exports
+// as the regeneratorRuntime namespace. Otherwise create a new empty
+// object. Either way, the resulting object will be used to initialize
+// the regeneratorRuntime variable at the top of this file.
+ true ? module.exports : undefined);
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
 
 /***/ }),
 
@@ -1002,7 +1731,7 @@ var AppModule = /** @class */ (function () {
                 _common_sa_common_module__WEBPACK_IMPORTED_MODULE_10__["SaCommonModule"],
                 ng_apexcharts__WEBPACK_IMPORTED_MODULE_12__["NgApexchartsModule"],
                 ngx_spinner__WEBPACK_IMPORTED_MODULE_20__["NgxSpinnerModule"],
-                _storage_configuration_storage_configuration_module__WEBPACK_IMPORTED_MODULE_23__["StorageConfigurationModule"]
+                _storage_configuration_storage_configuration_module__WEBPACK_IMPORTED_MODULE_23__["StorageConfigurationModule"],
             ],
             providers: [_common_utils_system_pool_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_11__["SystemPool2SasiGroupTablePipe"], httpInterceptorProviders],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -8001,14 +8730,19 @@ var UnitFormatterComponent = /** @class */ (function () {
         this.todayDate = true;
         this.daysFromToday = '0';
     }
-    UnitFormatterComponent_1 = UnitFormatterComponent;
     UnitFormatterComponent.prototype.ngOnInit = function () {
-        if (this.data !== null && this.data.date !== undefined && this.data.date !== null) {
+        if (this.data.date !== undefined && this.data.date !== null) {
             var today = new Date();
             var metricDate = new Date(this.data.date);
-            this.daysFromToday = ((today.getTime() - metricDate.getTime()) / UnitFormatterComponent_1.ONE_DAY_IN_MS).toFixed(0);
-            this.todayDate = parseInt(this.daysFromToday, 10) <= 2;
+            this.todayDate =
+                metricDate.getFullYear() === today.getFullYear()
+                    && metricDate.getUTCMonth() === today.getUTCMonth()
+                    && metricDate.getDate() === today.getDate();
+            this.daysFromToday = ((today.getTime() - metricDate.getTime()) / 86400000).toFixed(0);
+            // console.log(today.toDateString() + ' ' + metricDate.toDateString() + ' ' + this.todayDate);
+            console.log(metricDate.getFullYear() + '-' + metricDate.getUTCMonth() + '-' + metricDate.getDate() + ' ' + today.getFullYear() + '-' + today.getUTCMonth() + '-' + today.getDate() + ' result: ' + this.todayDate + ', daysFromToday: ' + this.daysFromToday);
         }
+        // console.log(this.data);
     };
     UnitFormatterComponent.prototype.isAlert = function () {
         var _this = this;
@@ -8054,8 +8788,6 @@ var UnitFormatterComponent = /** @class */ (function () {
             return this.column.tooltipText;
         }
     };
-    var UnitFormatterComponent_1;
-    UnitFormatterComponent.ONE_DAY_IN_MS = 86400000;
     UnitFormatterComponent.ctorParameters = function () { return []; };
     UnitFormatterComponent.propDecorators = {
         label: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
@@ -8063,7 +8795,7 @@ var UnitFormatterComponent = /** @class */ (function () {
         options: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
         column: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
     };
-    UnitFormatterComponent = UnitFormatterComponent_1 = __decorate([
+    UnitFormatterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-unit-formatter',
             template: __importDefault(__webpack_require__(/*! raw-loader!./unit-formatter.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/global-statistics/formatters/unit-formatter/unit-formatter.component.html")).default,
@@ -12619,6 +13351,184 @@ var ImportCsvDataComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.css":
+/*!*********************************************************************************************************!*\
+  !*** ./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.css ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0b3JhZ2UtY29uZmlndXJhdGlvbi9wb3J0LWNvbm5lY3Rpdml0eS1kaWFncmFtL3BvcnQtY29ubmVjdGl2aXR5LWRpYWdyYW0uY29tcG9uZW50LmNzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.ts":
+/*!********************************************************************************************************!*\
+  !*** ./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.ts ***!
+  \********************************************************************************************************/
+/*! exports provided: PortConnectivityDiagramComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortConnectivityDiagramComponent", function() { return PortConnectivityDiagramComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _syncfusion_ej2_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @syncfusion/ej2-data */ "./node_modules/@syncfusion/ej2-data/dist/es6/ej2-data.es2015.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
+/* harmony import */ var _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/dtos/enums/component.status */ "./src/app/common/models/dtos/enums/component.status.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+
+
+
+var PortConnectivityDiagramComponent = /** @class */ (function () {
+    function PortConnectivityDiagramComponent(route, router, metricService) {
+        this.route = route;
+        this.router = router;
+        this.metricService = metricService;
+        this.data = [];
+    }
+    PortConnectivityDiagramComponent_1 = PortConnectivityDiagramComponent;
+    PortConnectivityDiagramComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            console.log(params);
+            if (params['id'] != undefined) {
+                _this.selectedSystem = params['id'];
+                _this.metricService.getStorageEntityDetail(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityType"].PORT, _this.selectedSystem, [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_5__["ComponentStatus"].ACTIVE]).subscribe(function (data) {
+                    console.log(data);
+                    _this.data = _this.transform(data[0].storageEntity);
+                    console.log(_this.data);
+                    _this.layout = {
+                        type: 'OrganizationalChart',
+                        horizontalAlignment: 'Stretch',
+                    };
+                    _this.dataSourceSettings = {
+                        id: 'id',
+                        parentId: 'parentId',
+                        dataManager: new _syncfusion_ej2_data__WEBPACK_IMPORTED_MODULE_1__["DataManager"](_this.data)
+                    };
+                });
+            }
+        });
+    };
+    PortConnectivityDiagramComponent.prototype.nodeDefaults = function (node) {
+        var bgColor = 'black';
+        var strokeColor = 'black';
+        var shape = 'Rectangle';
+        var data = node.data;
+        if (PortConnectivityDiagramComponent_1.bgColor[data.type] != null) {
+            bgColor = PortConnectivityDiagramComponent_1.bgColor[data.type];
+        }
+        if (PortConnectivityDiagramComponent_1.strokeColor[data.type] != null) {
+            strokeColor = PortConnectivityDiagramComponent_1.strokeColor[data.type];
+        }
+        if (PortConnectivityDiagramComponent_1.shape[data.type] != null) {
+            shape = PortConnectivityDiagramComponent_1.shape[data.type];
+        }
+        // node.width = 70;
+        // node.height = 30;
+        node.annotations = [
+            { content: node.data.name, style: { color: 'black' } }
+        ];
+        node.shape = {
+            type: 'Basic',
+            shape: shape
+        };
+        node.style.fill = bgColor;
+        node.style.strokeColor = strokeColor;
+        node.style.strokeWidth = 2;
+        if (PortConnectivityDiagramComponent_1.size[data.type] != null) {
+            var size = PortConnectivityDiagramComponent_1.size[data.type];
+            node.width = size.width;
+            node.height = size.height;
+        }
+        return node;
+    };
+    PortConnectivityDiagramComponent.prototype.connectorDefaults = function (connector) {
+        connector.type = 'Orthogonal';
+        connector.cornerRadius = 7;
+        return connector;
+    };
+    PortConnectivityDiagramComponent.prototype.transform = function (data) {
+        var _this = this;
+        var result = [];
+        result.push({ id: data.id, parentId: data.parentId, name: data.name, type: data.type });
+        if (data.children.length > 0) {
+            data.children.forEach(function (owner) {
+                var ownerData = _this.transform(owner);
+                result.push.apply(result, ownerData);
+            });
+        }
+        return result;
+    };
+    var PortConnectivityDiagramComponent_1;
+    PortConnectivityDiagramComponent.bgColor = {
+        DATACENTER: 'rgb(255, 255, 255)',
+        SYSTEM: 'rgb(219, 219, 219)',
+        DKC: 'rgb(218, 197, 219)',
+        CONTROLLER: 'rgb(214, 233, 213)',
+        CHANNEL_BOARD: 'rgb(218, 233, 252)',
+        PORT: 'rgb(255, 230, 205)'
+    };
+    PortConnectivityDiagramComponent.strokeColor = {
+        DATACENTER: 'rgb(164, 164, 164)',
+        SYSTEM: 'rgb(164, 164, 164)',
+        DKC: 'rgb(217, 163, 220)',
+        CONTROLLER: 'rgb(154, 228, 146)',
+        CHANNEL_BOARD: 'rgb(168, 204, 251)',
+        PORT: 'rgb(255, 192, 106)'
+    };
+    PortConnectivityDiagramComponent.shape = {
+        DATACENTER: 'Rectangle',
+        SYSTEM: 'Rectangle',
+        DKC: 'Rectangle',
+        CONTROLLER: 'Rectangle',
+        CHANNEL_BOARD: 'Rectangle',
+        PORT: 'Octagon'
+    };
+    PortConnectivityDiagramComponent.size = {
+        PORT: { width: 35, height: 35 },
+    };
+    PortConnectivityDiagramComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"] }
+    ]; };
+    PortConnectivityDiagramComponent = PortConnectivityDiagramComponent_1 = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-port-connectivity-diagram',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./port-connectivity-diagram.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./port-connectivity-diagram.component.css */ "./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"]])
+    ], PortConnectivityDiagramComponent);
+    return PortConnectivityDiagramComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/storage-configuration/port-connectivity/port-connectivity.component.css":
 /*!*****************************************************************************************!*\
   !*** ./src/app/storage-configuration/port-connectivity/port-connectivity.component.css ***!
@@ -13331,12 +14241,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _storage_location_storage_location_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./storage-location/storage-location.component */ "./src/app/storage-configuration/storage-location/storage-location.component.ts");
 /* harmony import */ var _port_connectivity_port_connectivity_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./port-connectivity/port-connectivity.component */ "./src/app/storage-configuration/port-connectivity/port-connectivity.component.ts");
+/* harmony import */ var _port_connectivity_diagram_port_connectivity_diagram_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./port-connectivity-diagram/port-connectivity-diagram.component */ "./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -13356,6 +14268,13 @@ var routes = [
             breadcrumb: 'Port Connectivity'
         }
     },
+    {
+        path: 'port-connectivity-diagram/:id',
+        component: _port_connectivity_diagram_port_connectivity_diagram_component__WEBPACK_IMPORTED_MODULE_4__["PortConnectivityDiagramComponent"],
+        data: {
+            breadcrumb: 'Port Connectivity Diagram'
+        }
+    }
 ];
 var StorageConfigurationRoutingModule = /** @class */ (function () {
     function StorageConfigurationRoutingModule() {
@@ -13405,12 +14324,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _speed_formatter_speed_formatter_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./speed-formatter/speed-formatter.component */ "./src/app/storage-configuration/speed-formatter/speed-formatter.component.ts");
 /* harmony import */ var _import_csv_data_import_csv_data_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./import-csv-data/import-csv-data.component */ "./src/app/storage-configuration/import-csv-data/import-csv-data.component.ts");
 /* harmony import */ var _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./storage-entity-status/storage-entity-status.component */ "./src/app/storage-configuration/storage-entity-status/storage-entity-status.component.ts");
+/* harmony import */ var _syncfusion_ej2_angular_diagrams__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @syncfusion/ej2-angular-diagrams */ "./node_modules/@syncfusion/ej2-angular-diagrams/__ivy_ngcc__/@syncfusion/ej2-angular-diagrams.js");
+/* harmony import */ var _port_connectivity_diagram_port_connectivity_diagram_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./port-connectivity-diagram/port-connectivity-diagram.component */ "./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -13452,7 +14375,8 @@ var StorageConfigurationModule = /** @class */ (function () {
                 _storage_entity_2_sasi_table_storage_entity_2_sasi_group_table_pipe__WEBPACK_IMPORTED_MODULE_17__["StorageEntity2SasiGroupTablePipe"],
                 _storage_entity_2_sasi_table_storage_entity_detail_2_sasi_table_pipe__WEBPACK_IMPORTED_MODULE_18__["StorageEntityDetail2SasiTablePipe"],
                 _import_csv_data_import_csv_data_component__WEBPACK_IMPORTED_MODULE_20__["ImportCsvDataComponent"],
-                _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_21__["StorageEntityStatusComponent"]
+                _storage_entity_status_storage_entity_status_component__WEBPACK_IMPORTED_MODULE_21__["StorageEntityStatusComponent"],
+                _port_connectivity_diagram_port_connectivity_diagram_component__WEBPACK_IMPORTED_MODULE_23__["PortConnectivityDiagramComponent"]
             ],
             entryComponents: [
                 _se_text_formatter_se_text_formatter_component__WEBPACK_IMPORTED_MODULE_7__["SeTextFormatterComponent"],
@@ -13466,7 +14390,11 @@ var StorageConfigurationModule = /** @class */ (function () {
                 _storage_configuration_routing_module__WEBPACK_IMPORTED_MODULE_3__["StorageConfigurationRoutingModule"],
                 ng2_tooltip_directive__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"],
+                _syncfusion_ej2_angular_diagrams__WEBPACK_IMPORTED_MODULE_22__["DiagramModule"]
+            ],
+            providers: [
+                _syncfusion_ej2_angular_diagrams__WEBPACK_IMPORTED_MODULE_22__["HierarchicalTreeService"], _syncfusion_ej2_angular_diagrams__WEBPACK_IMPORTED_MODULE_22__["DataBindingService"], _syncfusion_ej2_angular_diagrams__WEBPACK_IMPORTED_MODULE_22__["ComplexHierarchicalTreeService"]
             ]
         })
     ], StorageConfigurationModule);
