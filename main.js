@@ -13375,11 +13375,12 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortConnectivityDiagramComponent", function() { return PortConnectivityDiagramComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _syncfusion_ej2_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @syncfusion/ej2-data */ "./node_modules/@syncfusion/ej2-data/dist/es6/ej2-data.es2015.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
-/* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
-/* harmony import */ var _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/dtos/enums/component.status */ "./src/app/common/models/dtos/enums/component.status.ts");
+/* harmony import */ var _syncfusion_ej2_diagrams__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @syncfusion/ej2-diagrams */ "./node_modules/@syncfusion/ej2-diagrams/dist/es6/ej2-diagrams.es2015.js");
+/* harmony import */ var _syncfusion_ej2_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @syncfusion/ej2-data */ "./node_modules/@syncfusion/ej2-data/dist/es6/ej2-data.es2015.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _metric_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../metric.service */ "./src/app/metric.service.ts");
+/* harmony import */ var _common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/models/dtos/owner.dto */ "./src/app/common/models/dtos/owner.dto.ts");
+/* harmony import */ var _common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/models/dtos/enums/component.status */ "./src/app/common/models/dtos/enums/component.status.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13398,6 +13399,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var PortConnectivityDiagramComponent = /** @class */ (function () {
     function PortConnectivityDiagramComponent(route, router, metricService) {
         this.route = route;
@@ -13406,13 +13408,48 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
         this.data = [];
     }
     PortConnectivityDiagramComponent_1 = PortConnectivityDiagramComponent;
+    PortConnectivityDiagramComponent.getContent = function (node) {
+        var tooltipContent = null;
+        console.log(node.data);
+        if (node.data != null && node.data.detail != null) {
+            var detail = node.data.detail;
+            tooltipContent = document.createElement('div');
+            var tooltipItems = [
+                PortConnectivityDiagramComponent_1.getTooltipItem('Array model', detail.arrayModel),
+                PortConnectivityDiagramComponent_1.getTooltipItem('DKC', detail.dkc),
+                PortConnectivityDiagramComponent_1.getTooltipItem('Cables', detail.cables),
+                PortConnectivityDiagramComponent_1.getTooltipItem('Management IP', detail.managementIp),
+                PortConnectivityDiagramComponent_1.getTooltipItem('Note', detail.note),
+                PortConnectivityDiagramComponent_1.getTooltipItem('Rack', detail.rack),
+                PortConnectivityDiagramComponent_1.getTooltipItem('Room', detail.room),
+                PortConnectivityDiagramComponent_1.getTooltipItem('Speed', detail.speed),
+                PortConnectivityDiagramComponent_1.getTooltipItem('Slot', detail.slot),
+                PortConnectivityDiagramComponent_1.getTooltipItem('WWN', detail.wwn),
+                PortConnectivityDiagramComponent_1.getTooltipItem('Switch', detail.switch),
+            ];
+            var content = tooltipItems.filter(function (item) { return item !== ''; }).join('');
+            tooltipContent.innerHTML = '<div style="background-color: #2f2f2f; color: #bfbfbf; border-width:1px;border-style: solid;border-color: #d3d3d3; border-radius: 8px;white-space: nowrap;"><ul style="list-style: none; padding: 2px">' +
+                content
+                + '</ul></div>';
+            if (content === '') {
+                tooltipContent = null;
+            }
+        }
+        return tooltipContent;
+    };
+    PortConnectivityDiagramComponent.getTooltipItem = function (name, value) {
+        if (value !== null) {
+            return '<li> <span style="margin: 10px;"> ' + name + ': ' + value + ' </span> </li>';
+        }
+        return;
+    };
     PortConnectivityDiagramComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
             console.log(params);
             if (params['id'] != undefined) {
                 _this.selectedSystem = params['id'];
-                _this.metricService.getStorageEntityDetail(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_4__["StorageEntityType"].PORT, _this.selectedSystem, [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_5__["ComponentStatus"].ACTIVE]).subscribe(function (data) {
+                _this.metricService.getStorageEntityDetail(_common_models_dtos_owner_dto__WEBPACK_IMPORTED_MODULE_5__["StorageEntityType"].PORT, _this.selectedSystem, [_common_models_dtos_enums_component_status__WEBPACK_IMPORTED_MODULE_6__["ComponentStatus"].ACTIVE]).subscribe(function (data) {
                     _this.data = _this.transform(data[0].storageEntity);
                     _this.snapSettings = {
                         constraints: 0
@@ -13434,7 +13471,7 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
                     _this.dataSourceSettings = {
                         id: 'id',
                         parentId: 'parentId',
-                        dataManager: new _syncfusion_ej2_data__WEBPACK_IMPORTED_MODULE_1__["DataManager"](_this.data)
+                        dataManager: new _syncfusion_ej2_data__WEBPACK_IMPORTED_MODULE_2__["DataManager"](_this.data)
                     };
                 });
             }
@@ -13492,6 +13529,11 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
         node.style.fill = bgColor;
         node.style.strokeColor = strokeColor;
         node.style.strokeWidth = 2;
+        var tooltipContent = PortConnectivityDiagramComponent_1.getContent(node);
+        if (tooltipContent !== null) {
+            node.tooltip = { content: tooltipContent, relativeMode: 'Mouse', position: 'BottomRight' };
+            node.constraints = _syncfusion_ej2_diagrams__WEBPACK_IMPORTED_MODULE_1__["NodeConstraints"].Default | _syncfusion_ej2_diagrams__WEBPACK_IMPORTED_MODULE_1__["NodeConstraints"].Tooltip;
+        }
         if (PortConnectivityDiagramComponent_1.size[data.type] != null) {
             var size = PortConnectivityDiagramComponent_1.size[data.type];
             node.width = size.width;
@@ -13507,7 +13549,7 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
     PortConnectivityDiagramComponent.prototype.transform = function (data) {
         var _this = this;
         var result = [];
-        result.push({ id: data.id, parentId: data.parentId, name: data.name, type: data.type });
+        result.push({ id: data.id, parentId: data.parentId, name: data.name, type: data.type, detail: data.detail });
         if (data.children.length > 0) {
             data.children.forEach(function (owner) {
                 var ownerData = _this.transform(owner);
@@ -13545,9 +13587,9 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
         PORT: { width: 35, height: 35 },
     };
     PortConnectivityDiagramComponent.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-        { type: _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+        { type: _metric_service__WEBPACK_IMPORTED_MODULE_4__["MetricService"] }
     ]; };
     PortConnectivityDiagramComponent = PortConnectivityDiagramComponent_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -13555,9 +13597,9 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
             template: __importDefault(__webpack_require__(/*! raw-loader!./port-connectivity-diagram.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.html")).default,
             styles: [__importDefault(__webpack_require__(/*! ./port-connectivity-diagram.component.css */ "./src/app/storage-configuration/port-connectivity-diagram/port-connectivity-diagram.component.css")).default]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-            _metric_service__WEBPACK_IMPORTED_MODULE_3__["MetricService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _metric_service__WEBPACK_IMPORTED_MODULE_4__["MetricService"]])
     ], PortConnectivityDiagramComponent);
     return PortConnectivityDiagramComponent;
 }());
