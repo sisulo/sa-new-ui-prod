@@ -13488,7 +13488,7 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
         // };
         var bgColor = 'black';
         var strokeColor = 'black';
-        var shape = 'Rectangle';
+        var shape = { type: 'Rectangle', radiusCorner: 0 };
         var data = node.data;
         if (PortConnectivityDiagramComponent_1.bgColor[data.type] != null) {
             bgColor = PortConnectivityDiagramComponent_1.bgColor[data.type];
@@ -13524,7 +13524,8 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
         ];
         node.shape = {
             type: 'Basic',
-            shape: shape
+            shape: shape.type,
+            cornerRadius: shape.radiusCorner
         };
         node.style.fill = bgColor;
         node.style.strokeColor = strokeColor;
@@ -13560,8 +13561,8 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
     };
     var PortConnectivityDiagramComponent_1;
     PortConnectivityDiagramComponent.bgColor = {
-        DATACENTER: 'rgb(255, 255, 255)',
-        SYSTEM: 'rgb(219, 219, 219)',
+        DATACENTER: 'rgb(219, 219, 219)',
+        SYSTEM: 'rgb(246,190,192)',
         DKC: 'rgb(218, 197, 219)',
         CONTROLLER: 'rgb(214, 233, 213)',
         CHANNEL_BOARD: 'rgb(218, 233, 252)',
@@ -13569,22 +13570,27 @@ var PortConnectivityDiagramComponent = /** @class */ (function () {
     };
     PortConnectivityDiagramComponent.strokeColor = {
         DATACENTER: 'rgb(164, 164, 164)',
-        SYSTEM: 'rgb(164, 164, 164)',
+        SYSTEM: 'rgb(243,142,145)',
         DKC: 'rgb(217, 163, 220)',
         CONTROLLER: 'rgb(154, 228, 146)',
         CHANNEL_BOARD: 'rgb(168, 204, 251)',
         PORT: 'rgb(255, 192, 106)'
     };
     PortConnectivityDiagramComponent.shape = {
-        DATACENTER: 'Rectangle',
-        SYSTEM: 'Rectangle',
-        DKC: 'Rectangle',
-        CONTROLLER: 'Rectangle',
-        CHANNEL_BOARD: 'Rectangle',
-        PORT: 'Octagon'
+        DATACENTER: { type: 'Rectangle', radiusCorner: 10 },
+        SYSTEM: { type: 'Rectangle', radiusCorner: 10 },
+        DKC: { type: 'Rectangle', radiusCorner: 10 },
+        CONTROLLER: { type: 'Rectangle', radiusCorner: 10 },
+        CHANNEL_BOARD: { type: 'Rectangle', radiusCorner: 10 },
+        PORT: { type: 'Octagon', radiusCorner: 0 }
     };
     PortConnectivityDiagramComponent.size = {
         PORT: { width: 35, height: 35 },
+        DKC: { width: 100, height: 50 },
+        CHANNEL_BOARD: { width: 100, height: 50 },
+        CONTROLLER: { width: 100, height: 50 },
+        SYSTEM: { width: 120, height: 50 },
+        DATACENTER: { width: 120, height: 50 }
     };
     PortConnectivityDiagramComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
